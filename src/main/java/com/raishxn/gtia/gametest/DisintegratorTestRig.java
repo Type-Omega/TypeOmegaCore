@@ -31,7 +31,8 @@ final class DisintegratorTestRig {
                 1e-12, "e = 1 - (1 - f)^(5/3)");
         helper.assertTrue(DisintegratorPhysics.binding(2) == 4 * DisintegratorPhysics.binding(1), "U grows as M^2");
         helper.assertTrue(DisintegratorPhysics.layer(0.1) == 0 && DisintegratorPhysics.layer(0.3) == 1 &&
-                DisintegratorPhysics.layer(0.7) == 2 && DisintegratorPhysics.layer(0.95) == 3, "crust, mantle, core, star");
+                DisintegratorPhysics.layer(0.7) == 2 && DisintegratorPhysics.layer(0.95) == 3,
+                "crust, mantle, core, star");
         helper.succeed();
     }
 

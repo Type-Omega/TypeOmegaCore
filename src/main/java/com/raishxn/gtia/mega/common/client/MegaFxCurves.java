@@ -87,7 +87,8 @@ final class MegaFxCurves {
                     for (int v = 0; v < 4; v++) {
                         double x = 2.0 * c[v][0] / n - 1, z = 2.0 * c[v][1] / n - 1;
                         double y = -depth * m / Math.sqrt(x * x + z * z + m * m);
-                        q[v] = new float[] { (float) x, (float) y, (float) z, (float) c[v][0] / n, (float) c[v][1] / n };
+                        q[v] = new float[] { (float) x, (float) y, (float) z, (float) c[v][0] / n,
+                                (float) c[v][1] / n };
                     }
                     MegaFxMeshes.quad(b, q);
                 }

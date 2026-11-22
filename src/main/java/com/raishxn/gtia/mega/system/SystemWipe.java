@@ -32,7 +32,8 @@ public final class SystemWipe {
         var out = new TreeSet<Integer>();
         try {
             if (Files.exists(file))
-                for (String line : Files.readAllLines(file)) if (!line.isBlank()) out.add(Integer.parseInt(line.trim()));
+                for (String line : Files.readAllLines(file))
+                    if (!line.isBlank()) out.add(Integer.parseInt(line.trim()));
         } catch (IOException | NumberFormatException e) {
             GTIAMod.LOGGER.warn("Unreadable {}", file, e);
         }

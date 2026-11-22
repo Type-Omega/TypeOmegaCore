@@ -57,25 +57,27 @@ public final class MegaCapture {
         var level = m.getLevel();
         var air = Blocks.AIR.defaultBlockState();
         // Each removed block would otherwise trigger a structure check.
-        NexusBuildCheckGuard.quiet(m.getMultiblockState(), () -> positions(m.shapeName(), m.getPos(), m.getFrontFacing())
-                .forEach((part, list) -> {
-                    if (part.phase() > phases) return;
-                    for (long p : list) set(level, BlockPos.of(p), air);
-                }));
+        NexusBuildCheckGuard.quiet(m.getMultiblockState(),
+                () -> positions(m.shapeName(), m.getPos(), m.getFrontFacing())
+                        .forEach((part, list) -> {
+                            if (part.phase() > phases) return;
+                            for (long p : list) set(level, BlockPos.of(p), air);
+                        }));
     }
 
     /** Puts back, where there is air, the rings of the phases that were captured. */
     static void release(MegaMachine m, int phases) {
         var level = m.getLevel();
-        NexusBuildCheckGuard.quiet(m.getMultiblockState(), () -> positions(m.shapeName(), m.getPos(), m.getFrontFacing())
-                .forEach((part, list) -> {
-                    if (part.phase() > phases) return;
-                    var state = block(part).defaultBlockState();
-                    for (long p : list) {
-                        var pos = BlockPos.of(p);
-                        if (level.getBlockState(pos).isAir()) set(level, pos, state);
-                    }
-                }));
+        NexusBuildCheckGuard.quiet(m.getMultiblockState(),
+                () -> positions(m.shapeName(), m.getPos(), m.getFrontFacing())
+                        .forEach((part, list) -> {
+                            if (part.phase() > phases) return;
+                            var state = block(part).defaultBlockState();
+                            for (long p : list) {
+                                var pos = BlockPos.of(p);
+                                if (level.getBlockState(pos).isAir()) set(level, pos, state);
+                            }
+                        }));
     }
 
     /** Sets a plain block straight in its chunk, with the light check and the client update (no neighbour work). */

@@ -23,6 +23,7 @@ public final class GTIANexusRecipes {
     private GTIANexusRecipes() {}
 
     public static void addRecipes(Consumer<FinishedRecipe> provider) {
+        steamVoidOre(provider);
         var linker = ForgeRegistries.ITEMS.getValue(new ResourceLocation("gtna", "nexus_linker"));
         if (linker == null || linker == Items.AIR) return;
         // EN: LV tool that binds wireless hatches to a Flux Matrix: sensor + emitter (it reads and sends), ender pearl.
@@ -37,5 +38,23 @@ public final class GTIANexusRecipes {
                 'H', new ItemStack(Items.ENDER_PEARL),
                 'P', new MaterialEntry(TagPrefix.plate, GTMaterials.Steel),
                 'R', new MaterialEntry(TagPrefix.wireGtSingle, GTMaterials.RedAlloy));
+    }
+
+    /**
+     * Steam Void Ore (GTIA-D-361): the four starter veins, one raw ore of each per 8 s, 1 800 ores per hour.
+     * EN: GTNA registers the type; the pack decides the ores. PT: O GTNA registra o tipo; o pack escolhe os minérios.
+     * ZH: GTNA 注册配方类型；矿石由整合包决定。
+     */
+    private static void steamVoidOre(Consumer<FinishedRecipe> provider) {
+        var type = com.gregtechceu.gtceu.api.registry.GTRegistries.RECIPE_TYPES
+                .get(new ResourceLocation("gtna", "steam_void_ore"));
+        if (type == null) return;
+        type.recipeBuilder(GTIAMod.id("steam_void_ore_starter_veins"))
+                .outputItems(TagPrefix.rawOre, GTMaterials.Iron)
+                .outputItems(TagPrefix.rawOre, GTMaterials.Copper)
+                .outputItems(TagPrefix.rawOre, GTMaterials.Tin)
+                .outputItems(TagPrefix.rawOre, GTMaterials.Coal)
+                .duration(160).EUt(GTValues.V[GTValues.ULV])
+                .save(provider);
     }
 }

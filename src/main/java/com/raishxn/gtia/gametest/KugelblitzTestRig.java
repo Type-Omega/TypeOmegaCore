@@ -26,7 +26,8 @@ final class KugelblitzTestRig {
         helper.assertTrue(KugelblitzPhysics.lifetimeSeconds(1e4) < 20, "10^4 kg is gone in under 20 s");
         helper.assertTrue(Math.abs(KugelblitzPhysics.hawkingKelvin(1e6) - 1.227e17) < 1e12,
                 "Hawking temperature 1.227e23 K / M");
-        helper.assertTrue(KugelblitzPhysics.critical(3) < KugelblitzPhysics.critical(2), "stabilisers hold a lighter hole");
+        helper.assertTrue(KugelblitzPhysics.critical(3) < KugelblitzPhysics.critical(2),
+                "stabilisers hold a lighter hole");
         helper.succeed();
     }
 
@@ -60,7 +61,8 @@ final class KugelblitzTestRig {
             // Under the critical mass it flashes out.
             m.setMass(KugelblitzPhysics.critical(5) * 1.01, true);
             m.testSecond(owner);
-            helper.assertTrue(!m.hole() && m.mass() == 0 && m.integrity() == 0, "the hole flashes out and breaks the chamber");
+            helper.assertTrue(!m.hole() && m.mass() == 0 && m.integrity() == 0,
+                    "the hole flashes out and breaks the chamber");
             helper.succeed();
         } finally {
             MegaMachine.anyDimensionForTests = false;

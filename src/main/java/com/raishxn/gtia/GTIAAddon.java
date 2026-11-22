@@ -45,6 +45,8 @@ public final class GTIAAddon implements IGTAddon {
         com.raishxn.gtia.route.ProgressionGates.addRecipes(provider);
         com.raishxn.gtia.route.AE2Gates.addRecipes(provider);
         com.raishxn.gtia.miner.GTIAMiners.addRecipes(provider);
+        com.raishxn.gtia.processing.OrePlantRecipes.add(provider);
+        com.raishxn.gtia.processing.ProcessingRecipes.add(provider);
         com.raishxn.gtia.mega.MegaRecipes.addRecipes(provider);
     }
 

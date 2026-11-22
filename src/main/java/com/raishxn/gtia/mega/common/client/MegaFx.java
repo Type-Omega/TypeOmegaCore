@@ -20,7 +20,14 @@ import java.util.Map;
 public final class MegaFx {
 
     public enum Type {
-        STAR, JET, BEAM, FIELD, DISK, HOLE, PLANET, GLOW,
+        STAR,
+        JET,
+        BEAM,
+        FIELD,
+        DISK,
+        HOLE,
+        PLANET,
+        GLOW,
         /** A tube along a Catmull-Rom curve through {@code points}: matter fed into a hole or lifted off a star. */
         STREAM,
         /** {@code count} dipole field lines round a star, about {@code axis}, out to {@code r1}. */
@@ -71,7 +78,8 @@ public final class MegaFx {
     private static Effect read(JsonObject o) {
         var type = Type.valueOf(o.get("type").getAsString().toUpperCase(java.util.Locale.ROOT));
         return new Effect(o.get("name").getAsString(), type, num(o, "phase", 1), o.has("active") &&
-                o.get("active").getAsBoolean(), o.has("track") && !o.get("track").isJsonNull() ?
+                o.get("active").getAsBoolean(),
+                o.has("track") && !o.get("track").isJsonNull() ?
                         o.get("track").getAsString() : null,
                 vec(o, "a", 0, 0, 0), vec(o, "b", 0, 0, 0), vec(o, "axis", 0, 1, 0), num(o, "r0", 1f),
                 num(o, "r1", 0f), num(o, "temp", 5800f), num(o, "count", 0),

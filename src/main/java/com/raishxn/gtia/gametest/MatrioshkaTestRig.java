@@ -7,10 +7,10 @@ import net.minecraft.world.level.block.Blocks;
 
 import com.raishxn.gtia.mega.GTIAMegastructures;
 import com.raishxn.gtia.mega.PsiStore;
-import com.raishxn.gtia.mega.matrioshka.MatrioshkaBrainMachine;
 import com.raishxn.gtia.mega.common.MegaCapture;
 import com.raishxn.gtia.mega.common.MegaMachine;
 import com.raishxn.gtia.mega.common.MegaShape;
+import com.raishxn.gtia.mega.matrioshka.MatrioshkaBrainMachine;
 import com.raishxn.gtia.mega.matrioshka.MatrioshkaShells;
 
 import java.util.UUID;
@@ -96,7 +96,8 @@ final class MatrioshkaTestRig {
                     "the cold outer shell beats 2^26 (Landauer)");
 
             // Rings are taken in while it runs, and the phase count does not drop for it.
-            long ring = MegaCapture.positions(MatrioshkaBrainMachine.SHAPE, m.getPos(), FRONT).get(part(shape, "inner_up", "body"))[0];
+            long ring = MegaCapture.positions(MatrioshkaBrainMachine.SHAPE, m.getPos(), FRONT)
+                    .get(part(shape, "inner_up", "body"))[0];
             helper.assertTrue(m.isCaptured() && helper.getLevel().getBlockState(BlockPos.of(ring)).isAir(),
                     "the inner ring is in the controller");
             MegaTestRig.lit(helper, m, "field_inner", "field_outer", "feed_front", "feed_back");
@@ -149,7 +150,8 @@ final class MatrioshkaTestRig {
         double cooled = MatrioshkaShells.target(r[0], 100, helium, 1);
         helper.assertTrue(Math.abs(cooled - (4 + (t - 4) * 0.6)) < 1e-6, "helium pulls a shell 40% towards 4 K");
         helper.assertTrue(MatrioshkaShells.target(r[0], 100, shifted, 1) < MatrioshkaShells.target(r[0], 100,
-                MatrioshkaShells.Coolant.SUPERFLUID_HELIUM, 1) && MatrioshkaShells.target(r[0], 100,
+                MatrioshkaShells.Coolant.SUPERFLUID_HELIUM, 1) &&
+                MatrioshkaShells.target(r[0], 100,
                         MatrioshkaShells.Coolant.SUPERFLUID_HELIUM, 1) < cooled,
                 "each coolant tier is colder than the one before");
         helper.assertTrue(MatrioshkaShells.temperature(r[0], 200) > MatrioshkaShells.limit(5),

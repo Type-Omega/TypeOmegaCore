@@ -102,8 +102,7 @@ public final class MegaRecipeEngine {
                 break;
             }
             var run = p == 1 ? recipe : recipe.copy(ContentModifier.multiplier(p), false);
-            var caches = new HashMap<com.gregtechceu.gtceu.api.capability.recipe.RecipeCapability<?>,
-                    it.unimi.dsi.fastutil.objects.Object2IntMap<?>>();
+            var caches = new HashMap<com.gregtechceu.gtceu.api.capability.recipe.RecipeCapability<?>, it.unimi.dsi.fastutil.objects.Object2IntMap<?>>();
             if (!RecipeHelper.handleRecipeIO(m, run, IO.IN, caches).isSuccess()) {
                 blocked = "inputs";
                 break;

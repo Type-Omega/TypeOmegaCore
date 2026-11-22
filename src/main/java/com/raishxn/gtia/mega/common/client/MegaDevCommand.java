@@ -52,8 +52,8 @@ public final class MegaDevCommand {
                                     var click = com.lowdragmc.lowdraglib.gui.util.ClickData.readFromBuf(buf);
                                     server.execute(() -> {
                                         var level = server.getLevel(dim);
-                                        if (level != null && MetaMachine.getMachine(level, pos) instanceof
-                                                com.raishxn.gtia.mega.common.MegaMachine m)
+                                        if (level != null && MetaMachine.getMachine(level,
+                                                pos) instanceof com.raishxn.gtia.mega.common.MegaMachine m)
                                             m.handleDisplayClick(action, click);
                                     });
                                     return 1;
@@ -93,23 +93,29 @@ public final class MegaDevCommand {
                         .then(Commands.argument("fluid", net.minecraft.commands.arguments.ResourceLocationArgument.id())
                                 .then(Commands.argument("mb", com.mojang.brigadier.arguments.IntegerArgumentType
                                         .integer(1)).executes(ctx -> {
-                    var mc = Minecraft.getInstance();
-                    var server = mc.getSingleplayerServer();
-                    if (server == null || mc.player == null) return 0;
-                    var pos = BlockPosArgument.getBlockPos(ctx, "pos");
-                    var id = ctx.getArgument("fluid", net.minecraft.resources.ResourceLocation.class);
-                    int mb = com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(ctx, "mb");
-                    var dim = mc.player.level().dimension();
-                    server.execute(() -> {
-                        var level = server.getLevel(dim);
-                        var fluid = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getValue(id);
-                        if (level == null || fluid == null) return;
-                        if (MetaMachine.getMachine(level, pos) instanceof com.raishxn.gtia.mega.common.MegaMachine m) {
-                            long left = m.fillInputForTests(new net.minecraftforge.fluids.FluidStack(fluid, mb));
-                            com.raishxn.gtia.GTIAMod.LOGGER.info("gtia_dev_fill {} {} mB, {} did not fit", id, mb, left);
-                        }
-                    });
-                    return 1;
-                })))));
+                                            var mc = Minecraft.getInstance();
+                                            var server = mc.getSingleplayerServer();
+                                            if (server == null || mc.player == null) return 0;
+                                            var pos = BlockPosArgument.getBlockPos(ctx, "pos");
+                                            var id = ctx.getArgument("fluid",
+                                                    net.minecraft.resources.ResourceLocation.class);
+                                            int mb = com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(ctx,
+                                                    "mb");
+                                            var dim = mc.player.level().dimension();
+                                            server.execute(() -> {
+                                                var level = server.getLevel(dim);
+                                                var fluid = net.minecraftforge.registries.ForgeRegistries.FLUIDS
+                                                        .getValue(id);
+                                                if (level == null || fluid == null) return;
+                                                if (MetaMachine.getMachine(level,
+                                                        pos) instanceof com.raishxn.gtia.mega.common.MegaMachine m) {
+                                                    long left = m.fillInputForTests(
+                                                            new net.minecraftforge.fluids.FluidStack(fluid, mb));
+                                                    com.raishxn.gtia.GTIAMod.LOGGER.info(
+                                                            "gtia_dev_fill {} {} mB, {} did not fit", id, mb, left);
+                                                }
+                                            });
+                                            return 1;
+                                        })))));
     }
 }

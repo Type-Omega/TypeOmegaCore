@@ -44,7 +44,8 @@ public final class EntangledMinerGameTests {
         h.assertTrue(registered == 14, "14 GTIA bedrock veins, got " + registered);
         int[] counts = new int[3];
         for (int x = -50; x < 50; x++)
-            for (int z = -50; z < 50; z++) counts[VeinPurity.of(12345L, "minecraft:overworld", x * 16, z * 16).ordinal()]++;
+            for (int z = -50; z < 50; z++)
+                counts[VeinPurity.of(12345L, "minecraft:overworld", x * 16, z * 16).ordinal()]++;
         h.assertTrue(Math.abs(counts[0] - 4000) < 300 && Math.abs(counts[1] - 4000) < 300 &&
                 Math.abs(counts[2] - 2000) < 300, "purity 40/40/20, got " + java.util.Arrays.toString(counts));
         h.assertTrue(VeinPurity.of(1, "a", 16, 32) == VeinPurity.of(1, "a", 16, 32), "purity never changes");

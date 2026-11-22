@@ -52,9 +52,16 @@ public final class LifterPhysics {
      */
     public enum Element {
 
-        HYDROGEN(0.735, 0.35), HELIUM(0.249, 0.62), OXYGEN(0.0077, 0.012), CARBON(0.0029, 0.008),
-        IRON(0.0016, 0.004), NEON(0.0012, 0.004), NITROGEN(0.0009, 0.002), SILICON(0.0007, 0.0015),
-        MAGNESIUM(0.0005, 0.0012), NICKEL(0.0001, 0.0004);
+        HYDROGEN(0.735, 0.35),
+        HELIUM(0.249, 0.62),
+        OXYGEN(0.0077, 0.012),
+        CARBON(0.0029, 0.008),
+        IRON(0.0016, 0.004),
+        NEON(0.0012, 0.004),
+        NITROGEN(0.0009, 0.002),
+        SILICON(0.0007, 0.0015),
+        MAGNESIUM(0.0005, 0.0012),
+        NICKEL(0.0001, 0.0004);
 
         public final double surface, deep;
 
@@ -101,7 +108,8 @@ public final class LifterPhysics {
     /**
      * Core fuel deep stirring adds: the arcs mix down 3.5 times the mass they lift, as a share of the star.
      */
-    // EN: Mixing fresh hydrogen into the core is how stellar rejuvenation works; the factor 3.5 is a balance choice so an
+    // EN: Mixing fresh hydrogen into the core is how stellar rejuvenation works; the factor 3.5 is a balance choice so
+    // an
     // hour of deep lifting at full rate refills about a fifth of the fuel.
     // PT: Misturar hidrogênio novo no núcleo é como uma estrela rejuvenesce; o fator 3,5 é balanço, para uma hora de
     // agitação profunda no máximo repor cerca de um quinto do combustível.

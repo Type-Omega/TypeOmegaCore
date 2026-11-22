@@ -34,6 +34,27 @@ public final class GTIAItems {
             .model((context, provider) -> provider.generated(context, GTIAMod.id("item/vein_card")))
             .register();
 
+    /**
+     * World Fragments (GTIA-D-354, D-362): a piece of a dimension that lets the Fragment Collectors reach its veins.
+     * EN: Vanilla textures stand in until the author draws the fragments.
+     * PT: Texturas vanilla ficam no lugar até o autor desenhar os fragmentos.
+     * ZH: 在作者绘制碎片贴图之前，暂用原版贴图。
+     */
+    public static final ItemEntry<net.minecraft.world.item.Item> WORLD_FRAGMENT_OVERWORLD = fragment("overworld",
+            "Overworld", "minecraft:block/grass_block_side");
+    public static final ItemEntry<net.minecraft.world.item.Item> WORLD_FRAGMENT_NETHER = fragment("nether",
+            "Nether", "minecraft:block/netherrack");
+    public static final ItemEntry<net.minecraft.world.item.Item> WORLD_FRAGMENT_END = fragment("end", "End",
+            "minecraft:block/end_stone");
+
+    private static ItemEntry<net.minecraft.world.item.Item> fragment(String dim, String name, String texture) {
+        return GTIAMod.REGISTRATE.item("world_fragment_" + dim, net.minecraft.world.item.Item::new)
+                .lang("World Fragment (" + name + ")")
+                .model((context, provider) -> provider.generated(context,
+                        new net.minecraft.resources.ResourceLocation(texture)))
+                .register();
+    }
+
     private GTIAItems() {}
 
     public static void init() {}

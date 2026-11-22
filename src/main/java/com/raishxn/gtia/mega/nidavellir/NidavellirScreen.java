@@ -16,7 +16,8 @@ import com.raishxn.gtna.common.machine.multiblock.originals.ui.OriginalScreen.Na
 import static com.raishxn.gtna.common.machine.multiblock.originals.ui.OriginalScreen.*;
 
 /**
- * Nidavellir Hyperforge screen, an anvil: the ring disc turning round the neutron star, the press arm and the pulsar sweep;
+ * Nidavellir Hyperforge screen, an anvil: the ring disc turning round the neutron star, the press arm and the pulsar
+ * sweep;
  * a compression press; the neutronium hopper against what each batch takes; the recipe and the strike count.
  */
 public final class NidavellirScreen {

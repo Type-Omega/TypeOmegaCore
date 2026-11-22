@@ -168,7 +168,8 @@ final class MegaFxMeshes {
     }
 
     static void quad(BufferBuilder b, float[][] q) {
-        for (int k : new int[] { 0, 1, 2, 0, 2, 3 }) b.vertex(q[k][0], q[k][1], q[k][2]).uv(q[k][3], q[k][4]).endVertex();
+        for (int k : new int[] { 0, 1, 2, 0, 2, 3 })
+            b.vertex(q[k][0], q[k][1], q[k][2]).uv(q[k][3], q[k][4]).endVertex();
     }
 
     static VertexBuffer upload(BufferBuilder b) {

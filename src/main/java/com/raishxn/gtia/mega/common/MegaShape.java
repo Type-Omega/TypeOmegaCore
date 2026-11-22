@@ -87,8 +87,7 @@ public final class MegaShape {
         }
     }
 
-    private static final java.util.Map<String, java.util.Optional<MegaShape>> SHAPES =
-            new java.util.concurrent.ConcurrentHashMap<>();
+    private static final java.util.Map<String, java.util.Optional<MegaShape>> SHAPES = new java.util.concurrent.ConcurrentHashMap<>();
 
     public static String dir(String name) {
         return "gtia_mega/" + name + "/";

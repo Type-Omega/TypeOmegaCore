@@ -31,7 +31,8 @@ final class AssemblyYardTestRig {
         helper.assertTrue(Math.abs(YardPhysics.speed(1, false) - 1) < 1e-9, "the Sun builds at x1");
         helper.assertTrue(YardPhysics.speed(Math.pow(10, 4.6), false) == YardPhysics.SPEED_MAX &&
                 YardPhysics.speed(0.008, false) == YardPhysics.SPEED_MIN && YardPhysics.speed(0, false) ==
-                        YardPhysics.SPEED_MIN, "a blue giant hits the ceiling, a red dwarf or a dark centre the floor");
+                        YardPhysics.SPEED_MIN,
+                "a blue giant hits the ceiling, a red dwarf or a dark centre the floor");
         helper.assertTrue(YardPhysics.speed(1, true) == 2 && YardPhysics.euFactor(true) == 2.5,
                 "rush: twice the rate for 2.5 times the EU");
         helper.succeed();

@@ -1,11 +1,12 @@
 package com.raishxn.gtia.mega.matrioshka;
 
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
+
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.raishxn.gtia.mega.MegaMaterials;
 import com.raishxn.gtia.mega.matrioshka.MatrioshkaShells.Coolant;
 

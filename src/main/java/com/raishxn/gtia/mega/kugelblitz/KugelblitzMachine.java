@@ -219,7 +219,8 @@ public class KugelblitzMachine extends MegaMachine {
     public void handleDisplayClick(String data, ClickData click) {
         if (click.isRemote) return;
         switch (data) {
-            case "rate" -> setRate(click.button == 1 ? rateIndex - 1 : (rateIndex + 1) % KugelblitzPhysics.RATES.length);
+            case "rate" -> setRate(
+                    click.button == 1 ? rateIndex - 1 : (rateIndex + 1) % KugelblitzPhysics.RATES.length);
             case "target_up" -> setTarget(targetIndex + 1);
             case "target_down" -> setTarget(targetIndex - 1);
             default -> {

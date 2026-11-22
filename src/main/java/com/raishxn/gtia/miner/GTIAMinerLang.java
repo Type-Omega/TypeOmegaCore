@@ -10,6 +10,10 @@ public final class GTIAMinerLang {
     public static void init() {
         GTIAMod.REGISTRATE.addRawLang("gtia.entangled_miner",
                 "Entangled Miner");
+        GTIAMod.REGISTRATE.addRawLang("gtia.ore_processing_plant",
+                "Ore Processing Plant");
+        GTIAMod.REGISTRATE.addRawLang("gtia.fragment_collector",
+                "Fragment Collector");
         GTIAMod.REGISTRATE.addRawLang("gtia.vein_card.none",
                 "No bedrock vein under this chunk");
         GTIAMod.REGISTRATE.addRawLang("gtia.vein_card.recorded",

@@ -19,8 +19,14 @@ public final class StarPhysics {
     /** What sits in the middle of a system. */
     public enum Kind {
 
-        RED_DWARF(0.3), YELLOW_DWARF(1.0), WHITE_STAR(2.0), BLUE_GIANT(15.0), WHITE_DWARF(0.6), NEUTRON_STAR(1.4),
-        BLACK_HOLE(10.0), NONE(0);
+        RED_DWARF(0.3),
+        YELLOW_DWARF(1.0),
+        WHITE_STAR(2.0),
+        BLUE_GIANT(15.0),
+        WHITE_DWARF(0.6),
+        NEUTRON_STAR(1.4),
+        BLACK_HOLE(10.0),
+        NONE(0);
 
         /** Mass a new star of this kind is made with, M☉. */
         public final double mass;

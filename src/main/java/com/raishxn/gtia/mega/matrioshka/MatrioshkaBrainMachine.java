@@ -131,8 +131,8 @@ public class MatrioshkaBrainMachine extends MegaMachine implements IOpticalCompu
         var used = MatrioshkaShells.Coolant.NONE;
         double supply = 0;
         long demand = 0;
-        for (int t = MatrioshkaShells.Coolant.values().length - 1; t > 0 && used == MatrioshkaShells.Coolant.NONE;
-                t--) {
+        for (int t = MatrioshkaShells.Coolant.values().length - 1; t > 0 &&
+                used == MatrioshkaShells.Coolant.NONE; t--) {
             var tier = MatrioshkaShells.Coolant.values()[t];
             long want = MatrioshkaShells.coolantDemand(tier, phases, clockPct);
             long got = want <= 0 ? 0 : drain(f -> MatrioshkaThermal.is(tier, f), want);

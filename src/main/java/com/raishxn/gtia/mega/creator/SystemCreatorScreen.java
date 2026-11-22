@@ -203,7 +203,8 @@ public final class SystemCreatorScreen {
                 Kind k = Kind.values()[kind];
                 if (k == Kind.BLACK_HOLE) MegaArt.blackHole(g, cx, cy, 4, 8000);
                 else MegaArt.star(g, cx, cy, k == Kind.NEUTRON_STAR ? 2 : Math.max(3,
-                        (int) Math.round(7 * StarPhysics.drawnScale(k, v[e + 1]))), StarPhysics.temperature(k, v[e + 1]));
+                        (int) Math.round(7 * StarPhysics.drawnScale(k, v[e + 1]))),
+                        StarPhysics.temperature(k, v[e + 1]));
             }
             if (sel) ellipse(g, cx, cy, 13, 13, L.glow(), 0);
             if (i == m.targetSlot() && m.stage() != Stage.IDLE) ellipse(g, cx, cy, 11, 11, 0xFFFFD27A, 2);

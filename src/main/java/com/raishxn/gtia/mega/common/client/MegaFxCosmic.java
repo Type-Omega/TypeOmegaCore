@@ -36,7 +36,8 @@ final class MegaFxCosmic {
         draw(MegaFxMeshes.quad(), at(p, e, e.a(), new float[3], 1, 1, 1), proj, sh);
     }
 
-    static void effect(MegaMachine m, Effect e, Placement p, Matrix4f proj, ShaderInstance sh, float level, float scale) {
+    static void effect(MegaMachine m, Effect e, Placement p, Matrix4f proj, ShaderInstance sh, float level,
+                       float scale) {
         float[] pr = e.params();
         switch (e.type()) {
             case STREAM -> {

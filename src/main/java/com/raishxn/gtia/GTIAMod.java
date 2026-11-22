@@ -147,6 +147,8 @@ public final class GTIAMod {
     private void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
         GTIABeeMachines.init();
         com.raishxn.gtia.miner.GTIAMiners.init();
+        com.raishxn.gtia.miner.FragmentCollectors.init();
+        com.raishxn.gtia.processing.GTIAProcessing.init();
         com.raishxn.gtia.data.rocket.GTIARocketAssembler.init();
         com.raishxn.gtia.mega.GTIAMegastructures.init();
     }

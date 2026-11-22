@@ -34,8 +34,10 @@ public final class DisintegratorScreen {
         var root = MegaUI.window(L, m, 296, 220, 104, 43);
         root.addWidget(MegaUI.paint(106, 62, 84, 84, (g, x, y) -> cutaway(g, m, x + 42, y + 42)));
         root.addWidget(MegaUI.paint(52, 86, 44, 38, (g, x, y) -> targetPanel(g, m, x, y)));
-        root.addWidget(MegaUI.button(L, 52, 128, 20, 12, P + ".ui.prev", () -> false, c -> MegaScreen.act(m, "prev", c)));
-        root.addWidget(MegaUI.button(L, 76, 128, 20, 12, P + ".ui.next", () -> false, c -> MegaScreen.act(m, "next", c)));
+        root.addWidget(
+                MegaUI.button(L, 52, 128, 20, 12, P + ".ui.prev", () -> false, c -> MegaScreen.act(m, "prev", c)));
+        root.addWidget(
+                MegaUI.button(L, 76, 128, 20, 12, P + ".ui.next", () -> false, c -> MegaScreen.act(m, "next", c)));
         root.addWidget(MegaUI.paint(200, 86, 44, 38, (g, x, y) -> stopPanel(g, m, x, y)));
         root.addWidget(MegaUI.button(L, 200, 128, 44, 12, P + ".ui.stop", () -> m.stopAt() == 3,
                 c -> MegaScreen.act(m, "stop", c)));

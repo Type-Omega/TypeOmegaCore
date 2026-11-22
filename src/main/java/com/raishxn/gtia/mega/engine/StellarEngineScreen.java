@@ -105,7 +105,8 @@ public final class StellarEngineScreen {
             g.fill(ex, sy - 7, ex + 24, sy + 8, 0xFF6A4A8A);
             for (int k = 0; k < 4; k++) g.fill(ex + 3 + k * 6, sy - 7, ex + 4 + k * 6, sy + 8, 0xFFC08A3A);
         }
-        if (phases >= 5) for (int t = 0; t < 8; t++) g.fill(ex + 24 + t, sy - 4 - t, ex + 25 + t, sy + 5 + t, 0xFF8A93A8);
+        if (phases >= 5)
+            for (int t = 0; t < 8; t++) g.fill(ex + 24 + t, sy - 4 - t, ex + 25 + t, sy + 5 + t, 0xFF8A93A8);
         if (v(m, 6) > 0) {
             // The jet: plasma flowing out of the nozzle, the counter-jet into the star.
             for (int k = 0; k < 40; k++) {

@@ -35,7 +35,10 @@ public final class MegaUI {
 
     /** Button outlines a machine can choose. */
     public enum Shape {
-        HEX, CHEVRON, CAPSULE, NOTCH
+        HEX,
+        CHEVRON,
+        CAPSULE,
+        NOTCH
     }
 
     /** Colours (ARGB), art folder and button outline of one machine. */

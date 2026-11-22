@@ -28,7 +28,9 @@ public final class MatrioshkaShells {
     public static final double T_LIMIT = 500, T_LIMIT_PHASE4 = 40;
     /** Fraction of the gap to the target temperature closed each second (10 s time constant). */
     public static final double INERTIA = 0.1;
-    /** Integrity in per mille: lost per overheated second (halved by the outer field of phase 5), regained per block. */
+    /**
+     * Integrity in per mille: lost per overheated second (halved by the outer field of phase 5), regained per block.
+     */
     public static final int INTEGRITY = 1000, WEAR = 20, REPAIR = 50;
 
     /** Coolants, best last: temperature they pull towards, share of the heat they take, mB/s per phase at 100 %. */
@@ -48,6 +50,7 @@ public final class MatrioshkaShells {
             this.perPhase = perPhase;
         }
     }
+
     /** Clock range and step, in percent. */
     public static final int CLOCK_MIN = 50, CLOCK_MAX = 200, CLOCK_STEP = 25;
     /** CWU-ticks per Ψ (thought cycle). */

@@ -81,7 +81,8 @@ final class MegaFxRenderer {
         var mat = new Matrix4f(p.track(e.track())).mul(p.axes())
                 .translate(point[0] - pv.x, point[1] - pv.y, point[2] - pv.z);
         var dir = new Vector3f(axis[0], axis[1], axis[2]);
-        if (dir.lengthSquared() > 1e-8) mat.rotate(new Quaternionf().rotationTo(new Vector3f(0, 1, 0), dir.normalize()));
+        if (dir.lengthSquared() > 1e-8)
+            mat.rotate(new Quaternionf().rotationTo(new Vector3f(0, 1, 0), dir.normalize()));
         return mat.scale(sx, sy, sz);
     }
 
@@ -159,8 +160,8 @@ final class MegaFxRenderer {
                 // Corona with streamers, then a wide soft bloom.
                 if (!hidden(2)) {
                     set(sh, 7, boost(c, 0.95f), new float[] { c[0], c[1] * 0.7f, c[2] * 0.5f, 1 },
-                        new float[] { 0.6f * level, 1 / corona, 4.2f, 0.85f },
-                        new float[] { 0, 0, 0, pr[3] }, new float[] { r * corona, r, r, 0 });
+                            new float[] { 0.6f * level, 1 / corona, 4.2f, 0.85f },
+                            new float[] { 0, 0, 0, pr[3] }, new float[] { r * corona, r, r, 0 });
                     draw(MegaFxMeshes.quad(), at(p, e, e.a(), new float[3], 1, 1, 1), proj, sh);
                 }
                 if (!hidden(4)) {
@@ -289,7 +290,7 @@ final class MegaFxRenderer {
     }
 
     static void set(ShaderInstance sh, int mode, float[] a, float[] b, float[] params, float[] params2,
-                            float[] shape) {
+                    float[] shape) {
         sh.safeGetUniform("Mode").set((float) mode);
         if (a != null) sh.safeGetUniform("ColorA").set(a[0], a[1], a[2], a.length > 3 ? a[3] : 1);
         if (b != null) sh.safeGetUniform("ColorB").set(b[0], b[1], b[2], b.length > 3 ? b[3] : 1);

@@ -47,6 +47,22 @@ public final class GTIARecipeTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.MINER);
 
+    /**
+     * Fragment Collectors (GTIA-D-362, D-363): the recipe is built per cycle from the World Fragment (custom logic).
+     */
+    public static final GTRecipeType FRAGMENT_COLLECTOR = register("fragment_collector", GTRecipeTypes.MULTIBLOCK)
+            .setMaxIOSize(2, 16, 0, 0)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.MINER);
+
+    /** Ore Processing Plant (GTIA-D-366): raw ore to final dusts in one step. */
+    public static final GTRecipeType ORE_PROCESSING_PLANT = register("ore_processing_plant", GTRecipeTypes.MULTIBLOCK)
+            .setMaxIOSize(1, 3, 1, 0)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_MACERATE, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.MACERATOR);
+
     /** Rocket Assembler (GTIA-D-274): Ad Astra rocket parts and GT components become a rocket. */
     public static final GTRecipeType ROCKET_ASSEMBLY = register("rocket_assembly", GTRecipeTypes.MULTIBLOCK)
             .setMaxIOSize(9, 1, 1, 0)

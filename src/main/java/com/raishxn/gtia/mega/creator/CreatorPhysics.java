@@ -25,7 +25,11 @@ public final class CreatorPhysics {
     public static final int DUST_PER_SOLAR_MASS = 16;
 
     public enum Stage {
-        IDLE, GATHER, COLLAPSE, IGNITE, STABILIZE
+        IDLE,
+        GATHER,
+        COLLAPSE,
+        IGNITE,
+        STABILIZE
     }
 
     private CreatorPhysics() {}

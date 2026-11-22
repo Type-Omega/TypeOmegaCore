@@ -13,9 +13,9 @@ import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -81,6 +81,7 @@ public final class GTIAMiners {
                 'P', Items.PAPER,
                 'C', CustomTags.LV_CIRCUITS,
                 'Q', Items.QUARTZ);
+        fragmentRecipes(provider);
         for (int tier : GTValues.tiersBetween(FIRST_TIER, LAST_TIER)) {
             VanillaRecipeHelper.addShapedRecipe(provider, true, GTIAMod.id(ENTANGLED_MINER[tier].getName()),
                     ENTANGLED_MINER[tier].asStack(), "SES", "CMC", "WPW",
@@ -91,5 +92,34 @@ public final class GTIAMiners {
                     'W', GTCraftingComponents.CABLE.get(tier),
                     'P', GTCraftingComponents.MOTOR.get(tier));
         }
+    }
+
+    /**
+     * EN: World Fragments: the "visit" path of D-354, made from blocks of each dimension. Collectors: LV and EV hulls.
+     * PT: Fragmentos de Mundo: o caminho "visitar" da D-354, feitos com blocos de cada dimensão. Coletores: cascos LV e
+     * EV.
+     * ZH: 世界碎片：D-354 的"探访"路线，用各维度的方块制作。采集器：LV 与 EV 机壳。
+     */
+    private static void fragmentRecipes(Consumer<FinishedRecipe> provider) {
+        VanillaRecipeHelper.addShapedRecipe(provider, true, GTIAMod.id("world_fragment_overworld"),
+                GTIAItems.WORLD_FRAGMENT_OVERWORLD.asStack(), "GSG", "DCD", "GSG",
+                'G', Items.GRASS_BLOCK, 'S', Items.STONE, 'D', Items.DEEPSLATE, 'C', CustomTags.LV_CIRCUITS);
+        VanillaRecipeHelper.addShapedRecipe(provider, true, GTIAMod.id("world_fragment_nether"),
+                GTIAItems.WORLD_FRAGMENT_NETHER.asStack(), "NBN", "SCS", "NQN",
+                'N', Items.NETHERRACK, 'B', Items.BASALT, 'S', Items.SOUL_SAND, 'Q', Items.QUARTZ,
+                'C', CustomTags.MV_CIRCUITS);
+        VanillaRecipeHelper.addShapedRecipe(provider, true, GTIAMod.id("world_fragment_end"),
+                GTIAItems.WORLD_FRAGMENT_END.asStack(), "EPE", "PCP", "EPE",
+                'E', Items.END_STONE, 'P', Items.ENDER_PEARL, 'C', CustomTags.EV_CIRCUITS);
+        VanillaRecipeHelper.addShapedRecipe(provider, true, GTIAMod.id("fragment_collector"),
+                FragmentCollectors.FRAGMENT_COLLECTOR.asStack(), "SCS", "MHM", "WCW",
+                'S', GTCraftingComponents.SENSOR.get(GTValues.LV), 'C', CustomTags.LV_CIRCUITS,
+                'M', GTCraftingComponents.MOTOR.get(GTValues.LV), 'H', GTCraftingComponents.HULL.get(GTValues.LV),
+                'W', GTCraftingComponents.CABLE.get(GTValues.LV));
+        VanillaRecipeHelper.addShapedRecipe(provider, true, GTIAMod.id("large_fragment_collector"),
+                FragmentCollectors.LARGE_FRAGMENT_COLLECTOR.asStack(), "SCS", "FHF", "WCW",
+                'S', GTCraftingComponents.SENSOR.get(GTValues.EV), 'C', CustomTags.EV_CIRCUITS,
+                'F', FragmentCollectors.FRAGMENT_COLLECTOR.asStack(),
+                'H', GTCraftingComponents.HULL.get(GTValues.EV), 'W', GTCraftingComponents.CABLE.get(GTValues.EV));
     }
 }

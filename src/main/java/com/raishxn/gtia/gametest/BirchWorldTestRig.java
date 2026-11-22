@@ -28,8 +28,8 @@ final class BirchWorldTestRig {
     private BirchWorldTestRig() {}
 
     static void causalMath(GameTestHelper helper) {
-        helper.assertTrue(BirchPhysics.layers(5) == 200 && BirchPhysics.capacity(5) == 400, "40 layers a phase, 2 "
-                + "modules a layer");
+        helper.assertTrue(BirchPhysics.layers(5) == 200 && BirchPhysics.capacity(5) == 400,
+                "40 layers a phase, 2 " + "modules a layer");
         helper.assertTrue(BirchPhysics.credit(5, 10) == 10 * BirchPhysics.credit(5, 1) &&
                 BirchPhysics.credit(2, 1) * 2.5 == BirchPhysics.credit(5, 1), "credit ~ layers x mass");
         helper.assertTrue(Math.abs(BirchPhysics.grow(1000) - 1000.5) < 1e-9, "0.05 % a second");

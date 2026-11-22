@@ -345,8 +345,7 @@ public class SystemCreatorMachine extends MegaMachine {
                     stageSeconds = 3;
                     gathered = CreatorPhysics.hydrogen(kind()) / 2;
                     targetSlot = 0;
-                }
-                else super.handleDisplayClick(data, click);
+                } else super.handleDisplayClick(data, click);
             }
         }
     }
@@ -356,7 +355,8 @@ public class SystemCreatorMachine extends MegaMachine {
         super.addDisplayText(text);
         if (!isFormed()) return;
         text.add(Component.translatable("gtia.system_creator.stage",
-                Component.translatable("gtia.system_creator.ui.stage." + stage().name().toLowerCase(java.util.Locale.ROOT)),
+                Component.translatable(
+                        "gtia.system_creator.ui.stage." + stage().name().toLowerCase(java.util.Locale.ROOT)),
                 String.format("%.0f", progress() * 100)).withStyle(ChatFormatting.LIGHT_PURPLE));
     }
 }
