@@ -65,7 +65,7 @@ def read_veins(path):
 
 def summarize(path):
     veins = read_veins(path)
-    phase = [vein for vein in veins if vein.get("id") == "gtia:phase_matrix_deposit"]
+    phase = [vein for vein in veins if vein.get("id") == "typeomega:phase_matrix_deposit"]
     distances = [round(math.hypot(vein["center"][0], vein["center"][2])) for vein in phase]
     return len(veins), len(phase), min(distances) if distances else None
 

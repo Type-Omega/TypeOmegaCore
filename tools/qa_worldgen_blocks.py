@@ -31,7 +31,7 @@ def chunks(region_path):
 
 def scan(world):
     centers = [vein["center"] for vein in read_veins(world / "data/gtceu_ore_vein_cache.dat")
-               if vein.get("id") == "gtia:phase_matrix_deposit"]
+               if vein.get("id") == "typeomega:phase_matrix_deposit"]
     per_deposit = [0] * len(centers)
     full_chunks = set()
     chunk_count = 0
@@ -48,7 +48,7 @@ def scan(world):
                 states = section.get("block_states", {})
                 palette = states.get("palette", [])
                 targets = {i for i, state in enumerate(palette)
-                           if state.get("Name", "").startswith("gtia:") and
+                           if state.get("Name", "").startswith("typeomega:") and
                            "phase_matrix_ore" in state.get("Name", "")}
                 if not targets:
                     continue

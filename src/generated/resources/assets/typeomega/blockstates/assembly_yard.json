@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "typeomega:block/machine/assembly_yard",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "typeomega:block/machine/assembly_yard"
+    },
+    "facing=south": {
+      "model": "typeomega:block/machine/assembly_yard",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "typeomega:block/machine/assembly_yard",
+      "y": 270
+    }
+  }
+}

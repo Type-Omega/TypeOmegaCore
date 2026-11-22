@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "typeomega:block/machine/nidavellir",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "typeomega:block/machine/nidavellir"
+    },
+    "facing=south": {
+      "model": "typeomega:block/machine/nidavellir",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "typeomega:block/machine/nidavellir",
+      "y": 270
+    }
+  }
+}

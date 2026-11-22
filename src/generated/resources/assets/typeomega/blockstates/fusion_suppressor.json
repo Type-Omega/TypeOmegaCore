@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "typeomega:block/machine/fusion_suppressor",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "typeomega:block/machine/fusion_suppressor"
+    },
+    "facing=south": {
+      "model": "typeomega:block/machine/fusion_suppressor",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "typeomega:block/machine/fusion_suppressor",
+      "y": 270
+    }
+  }
+}

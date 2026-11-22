@@ -1,0 +1,13 @@
+{
+  "type": "typeomega:nexus_system",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "typeomega:deep_space",
+      "layers": [],
+      "lakes": false,
+      "features": false,
+      "structure_overrides": []
+    }
+  }
+}

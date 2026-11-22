@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "com.typeomega.core.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "typeomega.refmap.json",
+  "minVersion": "0.8",
+  "mixins": [
+    "GTRecipeBuilderMixin",
+    "ServerPacksSourceMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "client.CreateWorldGameTabMixin",
+    "client.CreateWorldScreenAccessor",
+    "client.CreateWorldScreenMixin",
+    "client.WorldOpenFlowsMixin",
+    "client.WindowAccessor"
+  ]
+}

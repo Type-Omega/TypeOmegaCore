@@ -9,20 +9,20 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ASSETS = ROOT / "src/main/resources/assets/gtia"
+ASSETS = ROOT / "src/main/resources/assets/typeomega"
 MACHINE_TEXTURES = ASSETS / "textures/block/machines"
 REQUIRED_MATERIALS = {
-    "material.gtia.pulsating_alloy",
-    "material.gtia.conductive_alloy",
-    "material.gtia.phase_matrix",
-    "gtia:phase_matrix_deposit",
+    "material.typeomega.pulsating_alloy",
+    "material.typeomega.conductive_alloy",
+    "material.typeomega.phase_matrix",
+    "typeomega:phase_matrix_deposit",
 }
 
 
 def check_languages() -> None:
     languages = {}
     for code in ("en_us", "pt_br"):
-        path = (ROOT / "src/generated/resources/assets/gtia/lang/en_us.json"
+        path = (ROOT / "src/generated/resources/assets/typeomega/lang/en_us.json"
                 if code == "en_us" else ASSETS / "lang/pt_br.json")
         data = json.loads(path.read_text(encoding="utf-8"))
         if not isinstance(data, dict) or any(not isinstance(value, str) or not value for value in data.values()):
@@ -47,23 +47,23 @@ def check_overlays() -> None:
 
 
 def check_built_jar() -> None:
-    jars = sorted((ROOT / "build/libs").glob("gtia-*.jar"))
+    jars = sorted((ROOT / "build/libs").glob("typeomega-*.jar"))
     if not jars:
         raise ValueError("No built GTIA jar found")
     with ZipFile(jars[-1]) as jar:
         metadata = tomllib.loads(jar.read("META-INF/mods.toml").decode("utf-8"))
-        dependencies = {entry["modId"]: entry for entry in metadata["dependencies"]["gtia"]}
+        dependencies = {entry["modId"]: entry for entry in metadata["dependencies"]["typeomega"]}
         gtna = dependencies.get("gtna", {})
         if (gtna.get("mandatory") is not True or gtna.get("versionRange") != "[0.5.3,)"
                 or gtna.get("ordering") != "AFTER" or gtna.get("side") != "BOTH"):
             raise ValueError("Distribution jar must require GTNA 0.5.3+ on both sides, loaded before GTIACore")
-        packed_lang = json.loads(jar.read("assets/gtia/lang/en_us.json"))
-        source_lang = json.loads((ROOT / "src/generated/resources/assets/gtia/lang/en_us.json")
+        packed_lang = json.loads(jar.read("assets/typeomega/lang/en_us.json"))
+        source_lang = json.loads((ROOT / "src/generated/resources/assets/typeomega/lang/en_us.json")
                                  .read_text(encoding="utf-8"))
         if packed_lang != source_lang:
             raise ValueError("Built jar has stale English translations; run build again after runData")
-        jar.read("assets/gtia/models/block/machine/lv_entangled_miner.json")
-        jar.read("assets/gtia/blockstates/lv_entangled_miner.json")
+        jar.read("assets/typeomega/models/block/machine/lv_entangled_miner.json")
+        jar.read("assets/typeomega/blockstates/lv_entangled_miner.json")
         if 'modId="enderio"' in jar.read("META-INF/mods.toml").decode("utf-8"):
             raise ValueError("Distribution jar still declares an EnderIO dependency")
         if 'modId = "draconicevolution"' in jar.read("META-INF/mods.toml").decode("utf-8"):

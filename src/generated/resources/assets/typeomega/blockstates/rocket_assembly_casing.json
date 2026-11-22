@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "typeomega:block/rocket_assembly_casing"
+    }
+  }
+}

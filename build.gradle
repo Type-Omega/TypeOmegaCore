@@ -17,7 +17,7 @@ repositories {
     maven {
         name = 'GTInfinityAscension'
         url = 'https://gtinfinityascension.github.io/maven/'
-        content { includeGroup 'com.raishxn.gtna'; includeGroup 'com.gtinfinityascension' }
+        content { includeGroup 'com.raishxn.gtna'; includeGroup 'com.gtinfinityascension'; includeGroup 'com.typeomega' }
     }
     mavenCentral()
     maven {
@@ -102,7 +102,7 @@ legacyForge {
             programArguments.addAll('--refresh-dependencies')
             systemProperty('forge.enabledGameTestNamespaces', project.mod_id)
             // ./gradlew runClient -PgtiaRulesSelfTest runs the create-world rules self-test and quits.
-            if (project.hasProperty('gtiaRulesSelfTest')) systemProperty('gtia.rulesSelfTest', 'true')
+            if (project.hasProperty('gtiaRulesSelfTest')) systemProperty('typeomega.rulesSelfTest', 'true')
             // ./gradlew runClient -PquickPlay="New World" opens that save directly (smoke tests).
             if (project.hasProperty('quickPlay')) programArguments.addAll('--quickPlaySingleplayer', project.quickPlay)
         }
@@ -118,7 +118,7 @@ legacyForge {
             // The megastructure GameTests build structures of up to ~90k blocks each.
             jvmArguments.addAll('-Xmx12G')
             systemProperty('forge.enabledGameTestNamespaces', project.mod_id)
-            if (project.hasProperty('gtia.shapeDump')) systemProperty('gtia.shapeDump', project.property('gtia.shapeDump'))
+            if (project.hasProperty('typeomega.shapeDump')) systemProperty('typeomega.shapeDump', project.property('typeomega.shapeDump'))
         }
         data {
             data()
@@ -170,7 +170,7 @@ dependencies {
     if (project.hasProperty('agronomicaDevJar')) runtimeOnly files(project.property('agronomicaDevJar'))
     if (project.hasProperty('modernManipulatorJar')) runtimeOnly files(project.property('modernManipulatorJar'))
 
-    modImplementation("com.gtinfinityascension:gtialib:${gtialib_version}") { transitive = false }
+    modImplementation("com.typeomega:typeomega-lib:${gtialib_version}") { transitive = false }
 
     compileOnly("org.jetbrains:annotations:26.0.1")
 

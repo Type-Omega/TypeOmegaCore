@@ -12,11 +12,11 @@ GTIACore holds only what is unique to the GregTech Infinity Ascension modpack. R
 python3 tools/qa_static.py
 ```
 
-- Machines and recipes are Java. Put tests in `src/main/java/com/raishxn/gtia/gametest` (`runGameTestServer` uses `sourceSets.main`).
+- Machines and recipes are Java. Put tests in `src/main/java/com/typeomega/core/gametest` (`runGameTestServer` uses `sourceSets.main`).
 - Translations: English first (`en_us`), then `pt_br`.
 - **Art:** don't replace existing textures. Propose new ones in an issue.
 - **Third-party content:** anything taken or adapted from another project needs its license checked and an entry in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) in the same PR. If the source mod asks for it, also credit it in the tooltip.
 
 ## Reporting bugs
 
-Report bugs on the [modpack repository](https://github.com/GTInfinityAscension/GregTech-Infinity-Ascension/issues) with the pack version. Use this repository only for problems that are clearly in the mod (crashes in `com.raishxn.gtia`, missing textures, broken machines).
+Report bugs on the [modpack repository](https://github.com/GTInfinityAscension/GregTech-Infinity-Ascension/issues) with the pack version. Use this repository only for problems that are clearly in the mod (crashes in `com.typeomega.core`, missing textures, broken machines).

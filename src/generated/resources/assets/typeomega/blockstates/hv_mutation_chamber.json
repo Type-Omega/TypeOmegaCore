@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "typeomega:block/machine/hv_mutation_chamber",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "typeomega:block/machine/hv_mutation_chamber"
+    },
+    "facing=south": {
+      "model": "typeomega:block/machine/hv_mutation_chamber",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "typeomega:block/machine/hv_mutation_chamber",
+      "y": 270
+    }
+  }
+}

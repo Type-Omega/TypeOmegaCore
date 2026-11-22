@@ -15,7 +15,7 @@ Community: [Discord](https://discord.gg/TW5vugknk5) · questions, bug reports an
 - Minecraft 1.20.1, Forge 47.4.23
 - GTCEu Modern 7.5.3, GTNA 0.5.1+ (required on client and server)
 - Java 17
-- Mod ID: `gtia`
+- Mod ID: `typeomega`
 
 ## What's in it
 
@@ -39,7 +39,7 @@ Most multiblock structures are still provisional and have not been tested in the
 python3 tools/qa_static.py    # lang, overlays and jar checks
 ```
 
-GameTests live in `src/main/java/com/raishxn/gtia/gametest`, because `runGameTestServer` uses `sourceSets.main`.
+GameTests live in `src/main/java/com/typeomega/core/gametest`, because `runGameTestServer` uses `sourceSets.main`.
 
 ## License
 

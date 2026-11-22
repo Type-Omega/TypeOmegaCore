@@ -1,8 +1,8 @@
-"""Copies the pt_br and zh_cn text of the megastructures (assets/gtia/mega_lang/*.json, key -> [en, pt, zh]) into
-assets/gtia/lang/pt_br.json and zh_cn.json, keeping every other key and its order. English comes from datagen (MegaLang)."""
+"""Copies the pt_br and zh_cn text of the megastructures (assets/typeomega/mega_lang/*.json, key -> [en, pt, zh]) into
+assets/typeomega/lang/pt_br.json and zh_cn.json, keeping every other key and its order. English comes from datagen (MegaLang)."""
 import json, pathlib
 
-root = pathlib.Path(__file__).resolve().parents[1] / "src/main/resources/assets/gtia"
+root = pathlib.Path(__file__).resolve().parents[1] / "src/main/resources/assets/typeomega"
 texts = {}
 for f in sorted((root / "mega_lang").glob("*.json")):
     for key, value in json.loads(f.read_text(encoding="utf-8")).items():

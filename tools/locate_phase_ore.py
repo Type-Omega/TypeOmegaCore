@@ -3,7 +3,7 @@ from pathlib import Path
 sys.path.insert(0,'tools')
 from qa_worldgen_blocks import chunks
 from qa_worldgen_cache import read_veins
-w=Path(sys.argv[1]); centers=[v['center'] for v in read_veins(w/'data/gtceu_ore_vein_cache.dat') if v.get('id')=='gtia:phase_matrix_deposit']
+w=Path(sys.argv[1]); centers=[v['center'] for v in read_veins(w/'data/gtceu_ore_vein_cache.dat') if v.get('id')=='typeomega:phase_matrix_deposit']
 print('centers',list(enumerate(centers)))
 ore=[]
 for p in (w/'region').glob('*.mca'):

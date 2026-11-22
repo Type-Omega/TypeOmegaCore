@@ -7,7 +7,7 @@ from qa_worldgen_blocks import chunks
 from qa_worldgen_cache import read_veins
 
 world = Path(sys.argv[1])
-centers = [v['center'] for v in read_veins(world / 'data/gtceu_ore_vein_cache.dat') if v.get('id') == 'gtia:phase_matrix_deposit']
+centers = [v['center'] for v in read_veins(world / 'data/gtceu_ore_vein_cache.dat') if v.get('id') == 'typeomega:phase_matrix_deposit']
 found = []
 def block_name(section, x, y, z):
     if section is None:
@@ -30,13 +30,13 @@ for region in (world / 'region').glob('*.mca'):
             continue
         sections = {s['Y']: s for s in chunk.get('sections', [])}
         for section in sections.values():
-            if not any(s.get('Name') == 'gtia:phase_matrix_indicator' for s in section.get('block_states', {}).get('palette', [])):
+            if not any(s.get('Name') == 'typeomega:phase_matrix_indicator' for s in section.get('block_states', {}).get('palette', [])):
                 continue
             for y0 in range(16):
                 y = section['Y'] * 16 + y0
                 for z0 in range(16):
                     for x0 in range(16):
-                        if block_name(section,x0,y,z0) != 'gtia:phase_matrix_indicator':
+                        if block_name(section,x0,y,z0) != 'typeomega:phase_matrix_indicator':
                             continue
                         x = chunk['xPos'] * 16 + x0
                         z = chunk['zPos'] * 16 + z0

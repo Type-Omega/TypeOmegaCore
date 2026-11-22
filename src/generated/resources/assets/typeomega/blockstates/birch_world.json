@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "typeomega:block/machine/birch_world",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "typeomega:block/machine/birch_world"
+    },
+    "facing=south": {
+      "model": "typeomega:block/machine/birch_world",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "typeomega:block/machine/birch_world",
+      "y": 270
+    }
+  }
+}

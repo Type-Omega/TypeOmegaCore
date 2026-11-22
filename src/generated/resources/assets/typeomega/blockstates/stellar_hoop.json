@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "typeomega:block/machine/stellar_hoop",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "typeomega:block/machine/stellar_hoop"
+    },
+    "facing=south": {
+      "model": "typeomega:block/machine/stellar_hoop",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "typeomega:block/machine/stellar_hoop",
+      "y": 270
+    }
+  }
+}

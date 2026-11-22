@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "typeomega:block/machine/hv_entangled_miner",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "typeomega:block/machine/hv_entangled_miner"
+    },
+    "facing=south": {
+      "model": "typeomega:block/machine/hv_entangled_miner",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "typeomega:block/machine/hv_entangled_miner",
+      "y": 270
+    }
+  }
+}

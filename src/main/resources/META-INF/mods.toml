@@ -7,7 +7,7 @@ license = "${mod_license}"
     version = "${version}"
     displayName = "${mod_name}"
     displayURL = "${mod_url}"
-    logoFile = "assets/gtia/textures/logo.png"
+    logoFile = "assets/typeomega/textures/logo.png"
     authors="${mod_author}"
     description = '''
 Core Java do modpack GregTech Infinity Ascension. Integra materiais, processos e progressao ao GTCEu Modern.
@@ -46,7 +46,7 @@ Core Java do modpack GregTech Infinity Ascension. Integra materiais, processos e
         side = "BOTH"
 
     [[dependencies.${mod_id}]]
-        modId = "gtialib"
+        modId = "typeomegalib"
         mandatory = true
         versionRange = "[${gtialib_version},)"
         ordering = "AFTER"
