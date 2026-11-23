@@ -1,10 +1,11 @@
 package com.typeomega.core.kardashev;
 
-import com.gregtechceu.gtceu.common.machine.owner.MachineOwner;
+import com.gregtechceu.gtceu.GTCEu;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.event.TickEvent;
 
+import com.raishxn.gtna.research.KnowledgeScope;
 import com.typeomega.core.GTIAMod;
 
 import java.util.Map;
@@ -71,14 +72,20 @@ public final class KardashevLedger {
     }
 
     /**
-     * Team that owns what {@code owner} produced: the FTB team when FTB Teams is loaded (through GTCEu's machine
-     * owner), otherwise the player. An id that is already a team id resolves to itself.
+     * Team that owns what {@code owner} produced: the player's effective FTB team (the party, not the personal
+     * team) when FTB Teams is loaded, otherwise the player. Same scope as the GTNA wireless networks (GTIA-D-386).
      */
     public static UUID teamOf(UUID owner) {
+        // EN: GTCEu's FTBOwner.getUUID answers with the personal team, so every party member had his own K;
+        // KnowledgeScope resolves Team.getTeamId, the party. Without FTB Teams the player is the scope.
+        // PT: O FTBOwner.getUUID do GTCEu devolve o time pessoal, e cada membro do grupo tinha o próprio K;
+        // o KnowledgeScope resolve Team.getTeamId, o grupo. Sem FTB Teams o escopo é o jogador.
+        // ZH: GTCEu 的 FTBOwner.getUUID 返回个人队伍，导致每个队员各算各的 K；KnowledgeScope 解析 Team.getTeamId，
+        // 即所在队伍。没有 FTB Teams 时按玩家计算。
+        if (owner == null || !GTCEu.Mods.isFTBTeamsLoaded()) return owner;
         try {
-            MachineOwner machineOwner = MachineOwner.getOwner(owner);
-            UUID team = machineOwner == null ? null : machineOwner.getUUID();
-            return team == null || MachineOwner.EMPTY.equals(team) ? owner : team;
+            UUID team = KnowledgeScope.of(owner);
+            return team == null ? owner : team;
         } catch (RuntimeException | LinkageError e) {
             GTIAMod.LOGGER.debug("Kardashev meter: no team for {}", owner, e);
             return owner;

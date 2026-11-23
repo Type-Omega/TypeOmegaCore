@@ -136,6 +136,17 @@ public final class KardashevGameTests {
         h.succeed();
     }
 
+    @GameTest(template = TEMPLATE, batch = "kardashev", timeoutTicks = 20)
+    public static void partyMembersShareOneK(GameTestHelper h) throws ReflectiveOperationException {
+        UUID player = UUID.randomUUID();
+        if (!com.gregtechceu.gtceu.GTCEu.Mods.isFTBTeamsLoaded()) {
+            h.assertTrue(player.equals(KardashevLedger.teamOf(player)), "without FTB Teams the player is the scope");
+        } else {
+            FTBKardashevTeamTests.run(h);
+        }
+        h.succeed();
+    }
+
     /** GTNA calls live in their own class so the test class loads without GTNA. */
     private static final class GtnaSources {
 

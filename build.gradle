@@ -160,6 +160,19 @@ dependencies {
         modRuntimeOnly("curse.maven:resourceful-config-714059:6231176")
         modRuntimeOnly("curse.maven:resourceful-lib-570073:5659871")
     }
+    // EN: -PgtiaDevFtbTeams=true adds FTB Teams at dev runtime for the Kardashev party test (same files as GTNA).
+    // Separate flag: with FTB Teams loaded the Tokamak start-up GameTest stays IDLE (open finding in QA.md).
+    // PT: -PgtiaDevFtbTeams=true põe o FTB Teams no runtime de dev para o teste de grupo do Kardashev (mesmos
+    // arquivos do GTNA). Flag à parte: com o FTB Teams o GameTest de partida do Tokamak fica IDLE (achado no QA.md).
+    // ZH: -PgtiaDevFtbTeams=true 在开发运行时加入 FTB Teams，用于 Kardashev 队伍测试（与 GTNA 相同的文件）。
+    // 单独开关：加载 FTB Teams 时托卡马克启动 GameTest 停在 IDLE（见 QA.md 的未解决问题）。
+    if (project.findProperty('gtiaDevFtbTeams') == 'true') {
+        modRuntimeOnly("curse.maven:ftb-library-forge-404465:8226927")
+        modRuntimeOnly("curse.maven:ftb-teams-forge-404468:7499810")
+        modRuntimeOnly("curse.maven:architectury-api-419699:5137938")
+    }
+    modCompileOnly("curse.maven:ftb-library-forge-404465:8226927") { transitive = false }
+    modCompileOnly("curse.maven:ftb-teams-forge-404468:7499810") { transitive = false }
     if (project.hasProperty('gtnaDevJar')) {
         runtimeOnly files(project.property('gtnaDevJar'))
         modRuntimeOnly("curse.maven:applied-energistics-2-223794:7148487") { transitive = false }
