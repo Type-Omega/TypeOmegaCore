@@ -129,11 +129,11 @@ public final class TypeZeroMegaGameTests {
         h.assertTrue(CosmodromeMachine.requireLink(mission, survey).apply(survey) == null,
                 "no mission runs without the link");
 
-        var assembler = TypeZeroTestRig.place(h, GTIARocketAssembler.ROCKET_ASSEMBLER, origin.offset(16, 0, 0),
-                team, null);
+        var assembler = TypeZeroTestRig.place(h, GTIARocketAssembler.ROCKET_ASSEMBLER,
+                origin.offset(cosmodrome.nx() + 3, 0, 0), team, null);
         h.assertTrue(TypeZeroTestRig.form(assembler.controller()), "the Rocket Assembler preview must form");
         mission.relink();
-        h.assertTrue(mission.linkedAssembler() != null, "a formed Rocket Assembler 16 blocks away links");
+        h.assertTrue(mission.linkedAssembler() != null, "a formed Rocket Assembler beside it links");
         h.assertTrue(kardashev(h).built(team, Cosmodrome.ID), "the linked Cosmodrome counts");
         h.assertTrue(CosmodromeMachine.requireLink(mission, survey).apply(survey) != null,
                 "missions run once linked");
