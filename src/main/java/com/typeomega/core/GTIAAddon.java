@@ -69,6 +69,7 @@ public final class GTIAAddon implements IGTAddon {
     @Override
     public void registerOreVeins() {
         GTIAPhaseOres.register();
+        com.typeomega.core.data.GTIAEndVeins.register();
     }
 
     @Override
