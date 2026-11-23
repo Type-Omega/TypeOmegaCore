@@ -15,8 +15,8 @@ sourceSets {
 repositories {
     mavenLocal()
     maven {
-        name = 'GTInfinityAscension'
-        url = 'https://gtinfinityascension.github.io/maven/'
+        name = 'Type-Omega'
+        url = 'https://type-omega.github.io/maven/'
         content { includeGroup 'com.raishxn.gtna'; includeGroup 'com.gtinfinityascension'; includeGroup 'com.typeomega' }
     }
     mavenCentral()
