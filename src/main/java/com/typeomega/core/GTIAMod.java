@@ -70,9 +70,9 @@ public final class GTIAMod {
         }
         if (net.minecraftforge.fml.ModList.get().isLoaded("ad_astra")) {
             MinecraftForge.EVENT_BUS
-                    .addListener(com.typeomega.core.data.rocket.AdAstraRocketRecipeFilter::onServerStarted);
+                    .addListener(com.typeomega.core.data.rocket.AdAstraRecipeFilter::onServerStarted);
             MinecraftForge.EVENT_BUS
-                    .addListener(com.typeomega.core.data.rocket.AdAstraRocketRecipeFilter::onDatapackSync);
+                    .addListener(com.typeomega.core.data.rocket.AdAstraRecipeFilter::onDatapackSync);
         }
         GTIARulesNetwork.register();
         com.typeomega.core.mega.system.SkyStarNetwork.register();
@@ -138,6 +138,8 @@ public final class GTIAMod {
         GTIAAlloys.register();
         com.typeomega.core.chem.ChemMaterials.register();
         com.typeomega.core.route.RouteMaterials.register();
+        com.typeomega.core.chem.ZipDMaterials.register();
+        com.typeomega.core.data.rocket.SpaceMaterials.register();
         com.typeomega.core.mega.MegaMaterials.register();
     }
 

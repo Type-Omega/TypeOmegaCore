@@ -9,6 +9,7 @@ public final class GTIALang {
     public static void init() {
         GTIATooltips.registerLang();
         GTIAOrganLang.init();
+        com.typeomega.core.data.rocket.AdAstraNames.registerLang();
         com.typeomega.core.miner.GTIAMinerLang.init();
         GTIAMod.REGISTRATE.addRawLang("typeomega.crafting_station.tab",
                 "%s (%s)");

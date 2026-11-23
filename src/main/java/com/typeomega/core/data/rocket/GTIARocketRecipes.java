@@ -19,13 +19,15 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import com.typeomega.core.GTIAMod;
+import com.typeomega.core.chem.ZipDMaterials;
 import com.typeomega.core.data.GTIARecipeTypes;
 
 import java.util.function.Consumer;
 
 /**
  * The tier 1 rocket through GT (GTIA-D-272, D-274): Ad Astra's parts in the Assembler, the rocket in the Rocket
- * Assembler. {@link AdAstraRocketRecipeFilter} drops Ad Astra's own recipes for the same items.
+ * Assembler; the tier 2 rocket with desh parts and Zip-D (GTIA-D-421, D-424). {@link AdAstraRecipeFilter} drops Ad
+ * Astra's own recipes for the same items.
  */
 public final class GTIARocketRecipes {
 
@@ -94,9 +96,26 @@ public final class GTIARocketRecipes {
                 .inputItems(CustomTags.HV_CIRCUITS, 2).inputItems(GTItems.ELECTRIC_MOTOR_HV.asStack(4))
                 .inputFluids(GTMaterials.RocketFuel.getFluid(1000))
                 .outputItems(new ItemStack(rocket)).duration(2400).EUt(480).save(provider);
+
+        Item rocket2 = item("tier_2_rocket"), deshTank = item("desh_tank"), deshEngine = item("desh_engine");
+        if (rocket2 == null || deshTank == null || deshEngine == null) return;
+        // EN: 1920 EU/t: the Rocket Assembler with two HV Energy Hatches, like GTO's tier 2 (GTIA-D-421). Desh, the
+        // Moon's ore, builds the rocket that leaves for Mars (GTIA-D-381); it burns Zip-D (GTIA-D-424).
+        // PT: 1920 EU/t: a Montadora de Foguetes com dois Energy Hatches HV, como o T2 do GTO (GTIA-D-421). O desh,
+        // minério da Lua, faz o foguete que parte para Marte (GTIA-D-381); ele queima Zip-D (GTIA-D-424).
+        // ZH: 1920 EU/t：火箭装配厂使用两个 HV 能源仓，与 GTO 的二级火箭相同（GTIA-D-421）。月球矿石戴什制造前往
+        // 火星的火箭（GTIA-D-381）；燃料为 Zip-D（GTIA-D-424）。
+        GTIARecipeTypes.ROCKET_ASSEMBLY.recipeBuilder(GTIAMod.id("rocket/tier_2_rocket"))
+                .inputItems(new ItemStack(nose)).inputItems(new ItemStack(fin, 4))
+                .inputItems(new ItemStack(deshTank, 2)).inputItems(new ItemStack(deshEngine))
+                .inputItems(TagPrefix.plateDense, SpaceMaterials.DESH, 4)
+                .inputItems(TagPrefix.plateDouble, GTMaterials.Titanium, 8)
+                .inputItems(CustomTags.EV_CIRCUITS, 4).inputItems(GTItems.ELECTRIC_MOTOR_EV.asStack(4))
+                .inputFluids(ZipDMaterials.ZIP_D_ROCKET_FUEL.getFluid(1000))
+                .outputItems(new ItemStack(rocket2)).duration(3000).EUt(GTValues.VA[GTValues.EV]).save(provider);
     }
 
-    private static Item item(String path) {
+    static Item item(String path) {
         Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra", path));
         return item == null || item == Items.AIR ? null : item;
     }

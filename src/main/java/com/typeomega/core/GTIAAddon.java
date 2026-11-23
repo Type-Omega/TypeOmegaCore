@@ -38,6 +38,8 @@ public final class GTIAAddon implements IGTAddon {
         GTIABeeRecipes.addRecipes(provider);
         GTIAAgroRecipes.addRecipes(provider);
         com.typeomega.core.data.rocket.GTIARocketRecipes.addRecipes(provider);
+        com.typeomega.core.data.rocket.SpaceGearRecipes.addRecipes(provider);
+        com.typeomega.core.chem.ZipDRecipes.addRecipes(provider);
         com.typeomega.core.data.GTIANexusRecipes.addRecipes(provider);
         com.typeomega.core.organ.OrganRecipes.addRecipes(provider);
         com.typeomega.core.chem.ChemRecipes.addRecipes(provider);

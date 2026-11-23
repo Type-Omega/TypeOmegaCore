@@ -6,6 +6,8 @@
   "minVersion": "0.8",
   "mixins": [
     "GTRecipeBuilderMixin",
+    "ItemDescriptionMixin",
+    "TagLoaderMixin",
     "ServerPacksSourceMixin",
     "kardashev.LargeBoilerMachineMixin",
     "kardashev.NexusEnergyNetworkMixin",
