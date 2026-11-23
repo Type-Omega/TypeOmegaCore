@@ -8,6 +8,7 @@
     "GTRecipeBuilderMixin",
     "ItemDescriptionMixin",
     "TagLoaderMixin",
+    "adastra.AdAstraModUtilsMixin",
     "ServerPacksSourceMixin",
     "kardashev.LargeBoilerMachineMixin",
     "kardashev.NexusEnergyNetworkMixin",

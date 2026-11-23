@@ -5,24 +5,33 @@ import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.typeomega.core.GTIAMod;
+import com.typeomega.core.data.rocket.GTIARocketAssembler;
 import com.typeomega.core.kardashev.KardashevData;
+import com.typeomega.core.mega.typezero.Cosmodrome;
+import com.typeomega.core.mega.typezero.CosmodromeMachine;
+import com.typeomega.core.mega.typezero.LunarAccess;
 import com.typeomega.core.mega.typezero.NationalDispatchCenter;
+import com.typeomega.core.mega.typezero.TypeZeroBlocks;
 import com.typeomega.core.mega.typezero.TypeZeroItems;
 
 import java.util.UUID;
 
 /**
  * The Type 0 megastructures (GTIA-D-390): each forms from its preview and fails without a part, counts once on its
- * team's Kardashev meter, and does its job (transponder gate).
+ * team's Kardashev meter, and does its job (transponder gate, Cosmodrome link and Moon gate).
  */
 @PrefixGameTestTemplate(false)
 @GameTestHolder(GTIAMod.MOD_ID)
@@ -88,6 +97,55 @@ public final class TypeZeroMegaGameTests {
             h.assertTrue(manager.byKey(new ResourceLocation("gtceu", merged)).isPresent(),
                     "GTNA's 4-to-1 " + merged + " stays, gated through its inputs");
         }
+        h.succeed();
+    }
+
+    // -------------------------------------------------------------------------------------- mega 2: Cosmodrome
+
+    @GameTest(template = TEMPLATE, batch = "type_zero_megas", timeoutTicks = 100)
+    public static void cosmodromeCountsOnlyLinkedToARocketAssembler(GameTestHelper h) {
+        UUID team = UUID.randomUUID();
+        BlockPos origin = TypeZeroTestRig.slot(h, 2);
+        var cosmodrome = TypeZeroTestRig.place(h, Cosmodrome.DEFINITION, origin, team, null);
+        var mission = (CosmodromeMachine) cosmodrome.controller();
+        h.assertTrue(TypeZeroTestRig.form(mission), "the Cosmodrome preview must form");
+        h.assertTrue(mission.linkedAssembler() == null, "no Rocket Assembler nearby: no link");
+        h.assertFalse(kardashev(h).built(team, Cosmodrome.ID), "an unlinked Cosmodrome does not count");
+        var survey = (GTRecipe) h.getLevel().getServer().getRecipeManager()
+                .byKey(GTIAMod.id("mission_control/lunar_survey")).orElse(null);
+        h.assertTrue(survey != null, "the lunar survey mission exists");
+        h.assertTrue(CosmodromeMachine.requireLink(mission, survey).apply(survey) == null,
+                "no mission runs without the link");
+
+        var assembler = TypeZeroTestRig.place(h, GTIARocketAssembler.ROCKET_ASSEMBLER, origin.offset(16, 0, 0),
+                team, null);
+        h.assertTrue(TypeZeroTestRig.form(assembler.controller()), "the Rocket Assembler preview must form");
+        mission.relink();
+        h.assertTrue(mission.linkedAssembler() != null, "a formed Rocket Assembler 16 blocks away links");
+        h.assertTrue(kardashev(h).built(team, Cosmodrome.ID), "the linked Cosmodrome counts");
+        h.assertTrue(CosmodromeMachine.requireLink(mission, survey).apply(survey) != null,
+                "missions run once linked");
+        h.succeed();
+    }
+
+    @GameTest(template = TEMPLATE, batch = "type_zero_megas", timeoutTicks = 60)
+    public static void cosmodromeNeedsItsConsoles(GameTestHelper h) {
+        var placed = TypeZeroTestRig.place(h, Cosmodrome.DEFINITION, TypeZeroTestRig.slot(h, 4), UUID.randomUUID(),
+                null);
+        BlockPos console = placed.find(h, TypeZeroBlocks.MISSION_CONTROL_CASING.get()).get(0);
+        h.getLevel().setBlock(console, GTBlocks.CASING_STAINLESS_CLEAN.get().defaultBlockState(), 2 | 16);
+        h.assertFalse(TypeZeroTestRig.form(placed.controller()), "a control hall missing a console must not form");
+        h.succeed();
+    }
+
+    @GameTest(template = TEMPLATE, batch = "type_zero_megas", timeoutTicks = 20)
+    public static void theMoonNeedsTheSurvey(GameTestHelper h) {
+        var player = TestPlayers.survival(h);
+        ResourceKey<Level> moon = ResourceKey.create(Registries.DIMENSION, LunarAccess.MOON);
+        h.assertFalse(LunarAccess.mayLand(player, moon), "no survey: no Moon");
+        h.assertTrue(LunarAccess.mayLand(player, Level.OVERWORLD), "the Earth is always open");
+        player.getInventory().add(new ItemStack(TypeZeroItems.LUNAR_SURVEY_DATA.get()));
+        h.assertTrue(LunarAccess.mayLand(player, moon), "carrying the Lunar Survey Data opens the Moon");
         h.succeed();
     }
 }

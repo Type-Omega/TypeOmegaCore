@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "typeomega:block/mission_control_casing"
+    }
+  }
+}

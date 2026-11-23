@@ -37,6 +37,14 @@ public final class GTIATooltips {
                         "Programs the Grid Transponders that every wireless energy hatch needs" },
                 null,
                 new String[] { "Hatches go on the clean stainless steel casings of the control hall", OVERCLOCK });
+        add("cosmodrome",
+                "Mission control watches every launch from kilometres away, through its tracking dishes",
+                new String[] { "Megastructure 2 of Type 0: raises your team's Kardashev cap to 0.99",
+                        "Launches the Lunar Probe with Rocket Fuel and returns the Lunar Survey Data",
+                        "Without the survey, no rocket lands on the Moon" },
+                null,
+                new String[] { "A formed Rocket Assembler within 48 blocks: the mission control links to it",
+                        "Hatches go on the clean stainless steel casings of the control hall", OVERCLOCK });
         add("fragment_collector",
                 "Survey rigs read the rock through cores before any shaft is sunk",
                 new String[] { "Mines the veins of the dimension of the World Fragment in its input bus",

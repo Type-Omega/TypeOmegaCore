@@ -185,6 +185,10 @@ dependencies {
     // AE2 API is available for the upcoming MV integration. The other mod bridges
     // currently use registry IDs, so the mod core can compile without their full jars.
     modCompileOnly("curse.maven:applied-energistics-2-223794:7148487") { transitive = false }
+    // EN: Ad Astra's planet API for the Moon gate mixin (GTIA-D-420); the pack ships the mod, the mixin is pseudo.
+    // PT: API de planetas do Ad Astra para o mixin que trava a Lua (GTIA-D-420); o pack traz o mod, o mixin é pseudo.
+    // ZH: 用于登月限制 mixin 的 Ad Astra 星球 API（GTIA-D-420）；整合包自带该模组，mixin 为 pseudo。
+    modCompileOnly("curse.maven:ad-astra-635042:8833730") { transitive = false }
 
     // JEI, EMI, Jade
     modCompileOnly("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")

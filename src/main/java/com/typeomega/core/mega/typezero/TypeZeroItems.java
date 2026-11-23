@@ -10,6 +10,10 @@ public final class TypeZeroItems {
 
     /** Made only by the National Dispatch Center; every wireless energy hatch needs one (GTIA-D-401, D-419). */
     public static final ItemEntry<Item> GRID_TRANSPONDER = item("grid_transponder", "Grid Transponder");
+    /** Launched by the Cosmodrome to map the Moon (GTIA-D-420). */
+    public static final ItemEntry<Item> LUNAR_PROBE = item("lunar_probe", "Lunar Probe");
+    /** The probe's map: carried by a player, it lets the rockets land on the Moon (GTIA-D-420). */
+    public static final ItemEntry<Item> LUNAR_SURVEY_DATA = item("lunar_survey_data", "Lunar Survey Data");
 
     private TypeZeroItems() {}
 

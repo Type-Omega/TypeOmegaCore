@@ -1,5 +1,6 @@
 {
   "values": [
-    "typeomega:rocket_assembly_casing"
+    "typeomega:rocket_assembly_casing",
+    "typeomega:mission_control_casing"
   ]
 }

@@ -77,6 +77,13 @@ public final class GTIARecipeTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.ELECTROLYZER);
 
+    /** Cosmodrome (GTIA-D-390, D-420): mission control launches probes and returns their survey data. */
+    public static final GTRecipeType MISSION_CONTROL = register("mission_control", GTRecipeTypes.MULTIBLOCK)
+            .setMaxIOSize(2, 1, 1, 0)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.SCIENCE);
+
     private GTIARecipeTypes() {}
 
     public static void init() {}
