@@ -173,13 +173,15 @@ dependencies {
     }
     modCompileOnly("curse.maven:ftb-library-forge-404465:8226927") { transitive = false }
     modCompileOnly("curse.maven:ftb-teams-forge-404468:7499810") { transitive = false }
-    if (project.hasProperty('gtnaDevJar')) {
-        runtimeOnly files(project.property('gtnaDevJar'))
-        modRuntimeOnly("curse.maven:applied-energistics-2-223794:7148487") { transitive = false }
-        modRuntimeOnly("curse.maven:guideme-1173950:7127447")
-        modRuntimeOnly("curse.maven:glodium-957920:5226922")
-        modRuntimeOnly("curse.maven:ex-pattern-provider-892005:7248944")
-    }
+    // EN: Without -PgtnaDevJar the dev runtime (and CI) uses the published GTNA, so the GameTests see the same mods.
+    // PT: Sem -PgtnaDevJar o runtime de dev (e o CI) usa o GTNA publicado, para as GameTests verem os mesmos mods.
+    // ZH: 未指定 -PgtnaDevJar 时，开发运行时（及 CI）使用已发布的 GTNA，使 GameTest 加载相同的模组。
+    if (project.hasProperty('gtnaDevJar')) runtimeOnly files(project.property('gtnaDevJar'))
+    else modRuntimeOnly("com.raishxn.gtna:gtna:${gtna_version}") { transitive = false }
+    modRuntimeOnly("curse.maven:applied-energistics-2-223794:7148487") { transitive = false }
+    modRuntimeOnly("curse.maven:guideme-1173950:7127447")
+    modRuntimeOnly("curse.maven:glodium-957920:5226922")
+    modRuntimeOnly("curse.maven:ex-pattern-provider-892005:7248944")
 
     // EN: Dev-only companions for playtesting together (-PmodernSpaceJar / -PmodernManipulatorJar); never shipped.
     // PT: Mods parceiros só para teste em conjunto (-PmodernSpaceJar / -PmodernManipulatorJar); nunca entram no jar.
