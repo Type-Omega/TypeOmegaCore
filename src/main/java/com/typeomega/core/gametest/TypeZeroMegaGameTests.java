@@ -144,7 +144,7 @@ public final class TypeZeroMegaGameTests {
     public static void cosmodromeNeedsItsConsoles(GameTestHelper h) {
         var placed = TypeZeroTestRig.place(h, Cosmodrome.DEFINITION, TypeZeroTestRig.slot(h, 4), UUID.randomUUID(),
                 null);
-        BlockPos console = placed.find(h, TypeZeroBlocks.MISSION_CONTROL_CASING.get()).get(0);
+        BlockPos console = placed.find(h, TypeZeroBlocks.CONSOLE_CASING.get()).get(0);
         h.getLevel().setBlock(console, GTBlocks.CASING_STAINLESS_CLEAN.get().defaultBlockState(), 2 | 16);
         h.assertFalse(TypeZeroTestRig.form(placed.controller()), "a control hall missing a console must not form");
         h.succeed();

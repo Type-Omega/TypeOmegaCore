@@ -59,7 +59,7 @@ public final class TypeZeroRecipes {
                 .duration(600).EUt(VA[HV]).save(provider);
         GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(GTIAMod.id(Cosmodrome.ID))
                 .inputItems(GTMachines.HULL[HV].asStack())
-                .inputItems(TypeZeroBlocks.MISSION_CONTROL_CASING.asStack(4))
+                .inputItems(TypeZeroBlocks.CONSOLE_CASING.asStack(4))
                 .inputItems(CustomTags.EV_CIRCUITS, 4)
                 .inputItems(GTItems.SENSOR_HV.asStack(2))
                 .inputItems(GTItems.EMITTER_HV.asStack(2))
@@ -82,7 +82,7 @@ public final class TypeZeroRecipes {
                 .inputItems(TagPrefix.plate, GTMaterials.Aluminium, 4)
                 .inputItems(CustomTags.EV_CIRCUITS, 1)
                 .inputItems(TagPrefix.frameGt, GTMaterials.StainlessSteel)
-                .outputItems(TypeZeroBlocks.MISSION_CONTROL_CASING.asStack(2))
+                .outputItems(TypeZeroBlocks.CONSOLE_CASING.asStack(2))
                 .duration(400).EUt(VA[HV]).save(provider);
         // EN: MgB2 superconducts near 39 K, the real candidate for cheap tokamak magnets; the GTCEu superconducting
         // coil stays at LuV.

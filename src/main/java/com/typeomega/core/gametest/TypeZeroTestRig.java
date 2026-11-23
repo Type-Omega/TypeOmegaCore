@@ -38,10 +38,14 @@ final class TypeZeroTestRig {
         }
     }
 
-    /** Absolute corner of a slot: 64 blocks apart, 3600 blocks south of the test and at y 200. */
+    /**
+     * Absolute corner of a slot: 128 blocks apart, 3600 blocks south of the test and at y 200. The tests of a batch
+     * stand a few blocks apart, so the gap must hold the widest structure (the Cosmodrome and its Rocket Assembler,
+     * 41 blocks) plus that shift.
+     */
     static BlockPos slot(GameTestHelper h, int slot) {
         BlockPos zero = h.absolutePos(BlockPos.ZERO);
-        return new BlockPos(zero.getX() + 64 * slot, 200, zero.getZ() + 3600);
+        return new BlockPos(zero.getX() + 128 * slot, 200, zero.getZ() + 3600);
     }
 
     /**

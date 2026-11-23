@@ -12,14 +12,17 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.typeomega.core.GTIAMod;
 
 /**
- * Casings of the Type 0 megastructures (GTIA-D-420, D-421): the Cosmodrome's mission control consoles and the HV
- * Tokamak's MgB2 magnet, neutron shield and lithium breeding blanket. The textures are first drafts derived from
+ * Casings of the Type 0 megastructures (GTIA-D-420, D-421, D-425): the console of the Dispatch Center and the
+ * Cosmodrome, and the HV Tokamak's MgB2 magnet, neutron shield and lithium breeding blanket. The textures are first
+ * drafts derived from
  * GTCEu casings, for the author to redraw.
  */
 public final class TypeZeroBlocks {
 
-    public static final BlockEntry<Block> MISSION_CONTROL_CASING = casing("mission_control_casing",
-            "Mission Control Casing");
+    // EN: GTIA-D-425: the neutral name serves both control rooms; the id stays so built worlds keep the block.
+    // PT: GTIA-D-425: o nome neutro serve às duas salas de controle; o id fica, para os mundos manterem o bloco.
+    // ZH: GTIA-D-425：中性名称同时用于两座控制室；保留原 id，已建世界中的方块不受影响。
+    public static final BlockEntry<Block> CONSOLE_CASING = casing("mission_control_casing", "Console Casing");
     public static final BlockEntry<Block> TOKAMAK_MAGNET_COIL = casing("tokamak_magnet_coil",
             "MgB2 Tokamak Magnet Coil");
     public static final BlockEntry<Block> NEUTRON_SHIELD_CASING = casing("neutron_shield_casing",

@@ -66,7 +66,7 @@ public final class Cosmodrome {
                         .where('C', blocks(GTBlocks.CASING_STAINLESS_CLEAN.get()).setMinGlobalLimited(90)
                                 .or(Predicates.autoAbilities(definition.getRecipeTypes()))
                                 .or(Predicates.autoAbilities(true, false, false)))
-                        .where('W', blocks(TypeZeroBlocks.MISSION_CONTROL_CASING.get()))
+                        .where('W', blocks(TypeZeroBlocks.CONSOLE_CASING.get()))
                         .where('S', blocks(GTBlocks.CASING_STEEL_SOLID.get()))
                         .where('L', Predicates.anyLamp())
                         .where('G', blocks(GTBlocks.CASING_LAMINATED_GLASS.get()))
