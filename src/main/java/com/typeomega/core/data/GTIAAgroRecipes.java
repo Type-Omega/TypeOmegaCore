@@ -21,7 +21,7 @@ import java.util.function.Consumer;
 
 /**
  * Agronomica products into the GT lines (GTIA-D-271): oily seed → seed oil (then GTCEu's biodiesel), latex →
- * vulcanised rubber in Steam, biomass bundles → wood pulp and Brewery biomass, seed oil as boiler fuel.
+ * vulcanised rubber in Steam, biomass bundles → wood pulp and Brewery or Fermenter biomass, seed oil as boiler fuel.
  */
 public final class GTIAAgroRecipes {
 
@@ -60,6 +60,18 @@ public final class GTIAAgroRecipes {
                 .inputFluids(GTMaterials.Water.getFluid(1000))
                 .outputFluids(GTMaterials.Biomass.getFluid(500))
                 .duration(800).EUt(8).save(provider);
+
+        // EN: LV Fermenter route for the Biomass quests (GTIA-D-426): 30 EU/t and 300 mB per 4 bundles, below the
+        // Brewery's 500 mB, so the Brewery stays the better machine.
+        // PT: Rota do Fermentador LV para as quests de Biomass (GTIA-D-426): 30 EU/t e 300 mB por 4 feixes, abaixo dos
+        // 500 mB da Brewery, para a Brewery continuar sendo a melhor máquina.
+        // ZH: 供生物质任务使用的 LV 发酵槽路线（GTIA-D-426）：30 EU/t，每 4 捆产出 300 mB，低于酿造厂的 500 mB，
+        // 因此酿造厂仍是更好的机器。
+        GTRecipeTypes.FERMENTING_RECIPES.recipeBuilder(GTIAMod.id("agro/biomass_bundle_fermenter"))
+                .inputItems(new ItemStack(biomass, 4))
+                .inputFluids(GTMaterials.Water.getFluid(1000))
+                .outputFluids(GTMaterials.Biomass.getFluid(300))
+                .duration(800).EUt(30).save(provider);
 
         // EN: Same burn value per mB as creosote (250 mB → 17.5 s): an early fuel, not a better one.
         // PT: Mesmo valor por mB que o creosoto (250 mB → 17,5 s): combustível cedo, não melhor.
