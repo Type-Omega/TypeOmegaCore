@@ -28,7 +28,8 @@ import java.util.function.Consumer;
  * the personal dimension portal only as a quest reward (GTIA-D-347), the Nexus Flux Matrix in HV (GTIA-D-350; its
  * losses are in the pack's config/gtna/balance/nexus_flux_matrix.json), the GTCEu Terminal with redstone in the
  * first chapter (GTIA-D-409), the Industrial Platform builder after the Bronze Hull (GTIA-D-406, D-408) and
- * Helium-3 only from heated lunar regolith (GTIA-D-420).
+ * Helium-3 only from heated lunar regolith (GTIA-D-420) and an LV silicon plate for the AE2 network of 0,2
+ * (GTIA-D-426).
  */
 public final class ProgressionGates {
 
@@ -78,6 +79,7 @@ public final class ProgressionGates {
                 .outputItems(new ItemStack(Items.ENDER_EYE))
                 .duration(200).EUt(GTValues.VA[GTValues.HV]).save(provider);
         addLunarHelium3(provider);
+        addLvSiliconPlate(provider);
         if (!ModList.get().isLoaded("gtna")) return;
         GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(GTIAMod.id("nexus_flux_matrix"))
                 .inputItems(TagPrefix.plateDouble, GTMaterials.StainlessSteel, 4)
@@ -87,6 +89,26 @@ public final class ProgressionGates {
                 .outputItems(new ItemStack(
                         ForgeRegistries.ITEMS.getValue(new ResourceLocation("gtna", "nexus_flux_matrix"))))
                 .duration(400).EUt(GTValues.VA[GTValues.HV]).save(provider);
+    }
+
+    /** Ids of the LV silicon plate and of the GTCEu blast it stays below (GTIA-D-426). */
+    public static final String LV_SILICON_PLATE = "alloy_smelter/silicon_plate_lv";
+    public static final String EBF_SILICON = "gtceu:electric_blast_furnace/blast_silicon";
+
+    private static void addLvSiliconPlate(Consumer<FinishedRecipe> provider) {
+        // EN: The EBF comes in 0,3, but the AE2 silicon print is in 0,2 (GTIA-D-426). The LV route costs two dusts per
+        // plate and 80 s, against one dust and about 64 s of EBF (2273 K, mass 28) plus the freezer, so the EBF stays
+        // the better one.
+        // PT: O EBF chega no 0,3, mas a gravação de silício do AE2 está no 0,2 (GTIA-D-426). A rota LV custa dois pós
+        // por placa e 80 s, contra um pó e uns 64 s de EBF (2273 K, massa 28) mais o congelador, então o EBF continua
+        // sendo a melhor.
+        // ZH: 电力高炉在 0,3 才出现，但 AE2 的硅压印在 0,2（GTIA-D-426）。LV 路线每块板需要两份粉、80 秒，而电力高炉
+        // 只需一份粉、约 64 秒（2273 K，质量 28）再加真空冷冻机，因此电力高炉仍是更优路线。
+        GTRecipeTypes.ALLOY_SMELTER_RECIPES.recipeBuilder(GTIAMod.id("silicon_plate_lv"))
+                .inputItems(TagPrefix.dust, GTMaterials.Silicon, 2)
+                .notConsumable(GTItems.SHAPE_MOLD_PLATE)
+                .outputItems(TagPrefix.plate, GTMaterials.Silicon)
+                .duration(1600).EUt(GTValues.VA[GTValues.LV]).save(provider);
     }
 
     /** Helium-3 from heated lunar regolith, only when Ad Astra is loaded (GTIA-D-420). */

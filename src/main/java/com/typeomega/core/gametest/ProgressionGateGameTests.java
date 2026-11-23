@@ -1,15 +1,20 @@
 package com.typeomega.core.gametest;
 
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.blockentity.MetaMachineBlockEntity;
 import com.gregtechceu.gtceu.api.capability.recipe.FluidRecipeCapability;
 import com.gregtechceu.gtceu.api.capability.recipe.ItemRecipeCapability;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import com.gregtechceu.gtceu.api.machine.SimpleTieredMachine;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
+import com.gregtechceu.gtceu.common.data.GTItems;
+import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.recipe.condition.CleanroomCondition;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.resources.ResourceLocation;
@@ -30,7 +35,8 @@ import java.util.List;
 /**
  * The restructuring gates: Eye of Ender in HV, portal only from a quest, basic AE2 in LV and the rest in MV/HV, the
  * Terminal with redstone, the Industrial Platform after the Bronze Hull, the eye without blaze, the nano line in HV
- * and He-3 only from the Moon (GTIA-D-347, D-349, D-352, D-406, D-408, D-409, D-419 to D-421, D-424).
+ * and He-3 only from the Moon, the LV silicon plate (GTIA-D-347, D-349, D-352, D-406, D-408, D-409, D-419 to D-421,
+ * D-424, D-426).
  */
 @PrefixGameTestTemplate(false)
 @GameTestHolder(GTIAMod.MOD_ID)
@@ -108,6 +114,40 @@ public final class ProgressionGateGameTests {
                     .noneMatch(c -> ItemRecipeCapability.CAP.of(c.getContent()).test(quartz)),
                     path + " takes no Nether quartz");
         }
+        h.succeed();
+    }
+
+    /**
+     * The silicon plate for the AE2 print has an LV route in the Alloy Smelter at 30 EU/t, worse than the EBF one,
+     * which stays (GTIA-D-426).
+     */
+    @GameTest(template = "qa_empty_5x5", batch = "gates", timeoutTicks = 20)
+    public static void siliconPlateHasWorseLvRoute(GameTestHelper h) {
+        var manager = h.getLevel().getServer().getRecipeManager();
+        var lv = (GTRecipe) manager.byKey(GTIAMod.id(ProgressionGates.LV_SILICON_PLATE)).orElse(null);
+        var ebf = (GTRecipe) manager.byKey(new ResourceLocation(ProgressionGates.EBF_SILICON)).orElse(null);
+        h.assertTrue(lv != null, "the LV silicon plate recipe is missing");
+        h.assertTrue(ebf != null, "the EBF silicon route is gone");
+        h.assertTrue(lv.duration > ebf.duration, "the LV plate is slower than the EBF ingot");
+
+        var pos = new BlockPos(2, 1, 2);
+        h.setBlock(pos, GTMachines.ALLOY_SMELTER[GTValues.LV].getBlock());
+        var machine = (SimpleTieredMachine) ((MetaMachineBlockEntity) h.getBlockEntity(pos)).getMetaMachine();
+        machine.energyContainer.setEnergyStored(machine.energyContainer.getEnergyCapacity());
+        machine.importItems.setStackInSlot(0, ChemicalHelper.get(TagPrefix.dust, GTMaterials.Silicon, 2));
+        machine.importItems.setStackInSlot(1, GTItems.SHAPE_MOLD_PLATE.asStack());
+        machine.recipeLogic.findAndHandleRecipe();
+        var running = machine.recipeLogic.getLastRecipe();
+        h.assertTrue(running != null && running.getId().equals(lv.getId()),
+                "the LV Alloy Smelter runs the silicon plate: " + (running == null ? null : running.getId()));
+        h.assertTrue(running.getInputEUt().getTotalEU() == GTValues.VA[GTValues.LV],
+                "the silicon plate runs at 30 EU/t");
+        h.assertTrue(machine.importItems.getStackInSlot(0).isEmpty(), "two silicon dusts go into one plate");
+        h.assertTrue(!machine.importItems.getStackInSlot(1).isEmpty(), "the plate mold is kept");
+        machine.recipeLogic.onRecipeFinish();
+        var out = machine.exportItems.getStackInSlot(0);
+        h.assertTrue(ItemStack.isSameItem(out, ChemicalHelper.get(TagPrefix.plate, GTMaterials.Silicon)) &&
+                out.getCount() == 1, "one silicon plate comes out: " + out);
         h.succeed();
     }
 
