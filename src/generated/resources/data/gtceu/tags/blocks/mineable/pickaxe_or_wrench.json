@@ -1,6 +1,9 @@
 {
   "values": [
     "typeomega:rocket_assembly_casing",
-    "typeomega:mission_control_casing"
+    "typeomega:mission_control_casing",
+    "typeomega:tokamak_magnet_coil",
+    "typeomega:neutron_shield_casing",
+    "typeomega:lithium_breeding_blanket"
   ]
 }

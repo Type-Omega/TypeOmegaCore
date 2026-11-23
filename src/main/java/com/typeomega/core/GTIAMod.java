@@ -141,6 +141,7 @@ public final class GTIAMod {
         com.typeomega.core.route.RouteMaterials.register();
         com.typeomega.core.chem.ZipDMaterials.register();
         com.typeomega.core.data.rocket.SpaceMaterials.register();
+        com.typeomega.core.mega.typezero.TypeZeroMaterials.register();
         com.typeomega.core.mega.MegaMaterials.register();
     }
 

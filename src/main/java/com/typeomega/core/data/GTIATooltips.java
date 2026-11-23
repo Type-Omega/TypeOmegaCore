@@ -45,6 +45,16 @@ public final class GTIATooltips {
                 null,
                 new String[] { "A formed Rocket Assembler within 48 blocks: the mission control links to it",
                         "Hatches go on the clean stainless steel casings of the control hall", OVERCLOCK });
+        add("tokamak_hv",
+                "A tokamak holds a plasma hotter than the Sun's core in a ring of magnetic field",
+                new String[] { "Megastructure 3 of Type 0: closes Type 0 and opens the Type I cap",
+                        "D-T: 1024 EU/t, the lithium blanket breeds back 90 of the 100 mB of tritium",
+                        "D-He3: 2048 EU/t with lunar Helium-3",
+                        "Liquid Helium cools the magnets and leaves as Helium gas" },
+                null,
+                new String[] { "A cold plasma takes 2,000,000 EU of start-up charge from the Energy Hatches",
+                        "It cools after 5 s without fuel", "1 to 4 Dynamo Hatches; hatches go on the neutron shield",
+                        "No overclock: the output is fixed" });
         add("fragment_collector",
                 "Survey rigs read the rock through cores before any shaft is sunk",
                 new String[] { "Mines the veins of the dimension of the World Fragment in its input bus",

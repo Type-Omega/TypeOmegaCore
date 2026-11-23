@@ -84,6 +84,13 @@ public final class GTIARecipeTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.SCIENCE);
 
+    /** HV Tokamak (GTIA-D-379, D-390): D-T and D-He3 fusion, EU straight out of the dynamo hatches. */
+    public static final GTRecipeType TOKAMAK_FUSION = register("tokamak_fusion", GTRecipeTypes.GENERATOR)
+            .setMaxIOSize(1, 0, 3, 3)
+            .setEUIO(IO.OUT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.ARC);
+
     private GTIARecipeTypes() {}
 
     public static void init() {}

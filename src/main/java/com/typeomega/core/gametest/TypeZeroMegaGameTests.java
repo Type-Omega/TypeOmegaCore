@@ -1,8 +1,16 @@
 package com.typeomega.core.gametest;
 
+import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
+import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
+import com.gregtechceu.gtceu.common.data.GTMachines;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.common.machine.multiblock.part.EnergyHatchPartMachine;
+import com.gregtechceu.gtceu.common.machine.multiblock.part.FluidHatchPartMachine;
+import com.gregtechceu.gtceu.common.machine.multiblock.part.ItemBusPartMachine;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -13,6 +21,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
@@ -24,14 +34,16 @@ import com.typeomega.core.mega.typezero.Cosmodrome;
 import com.typeomega.core.mega.typezero.CosmodromeMachine;
 import com.typeomega.core.mega.typezero.LunarAccess;
 import com.typeomega.core.mega.typezero.NationalDispatchCenter;
+import com.typeomega.core.mega.typezero.Tokamak;
+import com.typeomega.core.mega.typezero.TokamakMachine;
 import com.typeomega.core.mega.typezero.TypeZeroBlocks;
 import com.typeomega.core.mega.typezero.TypeZeroItems;
 
 import java.util.UUID;
 
 /**
- * The Type 0 megastructures (GTIA-D-390): each forms from its preview and fails without a part, counts once on its
- * team's Kardashev meter, and does its job (transponder gate, Cosmodrome link and Moon gate).
+ * The three Type 0 megastructures (GTIA-D-390): each forms from its preview and fails without a part, counts once on
+ * its team's Kardashev meter, and does its job (transponder gate, Cosmodrome link and Moon gate, Tokamak fusion).
  */
 @PrefixGameTestTemplate(false)
 @GameTestHolder(GTIAMod.MOD_ID)
@@ -147,5 +159,89 @@ public final class TypeZeroMegaGameTests {
         player.getInventory().add(new ItemStack(TypeZeroItems.LUNAR_SURVEY_DATA.get()));
         h.assertTrue(LunarAccess.mayLand(player, moon), "carrying the Lunar Survey Data opens the Moon");
         h.succeed();
+    }
+
+    // ----------------------------------------------------------------------------------------- mega 3: Tokamak
+
+    @GameTest(template = TEMPLATE, batch = "type_zero_megas", timeoutTicks = 60)
+    public static void tokamakNeedsItsBlanket(GameTestHelper h) {
+        UUID team = UUID.randomUUID();
+        var placed = TypeZeroTestRig.place(h, Tokamak.DEFINITION, TypeZeroTestRig.slot(h, 5), team, null);
+        var level = h.getLevel();
+        // EN: Without one lithium blanket block the chamber is open: no Tokamak and nothing counted.
+        // PT: Sem um bloco de manta de lítio a câmara fica aberta: nada de Tokamak e nada contado.
+        // ZH: 缺少一块锂包层，腔室即不完整：托卡马克不成型，也不计数。
+        BlockPos blanket = placed.find(h, TypeZeroBlocks.LITHIUM_BREEDING_BLANKET.get()).get(0);
+        level.setBlock(blanket, GTBlocks.CASING_TITANIUM_STABLE.get().defaultBlockState(), 2 | 16);
+        h.assertFalse(TypeZeroTestRig.form(placed.controller()), "a chamber missing a blanket block must not form");
+        h.assertFalse(kardashev(h).built(team, Tokamak.ID), "an unformed Tokamak counts nothing");
+        level.setBlock(blanket, TypeZeroBlocks.LITHIUM_BREEDING_BLANKET.get().defaultBlockState(), 2 | 16);
+        h.assertTrue(TypeZeroTestRig.form(placed.controller()), "the full chamber forms");
+        h.assertTrue(kardashev(h).built(team, Tokamak.ID), "the Tokamak counts as the third megastructure");
+        h.succeed();
+    }
+
+    @GameTest(template = TEMPLATE, batch = "type_zero_megas", timeoutTicks = 400)
+    public static void tokamakLightsAndBurnsDeuteriumTritium(GameTestHelper h) {
+        var placed = TypeZeroTestRig.place(h, Tokamak.DEFINITION, TypeZeroTestRig.slot(h, 6), UUID.randomUUID(),
+                null);
+        var level = h.getLevel();
+        // EN: Put the test's own hatches on the shield wall of the controller's face.
+        // PT: Põe os hatches do teste na parede de blindagem da face do controlador.
+        // ZH: 在控制器所在面的屏蔽墙上放置测试用的仓口。
+        int face = placed.controller().getPos().getZ();
+        var shield = placed.find(h, TypeZeroBlocks.NEUTRON_SHIELD_CASING.get()).stream()
+                .filter(p -> p.getZ() == face).toList();
+        var hatches = new com.gregtechceu.gtceu.api.machine.MachineDefinition[] {
+                GTMachines.FLUID_IMPORT_HATCH[GTValues.HV], GTMachines.FLUID_IMPORT_HATCH[GTValues.HV],
+                GTMachines.FLUID_IMPORT_HATCH[GTValues.HV], GTMachines.ITEM_IMPORT_BUS[GTValues.HV],
+                GTMachines.FLUID_EXPORT_HATCH[GTValues.HV], GTMachines.FLUID_EXPORT_HATCH[GTValues.HV] };
+        BlockPos[] at = new BlockPos[hatches.length];
+        for (int i = 0; i < hatches.length; i++) {
+            at[i] = shield.get(i);
+            level.setBlock(at[i], hatches[i].getBlock().defaultBlockState(), 2 | 16);
+        }
+        h.assertTrue(TypeZeroTestRig.form(placed.controller()), "the Tokamak forms with the test's hatches");
+        var tokamak = (TokamakMachine) placed.controller();
+        FluidStack[] fuel = { GTMaterials.Deuterium.getFluid(4000), GTMaterials.Tritium.getFluid(4000),
+                GTMaterials.Helium.getFluid(FluidStorageKeys.LIQUID, 4000) };
+        for (int i = 0; i < 3; i++)
+            ((FluidHatchPartMachine) MetaMachine.getMachine(level, at[i])).tank.fillInternal(fuel[i],
+                    IFluidHandler.FluidAction.EXECUTE);
+        ((ItemBusPartMachine) MetaMachine.getMachine(level, at[3])).getInventory().storage.insertItem(0,
+                com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper.get(
+                        com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust, GTMaterials.Lithium),
+                false);
+        EnergyHatchPartMachine input = null, dynamo = null;
+        for (var part : tokamak.getParts()) {
+            if (!(part instanceof EnergyHatchPartMachine hatch)) continue;
+            if (hatch.energyContainer.getInputVoltage() > 0) input = hatch;
+            else dynamo = hatch;
+        }
+        h.assertTrue(input != null && dynamo != null, "the preview has an Energy Hatch and a Dynamo Hatch");
+        var feed = input.energyContainer;
+        var out = dynamo.energyContainer;
+        h.assertFalse(tokamak.lit(), "a new Tokamak is cold");
+        // EN: The hatch feeds the charge for real; the test adds the rest instead of waiting minutes.
+        // PT: O hatch alimenta a carga de verdade; o teste completa o resto em vez de esperar minutos.
+        // ZH: 能源仓真实地为启动充能；测试直接补足其余部分，免去数分钟等待。
+        h.onEachTick(() -> {
+            feed.changeEnergy(feed.getEnergyCapacity() - feed.getEnergyStored());
+            if (tokamak.startCharge() > 0 && !tokamak.lit()) tokamak.addStartChargeForTests(TokamakMachine.START_EU);
+        });
+        h.succeedWhen(() -> {
+            if (!tokamak.lit()) {
+                var dt = (GTRecipe) level.getServer().getRecipeManager()
+                        .byKey(GTIAMod.id("tokamak_fusion/deuterium_tritium")).orElse(null);
+                var match = dt == null ? null : RecipeHelper.matchRecipe(tokamak, dt);
+                h.fail("the plasma lights after the start-up charge (" + tokamak.startCharge() + " EU; formed " +
+                        tokamak.isFormed() + ", logic " + tokamak.getRecipeLogic().getStatus() + ", D-T " +
+                        (match == null ? "missing" : match.isSuccess() + " " + match.reason()) + ")");
+            }
+            h.assertTrue(out.getEnergyStored() > 0, "fusion EU reaches the dynamo");
+            var helium = ((FluidHatchPartMachine) MetaMachine.getMachine(level, at[4])).tank.getFluidInTank(0);
+            var tritium = ((FluidHatchPartMachine) MetaMachine.getMachine(level, at[5])).tank.getFluidInTank(0);
+            h.assertTrue(!helium.isEmpty() || !tritium.isEmpty(), "helium and bred tritium leave the chamber");
+        });
     }
 }

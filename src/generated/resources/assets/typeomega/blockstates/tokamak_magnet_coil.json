@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "typeomega:block/tokamak_magnet_coil"
+    }
+  }
+}

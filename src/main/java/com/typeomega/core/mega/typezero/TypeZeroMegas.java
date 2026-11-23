@@ -13,8 +13,11 @@ public final class TypeZeroMegas {
         TypeZeroItems.init();
         lang("typeomega.grid_dispatch", "Grid Dispatch");
         lang("typeomega.mission_control", "Mission Control");
+        lang("typeomega.tokamak_fusion", "Tokamak Fusion");
         lang("typeomega.machine.cosmodrome.linked", "Linked to the Rocket Assembler at %s, %s, %s");
         lang("typeomega.machine.cosmodrome.unlinked", "No formed Rocket Assembler within %s blocks");
+        lang("typeomega.machine.tokamak_hv.lit", "Plasma lit");
+        lang("typeomega.machine.tokamak_hv.charge", "Start-up charge: %s / %s EU");
         lang("typeomega.lunar_survey.required", "The Moon needs Lunar Survey Data from the Cosmodrome");
     }
 
@@ -22,6 +25,7 @@ public final class TypeZeroMegas {
     public static void registerMachines() {
         NationalDispatchCenter.init();
         Cosmodrome.init();
+        Tokamak.init();
     }
 
     private static void lang(String key, String english) {
