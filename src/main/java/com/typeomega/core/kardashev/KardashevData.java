@@ -37,7 +37,8 @@ public final class KardashevData extends SavedData {
         for (Tag raw : tag.getList("Teams", Tag.TAG_COMPOUND)) {
             CompoundTag entry = (CompoundTag) raw;
             Team team = new Team();
-            team.megastructures = entry.getInt("Megastructures");
+            team.legacyMegastructures = entry.getInt("Megastructures");
+            for (Tag id : entry.getList("Built", Tag.TAG_STRING)) team.built.add(id.getAsString());
             team.reachedType = entry.getInt("ReachedType");
             long[] epochs = entry.getLongArray("Epochs");
             ListTag sums = entry.getList("Sums", Tag.TAG_DOUBLE);
@@ -60,7 +61,10 @@ public final class KardashevData extends SavedData {
         teams.forEach((id, team) -> {
             CompoundTag entry = new CompoundTag();
             entry.putUUID("Team", id);
-            entry.putInt("Megastructures", team.megastructures);
+            entry.putInt("Megastructures", team.legacyMegastructures);
+            ListTag built = new ListTag();
+            for (String mega : team.built) built.add(net.minecraft.nbt.StringTag.valueOf(mega));
+            entry.put("Built", built);
             entry.putInt("ReachedType", team.reachedType);
             entry.putLongArray("Epochs", team.epochs.clone());
             ListTag sums = new ListTag();
@@ -104,15 +108,26 @@ public final class KardashevData extends SavedData {
 
     public int megastructures(UUID team) {
         Team state = teams.get(team);
-        return state == null ? 0 : state.megastructures;
+        return state == null ? 0 : state.megastructures();
     }
 
-    /** Sets how many megastructures the team has finished (0 to 15); the cap follows. */
-    public void setMegastructures(UUID team, int count, long gameTime) {
+    /**
+     * Records that {@code team} formed the megastructure {@code id}; the cap follows. A megastructure counts once,
+     * the first time it forms, and stays counted if it is later broken (like the type reached, GTIA-D-372).
+     *
+     * @return whether this was the first time
+     */
+    public boolean markBuilt(UUID team, String id, long gameTime) {
         Team state = team(team);
-        state.megastructures = Math.max(0, Math.min(KardashevScale.MAX_MEGASTRUCTURES, count));
+        if (!state.built.add(id)) return false;
         state.update(gameTime);
         setDirty();
+        return true;
+    }
+
+    public boolean built(UUID team, String id) {
+        Team state = teams.get(team);
+        return state != null && state.built.contains(id);
     }
 
     /** Highest integer type the team reached; it never drops (GTIA-D-372). */
@@ -144,7 +159,11 @@ public final class KardashevData extends SavedData {
 
         final long[] epochs = new long[BUCKETS];
         final double[] sums = new double[BUCKETS];
-        int megastructures;
+        final java.util.Set<String> built = new java.util.LinkedHashSet<>();
+        // EN: Count set by the old operator command, before the megastructures reported themselves; kept as a floor.
+        // PT: Contagem do antigo comando de operador, de antes das megas se reportarem; fica como piso.
+        // ZH: 旧版管理员命令设定的数量（巨构自行上报之前）；保留为下限。
+        int legacyMegastructures;
         int reachedType;
 
         Team() {
@@ -162,8 +181,12 @@ public final class KardashevData extends SavedData {
             return sum;
         }
 
+        int megastructures() {
+            return Math.min(KardashevScale.MAX_MEGASTRUCTURES, Math.max(legacyMegastructures, built.size()));
+        }
+
         boolean update(long gameTime) {
-            int reached = KardashevScale.reachedType(windowSum(gameTime, BUCKETS) / WINDOW_TICKS, megastructures);
+            int reached = KardashevScale.reachedType(windowSum(gameTime, BUCKETS) / WINDOW_TICKS, megastructures());
             if (reached <= reachedType) return false;
             reachedType = reached;
             return true;

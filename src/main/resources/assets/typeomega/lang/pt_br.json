@@ -1126,7 +1126,6 @@
   "typeomega.kardashev.tooltip.steam": "Vapor conta a %s.",
   "typeomega.kardashev.tooltip.cap": "Em cada tipo o K para em %s, %s e %s com 0, 1 e 2 megaestruturas.",
   "typeomega.kardashev.tooltip.use": "Clique com o botão direito para ler.",
-  "typeomega.kardashev.command.megastructures": "Time de %s: %s megaestruturas, teto K %s.",
   "material.typeomega.boric_acid": "Ácido Bórico",
   "material.typeomega.boron_trifluoride": "Trifluoreto de Boro",
   "material.typeomega.boron_trichloride": "Tricloreto de Boro",
@@ -1144,5 +1143,13 @@
   "item.typeomega.thermal_space_helmet": "Capacete Espacial Térmico",
   "item.typeomega.thermal_space_suit": "Traje Espacial Térmico",
   "item.typeomega.thermal_space_pants": "Calças Espaciais Térmicas",
-  "item.typeomega.thermal_space_boots": "Botas Espaciais Térmicas"
+  "item.typeomega.thermal_space_boots": "Botas Espaciais Térmicas",
+  "block.typeomega.national_dispatch_center": "Centro de Despacho Nacional",
+  "item.typeomega.grid_transponder": "Transponder de Rede",
+  "typeomega.grid_dispatch": "Despacho da Rede",
+  "typeomega.machine.national_dispatch_center.tooltip.fact.0": "Uma rede nacional é equilibrada minuto a minuto a partir de uma sala de controle",
+  "typeomega.machine.national_dispatch_center.tooltip.main.0": "Megaestrutura 1 do Tipo 0: sobe o teto Kardashev do time para 0,89",
+  "typeomega.machine.national_dispatch_center.tooltip.main.1": "Programa os Transponders de Rede que todo hatch de energia sem fio pede",
+  "typeomega.machine.national_dispatch_center.tooltip.requirements.0": "Os hatches vão nos cascos de aço inox limpo da sala de controle",
+  "typeomega.machine.national_dispatch_center.tooltip.requirements.1": "Faz overclock como uma máquina GregTech e aceita o Modo em Lote"
 }

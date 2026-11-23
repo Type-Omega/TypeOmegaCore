@@ -31,6 +31,12 @@ public final class GTIATooltips {
                 null,
                 new String[] { "An Ad Astra Launch Pad (3 x 3) in the middle of the platform",
                         "Hatches go on the casings of the base and the control house in front", OVERCLOCK });
+        add("national_dispatch_center",
+                "A national grid is balanced minute by minute from one control room",
+                new String[] { "Megastructure 1 of Type 0: raises your team's Kardashev cap to 0.89",
+                        "Programs the Grid Transponders that every wireless energy hatch needs" },
+                null,
+                new String[] { "Hatches go on the clean stainless steel casings of the control hall", OVERCLOCK });
         add("fragment_collector",
                 "Survey rigs read the rock through cores before any shaft is sunk",
                 new String[] { "Mines the veins of the dimension of the World Fragment in its input bus",

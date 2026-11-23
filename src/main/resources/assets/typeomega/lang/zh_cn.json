@@ -1126,7 +1126,6 @@
   "typeomega.kardashev.tooltip.steam": "蒸汽按 %s 计入。",
   "typeomega.kardashev.tooltip.cap": "每个类型中，建成 0、1、2 座巨构时 K 的上限分别为 %s、%s、%s。",
   "typeomega.kardashev.tooltip.use": "右键读取。",
-  "typeomega.kardashev.command.megastructures": "%s 的队伍：%s 座巨构，K 上限 %s。",
   "material.typeomega.boric_acid": "硼酸",
   "material.typeomega.boron_trifluoride": "三氟化硼",
   "material.typeomega.boron_trichloride": "三氯化硼",
@@ -1144,5 +1143,13 @@
   "item.typeomega.thermal_space_helmet": "隔热宇航头盔",
   "item.typeomega.thermal_space_suit": "隔热宇航服",
   "item.typeomega.thermal_space_pants": "隔热宇航裤",
-  "item.typeomega.thermal_space_boots": "隔热宇航靴"
+  "item.typeomega.thermal_space_boots": "隔热宇航靴",
+  "block.typeomega.national_dispatch_center": "国家电力调度中心",
+  "item.typeomega.grid_transponder": "电网应答器",
+  "typeomega.grid_dispatch": "电网调度",
+  "typeomega.machine.national_dispatch_center.tooltip.fact.0": "国家电网由一间控制室逐分钟进行平衡",
+  "typeomega.machine.national_dispatch_center.tooltip.main.0": "0 型第 1 座巨构：将队伍的卡尔达肖夫上限提升到 0.89",
+  "typeomega.machine.national_dispatch_center.tooltip.main.1": "编程每个无线能源仓都需要的电网应答器",
+  "typeomega.machine.national_dispatch_center.tooltip.requirements.0": "仓口安装在控制大厅的洁净不锈钢外壳上",
+  "typeomega.machine.national_dispatch_center.tooltip.requirements.1": "可像 GregTech 机器一样超频，支持批处理模式"
 }

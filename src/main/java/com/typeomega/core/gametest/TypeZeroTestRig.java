@@ -1,0 +1,91 @@
+package com.typeomega.core.gametest;
+
+import com.gregtechceu.gtceu.api.machine.MetaMachine;
+import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
+import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+/** Builds the Type 0 megastructures from their previews far from the test area, one box per slot. */
+final class TypeZeroTestRig {
+
+    private TypeZeroTestRig() {}
+
+    /** A placed structure: the corner it starts at, its size and its controller. */
+    record Placed(BlockPos origin, int nx, int ny, int nz, MultiblockControllerMachine controller) {
+
+        BlockPos at(int x, int y, int z) {
+            return origin.offset(x, y, z);
+        }
+
+        /** Positions holding {@code block}, in preview order. */
+        List<BlockPos> find(GameTestHelper h, Block block) {
+            List<BlockPos> found = new ArrayList<>();
+            for (int z = 0; z < nz; z++)
+                for (int y = 0; y < ny; y++)
+                    for (int x = 0; x < nx; x++)
+                        if (h.getLevel().getBlockState(at(x, y, z)).is(block)) found.add(at(x, y, z));
+            return found;
+        }
+    }
+
+    /** Absolute corner of a slot: 64 blocks apart, 3600 blocks south of the test and at y 200. */
+    static BlockPos slot(GameTestHelper h, int slot) {
+        BlockPos zero = h.absolutePos(BlockPos.ZERO);
+        return new BlockPos(zero.getX() + 64 * slot, 200, zero.getZ() + 3600);
+    }
+
+    /**
+     * Places the first preview of {@code definition} at {@code origin}, after clearing its box (the test world is
+     * kept between runs), with the given owner. Hatches the preview chose are replaced by {@code casing} when it is
+     * not null, so a test can put its own.
+     */
+    static Placed place(GameTestHelper h, MultiblockMachineDefinition definition, BlockPos origin, UUID owner,
+                        Block casing) {
+        var shape = definition.getMatchingShapes().get(0).getBlocks();
+        var level = h.getLevel();
+        int nx = shape.length, ny = shape[0].length, nz = shape[0][0].length;
+        for (int cx = origin.getX() >> 4; cx <= (origin.getX() + nx) >> 4; cx++)
+            for (int cz = origin.getZ() >> 4; cz <= (origin.getZ() + nz) >> 4; cz++)
+                level.setChunkForced(cx, cz, true);
+        BlockState air = Blocks.AIR.defaultBlockState();
+        for (int x = 0; x < nx; x++)
+            for (int y = 0; y < ny; y++)
+                for (int z = 0; z < nz; z++)
+                    if (!level.getBlockState(origin.offset(x, y, z)).isAir())
+                        level.setBlock(origin.offset(x, y, z), air, 2 | 16);
+        BlockPos controllerPos = null;
+        for (int x = 0; x < nx; x++)
+            for (int y = 0; y < ny; y++)
+                for (int z = 0; z < nz; z++) {
+                    var info = shape[x][y][z];
+                    if (info == null) continue;
+                    BlockState state = info.getBlockState();
+                    if (state.is(definition.getBlock())) controllerPos = origin.offset(x, y, z);
+                    else if (casing != null &&
+                            state.getBlock() instanceof com.gregtechceu.gtceu.api.block.MetaMachineBlock)
+                        state = casing.defaultBlockState();
+                    level.setBlock(origin.offset(x, y, z), state, 2 | 16);
+                }
+        if (controllerPos == null) throw new IllegalStateException("no controller in the preview of " +
+                definition.getId());
+        var controller = (MultiblockControllerMachine) MetaMachine.getMachine(level, controllerPos);
+        controller.setOwnerUUID(owner);
+        return new Placed(origin, nx, ny, nz, controller);
+    }
+
+    /** Checks the pattern the way the world does and runs the formation hook. */
+    static boolean form(MultiblockControllerMachine controller) {
+        if (!controller.checkPatternWithLock()) return false;
+        controller.onStructureFormed();
+        return true;
+    }
+}

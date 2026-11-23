@@ -70,6 +70,13 @@ public final class GTIARecipeTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.ASSEMBLER);
 
+    /** National Dispatch Center (GTIA-D-390, D-419): programs the grid transponders of the team's wireless hatches. */
+    public static final GTRecipeType GRID_DISPATCH = register("grid_dispatch", GTRecipeTypes.MULTIBLOCK)
+            .setMaxIOSize(4, 1, 0, 0)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.ELECTROLYZER);
+
     private GTIARecipeTypes() {}
 
     public static void init() {}

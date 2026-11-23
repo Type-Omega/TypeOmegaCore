@@ -90,7 +90,7 @@ public final class KardashevGameTests {
         h.assertTrue(capped.kHundredths() == 79 && capped.capped(), "no megas: K 0.79, capped");
         h.assertTrue(KardashevText.reading(capped).size() == 6, "capped reading adds the cap hint");
 
-        data.setMegastructures(team, 3, now);
+        for (String id : new String[] { "a", "b", "c" }) data.markBuilt(team, id, now);
         var open = data.read(team, now);
         h.assertTrue(open.kHundredths() == 100 && open.reachedType() == 1, "third mega: K 1.00, Type I reached");
         h.assertTrue(KardashevText.reading(open).size() == 5, "uncapped reading has five lines");

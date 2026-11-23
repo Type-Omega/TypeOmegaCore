@@ -45,6 +45,7 @@ public final class GTIAMod {
         com.typeomega.core.station.GTIAStation.init();
         com.typeomega.core.kardashev.KardashevMeter.init();
         com.typeomega.core.data.rocket.GTIARocketBlocks.init();
+        com.typeomega.core.mega.typezero.TypeZeroMegas.init();
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         com.typeomega.core.miner.GTIAMiners.registerSerializers(modBus);
         com.typeomega.core.loot.GTOreFortune.register(modBus);
@@ -153,6 +154,7 @@ public final class GTIAMod {
         com.typeomega.core.miner.FragmentCollectors.init();
         com.typeomega.core.processing.GTIAProcessing.init();
         com.typeomega.core.data.rocket.GTIARocketAssembler.init();
+        com.typeomega.core.mega.typezero.TypeZeroMegas.registerMachines();
         com.typeomega.core.mega.GTIAMegastructures.init();
     }
 

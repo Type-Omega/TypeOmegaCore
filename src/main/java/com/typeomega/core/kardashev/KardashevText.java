@@ -34,7 +34,6 @@ public final class KardashevText {
         lang("tooltip.steam", "Steam counts at %s.");
         lang("tooltip.cap", "Each type caps K at %s, %s and %s with 0, 1 and 2 megastructures.");
         lang("tooltip.use", "Right-click to read.");
-        lang("command.megastructures", "Team of %s: %s megastructures, cap K %s.");
     }
 
     private static void lang(String key, String english) {
