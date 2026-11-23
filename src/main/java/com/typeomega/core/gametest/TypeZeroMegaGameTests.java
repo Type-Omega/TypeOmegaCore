@@ -236,7 +236,8 @@ public final class TypeZeroMegaGameTests {
                 var match = dt == null ? null : RecipeHelper.matchRecipe(tokamak, dt);
                 h.fail("the plasma lights after the start-up charge (" + tokamak.startCharge() + " EU; formed " +
                         tokamak.isFormed() + ", logic " + tokamak.getRecipeLogic().getStatus() + ", D-T " +
-                        (match == null ? "missing" : match.isSuccess() + " " + match.reason()) + ")");
+                        (match == null ? "missing" : match.isSuccess() + " " + match.reason()) + ", modifiers " +
+                        (dt == null || tokamak.fullModifyRecipe(dt) != null ? "pass" : "refuse") + ")");
             }
             h.assertTrue(out.getEnergyStored() > 0, "fusion EU reaches the dynamo");
             var helium = ((FluidHatchPartMachine) MetaMachine.getMachine(level, at[4])).tank.getFluidInTank(0);

@@ -2,6 +2,7 @@ package com.typeomega.core.gametest;
 
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
+import com.gregtechceu.gtceu.api.machine.feature.multiblock.IMaintenanceMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
 
 import net.minecraft.core.BlockPos;
@@ -82,10 +83,21 @@ final class TypeZeroTestRig {
         return new Placed(origin, nx, ny, nz, controller);
     }
 
-    /** Checks the pattern the way the world does and runs the formation hook. */
+    /** Checks the pattern the way the world does, runs the formation hook and fixes the maintenance hatches. */
     static boolean form(MultiblockControllerMachine controller) {
         if (!controller.checkPatternWithLock()) return false;
         controller.onStructureFormed();
+        // EN: The preview takes any maintenance hatch, and which one depends on hash order (it changes between runs
+        // and with FTB Teams loaded). A plain one is placed with all 6 problems and makes every recipe fail.
+        // PT: O preview pega qualquer hatch de manutenção, e qual depende da ordem de hash (muda entre rodadas e com
+        // o FTB Teams carregado). Um hatch comum nasce com os 6 problemas e faz toda receita falhar.
+        // ZH: 预览会选用任意维护仓，具体哪个取决于哈希顺序（每次运行及加载 FTB Teams 时都会变化）。普通维护仓
+        // 放置时带有全部 6 个故障，会使所有配方失败。
+        for (var part : controller.getParts())
+            if (part instanceof IMaintenanceMachine maintenance) maintenance.setMaintenanceProblems(NO_PROBLEMS);
         return true;
     }
+
+    /** All six maintenance bits set: nothing to fix. */
+    static final byte NO_PROBLEMS = 0b111111;
 }
