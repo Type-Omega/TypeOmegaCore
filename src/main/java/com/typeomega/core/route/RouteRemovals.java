@@ -39,6 +39,8 @@ public final class RouteRemovals {
             ids.add("gtceu:extractor/extract_" + m + "_dust");
             ids.add("gtceu:liquefaction_furnace/extract_" + m + "_dust");
         }
+        // Sodium for the LV battery: 60 -> 30 EU/t, back in ChemLineRecipes (GTIA-D-408)
+        ids.add("gtceu:electrolyzer/sodium_hydroxide_electrolysis");
         // Aluminium dust in the EBF: 120 -> 480 EU/t
         ids.add("gtceu:electric_blast_furnace/blast_aluminium");
         ids.add("gtceu:electric_blast_furnace/blast_aluminium_gas");

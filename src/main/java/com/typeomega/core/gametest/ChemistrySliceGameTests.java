@@ -105,6 +105,43 @@ public final class ChemistrySliceGameTests {
         h.succeed();
     }
 
+    /** The LV entry to aluminium (GTIA-D-408, D-417): cell liquor, 30 EU/t, half the aluminate of the MV route. */
+    @GameTest(template = TEMPLATE, batch = "chemistry", timeoutTicks = 20)
+    public static void lvChemicalReactorDigestsBauxite(GameTestHelper h) {
+        var reactor = place(h, GTMachines.CHEMICAL_REACTOR, GTValues.LV, 0);
+        reactor.importItems.setStackInSlot(0, ChemicalHelper.get(TagPrefix.dust, GTMaterials.Bauxite));
+        reactor.importFluids.setFluidInTank(0, GTIAAlloys.CELL_LIQUOR.getFluid(2000));
+        reactor.importFluids.setFluidInTank(1, GTMaterials.Steam.getFluid(1000));
+        reactor.recipeLogic.findAndHandleRecipe();
+        h.assertTrue(reactor.recipeLogic.getLastRecipe() != null &&
+                reactor.recipeLogic.getLastRecipe().id.equals(GTIAMod.id("chemical_reactor/bayer_digestion_lv")),
+                "the LV reactor runs the LV Bayer digestion");
+        reactor.recipeLogic.onRecipeFinish();
+        h.assertTrue(outputAmount(reactor, GTIAAlloys.SODIUM_ALUMINATE) == 500, "one bauxite gives 500 mB at LV");
+        h.succeed();
+    }
+
+    @GameTest(template = TEMPLATE, batch = "chemistry", timeoutTicks = 20)
+    public static void lvAluminiumAndSodiumRecipesRunAt30(GameTestHelper h) {
+        for (String path : new String[] { "chemical_reactor/bayer_digestion_lv",
+                "chemical_reactor/bayer_precipitation_lv", "chemical_reactor/cryolite_lv",
+                "electrolyzer/sodium_hydroxide_electrolysis", "electrolyzer/decomposition_electrolyzing_lepidolite" }) {
+            var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(GTIAMod.id(path)).orElse(null);
+            h.assertTrue(recipe != null, "missing recipe typeomega:" + path);
+            h.assertTrue(recipe.getInputEUt().getTotalEU() == GTValues.VA[GTValues.LV], path + " runs at 30 EU/t");
+        }
+        // The MV routes stay at 120 EU/t (GTIA-D-417).
+        for (String path : new String[] { "chemical_reactor/bayer_digestion", "chemical_reactor/bayer_precipitation",
+                "chemical_reactor/cryolite" }) {
+            var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(GTIAMod.id(path)).orElseThrow();
+            h.assertTrue(recipe.getInputEUt().getTotalEU() == GTValues.VA[GTValues.MV], path + " stays at 120 EU/t");
+        }
+        var manager = h.getLevel().getServer().getRecipeManager();
+        h.assertTrue(manager.byKey(new net.minecraft.resources.ResourceLocation("gtceu",
+                "electrolyzer/sodium_hydroxide_electrolysis")).isEmpty(), "GTCEu's 60 EU/t sodium recipe is replaced");
+        h.succeed();
+    }
+
     @GameTest(template = TEMPLATE, batch = "chemistry", timeoutTicks = 20)
     public static void mvAndHvLinesExist(GameTestHelper h) {
         h.assertTrue(GTIAItems.CARBON_ANODE.isPresent() && GTIAItems.ASBESTOS_DIAPHRAGM.isPresent(),

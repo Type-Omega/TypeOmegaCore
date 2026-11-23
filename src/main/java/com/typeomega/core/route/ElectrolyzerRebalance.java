@@ -25,16 +25,20 @@ import java.util.function.Consumer;
 /**
  * EN: GTNH-style changes to the GTCEu electrolyzer decompositions (GTIA-D-304). Silicates and clays cost MV
  * (120 EU/t); aluminosilicates and ruby give Alumina instead of Aluminium, which then goes through the Hall-Héroult
- * Cell; bastnasite gives Rare Earth instead of pure cerium. Same formula as GTCEu's DecompositionRecipeHandler.
+ * Cell; bastnasite gives Rare Earth instead of pure cerium; lepidolite, the LV fluorine source, drops to 30 EU/t
+ * (GTIA-D-408). Same formula as GTCEu's DecompositionRecipeHandler.
  * PT: Mudanças no estilo do GTNH nas decomposições do eletrolisador do GTCEu (GTIA-D-304). Silicatos e argilas
  * passam a MV (120 EU/t); aluminossilicatos e rubi dão Alumina no lugar de Alumínio, que segue para a Hall-Héroult;
- * bastnasita dá Rare Earth em vez de cério puro. Mesma fórmula do DecompositionRecipeHandler do GTCEu.
+ * bastnasita dá Rare Earth em vez de cério puro; a lepidolita, fonte de flúor do LV, desce para 30 EU/t
+ * (GTIA-D-408). Mesma fórmula do DecompositionRecipeHandler do GTCEu.
  * ZH: 仿照 GTNH 修改 GTCEu 电解机的分解配方 (GTIA-D-304)。硅酸盐和黏土改为 MV (120 EU/t); 铝硅酸盐和红宝石
- * 产出氧化铝而不是铝, 再送入霍尔-埃鲁电解槽; 氟碳铈矿产出稀土而不是纯铈。公式与 GTCEu 的分解配方相同。
+ * 产出氧化铝而不是铝, 再送入霍尔-埃鲁电解槽; 氟碳铈矿产出稀土而不是纯铈; 锂云母作为 LV 的氟来源降为 30 EU/t
+ * (GTIA-D-408)。公式与 GTCEu 的分解配方相同。
  */
 public final class ElectrolyzerRebalance {
 
-    record Entry(Material material, boolean mv, boolean alumina, Material cerium) {}
+    /** {@code eut} 0 keeps GTCEu's rule (30 EU/t up to two components, 60 above). */
+    record Entry(Material material, int eut, boolean alumina, Material cerium) {}
 
     static final List<Entry> ENTRIES = List.of(
             silicate(GTMaterials.Andradite), silicate(GTMaterials.Asbestos), silicate(GTMaterials.Ferrosilite),
@@ -49,17 +53,22 @@ public final class ElectrolyzerRebalance {
             aluminosilicate(GTMaterials.Sodalite), aluminosilicate(GTMaterials.Spessartine),
             aluminosilicate(GTMaterials.Spodumene), aluminosilicate(GTMaterials.Topaz),
             aluminosilicate(GTMaterials.Zeolite),
-            new Entry(GTMaterials.Ruby, false, true, null),
-            new Entry(GTMaterials.Bastnasite, false, false, GTMaterials.RareEarth));
+            new Entry(GTMaterials.Ruby, 0, true, null),
+            new Entry(GTMaterials.Bastnasite, 0, false, GTMaterials.RareEarth),
+            lv(GTMaterials.Lepidolite));
 
     private ElectrolyzerRebalance() {}
 
     private static Entry silicate(Material m) {
-        return new Entry(m, true, false, null);
+        return new Entry(m, GTValues.VA[GTValues.MV], false, null);
     }
 
     private static Entry aluminosilicate(Material m) {
-        return new Entry(m, true, true, null);
+        return new Entry(m, GTValues.VA[GTValues.MV], true, null);
+    }
+
+    private static Entry lv(Material m) {
+        return new Entry(m, GTValues.VA[GTValues.LV], false, null);
     }
 
     public static void addRecipes(Consumer<FinishedRecipe> provider) {
@@ -97,8 +106,7 @@ public final class ElectrolyzerRebalance {
         final long d = Math.max(1, divisor);
 
         int components = material.getMaterialComponents().size();
-        int eut = e.mv() ? GTValues.VA[GTValues.MV] : components <= 2 ? GTValues.VA[GTValues.LV] :
-                2 * GTValues.VA[GTValues.LV];
+        int eut = e.eut() > 0 ? e.eut() : components <= 2 ? GTValues.VA[GTValues.LV] : 2 * GTValues.VA[GTValues.LV];
         List<ItemStack> outItems = new ArrayList<>();
         dusts.forEach((m, n) -> outItems.add(ChemicalHelper.get(TagPrefix.dust, m, (int) (n / d))));
         List<FluidStack> outFluids = new ArrayList<>();

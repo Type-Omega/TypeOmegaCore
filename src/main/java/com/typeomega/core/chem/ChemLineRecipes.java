@@ -38,6 +38,7 @@ public final class ChemLineRecipes {
     public static void addRecipes(Consumer<FinishedRecipe> provider) {
         steam(provider);
         lv(provider);
+        lvAluminium(provider);
         mv(provider);
     }
 
@@ -122,6 +123,47 @@ public final class ChemLineRecipes {
                 .outputItems(TagPrefix.dust, GTMaterials.SodiumHydroxide)
                 .outputItems(TagPrefix.dust, GTMaterials.Salt)
                 .outputFluids(GTMaterials.Water.getFluid(1000))
+                .duration(150).EUt(LV).save(provider);
+    }
+
+    /**
+     * EN: LV entry to the aluminium line (GTIA-D-408, D-417), 30 EU/t at a lower yield, so the MV route at 120 EU/t
+     * stays the efficient one: the raw cell liquor digests the bauxite (half the aluminate), CO2 precipitates the
+     * hydroxide (the soda leaves as soda ash instead of coming back) and the liquor makes the cryolite half the time.
+     * The inputs differ from the MV recipes because GTCEu's lookup refuses a recipe whose inputs contain another's.
+     * PT: Entrada LV na linha do alumínio (GTIA-D-408, D-417), 30 EU/t com rendimento menor, e a rota MV a 120 EU/t
+     * continua a eficiente: o licor bruto da célula digere a bauxita (metade do aluminato), o CO2 precipita o
+     * hidróxido (a soda sai como barrilha em vez de voltar) e o licor faz a criolita em metade das vezes. As entradas
+     * diferem das receitas MV porque o lookup do GTCEu recusa receita cujas entradas contêm as de outra.
+     * ZH: 铝生产线的 LV 入口（GTIA-D-408、D-417），30 EU/t、产率更低，MV 120 EU/t 路线仍是高效路线：电解槽原液溶出
+     * 铝土矿（铝酸钠减半），CO2 沉淀氢氧化铝（碱以纯碱形式离开而不回收），原液制冰晶石只有一半产出。输入与 MV
+     * 配方不同，因为 GTCEu 的配方查找会拒绝输入包含另一配方输入的配方。
+     */
+    private static void lvAluminium(Consumer<FinishedRecipe> provider) {
+        var digest = GTRecipeTypes.CHEMICAL_RECIPES.recipeBuilder(GTIAMod.id("bayer_digestion_lv"))
+                .inputItems(TagPrefix.dust, GTMaterials.Bauxite)
+                .inputFluids(GTIAAlloys.CELL_LIQUOR.getFluid(2000), GTMaterials.Steam.getFluid(1000))
+                .outputFluids(GTIAAlloys.SODIUM_ALUMINATE.getFluid(500));
+        var redMud = ForgeRegistries.FLUIDS.getValue(new ResourceLocation("gtna", "red_mud"));
+        if (redMud != null && redMud != Fluids.EMPTY) digest.outputFluids(new FluidStack(redMud, 250));
+        digest.duration(300).EUt(LV).save(provider);
+        // 2 NaAlO2 + CO2 + 3 H2O -> 2 Al(OH)3 + Na2CO3
+        GTRecipeTypes.CHEMICAL_RECIPES.recipeBuilder(GTIAMod.id("bayer_precipitation_lv"))
+                .inputFluids(GTIAAlloys.SODIUM_ALUMINATE.getFluid(1000), GTMaterials.CarbonDioxide.getFluid(500))
+                .outputItems(TagPrefix.dust, GTIAAlloys.ALUMINIUM_HYDROXIDE, 2)
+                .outputItems(TagPrefix.dust, GTMaterials.SodaAsh)
+                .duration(200).EUt(LV).save(provider);
+        GTRecipeTypes.CHEMICAL_RECIPES.recipeBuilder(GTIAMod.id("cryolite_lv"))
+                .inputItems(TagPrefix.dust, GTIAAlloys.ALUMINIUM_HYDROXIDE)
+                .inputFluids(GTIAAlloys.CELL_LIQUOR.getFluid(6000), GTMaterials.HydrofluoricAcid.getFluid(6000))
+                .chancedOutput(TagPrefix.dust, GTIAAlloys.CRYOLITE, 5000, 0)
+                .outputFluids(GTMaterials.Water.getFluid(6000))
+                .duration(400).EUt(LV).save(provider);
+        // 2 NaOH -> 2 Na + O2 + H2, the GTCEu recipe at 30 EU/t instead of 60 (same outputs and time)
+        GTRecipeTypes.ELECTROLYZER_RECIPES.recipeBuilder(GTIAMod.id("sodium_hydroxide_electrolysis"))
+                .inputItems(TagPrefix.dust, GTMaterials.SodiumHydroxide, 3)
+                .outputItems(TagPrefix.dust, GTMaterials.Sodium)
+                .outputFluids(GTMaterials.Oxygen.getFluid(1000), GTMaterials.Hydrogen.getFluid(1000))
                 .duration(150).EUt(LV).save(provider);
     }
 
