@@ -186,12 +186,10 @@ public final class TypeZeroMegaGameTests {
         var placed = TypeZeroTestRig.place(h, Tokamak.DEFINITION, TypeZeroTestRig.slot(h, 6), UUID.randomUUID(),
                 null);
         var level = h.getLevel();
-        // EN: Put the test's own hatches on the shield wall of the controller's face.
-        // PT: Põe os hatches do teste na parede de blindagem da face do controlador.
-        // ZH: 在控制器所在面的屏蔽墙上放置测试用的仓口。
-        int face = placed.controller().getPos().getZ();
-        var shield = placed.find(h, TypeZeroBlocks.NEUTRON_SHIELD_CASING.get()).stream()
-                .filter(p -> p.getZ() == face).toList();
+        // EN: Put the test's own hatches on the neutron shield, which takes hatches anywhere.
+        // PT: Põe os hatches do teste na blindagem de nêutrons, que aceita hatch em qualquer bloco.
+        // ZH: 在中子屏蔽层上放置测试用的仓口，屏蔽层任意位置都可安装仓口。
+        var shield = placed.find(h, TypeZeroBlocks.NEUTRON_SHIELD_CASING.get());
         var hatches = new com.gregtechceu.gtceu.api.machine.MachineDefinition[] {
                 GTMachines.FLUID_IMPORT_HATCH[GTValues.HV], GTMachines.FLUID_IMPORT_HATCH[GTValues.HV],
                 GTMachines.FLUID_IMPORT_HATCH[GTValues.HV], GTMachines.ITEM_IMPORT_BUS[GTValues.HV],

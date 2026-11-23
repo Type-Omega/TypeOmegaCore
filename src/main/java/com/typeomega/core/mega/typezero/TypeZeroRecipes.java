@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.VA;
 
-/** Recipes of the three Type 0 megastructures and of what they make and burn (GTIA-D-390, D-419 to D-421). */
+/** Recipes of the three Type 0 megastructures and of what they make and burn (GTIA-D-390, D-419 to D-421, D-425). */
 public final class TypeZeroRecipes {
 
     private static final int HV = GTValues.HV;
@@ -89,11 +89,17 @@ public final class TypeZeroRecipes {
         // PT: O MgB2 supercondutor perto de 39 K é o candidato real a ímã barato de tokamak; a bobina
         // supercondutora do GTCEu fica no LuV.
         // ZH: MgB2 在约 39 K 超导，是廉价托卡马克磁体的现实候选；GTCEu 的超导线圈仍在 LuV。
+        // EN: GTIA-D-425: 8 per recipe, so the 466 coils of the Tokamak (462 placed, 4 in the controller) take
+        // 59 MV Field Generators instead of 233.
+        // PT: GTIA-D-425: 8 por receita, para as 466 bobinas do Tokamak (462 na estrutura, 4 no controlador)
+        // custarem 59 Geradores de Campo MV em vez de 233.
+        // ZH: GTIA-D-425：每次配方产出 8 个，托卡马克的 466 个线圈（结构 462 个、控制器 4 个）只需 59 个 MV 力场
+        // 发生器，而非 233 个。
         GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(GTIAMod.id("tokamak_magnet_coil"))
                 .inputItems(TagPrefix.wireGtDouble, GTMaterials.MagnesiumDiboride, 4)
                 .inputItems(GTItems.FIELD_GENERATOR_MV.asStack())
                 .inputItems(TagPrefix.frameGt, GTMaterials.Titanium)
-                .outputItems(TypeZeroBlocks.TOKAMAK_MAGNET_COIL.asStack(2))
+                .outputItems(TypeZeroBlocks.TOKAMAK_MAGNET_COIL.asStack(8))
                 .duration(400).EUt(VA[HV]).save(provider);
         // EN: Borated polyethylene slows and catches the neutrons, lead stops the gammas.
         // PT: Polietileno borado freia e captura os nêutrons, o chumbo segura os gamas.
@@ -109,11 +115,14 @@ public final class TypeZeroRecipes {
         // PT: O lítio gera trítio com os nêutrons da fusão; o berílio os multiplica (módulos de teste de manta do
         // ITER).
         // ZH: 锂利用聚变中子增殖氚；铍使中子倍增（ITER 测试包层模块）。
+        // EN: GTIA-D-425: 4 per recipe for the 444 blanket blocks of the Tokamak.
+        // PT: GTIA-D-425: 4 por receita para os 444 blocos de manta do Tokamak.
+        // ZH: GTIA-D-425：每次配方产出 4 个，供托卡马克的 444 块包层使用。
         GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(GTIAMod.id("lithium_breeding_blanket"))
                 .inputItems(TagPrefix.plate, GTMaterials.Titanium, 4)
                 .inputItems(TagPrefix.dust, GTMaterials.Lithium, 8)
                 .inputItems(TagPrefix.dust, GTMaterials.Beryllium, 2)
-                .outputItems(TypeZeroBlocks.LITHIUM_BREEDING_BLANKET.asStack(2))
+                .outputItems(TypeZeroBlocks.LITHIUM_BREEDING_BLANKET.asStack(4))
                 .duration(200).EUt(VA[HV]).save(provider);
     }
 
