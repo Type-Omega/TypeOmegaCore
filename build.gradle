@@ -150,8 +150,16 @@ dependencies {
     // EN: Productive Bees only at dev runtime, so GameTests see the HV bee recipes (GTIA-D-259).
     // PT: Productive Bees só no runtime de dev, para as GameTests verem as receitas de abelha do HV (GTIA-D-259).
     // ZH: Productive Bees 仅用于开发运行时，使 GameTest 能检查 HV 蜜蜂配方（GTIA-D-259）。
-    if (project.findProperty('gtiaDevOptionalDependencies') == 'true')
+    if (project.findProperty('gtiaDevOptionalDependencies') == 'true') {
         modRuntimeOnly("maven.modrinth:productivebees:1.20.1-12.6.0")
+        // EN: Ad Astra and its libraries, same files as the pack's lock, so the space recipes and fuel tags are tested.
+        // PT: Ad Astra e as libs dele, os mesmos arquivos do lock do pack, para testar as receitas e tags de espaço.
+        // ZH: Ad Astra 及其依赖库，与整合包锁定文件相同，用于测试太空配方与燃料标签。
+        modRuntimeOnly("curse.maven:ad-astra-635042:8833730")
+        modRuntimeOnly("curse.maven:botarium-704113:5486070")
+        modRuntimeOnly("curse.maven:resourceful-config-714059:6231176")
+        modRuntimeOnly("curse.maven:resourceful-lib-570073:5659871")
+    }
     if (project.hasProperty('gtnaDevJar')) {
         runtimeOnly files(project.property('gtnaDevJar'))
         modRuntimeOnly("curse.maven:applied-energistics-2-223794:7148487") { transitive = false }
