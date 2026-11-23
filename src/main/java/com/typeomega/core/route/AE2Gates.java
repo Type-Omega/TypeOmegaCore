@@ -26,14 +26,17 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 /**
- * AE2 in MV, GTO-style (GTIA-D-349): prints from the MV Laser Engraver, processors in the Circuit Assembler at LV
- * voltage (as in GTO; the engraver is the gate), the network blocks
- * from the MV Assembler; the refinement (wireless, P2P, ExtendedAE's Assembler Matrix and extended providers,
+ * AE2 from GT machines, GTO-style (GTIA-D-349), with the basic network moved to LV (GTIA-D-408, D-415): prints from
+ * the LV Laser Engraver, processors in the Circuit Assembler at LV, controller, drive, terminal, the two cores and
+ * the 1k item cell from the LV Assembler (LV hull, steel instead of aluminium), fluix from certus in the LV Mixer
+ * (no Nether quartz); the other network blocks from the MV Assembler; the refinement (wireless, P2P, ExtendedAE's
+ * Assembler Matrix and extended providers,
  * storage above 4k) in HV. The Inscriber and ExtendedAE's Circuit Cutter go, so presses only work in the engraver.
  * Recipes that only turn a block into its part (and back) stay.
  */
 public final class AE2Gates {
 
+    private static final int LV = GTValues.VA[GTValues.LV];
     private static final int MV = GTValues.VA[GTValues.MV];
     private static final int HV = GTValues.VA[GTValues.HV];
     private static final int EV = GTValues.VA[GTValues.EV];
@@ -117,7 +120,7 @@ public final class AE2Gates {
                     .notConsumable(item("ae2:" + kind[0] + (kind[0].equals("silicon") ? "" : "_processor") + "_press",
                             1))
                     .outputItems(item(print, 1))
-                    .duration(200).EUt(MV).save(provider);
+                    .duration(200).EUt(LV).save(provider);
             if (kind[0].equals("silicon")) continue;
             GTRecipeTypes.CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder(GTIAMod.id("ae2/" + kind[0] + "_processor"))
                     .inputItems(item(print, 1))
@@ -126,29 +129,43 @@ public final class AE2Gates {
                     .inputItems(CustomTags.LV_CIRCUITS)
                     .inputFluids(GTMaterials.SolderingAlloy.getFluid(72))
                     .outputItems(item("ae2:" + kind[0] + "_processor", 1))
-                    .duration(200).EUt(GTValues.VA[GTValues.LV]).save(provider);
+                    .duration(200).EUt(LV).save(provider);
         }
+        // EN: AE2's in-world fluix needs Nether quartz; the LV Mixer makes it from certus instead (GTIA-D-408).
+        // PT: O fluix do AE2 no mundo pede quartzo do Nether; o Misturador LV o faz com certus (GTIA-D-408).
+        // ZH: AE2 在世界中合成福鲁伊克斯需要下界石英；LV 搅拌机改用赛特斯石英制作（GTIA-D-408）。
+        GTRecipeTypes.MIXER_RECIPES.recipeBuilder(GTIAMod.id("ae2/fluix_crystal"))
+                .inputItems(item("ae2:charged_certus_quartz_crystal", 1))
+                .inputItems(TagPrefix.dust, GTMaterials.Redstone)
+                .inputItems(TagPrefix.dust, GTMaterials.CertusQuartz)
+                .inputFluids(GTMaterials.Water.getFluid(1000))
+                .outputItems(item("ae2:fluix_crystal", 2))
+                .duration(200).EUt(LV).save(provider);
     }
 
     private static void network(Consumer<FinishedRecipe> provider) {
-        assembler(provider, "annihilation_core", MV, item("ae2:annihilation_core", 2))
+        // EN: Certus crystals take the Nether quartz's place; the formation core keeps certus dust (GTIA-D-408).
+        // PT: Cristais de certus no lugar do quartzo do Nether; o núcleo de formação mantém o pó de certus
+        // (GTIA-D-408).
+        // ZH: 用赛特斯石英水晶代替下界石英；成型核心仍用赛特斯石英粉（GTIA-D-408）。
+        assembler(provider, "annihilation_core", LV, item("ae2:annihilation_core", 2))
                 .inputItems(TagPrefix.plate, GTMaterials.Steel, 2).inputItems(item("ae2:logic_processor", 1))
-                .inputItems(TagPrefix.dust, GTMaterials.NetherQuartz, 2).inputItems(CustomTags.LV_CIRCUITS)
+                .inputItems(TagPrefix.gem, GTMaterials.CertusQuartz, 2).inputItems(CustomTags.LV_CIRCUITS)
                 .inputFluids(GTMaterials.SolderingAlloy.getFluid(72)).save(provider);
-        assembler(provider, "formation_core", MV, item("ae2:formation_core", 2))
+        assembler(provider, "formation_core", LV, item("ae2:formation_core", 2))
                 .inputItems(TagPrefix.plate, GTMaterials.Steel, 2).inputItems(item("ae2:logic_processor", 1))
                 .inputItems(TagPrefix.dust, GTMaterials.CertusQuartz, 2).inputItems(CustomTags.LV_CIRCUITS)
                 .inputFluids(GTMaterials.SolderingAlloy.getFluid(72)).save(provider);
-        assembler(provider, "controller", MV, item("ae2:controller", 1))
-                .inputItems(GTMachines.HULL[GTValues.MV].asStack()).inputItems(item("ae2:fluix_crystal", 4))
-                .inputItems(item("ae2:engineering_processor", 2)).inputItems(CustomTags.MV_CIRCUITS, 2).save(provider);
-        assembler(provider, "drive", MV, item("ae2:drive", 1))
-                .inputItems(GTMachines.HULL[GTValues.MV].asStack()).inputItems(item("ae2:engineering_processor", 2))
-                .inputItems(item("ae2:fluix_glass_cable", 2)).inputItems(CustomTags.MV_CIRCUITS, 2).save(provider);
-        assembler(provider, "terminal", MV, item("ae2:terminal", 1))
+        assembler(provider, "controller", LV, item("ae2:controller", 1))
+                .inputItems(GTMachines.HULL[GTValues.LV].asStack()).inputItems(item("ae2:fluix_crystal", 4))
+                .inputItems(item("ae2:engineering_processor", 2)).inputItems(CustomTags.LV_CIRCUITS, 2).save(provider);
+        assembler(provider, "drive", LV, item("ae2:drive", 1))
+                .inputItems(GTMachines.HULL[GTValues.LV].asStack()).inputItems(item("ae2:engineering_processor", 2))
+                .inputItems(item("ae2:fluix_glass_cable", 2)).inputItems(CustomTags.LV_CIRCUITS, 2).save(provider);
+        assembler(provider, "terminal", LV, item("ae2:terminal", 1))
                 .inputItems(item("ae2:formation_core", 1)).inputItems(item("ae2:annihilation_core", 1))
                 .inputItems(item("ae2:logic_processor", 1)).inputItems(item("ae2:quartz_glass", 1))
-                .inputItems(CustomTags.MV_CIRCUITS).save(provider);
+                .inputItems(CustomTags.LV_CIRCUITS).save(provider);
         assembler(provider, "chest", MV, item("ae2:chest", 1))
                 .inputItems(GTMachines.HULL[GTValues.MV].asStack()).inputItems(item("ae2:terminal", 1))
                 .inputItems(item("ae2:engineering_processor", 1)).inputItems(CustomTags.MV_CIRCUITS).save(provider);
@@ -198,13 +215,13 @@ public final class AE2Gates {
     }
 
     private static void storage(Consumer<FinishedRecipe> provider) {
-        assembler(provider, "item_cell_housing", MV, item("ae2:item_cell_housing", 1))
-                .inputItems(TagPrefix.plate, GTMaterials.Aluminium, 3).inputItems(item("ae2:quartz_glass", 1))
+        assembler(provider, "item_cell_housing", LV, item("ae2:item_cell_housing", 1))
+                .inputItems(TagPrefix.plate, GTMaterials.Steel, 3).inputItems(item("ae2:quartz_glass", 1))
                 .inputItems(TagPrefix.dust, GTMaterials.Redstone, 2).save(provider);
         assembler(provider, "fluid_cell_housing", MV, item("ae2:fluid_cell_housing", 1))
                 .inputItems(TagPrefix.plate, GTMaterials.Aluminium, 3).inputItems(item("ae2:quartz_glass", 1))
                 .inputItems(GTItems.ELECTRIC_PUMP_LV.asStack()).save(provider);
-        assembler(provider, "cell_component_1k", MV, item("ae2:cell_component_1k", 1))
+        assembler(provider, "cell_component_1k", LV, item("ae2:cell_component_1k", 1))
                 .inputItems(item("ae2:logic_processor", 1)).inputItems(TagPrefix.dust, GTMaterials.CertusQuartz, 4)
                 .inputItems(TagPrefix.dust, GTMaterials.Redstone, 4).inputItems(CustomTags.LV_CIRCUITS)
                 .save(provider);
