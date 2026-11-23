@@ -7,9 +7,8 @@ import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.pattern.BlockPattern;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 
-import net.minecraft.network.chat.Component;
-
 import com.typeomega.core.GTIAMod;
+import com.typeomega.core.data.GTIATooltips;
 import com.typeomega.core.mega.common.MegaPattern;
 import com.typeomega.core.mega.common.MegaShape;
 
@@ -39,9 +38,7 @@ public final class StellarEngineDefinition {
                         GTCEu.id("block/multiblock/fusion_reactor"))
                         .andThen(builder -> builder.addDynamicRenderer(
                                 com.typeomega.core.mega.common.client.MegaRenderer.Render::new)))
-                .tooltips(Component.translatable("typeomega.machine.stellar_engine.tooltip.0"),
-                        Component.translatable("typeomega.machine.stellar_engine.tooltip.1"),
-                        Component.translatable("typeomega.machine.stellar_engine.tooltip.2"))
+                .tooltips(GTIATooltips.megastructure("stellar_engine", 3))
                 .register();
     }
 

@@ -8,10 +8,10 @@ import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 import com.typeomega.core.GTIAMod;
+import com.typeomega.core.data.GTIATooltips;
 
 import java.util.function.Function;
 
@@ -20,7 +20,7 @@ import static com.gregtechceu.gtceu.api.pattern.Predicates.abilities;
 /**
  * Registration of a megastructure controller from its shape: the station block as appearance, the five-phase pattern,
  * the shared renderer and the station's hatch slots. The English name and the tooltip lines
- * ({@code typeomega.machine.<id>.tooltip.<i>}) come from mega_lang.
+ * ({@code typeomega.machine.<id>.tooltip.<i>}) come from mega_lang, laid out by the lib's builder (GTIA-D-410).
  */
 public final class MegaDefinition {
 
@@ -39,8 +39,6 @@ public final class MegaDefinition {
                                                        Function<IMachineBlockEntity, ? extends MegaMachine> factory,
                                                        int tooltips, ResourceLocation casing, GTRecipeType type,
                                                        Hatch... hatches) {
-        var tips = new Component[tooltips];
-        for (int i = 0; i < tooltips; i++) tips[i] = Component.translatable("typeomega.machine." + id + ".tooltip." + i);
         return GTIAMod.REGISTRATE
                 .multiblock(id, factory::apply)
                 .langValue(MegaLang.english("block.typeomega." + id))
@@ -62,7 +60,7 @@ public final class MegaDefinition {
                         casing, GTCEu.id("block/multiblock/fusion_reactor"))
                         .andThen(builder -> builder.addDynamicRenderer(
                                 com.typeomega.core.mega.common.client.MegaRenderer.Render::new)))
-                .tooltips(tips)
+                .tooltips(GTIATooltips.megastructure(id, tooltips))
                 .register();
     }
 }

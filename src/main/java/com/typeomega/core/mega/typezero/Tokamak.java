@@ -25,6 +25,7 @@ import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
 public final class Tokamak {
 
     public static final String ID = "tokamak_hv";
+    public static final int MAX_DYNAMOS = 4;
 
     /** The layout, legend in {@code data/typeomega/multiblock/typezero/tokamak_hv.txt}. */
     public static final String[][] AISLES = TypeZeroPattern.read(ID);
@@ -50,7 +51,7 @@ public final class Tokamak {
                                 // PT: Até 4 dínamos: D-He3 dá 4 A de HV. Um Energy Hatch carrega a partida.
                                 // ZH: 最多 4 个动力仓：D-He3 输出 4 A HV。一个能源仓为启动充能。
                                 .or(abilities(PartAbility.OUTPUT_ENERGY).setMinGlobalLimited(1)
-                                        .setMaxGlobalLimited(4).setPreviewCount(1))
+                                        .setMaxGlobalLimited(MAX_DYNAMOS).setPreviewCount(1))
                                 .or(abilities(PartAbility.INPUT_ENERGY).setMinGlobalLimited(1)
                                         .setMaxGlobalLimited(2).setPreviewCount(1))
                                 .or(Predicates.autoAbilities(definition.getRecipeTypes(), false, false, true, false,

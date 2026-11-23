@@ -8,12 +8,6 @@ public final class GTIAMegaLang {
     private GTIAMegaLang() {}
 
     public static void init() {
-        GTIAMod.REGISTRATE.addRawLang("typeomega.machine.matrioshka_brain.tooltip.0",
-                "Shells of computers around the star of the Nexus System, built in five phases. Works only there.");
-        GTIAMod.REGISTRATE.addRawLang("typeomega.machine.matrioshka_brain.tooltip.1",
-                "Each phase adds a shell: 2^(21+n) CWU/t at 300 K, more on cold outer shells (Landauer's limit).");
-        GTIAMod.REGISTRATE.addRawLang("typeomega.machine.matrioshka_brain.tooltip.2",
-                "Sends CWU through Optical Data Transmission Hatches; CWU nobody asks for becomes Ψ.");
         GTIAMod.REGISTRATE.addRawLang("typeomega.matrioshka.needs_star",
                 "No star here: the Matrioshka Brain only works in the Nexus System.");
         GTIAMod.REGISTRATE.addRawLang("typeomega.matrioshka.phases",
@@ -152,12 +146,6 @@ public final class GTIAMegaLang {
         GTIAMod.REGISTRATE.addRawLang("typeomega.matrioshka.ui.manual.19",
                 "While it runs, every ring but the polar one leaves the world and turns; switching off puts them back.");
         // Stellar Engine
-        GTIAMod.REGISTRATE.addRawLang("typeomega.machine.stellar_engine.tooltip.0",
-                "Moves the Nexus System: a Shkadov mirror and a Caplan engine around its star, built in five phases. Works only there.");
-        GTIAMod.REGISTRATE.addRawLang("typeomega.machine.stellar_engine.tooltip.1",
-                "The Δv it gathers takes the system to new regions of the galaxy, each with its own bonus (the Stellar era).");
-        GTIAMod.REGISTRATE.addRawLang("typeomega.machine.stellar_engine.tooltip.2",
-                "The Caplan engine draws EU from the Nexus network and gives hydrogen and helium plasma.");
         GTIAMod.REGISTRATE.addRawLang("typeomega.stellar_engine.needs_star",
                 "No star here: the Stellar Engine only works in the Nexus System.");
         GTIAMod.REGISTRATE.addRawLang("typeomega.stellar_engine.thrust",

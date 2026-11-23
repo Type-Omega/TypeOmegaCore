@@ -33,6 +33,8 @@ public final class TypeZeroRecipes {
     public static final long DT_EUT = 2 * GTValues.V[HV];
     public static final long DHE3_EUT = 4 * GTValues.V[HV];
     public static final int FUSION_TICKS = 200;
+    /** Tritium burnt and bred back by the lithium blanket per D-T cycle. */
+    public static final int TRITIUM_BURNT = 100, TRITIUM_BRED = 90;
 
     private TypeZeroRecipes() {}
 
@@ -167,10 +169,10 @@ public final class TypeZeroRecipes {
         GTIARecipeTypes.TOKAMAK_FUSION.recipeBuilder(GTIAMod.id("deuterium_tritium"))
                 .inputItems(TagPrefix.dust, GTMaterials.Lithium)
                 .inputFluids(GTMaterials.Deuterium.getFluid(100))
-                .inputFluids(GTMaterials.Tritium.getFluid(100))
+                .inputFluids(GTMaterials.Tritium.getFluid(TRITIUM_BURNT))
                 .inputFluids(GTMaterials.Helium.getFluid(FluidStorageKeys.LIQUID, 50))
                 .outputFluids(GTMaterials.Helium.getFluid(150))
-                .outputFluids(GTMaterials.Tritium.getFluid(90))
+                .outputFluids(GTMaterials.Tritium.getFluid(TRITIUM_BRED))
                 .duration(FUSION_TICKS).outputEU(GTValues.V[HV], DT_EUT / GTValues.V[HV]).save(provider);
         GTIARecipeTypes.TOKAMAK_FUSION.recipeBuilder(GTIAMod.id("deuterium_helium_3"))
                 .inputFluids(GTMaterials.Deuterium.getFluid(100))

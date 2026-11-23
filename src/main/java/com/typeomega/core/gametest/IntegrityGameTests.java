@@ -1,12 +1,22 @@
 package com.typeomega.core.gametest;
 
+import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
+import com.gregtechceu.gtceu.api.registry.GTRegistries;
+
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.TranslatableContents;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.lib.test.Sweeps;
 import com.typeomega.core.GTIAMod;
+import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.lib.test.Sweeps;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Sweeps over everything the core registers (GTIA Lib test kit), so a new machine, item or recipe is checked the
@@ -46,6 +56,34 @@ public final class IntegrityGameTests {
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
     public static void everyNameExistsInAllThreeLanguages(GameTestHelper h) {
         Sweeps.namesInAllLanguages(GTIAMod.MOD_ID).assertClean(h, 50);
+        h.succeed();
+    }
+
+    /**
+     * Every multiblock of the core uses the lib's GTNH-style tooltip (GTIA-D-410): "Machine Type:" first, the mod name
+     * last.
+     */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void multiblockTooltipsFollowTheGtnhLayout(GameTestHelper h) {
+        List<String> wrong = new ArrayList<>();
+        int checked = 0;
+        for (var definition : GTRegistries.MACHINES) {
+            if (!GTIAMod.MOD_ID.equals(definition.getId().getNamespace()) ||
+                    !(definition instanceof MultiblockMachineDefinition) ||
+                    definition.getTooltipBuilder() == null) {
+                continue;
+            }
+            List<Component> lines = new ArrayList<>();
+            definition.getTooltipBuilder().accept(ItemStack.EMPTY, lines);
+            if (lines.isEmpty()) continue;
+            checked++;
+            boolean type = lines.stream().anyMatch(l -> l.getContents() instanceof TranslatableContents t &&
+                    t.getKey().equals("typeomegalib.tooltip.machine_type"));
+            boolean mod = lines.stream().anyMatch(l -> l.getString().equals(GTIATooltips.MOD_NAME));
+            if (!type || !mod) wrong.add(definition.getId().getPath());
+        }
+        h.assertTrue(checked >= 12, "only " + checked + " multiblock tooltips checked");
+        h.assertTrue(wrong.isEmpty(), "multiblocks without the GTNH-style tooltip: " + wrong);
         h.succeed();
     }
 }

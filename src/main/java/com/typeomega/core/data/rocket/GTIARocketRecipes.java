@@ -31,6 +31,10 @@ import java.util.function.Consumer;
  */
 public final class GTIARocketRecipes {
 
+    /** Power and time of the two rockets, shown in the Rocket Assembler tooltip. */
+    public static final int TIER_1_EUT = GTValues.VA[GTValues.HV], TIER_1_TICKS = 2400;
+    public static final int TIER_2_EUT = GTValues.VA[GTValues.EV], TIER_2_TICKS = 3000;
+
     private GTIARocketRecipes() {}
 
     public static void addRecipes(Consumer<FinishedRecipe> provider) {
@@ -95,7 +99,7 @@ public final class GTIARocketRecipes {
                 .inputItems(new ItemStack(engine)).inputItems(TagPrefix.plateDouble, GTMaterials.StainlessSteel, 8)
                 .inputItems(CustomTags.HV_CIRCUITS, 2).inputItems(GTItems.ELECTRIC_MOTOR_HV.asStack(4))
                 .inputFluids(GTMaterials.RocketFuel.getFluid(1000))
-                .outputItems(new ItemStack(rocket)).duration(2400).EUt(480).save(provider);
+                .outputItems(new ItemStack(rocket)).duration(TIER_1_TICKS).EUt(TIER_1_EUT).save(provider);
 
         Item rocket2 = item("tier_2_rocket"), deshTank = item("desh_tank"), deshEngine = item("desh_engine");
         if (rocket2 == null || deshTank == null || deshEngine == null) return;
@@ -112,7 +116,7 @@ public final class GTIARocketRecipes {
                 .inputItems(TagPrefix.plateDouble, GTMaterials.Titanium, 8)
                 .inputItems(CustomTags.EV_CIRCUITS, 4).inputItems(GTItems.ELECTRIC_MOTOR_EV.asStack(4))
                 .inputFluids(ZipDMaterials.ZIP_D_ROCKET_FUEL.getFluid(1000))
-                .outputItems(new ItemStack(rocket2)).duration(3000).EUt(GTValues.VA[GTValues.EV]).save(provider);
+                .outputItems(new ItemStack(rocket2)).duration(TIER_2_TICKS).EUt(TIER_2_EUT).save(provider);
     }
 
     static Item item(String path) {

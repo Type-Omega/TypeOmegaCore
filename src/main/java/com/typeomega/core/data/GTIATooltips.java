@@ -1,139 +1,243 @@
 package com.typeomega.core.data;
 
+import com.gregtechceu.gtceu.api.GTValues;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.data.rocket.GTIARocketRecipes;
+import com.typeomega.core.kardashev.KardashevScale;
+import com.typeomega.core.mega.common.MegaLang;
+import com.typeomega.core.mega.typezero.CosmodromeMachine;
+import com.typeomega.core.mega.typezero.Tokamak;
+import com.typeomega.core.mega.typezero.TokamakMachine;
+import com.typeomega.core.mega.typezero.TypeZeroRecipes;
+import com.typeomega.core.miner.FragmentCollectorLogic;
+import com.typeomega.core.processing.TierParallel;
+import com.typeomega.lib.lang.Tr;
+import com.typeomega.lib.tooltip.Hatch;
+import com.typeomega.lib.tooltip.MultiblockTooltip;
+import com.typeomega.lib.tooltip.MultiblockTooltipBuilder;
+import com.typeomega.lib.tooltip.TooltipRow;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Locale;
+
+import static com.typeomega.lib.tooltip.TooltipArg.emphasis;
+import static com.typeomega.lib.tooltip.TooltipArg.highlight;
+import static com.typeomega.lib.tooltip.TooltipArg.value;
 
 /**
- * Multiblock tooltips in the GTNA layout: an optional real fact, then "Main Function", "Auxiliary Module" (only when
- * the structure has one) and "Running Requirements". English text lives here and is registered as lang keys
- * (typeomega.machine.&lt;id&gt;.tooltip.&lt;section&gt;.&lt;n&gt;); pt_br.json translates the same keys.
+ * Multiblock tooltips in the GTNH layout of the lib (GTIA-D-410). The texts, in three languages, are in
+ * {@code mega_lang/multiblock_tooltips.json}; every number comes from the constant the machine logic or the recipe
+ * uses. The real-world fact of each machine stays as the grey italic line (GTIA-D-343).
  */
 public final class GTIATooltips {
 
-    private static final String[] SECTIONS = { "main", "auxiliary", "requirements" };
-    private static final String OVERCLOCK = "Overclocks like a GregTech machine and supports Batch Mode";
-
-    /** id -> section -> lines (English). "fact" is the optional real-world line on top. */
-    private static final Map<String, Map<String, String[]>> TEXT = new LinkedHashMap<>();
-
-    static {
-        add("rocket_assembler",
-                "The Saturn V was stacked upright in a building 160 m tall, then rolled to the pad",
-                new String[] { "Builds Ad Astra rockets from their parts, GregTech components and Rocket Fuel",
-                        "The tier 1 rocket takes HV power for 2 minutes" },
-                null,
-                new String[] { "An Ad Astra Launch Pad (3 x 3) in the middle of the platform",
-                        "Hatches go on the casings of the base and the control house in front", OVERCLOCK });
-        add("national_dispatch_center",
-                "A national grid is balanced minute by minute from one control room",
-                new String[] { "Megastructure 1 of Type 0: raises your team's Kardashev cap to 0.89",
-                        "Programs the Grid Transponders that every wireless energy hatch needs" },
-                null,
-                new String[] { "Hatches go on the clean stainless steel casings of the control hall", OVERCLOCK });
-        add("cosmodrome",
-                "Mission control watches every launch from kilometres away, through its tracking dishes",
-                new String[] { "Megastructure 2 of Type 0: raises your team's Kardashev cap to 0.99",
-                        "Launches the Lunar Probe with Rocket Fuel and returns the Lunar Survey Data",
-                        "Without the survey, no rocket lands on the Moon" },
-                null,
-                new String[] { "A formed Rocket Assembler within 48 blocks: the mission control links to it",
-                        "Hatches go on the clean stainless steel casings of the control hall", OVERCLOCK });
-        add("tokamak_hv",
-                "A tokamak holds a plasma hotter than the Sun's core in a ring of magnetic field",
-                new String[] { "Megastructure 3 of Type 0: closes Type 0 and opens the Type I cap",
-                        "D-T: 1024 EU/t, the lithium blanket breeds back 90 of the 100 mB of tritium",
-                        "D-He3: 2048 EU/t with lunar Helium-3",
-                        "Liquid Helium cools the magnets and leaves as Helium gas" },
-                null,
-                new String[] { "A cold plasma takes 2,000,000 EU of start-up charge from the Energy Hatches",
-                        "It cools after 5 s without fuel", "1 to 4 Dynamo Hatches; hatches go on the neutron shield",
-                        "No overclock: the output is fixed" });
-        add("fragment_collector",
-                "Survey rigs read the rock through cores before any shaft is sunk",
-                new String[] { "Mines the veins of the dimension of the World Fragment in its input bus",
-                        "Fragment alone: 4 raw ores per 8 s from a random vein of that dimension",
-                        "Fragment and a Vein Card of the same dimension: that vein, 4 operations at the card's purity",
-                        "The fragment and the card are never used up; each cycle has a 50% chance of a fragment copy" },
-                null,
-                new String[] { "Hatches go on the steel platform casings", OVERCLOCK });
-        add("large_fragment_collector",
-                "Offshore platforms drill several wells from one deck",
-                new String[] { "The Fragment Collector, 16 operations at once on an EV platform",
-                        "Accepts a Parallel Hatch for more" },
-                null,
-                new String[] { "Hatches go on the titanium platform casings", OVERCLOCK });
-        add("large_furnace", "Steel mills ran rows of identical furnaces off one gas main and two stacks",
-                new String[] { "Smelts any furnace recipe with many parallels",
-                        "64 parallels at LV, doubled for every energy tier above", "Parallels multiply items, not energy; the overclock still applies" },
-                null, new String[] { "Hatches go on the solid steel casings of the plinth", "Accepts one Parallel Hatch", OVERCLOCK });
-        add("ore_processing_plant", "A beneficiation plant crushes, grinds, washes and separates ore in one line",
-                new String[] { "Turns raw ore into final dusts and byproducts in one step, with water",
-                        "64 parallels at MV, +100 for every energy tier above", "Parallels multiply items, not energy; the overclock still applies" },
-                null, new String[] { "Hatches go on the aluminium casings", "No Parallel Hatch or Maintenance Hatch", OVERCLOCK });
-        add("processing_plus", "One hall, many lines: the module in the middle tells the family apart",
-                new String[] { "Bending, pressing, cutting, extruding, turning, wire, engraving and solidifying", "16 parallels at LV, doubled per tier, fixed at 256 from IV", "Parallels multiply items, not energy; the overclock still applies" },
-                null, new String[] { "Hatches go on the aluminium casings", "Switch the recipe type in the controller", OVERCLOCK });
-        add("assembling_plus", "One hall, many lines: the module in the middle tells the family apart",
-                new String[] { "Assembler and circuit assembler recipes", "16 parallels at LV, doubled per tier, fixed at 256 from IV", "Parallels multiply items, not energy; the overclock still applies" },
-                null, new String[] { "Hatches go on the aluminium casings", "Switch the recipe type in the controller", OVERCLOCK });
-        add("separating_plus", "One hall, many lines: the module in the middle tells the family apart",
-                new String[] { "Centrifuge, thermal centrifuge, electrolyzer, sifter, macerator and extractor recipes", "16 parallels at LV, doubled per tier, fixed at 256 from IV", "Parallels multiply items, not energy; the overclock still applies" },
-                null, new String[] { "Hatches go on the aluminium casings", "Switch the recipe type in the controller", OVERCLOCK });
-        add("mixing_plus", "One hall, many lines: the module in the middle tells the family apart",
-                new String[] { "Chemical reactor, mixer, chemical bath and ore washer recipes", "16 parallels at LV, doubled per tier, fixed at 256 from IV", "Parallels multiply items, not energy; the overclock still applies" },
-                null, new String[] { "Hatches go on the aluminium casings", "Switch the recipe type in the controller", OVERCLOCK });
-    }
+    /** Shown in blue italics on the last line, as the mod list names the mod. */
+    public static final String MOD_NAME = "TypeOmegaCore";
 
     private GTIATooltips() {}
 
-    private static void add(String id, String fact, String[] main, String[] auxiliary, String[] requirements) {
-        Map<String, String[]> sections = new LinkedHashMap<>();
-        if (fact != null) sections.put("fact", new String[] { fact });
-        sections.put("main", main);
-        if (auxiliary != null) sections.put("auxiliary", auxiliary);
-        sections.put("requirements", requirements);
-        TEXT.put(id, sections);
+    /** Shared text {@code typeomega.tooltip.<key>}. */
+    public static Tr shared(String key) {
+        return MegaLang.tr("typeomega.tooltip." + key);
     }
 
-    /** The tooltip lines of a multiblock registered above. */
+    /** {@code typeomega.machine.<id>.tooltip.<key>}. */
+    public static Tr own(String id, String key) {
+        return MegaLang.tr("typeomega.machine." + id + ".tooltip." + key);
+    }
+
+    /** Builder with the Machine Type line already in place. */
+    public static MultiblockTooltipBuilder start(String... types) {
+        Tr[] trs = new Tr[types.length];
+        for (int i = 0; i < types.length; i++) trs[i] = shared("type." + types[i]);
+        return MultiblockTooltip.builder().machineType(trs);
+    }
+
+    /** The fact line and the mod name that close every tooltip. */
+    public static Component[] finish(MultiblockTooltipBuilder builder, String id) {
+        return builder.humor(own(id, "fact")).mod(MOD_NAME).toArray();
+    }
+
     public static Component[] multiblock(String id) {
-        Map<String, String[]> sections = TEXT.get(id);
-        if (sections == null) throw new IllegalArgumentException("no tooltip for " + id);
-        List<Component> lines = new ArrayList<>();
-        if (sections.containsKey("fact")) {
-            lines.add(Component.translatable(key(id, "fact", 0)).withStyle(ChatFormatting.GRAY,
-                    ChatFormatting.ITALIC));
-        }
-        for (String section : SECTIONS) {
-            String[] text = sections.get(section);
-            if (text == null) continue;
-            lines.add(Component.literal("- ").append(Component.translatable("typeomega.tooltip.section." + section))
-                    .withStyle(ChatFormatting.GOLD));
-            for (int i = 0; i < text.length; i++) {
-                lines.add(Component.literal("∘ ").append(Component.translatable(key(id, section, i)))
-                        .withStyle(ChatFormatting.YELLOW));
-            }
-        }
-        return lines.toArray(Component[]::new);
+        return switch (id) {
+            case "large_furnace" -> largeFurnace();
+            case "ore_processing_plant" -> orePlant();
+            case "processing_plus", "assembling_plus", "separating_plus", "mixing_plus" -> plus(id);
+            case "rocket_assembler" -> rocketAssembler();
+            case "fragment_collector" -> fragmentCollector();
+            case "large_fragment_collector" -> largeFragmentCollector();
+            case "national_dispatch_center" -> dispatchCenter();
+            case "cosmodrome" -> cosmodrome();
+            case Tokamak.ID -> tokamak();
+            default -> throw new IllegalArgumentException("no tooltip for " + id);
+        };
     }
 
-    static void registerLang() {
-        GTIAMod.REGISTRATE.addRawLang("typeomega.tooltip.section.main", "Main Function");
-        GTIAMod.REGISTRATE.addRawLang("typeomega.tooltip.section.auxiliary", "Auxiliary Module");
-        GTIAMod.REGISTRATE.addRawLang("typeomega.tooltip.section.requirements", "Running Requirements");
-        TEXT.forEach((id, sections) -> sections.forEach((section, text) -> {
-            for (int i = 0; i < text.length; i++) GTIAMod.REGISTRATE.addRawLang(key(id, section, i), text[i]);
-        }));
+    /**
+     * A megastructure: the first mega_lang line describes it, the others are its rules. Their numbers are formulas
+     * of the machine's physics, so they stay in the text.
+     */
+    public static Component[] megastructure(String id, int lines) {
+        var b = start("megastructure").line(own(id, "0"));
+        if (lines > 1) b.separator();
+        for (int i = 1; i < lines; i++) b.line(own(id, String.valueOf(i)));
+        return b.mod(MOD_NAME).toArray();
     }
 
-    private static String key(String id, String section, int line) {
-        return "typeomega.machine." + id + ".tooltip." + section + "." + line;
+    private static Component parallels(int amount) {
+        return shared("parallels").component(value(amount));
+    }
+
+    private static MultiblockTooltipBuilder parallelRules(MultiblockTooltipBuilder b) {
+        return b.line(shared("parallels_items"), emphasis(shared("not")));
+    }
+
+    private static Component[] largeFurnace() {
+        String id = "large_furnace";
+        var b = start("furnace")
+                .line(own(id, "purpose"), highlight(own(id, "purpose.parallels")))
+                .line(own(id, "parallels"), parallels(TierParallel.largeFurnace(GTValues.LV)),
+                        value(GTValues.VN[GTValues.LV]));
+        parallelRules(b).separator()
+                .line(own(id, "hatches"))
+                .line(shared("parallel_hatch"), highlight(shared("parallel_hatch.name")))
+                .line(shared("overclock"))
+                .hatches(Hatch.MULTI_AMP);
+        return finish(b, id);
+    }
+
+    private static Component[] orePlant() {
+        String id = "ore_processing_plant";
+        int mv = TierParallel.orePlant(GTValues.MV);
+        var b = start("ore_processor")
+                .line(own(id, "purpose"), highlight(own(id, "purpose.water")))
+                .line(own(id, "parallels"), parallels(mv), value(GTValues.VN[GTValues.MV]),
+                        value(TierParallel.orePlant(GTValues.HV) - mv));
+        parallelRules(b).separator()
+                .line(own(id, "hatches"))
+                .warning(own(id, "no_hatches"), emphasis(own(id, "no")))
+                .line(shared("overclock"))
+                .hatches(Hatch.MULTI_AMP);
+        return finish(b, id);
+    }
+
+    private static Component[] plus(String id) {
+        var b = start(id)
+                .line(own(id, "purpose"))
+                .line(shared("plus.parallels"), parallels(TierParallel.plus(GTValues.LV)),
+                        value(GTValues.VN[GTValues.LV]), value(TierParallel.plus(GTValues.IV)),
+                        value(GTValues.VN[GTValues.IV]));
+        parallelRules(b).separator()
+                .line(shared("plus.hatches"))
+                .line(shared("switch_type"))
+                .line(shared("overclock"))
+                .hatches(Hatch.MULTI_AMP);
+        return b.humor(shared("plus.fact")).mod(MOD_NAME).toArray();
+    }
+
+    private static Component[] rocketAssembler() {
+        String id = "rocket_assembler";
+        var b = start("rocket_assembler")
+                .line(own(id, "purpose"))
+                .separator()
+                .table(rocket(own(id, "tier_1"), GTIARocketRecipes.TIER_1_EUT, GTIARocketRecipes.TIER_1_TICKS),
+                        rocket(own(id, "tier_2"), GTIARocketRecipes.TIER_2_EUT, GTIARocketRecipes.TIER_2_TICKS))
+                .separator()
+                .line(own(id, "pad"), highlight("3 x 3"))
+                .line(own(id, "hatches"))
+                .line(shared("overclock"))
+                .hatches(Hatch.MULTI_AMP);
+        return finish(b, id);
+    }
+
+    private static TooltipRow rocket(Tr name, int eut, int ticks) {
+        return TooltipRow.of(name, ChatFormatting.GOLD, shared("eut").component(eut),
+                shared("seconds").component(ticks / 20));
+    }
+
+    private static Component[] fragmentCollector() {
+        String id = "fragment_collector";
+        int seconds = FragmentCollectorLogic.DURATION / 20;
+        var b = start("miner")
+                .line(own(id, "purpose"), highlight(own(id, "fragment")))
+                .separator()
+                .table(TooltipRow.of(own(id, "alone"), ChatFormatting.GOLD, FragmentCollectorLogic.OPERATIONS,
+                        shared("seconds").component(seconds)).effect(own(id, "alone.effect")),
+                        TooltipRow.of(own(id, "card"), ChatFormatting.GOLD, FragmentCollectorLogic.OPERATIONS,
+                                shared("seconds").component(seconds)).effect(own(id, "card.effect")))
+                .separator()
+                .line(own(id, "keep"), emphasis(own(id, "never")),
+                        value(FragmentCollectorLogic.DUPLICATE_CHANCE / 100 + "%"))
+                .line(own(id, "hatches"))
+                .line(shared("overclock"))
+                .hatches(Hatch.MULTI_AMP);
+        return finish(b, id);
+    }
+
+    private static Component[] largeFragmentCollector() {
+        String id = "large_fragment_collector";
+        var b = start("miner")
+                .line(own(id, "purpose"), value(FragmentCollectorLogic.LARGE_PARALLEL),
+                        value(GTValues.VN[GTValues.EV]))
+                .line(own(id, "parallel"), highlight(shared("parallel_hatch.name")))
+                .separator()
+                .line(own(id, "hatches"))
+                .line(shared("overclock"))
+                .hatches(Hatch.MULTI_AMP);
+        return finish(b, id);
+    }
+
+    /** "Megastructure n of Type 0: raises your team's Kardashev cap to 0.nn" for the first two. */
+    private static MultiblockTooltipBuilder typeZero(String type, int number) {
+        String cap = String.format(Locale.ROOT, "%.2f", KardashevScale.capHundredths(number) / 100.0);
+        return start(type, "megastructure").line(shared("type_zero.mega"), value(number))
+                .line(shared("type_zero.cap"), value(cap));
+    }
+
+    private static Component[] dispatchCenter() {
+        String id = "national_dispatch_center";
+        var b = typeZero("grid_dispatch", 1)
+                .line(own(id, "purpose"), highlight(own(id, "transponder")))
+                .separator()
+                .line(shared("type_zero.hatches"))
+                .line(shared("overclock"))
+                .hatches(Hatch.MULTI_AMP);
+        return finish(b, id);
+    }
+
+    private static Component[] cosmodrome() {
+        String id = "cosmodrome";
+        var b = typeZero("mission_control", 2)
+                .line(own(id, "purpose"))
+                .warning(own(id, "no_survey"))
+                .separator()
+                .line(own(id, "link"), value(CosmodromeMachine.LINK_RANGE))
+                .line(shared("type_zero.hatches"))
+                .line(shared("overclock"))
+                .hatches(Hatch.MULTI_AMP);
+        return finish(b, id);
+    }
+
+    private static Component[] tokamak() {
+        String id = Tokamak.ID;
+        var b = start("fusion_reactor", "generator", "megastructure")
+                .line(shared("type_zero.mega"), value(3))
+                .line(own(id, "closes"))
+                .separator()
+                .table(TooltipRow.of("D-T", ChatFormatting.LIGHT_PURPLE,
+                        shared("eut").component(TypeZeroRecipes.DT_EUT))
+                        .effect(own(id, "dt"), value(TypeZeroRecipes.TRITIUM_BRED),
+                                value(TypeZeroRecipes.TRITIUM_BURNT)),
+                        TooltipRow.of("D-He3", ChatFormatting.LIGHT_PURPLE,
+                                shared("eut").component(TypeZeroRecipes.DHE3_EUT)).effect(own(id, "dhe3")))
+                .line(own(id, "coolant"))
+                .separator()
+                .line(own(id, "start"), value(TokamakMachine.START_EU))
+                .warning(own(id, "cools"), value(TokamakMachine.COOL_AFTER_TICKS / 20))
+                .line(own(id, "dynamos"), value(1), value(Tokamak.MAX_DYNAMOS))
+                .warning(own(id, "no_overclock"), emphasis(own(id, "no")));
+        return finish(b, id);
     }
 }

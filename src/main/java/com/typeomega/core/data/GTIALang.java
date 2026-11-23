@@ -7,7 +7,6 @@ public final class GTIALang {
     private GTIALang() {}
 
     public static void init() {
-        GTIATooltips.registerLang();
         GTIAOrganLang.init();
         com.typeomega.core.data.rocket.AdAstraNames.registerLang();
         com.typeomega.core.miner.GTIAMinerLang.init();
