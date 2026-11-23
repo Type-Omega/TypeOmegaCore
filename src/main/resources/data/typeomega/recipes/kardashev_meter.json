@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PGP",
+    "GPG",
+    "PGP"
+  ],
+  "key": {
+    "P": { "tag": "forge:plates/bronze" },
+    "G": { "tag": "forge:glass" }
+  },
+  "result": { "item": "typeomega:kardashev_meter" }
+}

@@ -228,6 +228,21 @@ mixin {
     add sourceSets.main, "${mod_id}.refmap.json"
 }
 
+// EN: The dev mod folder reads its manifest from the classes folder, not from resources, so without this copy no
+// typeomega mixin was applied in runData, runGameTestServer or runClient.
+// PT: A pasta do mod em dev lê o manifest da pasta de classes, não da de recursos; sem esta cópia nenhum mixin do
+// typeomega era aplicado no runData, runGameTestServer ou runClient.
+// ZH: 开发环境的模组文件夹从 classes 目录而非 resources 目录读取清单；没有这次复制，runData、runGameTestServer
+// 和 runClient 中不会应用任何 typeomega mixin。
+tasks.named('compileJava', JavaCompile).configure {
+    doLast {
+        copy {
+            from 'src/main/resources/META-INF/MANIFEST.MF'
+            into destinationDirectory.dir('META-INF')
+        }
+    }
+}
+
 tasks.named('jar', Jar).configure {
     manifest.attributes('MixinConfigs': "${mod_id}.mixins.json")
     finalizedBy 'reobfJar'

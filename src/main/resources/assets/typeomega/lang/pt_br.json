@@ -1110,5 +1110,21 @@
   "typeomega.machine.mixing_plus.tooltip.main.2": "Os paralelos multiplicam os itens, não a energia; o overclock continua",
   "typeomega.machine.mixing_plus.tooltip.requirements.0": "As escotilhas vão nos casings de alumínio",
   "typeomega.machine.mixing_plus.tooltip.requirements.1": "Troque o tipo de receita no controlador",
-  "typeomega.machine.mixing_plus.tooltip.requirements.2": "Faz overclock como uma máquina GregTech e aceita o modo em lote"
+  "typeomega.machine.mixing_plus.tooltip.requirements.2": "Faz overclock como uma máquina GregTech e aceita o modo em lote",
+  "block.typeomega.kardashev_meter": "Medidor Kardashev",
+  "typeomega.kardashev.decimal": "%s,%s",
+  "typeomega.kardashev.title": "Medidor Kardashev · seu time",
+  "typeomega.kardashev.k": "K %s · Tipo %s",
+  "typeomega.kardashev.average": "Potência média (10 min): %s EU/t",
+  "typeomega.kardashev.recent": "Últimos 20 s: %s EU/t",
+  "typeomega.kardashev.cap": "Teto: K %s · megaestruturas do Tipo %s: %s/3",
+  "typeomega.kardashev.capped": "Sua potência passou do teto: a próxima megaestrutura o eleva.",
+  "typeomega.kardashev.tooltip.reads": "Mostra o K do seu time: a potência média dos últimos %s.",
+  "typeomega.kardashev.tooltip.sources": "Conta a %s, a %s e as caldeiras a vapor.",
+  "typeomega.kardashev.tooltip.wireless_energy": "rede sem fio de energia",
+  "typeomega.kardashev.tooltip.wireless_steam": "rede sem fio de vapor",
+  "typeomega.kardashev.tooltip.steam": "Vapor conta a %s.",
+  "typeomega.kardashev.tooltip.cap": "Em cada tipo o K para em %s, %s e %s com 0, 1 e 2 megaestruturas.",
+  "typeomega.kardashev.tooltip.use": "Clique com o botão direito para ler.",
+  "typeomega.kardashev.command.megastructures": "Time de %s: %s megaestruturas, teto K %s."
 }

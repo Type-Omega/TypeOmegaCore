@@ -1,0 +1,31 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "gtceu:block/casings/steam/bronze/side",
+    "side": "gtceu:block/casings/steam/bronze/side",
+    "top": "gtceu:block/casings/steam/bronze/top",
+    "bottom": "gtceu:block/casings/steam/bronze/bottom",
+    "screen": "gtceu:block/overlay/machine/overlay_screen_glass"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "down": { "texture": "#bottom", "cullface": "down" },
+        "up": { "texture": "#top", "cullface": "up" },
+        "north": { "texture": "#side", "cullface": "north" },
+        "south": { "texture": "#side", "cullface": "south" },
+        "west": { "texture": "#side", "cullface": "west" },
+        "east": { "texture": "#side", "cullface": "east" }
+      }
+    },
+    {
+      "from": [0, 0, -0.01],
+      "to": [16, 16, 0],
+      "faces": {
+        "north": { "texture": "#screen", "cullface": "north" }
+      }
+    }
+  ]
+}

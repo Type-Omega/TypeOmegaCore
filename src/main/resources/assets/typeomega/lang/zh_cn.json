@@ -1110,5 +1110,21 @@
   "typeomega.machine.mixing_plus.tooltip.main.2": "并行倍增物品而不倍增能耗；超频照常生效",
   "typeomega.machine.mixing_plus.tooltip.requirements.0": "仓室放在铝制外壳上",
   "typeomega.machine.mixing_plus.tooltip.requirements.1": "在控制器中切换配方类型",
-  "typeomega.machine.mixing_plus.tooltip.requirements.2": "可像 GregTech 机器一样超频，支持批处理模式"
+  "typeomega.machine.mixing_plus.tooltip.requirements.2": "可像 GregTech 机器一样超频，支持批处理模式",
+  "block.typeomega.kardashev_meter": "卡尔达肖夫计量器",
+  "typeomega.kardashev.decimal": "%s.%s",
+  "typeomega.kardashev.title": "卡尔达肖夫计量器 · 你的队伍",
+  "typeomega.kardashev.k": "K %s · %s 型",
+  "typeomega.kardashev.average": "平均功率（10 分钟）：%s EU/t",
+  "typeomega.kardashev.recent": "最近 20 秒：%s EU/t",
+  "typeomega.kardashev.cap": "上限：K %s · %s 型巨构：%s/3",
+  "typeomega.kardashev.capped": "你的功率已超过上限：建成下一座巨构即可提高上限。",
+  "typeomega.kardashev.tooltip.reads": "显示你队伍的 K 值：最近 %s 的平均功率。",
+  "typeomega.kardashev.tooltip.sources": "统计%s、%s和蒸汽锅炉。",
+  "typeomega.kardashev.tooltip.wireless_energy": "无线能量网络",
+  "typeomega.kardashev.tooltip.wireless_steam": "无线蒸汽网络",
+  "typeomega.kardashev.tooltip.steam": "蒸汽按 %s 计入。",
+  "typeomega.kardashev.tooltip.cap": "每个类型中，建成 0、1、2 座巨构时 K 的上限分别为 %s、%s、%s。",
+  "typeomega.kardashev.tooltip.use": "右键读取。",
+  "typeomega.kardashev.command.megastructures": "%s 的队伍：%s 座巨构，K 上限 %s。"
 }

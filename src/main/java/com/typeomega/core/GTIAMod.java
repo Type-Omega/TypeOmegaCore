@@ -43,6 +43,7 @@ public final class GTIAMod {
         MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.rules.GTIASurvivalRules::onPlayerTick);
         MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.mega.system.SystemWipe::onServerAboutToStart);
         com.typeomega.core.station.GTIAStation.init();
+        com.typeomega.core.kardashev.KardashevMeter.init();
         com.typeomega.core.data.rocket.GTIARocketBlocks.init();
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         com.typeomega.core.miner.GTIAMiners.registerSerializers(modBus);

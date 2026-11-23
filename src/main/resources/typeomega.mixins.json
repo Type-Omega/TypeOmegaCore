@@ -6,7 +6,11 @@
   "minVersion": "0.8",
   "mixins": [
     "GTRecipeBuilderMixin",
-    "ServerPacksSourceMixin"
+    "ServerPacksSourceMixin",
+    "kardashev.LargeBoilerMachineMixin",
+    "kardashev.NexusEnergyNetworkMixin",
+    "kardashev.SteamBoilerMachineMixin",
+    "kardashev.SteamNetworkDataMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "typeomega:block/kardashev_meter" },
+    "facing=east": { "model": "typeomega:block/kardashev_meter", "y": 90 },
+    "facing=south": { "model": "typeomega:block/kardashev_meter", "y": 180 },
+    "facing=west": { "model": "typeomega:block/kardashev_meter", "y": 270 }
+  }
+}
