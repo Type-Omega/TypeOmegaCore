@@ -44,6 +44,7 @@ public final class GTIAAddon implements IGTAddon {
         com.typeomega.core.route.RouteRecipes.addRecipes(provider);
         com.typeomega.core.route.ProgressionGates.addRecipes(provider);
         com.typeomega.core.route.AE2Gates.addRecipes(provider);
+        com.typeomega.core.route.NanoCircuits.addRecipes(provider);
         com.typeomega.core.miner.GTIAMiners.addRecipes(provider);
         com.typeomega.core.processing.OrePlantRecipes.add(provider);
         com.typeomega.core.processing.ProcessingRecipes.add(provider);
@@ -55,6 +56,7 @@ public final class GTIAAddon implements IGTAddon {
         com.typeomega.core.chem.ChemRouteRemovals.removeRecipes(consumer);
         com.typeomega.core.route.RouteRemovals.removeRecipes(consumer);
         com.typeomega.core.route.ProgressionGates.removeRecipes(consumer);
+        com.typeomega.core.route.NanoCircuits.removeRecipes(consumer);
         // EN: Normal worlds move steam through pipes; only Journey crafts the GTNA wireless steam hatches (GTIA-D-340).
         // PT: No Normal o vapor vai por canos; só o Journey fabrica os hatches de vapor sem fio do GTNA (GTIA-D-340).
         // ZH: 普通模式下蒸汽走管道；只有旅程模式能合成 GTNA 无线蒸汽仓（GTIA-D-340）。

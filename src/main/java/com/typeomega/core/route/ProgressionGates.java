@@ -27,7 +27,8 @@ import java.util.function.Consumer;
  * Recipes moved for the progression of the restructuring: the Eye of Ender only in the HV Assembler (GTIA-D-352),
  * the personal dimension portal only as a quest reward (GTIA-D-347), the Nexus Flux Matrix in HV (GTIA-D-350; its
  * losses are in the pack's config/gtna/balance/nexus_flux_matrix.json), the GTCEu Terminal with redstone in the
- * first chapter (GTIA-D-409) and the Industrial Platform builder after the Bronze Hull (GTIA-D-406, D-408).
+ * first chapter (GTIA-D-409), the Industrial Platform builder after the Bronze Hull (GTIA-D-406, D-408) and
+ * Helium-3 only from heated lunar regolith (GTIA-D-420).
  */
 public final class ProgressionGates {
 
@@ -37,7 +38,8 @@ public final class ProgressionGates {
             "modernspace:personal_space_portal",
             "gtceu:assembler/nexus_flux_matrix",
             "gtceu:shaped/basic_terminal",
-            "industrial_platform:platform_builder");
+            "industrial_platform:platform_builder",
+            "gtceu:centrifuge/helium_separation");
 
     private ProgressionGates() {}
 
@@ -64,14 +66,18 @@ public final class ProgressionGates {
                     "PSP", "SCS", "PSP", 'P', new MaterialEntry(TagPrefix.plate, GTMaterials.Bronze),
                     'S', new ItemStack(Items.SMOOTH_STONE), 'C', GTBlocks.BRONZE_HULL.asStack());
         }
-        // EN: HV emitters and sensors are the first parts that need the eye, so the End opens with them (GTIA-D-352).
-        // PT: Emissores e sensores HV são as primeiras peças que pedem o olho, então o End abre junto (GTIA-D-352).
-        // ZH: HV 发射器和传感器是最早需要末影之眼的部件，所以末地随之开放（GTIA-D-352）。
+        // EN: HV emitters and sensors are the first parts that need the eye (GTIA-D-352). The Nether stays closed, so
+        // sulfur and redstone stand in for the blaze powder (GTIA-D-419).
+        // PT: Emissores e sensores HV são as primeiras peças que pedem o olho (GTIA-D-352). O Nether segue fechado,
+        // então enxofre e redstone fazem o papel do pó de blaze (GTIA-D-419).
+        // ZH: HV 发射器和传感器是最早需要末影之眼的部件（GTIA-D-352）。下界仍未开放，因此用硫和红石代替烈焰粉（GTIA-D-419）。
         GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(GTIAMod.id("ender_eye"))
                 .inputItems(new ItemStack(Items.ENDER_PEARL))
-                .inputItems(new ItemStack(Items.BLAZE_POWDER, 2))
+                .inputItems(TagPrefix.dust, GTMaterials.Sulfur)
+                .inputItems(TagPrefix.dust, GTMaterials.Redstone)
                 .outputItems(new ItemStack(Items.ENDER_EYE))
                 .duration(200).EUt(GTValues.VA[GTValues.HV]).save(provider);
+        addLunarHelium3(provider);
         if (!ModList.get().isLoaded("gtna")) return;
         GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(GTIAMod.id("nexus_flux_matrix"))
                 .inputItems(TagPrefix.plateDouble, GTMaterials.StainlessSteel, 4)
@@ -81,5 +87,22 @@ public final class ProgressionGates {
                 .outputItems(new ItemStack(
                         ForgeRegistries.ITEMS.getValue(new ResourceLocation("gtna", "nexus_flux_matrix"))))
                 .duration(400).EUt(GTValues.VA[GTValues.HV]).save(provider);
+    }
+
+    /** Helium-3 from heated lunar regolith, only when Ad Astra is loaded (GTIA-D-420). */
+    private static void addLunarHelium3(Consumer<FinishedRecipe> provider) {
+        if (!ModList.get().isLoaded("ad_astra")) return;
+        var sand = ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra", "moon_sand"));
+        if (sand == null || sand == Items.AIR) return;
+        // EN: Heat frees the solar-wind volatiles at 480 EU/t; 25 mB per sand is a first value for the beta. Hydrogen
+        // leaves too, but the Extractor has a single fluid output, so only the He-3 is kept.
+        // PT: O calor solta os voláteis do vento solar a 480 EU/t; 25 mB por areia é um valor inicial do beta. O
+        // hidrogênio também sai, mas a Extratora tem uma saída de fluido só, então fica só o He-3.
+        // ZH: 加热以 480 EU/t 释放太阳风挥发物；每份月沙 25 mB 是测试版的初始值。氢也会释放，但提取机只有一个流体输出，
+        // 因此只保留氦-3。
+        GTRecipeTypes.EXTRACTOR_RECIPES.recipeBuilder(GTIAMod.id("helium_3_from_regolith"))
+                .inputItems(new ItemStack(sand))
+                .outputFluids(GTMaterials.Helium3.getFluid(25))
+                .duration(200).EUt(GTValues.VA[GTValues.HV]).save(provider);
     }
 }
