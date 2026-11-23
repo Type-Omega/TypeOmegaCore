@@ -76,13 +76,15 @@ public class OrganItem extends ComponentItem {
             if (tier >= 2 && type == OrganType.LUNG) {
                 tooltip.add(Component.translatable("typeomega.organ.tooltip.lung").withStyle(ChatFormatting.GREEN));
             }
-            tooltip.add(Component.translatable("typeomega.organ.tooltip.set_header").withStyle(ChatFormatting.DARK_AQUA));
+            tooltip.add(
+                    Component.translatable("typeomega.organ.tooltip.set_header").withStyle(ChatFormatting.DARK_AQUA));
             if (tier >= 1) {
                 tooltip.add(Component.translatable("typeomega.organ.tooltip.armor", tier * OrganEffects.ARMOR_PER_TIER)
                         .withStyle(ChatFormatting.YELLOW));
             }
             if (tier >= 3) {
-                tooltip.add(Component.translatable("typeomega.organ.tooltip.saturation").withStyle(ChatFormatting.GREEN));
+                tooltip.add(
+                        Component.translatable("typeomega.organ.tooltip.saturation").withStyle(ChatFormatting.GREEN));
             }
             if (tier >= 4) {
                 tooltip.add(Component.translatable("typeomega.organ.tooltip.flight")

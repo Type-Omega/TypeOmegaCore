@@ -38,7 +38,8 @@ public final class GTIAOrganLang {
         GTIAMod.REGISTRATE.addRawLang("typeomega.organ_modifier.tooltip.1", "Lets you change your organs");
         GTIAMod.REGISTRATE.addRawLang("typeomega.organ_modifier.tooltip.2", "Each organ set gives different effects");
         GTIAMod.REGISTRATE.addRawLang("typeomega.organ_modifier.tooltip.3", "Right click to open");
-        GTIAMod.REGISTRATE.addRawLang("typeomega.organ_modifier.tooltip.4", "Planets need an organ set of a certain tier");
+        GTIAMod.REGISTRATE.addRawLang("typeomega.organ_modifier.tooltip.4",
+                "Planets need an organ set of a certain tier");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.group.organs", "Organs");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rule.resources.rubber_tree_chance", "Rubber tree chance");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rule.resources.rubber_tree_chance.desc",

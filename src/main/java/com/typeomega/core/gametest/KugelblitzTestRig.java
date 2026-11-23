@@ -3,12 +3,12 @@ package com.typeomega.core.gametest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
+import com.raishxn.gtna.api.capability.WirelessEnergyManager;
 import com.typeomega.core.mega.GTIAMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.kugelblitz.KugelblitzMachine;
 import com.typeomega.core.mega.kugelblitz.KugelblitzPhysics;
-import com.raishxn.gtna.api.capability.WirelessEnergyManager;
 
 import java.util.UUID;
 

@@ -3,9 +3,9 @@ package com.typeomega.core.station;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.Blocks;
 
-import com.typeomega.core.GTIAMod;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.MenuEntry;
+import com.typeomega.core.GTIAMod;
 
 /** Registration of the GTIA Crafting Station. */
 public final class GTIAStation {

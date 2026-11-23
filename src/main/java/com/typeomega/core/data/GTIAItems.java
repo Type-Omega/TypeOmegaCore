@@ -2,8 +2,8 @@ package com.typeomega.core.data;
 
 import net.minecraft.world.item.Item;
 
-import com.typeomega.core.GTIAMod;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.typeomega.core.GTIAMod;
 
 public final class GTIAItems {
 

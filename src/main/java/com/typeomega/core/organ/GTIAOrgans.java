@@ -6,9 +6,9 @@ import com.gregtechceu.gtceu.api.item.component.ElectricStats;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.MinecraftForge;
 
-import com.typeomega.core.GTIAMod;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.MenuEntry;
+import com.typeomega.core.GTIAMod;
 
 import java.util.ArrayList;
 import java.util.EnumMap;

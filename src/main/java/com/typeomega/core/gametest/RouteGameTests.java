@@ -68,7 +68,8 @@ public final class RouteGameTests {
     public static void routesCarryTheApprovedNumbers(GameTestHelper h) {
         // GTNA only loads in dev runs with -PgtnaDevJar.
         if (ModList.get().isLoaded("gtna"))
-            h.assertTrue(recipe(h, "typeomega:assembly_line/integrated_ore_processor").getInputEUt().getTotalEU() == 7680,
+            h.assertTrue(
+                    recipe(h, "typeomega:assembly_line/integrated_ore_processor").getInputEUt().getTotalEU() == 7680,
                     "IOP controller at IV");
         var mica = recipe(h, "typeomega:electrolyzer/decomposition_electrolyzing_mica");
         h.assertTrue(mica.getInputEUt().getTotalEU() == 120, "mica at MV");
@@ -76,9 +77,11 @@ public final class RouteGameTests {
         var bastnasite = recipe(h, "typeomega:electrolyzer/decomposition_electrolyzing_bastnasite");
         h.assertTrue(gives(bastnasite, GTMaterials.RareEarth) && !gives(bastnasite, GTMaterials.Cerium),
                 "bastnasite gives rare earth");
-        h.assertTrue(recipe(h, "typeomega:electric_blast_furnace/aluminium_from_dust").getInputEUt().getTotalEU() == 480,
+        h.assertTrue(
+                recipe(h, "typeomega:electric_blast_furnace/aluminium_from_dust").getInputEUt().getTotalEU() == 480,
                 "aluminium dust smelts at HV");
-        h.assertTrue(recipe(h, "typeomega:electric_blast_furnace/aluminium_from_crude").getInputEUt().getTotalEU() == 120,
+        h.assertTrue(
+                recipe(h, "typeomega:electric_blast_furnace/aluminium_from_crude").getInputEUt().getTotalEU() == 120,
                 "crude aluminium smelts at MV");
         h.succeed();
     }

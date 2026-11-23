@@ -35,7 +35,9 @@ public final class ProcessingGameTests {
     }
 
     @GameTest(template = "qa_empty_24", batch = "processing", timeoutTicks = 60)
-    public static void largeFurnaceForms(GameTestHelper h) { forms(h, GTIAProcessing.LARGE_FURNACE); }
+    public static void largeFurnaceForms(GameTestHelper h) {
+        forms(h, GTIAProcessing.LARGE_FURNACE);
+    }
 
     @GameTest(template = "qa_empty_24", batch = "processing", timeoutTicks = 60)
     public static void largeFurnaceNeedsChimneys(GameTestHelper h) {
@@ -43,7 +45,9 @@ public final class ProcessingGameTests {
     }
 
     @GameTest(template = "qa_empty_24", batch = "processing", timeoutTicks = 60)
-    public static void orePlantForms(GameTestHelper h) { forms(h, GTIAProcessing.ORE_PROCESSING_PLANT); }
+    public static void orePlantForms(GameTestHelper h) {
+        forms(h, GTIAProcessing.ORE_PROCESSING_PLANT);
+    }
 
     @GameTest(template = "qa_empty_24", batch = "processing", timeoutTicks = 60)
     public static void orePlantNeedsItsCrusher(GameTestHelper h) {

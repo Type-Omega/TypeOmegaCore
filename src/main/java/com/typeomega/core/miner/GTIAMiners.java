@@ -62,7 +62,8 @@ public final class GTIAMiners {
                     .recipeModifier(GTRecipeModifiers.OC_NON_PERFECT)
                     .workableTieredHullModel(GTCEu.id("block/machines/miner"))
                     .tooltips(Component.translatable("typeomega.machine.entangled_miner.tooltip.0"),
-                            Component.translatable("typeomega.machine.entangled_miner.tooltip.1", MinerClaims.MAX_PER_VEIN),
+                            Component.translatable("typeomega.machine.entangled_miner.tooltip.1",
+                                    MinerClaims.MAX_PER_VEIN),
                             Component.translatable(tier >= EntangledMinerLogic.CROSS_DIMENSION_TIER ?
                                     "typeomega.machine.entangled_miner.tooltip.any_dimension" :
                                     "typeomega.machine.entangled_miner.tooltip.same_dimension"))

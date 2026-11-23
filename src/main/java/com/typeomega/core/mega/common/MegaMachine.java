@@ -13,8 +13,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 
-import com.typeomega.core.GTIAMod;
 import com.raishxn.gtna.common.machine.multiblock.originals.OriginalMachine;
+import com.typeomega.core.GTIAMod;
 import org.jetbrains.annotations.VisibleForTesting;
 
 /**

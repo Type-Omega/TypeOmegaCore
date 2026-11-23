@@ -8,12 +8,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import com.raishxn.gtna.common.machine.multiblock.originals.ui.OriginalScreen.Nav;
 import com.typeomega.core.mega.common.MegaScreen;
 import com.typeomega.core.mega.common.client.MegaArt;
 import com.typeomega.core.mega.common.ui.MegaUI;
 import com.typeomega.core.mega.common.ui.MegaUI.Look;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
-import com.raishxn.gtna.common.machine.multiblock.originals.ui.OriginalScreen.Nav;
 
 import static com.raishxn.gtna.common.machine.multiblock.originals.ui.OriginalScreen.*;
 

@@ -11,6 +11,7 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
+import com.raishxn.gtna.common.data.GTNARecipeType;
 import com.typeomega.core.mega.GTIAMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
@@ -18,7 +19,6 @@ import com.typeomega.core.mega.system.StarPhysics.Kind;
 import com.typeomega.core.mega.system.StarSystems;
 import com.typeomega.core.mega.yggdrasil.YggdrasilMachine;
 import com.typeomega.core.mega.yggdrasil.YggdrasilPhysics;
-import com.raishxn.gtna.common.data.GTNARecipeType;
 
 import java.util.UUID;
 

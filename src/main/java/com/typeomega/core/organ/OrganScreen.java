@@ -59,7 +59,8 @@ public class OrganScreen extends AbstractContainerScreen<OrganMenu> {
         g.drawString(font, Component.translatable("typeomega.organ.screen.set_tier", set), 163, line, TEXT, false);
         line += 12;
         int legs = Math.min(menu.tier(OrganType.LEFT_LEG), menu.tier(OrganType.RIGHT_LEG));
-        line = stat(g, line, "typeomega.organ.screen.speed", Math.round(OrganEffects.legSpeedBonus(legs) * 100), legs > 0);
+        line = stat(g, line, "typeomega.organ.screen.speed", Math.round(OrganEffects.legSpeedBonus(legs) * 100),
+                legs > 0);
         line = stat(g, line, "typeomega.organ.screen.armor", set * OrganEffects.ARMOR_PER_TIER, set > 0);
         line = stat(g, line, "typeomega.organ.screen.reach", menu.tier(OrganType.RIGHT_ARM) >= 2 ? 4 : 0,
                 menu.tier(OrganType.RIGHT_ARM) >= 2);

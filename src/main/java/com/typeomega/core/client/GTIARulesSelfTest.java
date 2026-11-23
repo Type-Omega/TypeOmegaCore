@@ -12,7 +12,8 @@ import com.typeomega.core.rules.RulePreset;
 import com.typeomega.core.rules.WorldRules;
 
 /**
- * Development self-test of the create-world rules flow, run with {@code -Dtypeomega.rulesSelfTest=true}: opens the create
+ * Development self-test of the create-world rules flow, run with {@code -Dtypeomega.rulesSelfTest=true}: opens the
+ * create
  * world screen (also with a {@code gtia_rules_selftest} file in the game folder), switches the preset to Journey the
  * same way the Done button does, checks that a GTCEu recipe got the
  * Journey duration, shows the rules screen for a moment and quits. Never active in normal play.

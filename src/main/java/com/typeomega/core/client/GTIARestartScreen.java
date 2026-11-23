@@ -76,7 +76,8 @@ public final class GTIARestartScreen extends Screen {
                 "typeomega.rules.restart.existing_world.after").withStyle(ChatFormatting.GRAY));
         message = MultiLineLabel.create(font, text, width - 80);
         int y = Math.min(height - 30, 70 + message.getLineCount() * 10 + 12);
-        Button quit = Button.builder(Component.translatable("typeomega.rules.restart.save_and_quit"), b -> saveAndQuit())
+        Button quit = Button
+                .builder(Component.translatable("typeomega.rules.restart.save_and_quit"), b -> saveAndQuit())
                 .bounds(width / 2 - 155, y, 150, 20).build();
         addRenderableWidget(quit);
         if (playAnyway != null) {

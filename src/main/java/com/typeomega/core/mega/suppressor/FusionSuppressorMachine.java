@@ -31,7 +31,8 @@ import java.util.List;
 
 /**
  * Controller of the Fusion Suppressor (GTIA-D-320): damps the fusion of the star of its system and reads its
- * neutrinos for research (GTNA's knowledge points, area typeomega:astrophysics). A star of 8 M☉ or more, held suppressed
+ * neutrinos for research (GTNA's knowledge points, area typeomega:astrophysics). A star of 8 M☉ or more, held
+ * suppressed
  * until its core gives way, ends as the player chooses: a supernova (r-process dust, a neutron star left) or a
  * collapse into a black hole. Lighter stars only flare.
  */

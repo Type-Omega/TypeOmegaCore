@@ -19,7 +19,8 @@ public final class ChemRouteGameTests {
     private static final List<String> KEPT = List.of(
             "typeomega:chemical_reactor/contact_sulfuric_acid", "typeomega:chemical_reactor/haber_bosch_ammonia",
             "typeomega:chemical_reactor/ostwald_absorption", "typeomega:electrolyzer/chlor_alkali",
-            "typeomega:centrifuge/cell_liquor_separation", "typeomega:coke_oven/quicklime", "typeomega:coke_oven/soda_ash",
+            "typeomega:centrifuge/cell_liquor_separation", "typeomega:coke_oven/quicklime",
+            "typeomega:coke_oven/soda_ash",
             "typeomega:chemical_reactor/kroll_magnesium_reduction", "typeomega:chemical_reactor/siemens_deposition",
             "typeomega:electric_blast_furnace/czochralski/silicon_boule",
             "typeomega:electric_blast_furnace/hall_heroult_aluminium",

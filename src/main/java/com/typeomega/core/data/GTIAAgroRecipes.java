@@ -14,8 +14,8 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import com.typeomega.core.GTIAMod;
 import com.raishxn.gtna.common.data.GTNARecipeType;
+import com.typeomega.core.GTIAMod;
 
 import java.util.function.Consumer;
 

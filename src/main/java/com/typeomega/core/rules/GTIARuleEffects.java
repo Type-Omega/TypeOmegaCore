@@ -32,7 +32,8 @@ import java.util.Map;
 public final class GTIARuleEffects {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final Path STARTUP_FILE = FMLPaths.CONFIGDIR.get().resolve("typeomega").resolve("startup_rules.json");
+    private static final Path STARTUP_FILE = FMLPaths.CONFIGDIR.get().resolve("typeomega")
+            .resolve("startup_rules.json");
     /** Values of the restart rules this game session started with. */
     private static final Map<String, Double> startupValues = new LinkedHashMap<>();
     private static int baseLargeBoilerSteam = -1;

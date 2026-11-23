@@ -19,13 +19,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
+import com.raishxn.gtna.common.data.GTNARecipeType;
 import com.typeomega.core.mega.StellarEraStore;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaRecipeEngine;
 import com.typeomega.core.mega.engine.EnginePhysics.Region;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 import com.typeomega.core.mega.system.StarSystems;
-import com.raishxn.gtna.common.data.GTNARecipeType;
 
 import java.util.List;
 

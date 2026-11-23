@@ -81,7 +81,8 @@ public class CraftingStationScreen extends AbstractContainerScreen<CraftingStati
         graphics.drawString(font, playerInventoryTitle, 8, inventoryLabelY, 0x404040, false);
         var sides = menu.sides();
         if (sides.isEmpty()) {
-            graphics.drawWordWrap(font, Component.translatable("typeomega.crafting_station.empty"), PANEL_X + 8, 30, 160,
+            graphics.drawWordWrap(font, Component.translatable("typeomega.crafting_station.empty"), PANEL_X + 8, 30,
+                    160,
                     0x404040);
             return;
         }

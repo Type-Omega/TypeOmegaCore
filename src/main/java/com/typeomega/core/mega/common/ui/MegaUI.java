@@ -16,9 +16,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import com.typeomega.core.mega.common.MegaMachine;
 import com.raishxn.gtna.common.machine.multiblock.originals.ui.OriginalScreen;
 import com.raishxn.gtna.common.machine.multiblock.originals.ui.OriginalScreen.Painter;
+import com.typeomega.core.mega.common.MegaMachine;
 
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;

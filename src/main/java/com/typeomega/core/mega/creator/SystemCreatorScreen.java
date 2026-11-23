@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import com.raishxn.gtna.common.machine.multiblock.originals.ui.OriginalScreen.Nav;
 import com.typeomega.core.mega.common.MegaScreen;
 import com.typeomega.core.mega.common.client.MegaArt;
 import com.typeomega.core.mega.common.client.MegaFx;
@@ -17,7 +18,6 @@ import com.typeomega.core.mega.creator.CreatorPhysics.Stage;
 import com.typeomega.core.mega.system.StarPhysics;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 import com.typeomega.core.mega.system.StarSystems;
-import com.raishxn.gtna.common.machine.multiblock.originals.ui.OriginalScreen.Nav;
 
 import java.util.Locale;
 

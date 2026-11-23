@@ -15,11 +15,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 
+import com.raishxn.gtna.common.data.GTNARecipeType;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaRecipeEngine;
 import com.typeomega.core.mega.system.StarPhysics;
 import com.typeomega.core.mega.system.StarSystems;
-import com.raishxn.gtna.common.data.GTNARecipeType;
 
 import java.util.List;
 

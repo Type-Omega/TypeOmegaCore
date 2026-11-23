@@ -18,7 +18,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * {@code /typeomega audit recipes}: lists every loaded recipe (any mod) with an item input that resolves to nothing, the
+ * {@code /typeomega audit recipes}: lists every loaded recipe (any mod) with an item input that resolves to nothing,
+ * the
  * empty EMI slot the author found by hand. Writes {@code typeomega-recipe-audit.txt} in the server directory.
  */
 public final class RecipeAuditCommand {

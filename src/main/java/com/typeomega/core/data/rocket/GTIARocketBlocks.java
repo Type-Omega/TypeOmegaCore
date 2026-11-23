@@ -8,8 +8,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
-import com.typeomega.core.GTIAMod;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.typeomega.core.GTIAMod;
 
 /**
  * EN: The Rocket Assembly Casing (GTIA-D-274, option 1 chosen by the author). Connected textures come from LDLib: the

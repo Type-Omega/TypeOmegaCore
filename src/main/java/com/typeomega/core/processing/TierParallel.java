@@ -39,7 +39,8 @@ public final class TierParallel {
 
     public static RecipeModifier of(IntUnaryOperator byTier) {
         return (MetaMachine machine, GTRecipe recipe) -> {
-            if (!(machine instanceof WorkableElectricMultiblockMachine m) || !m.isFormed()) return ModifierFunction.IDENTITY;
+            if (!(machine instanceof WorkableElectricMultiblockMachine m) || !m.isFormed())
+                return ModifierFunction.IDENTITY;
             int limit = byTier.applyAsInt(m.getTier());
             if (machine instanceof IMultiController c)
                 limit += c.getParallelHatch().map(h -> h.getCurrentParallel()).orElse(0);

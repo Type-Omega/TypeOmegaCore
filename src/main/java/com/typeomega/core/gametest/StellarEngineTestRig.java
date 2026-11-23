@@ -4,7 +4,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
-import com.typeomega.lib.data.Int128;
+import com.raishxn.gtna.api.capability.WirelessEnergyManager;
+import com.raishxn.gtna.common.data.NexusEnergyNetwork;
 import com.typeomega.core.mega.GTIAMegastructures;
 import com.typeomega.core.mega.StellarEraStore;
 import com.typeomega.core.mega.common.MegaCapture;
@@ -13,8 +14,7 @@ import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.engine.EnginePhysics;
 import com.typeomega.core.mega.engine.EnginePhysics.Region;
 import com.typeomega.core.mega.engine.StellarEngineMachine;
-import com.raishxn.gtna.api.capability.WirelessEnergyManager;
-import com.raishxn.gtna.common.data.NexusEnergyNetwork;
+import com.typeomega.lib.data.Int128;
 
 import java.util.UUID;
 

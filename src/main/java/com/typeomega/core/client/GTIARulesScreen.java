@@ -169,7 +169,8 @@ public final class GTIARulesScreen extends Screen {
             graphics.drawCenteredString(font, Component.translatable("typeomega.rules.screen.locked"), width / 2,
                     height - 44, 0xFFAA00);
         } else if (GTIARuleEffects.needsRestart(snapshot())) {
-            graphics.drawCenteredString(font, Component.translatable("typeomega.rules.screen.restart_needed"), width / 2,
+            graphics.drawCenteredString(font, Component.translatable("typeomega.rules.screen.restart_needed"),
+                    width / 2,
                     height - 44, 0xFFAA00);
         }
     }

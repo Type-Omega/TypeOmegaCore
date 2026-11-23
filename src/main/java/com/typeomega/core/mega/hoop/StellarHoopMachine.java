@@ -17,12 +17,12 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 
+import com.raishxn.gtna.common.data.GTNARecipeType;
 import com.typeomega.core.mega.common.MegaCapture;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaRecipeEngine;
 import com.typeomega.core.mega.matrioshka.MatrioshkaShells.Coolant;
 import com.typeomega.core.mega.matrioshka.MatrioshkaThermal;
-import com.raishxn.gtna.common.data.GTNARecipeType;
 import org.jetbrains.annotations.VisibleForTesting;
 
 import java.util.HashSet;
@@ -244,7 +244,8 @@ public class StellarHoopMachine extends MegaMachine {
             text.add(Component.translatable("typeomega.stellar_hoop.needs_star").withStyle(ChatFormatting.RED));
             return;
         }
-        text.add(Component.translatable("typeomega.stellar_hoop.parallel", (int) view[0]).withStyle(ChatFormatting.GOLD));
+        text.add(Component.translatable("typeomega.stellar_hoop.parallel", (int) view[0])
+                .withStyle(ChatFormatting.GOLD));
         text.add(Component.translatable("typeomega.stellar_hoop.corona", String.format("%.2f", view[1] / 1e6))
                 .withStyle(ChatFormatting.YELLOW));
     }
