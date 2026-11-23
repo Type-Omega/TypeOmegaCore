@@ -12,7 +12,7 @@ import com.typeomega.core.rules.RulePreset;
 import com.typeomega.core.rules.WorldRules;
 
 /**
- * Development self-test of the create-world rules flow, run with {@code -Dgtia.rulesSelfTest=true}: opens the create
+ * Development self-test of the create-world rules flow, run with {@code -Dtypeomega.rulesSelfTest=true}: opens the create
  * world screen (also with a {@code gtia_rules_selftest} file in the game folder), switches the preset to Journey the
  * same way the Done button does, checks that a GTCEu recipe got the
  * Journey duration, shows the rules screen for a moment and quits. Never active in normal play.
@@ -23,7 +23,7 @@ public final class GTIARulesSelfTest {
     public static final boolean ENABLED = Boolean.getBoolean("typeomega.rulesSelfTest") || MARKER.toFile().exists();
     /**
      * Also re-runs the checks of earlier releases (Night Vision after /pspace tpx, quest book and multiblock previews
-     * in zh_cn, average FPS): with {@code -Dgtia.rulesSelfTest.full=true} or "full" in the marker file.
+     * in zh_cn, average FPS): with {@code -Dtypeomega.rulesSelfTest.full=true} or "full" in the marker file.
      */
     private static final boolean FULL = Boolean.getBoolean("typeomega.rulesSelfTest.full") || markerSays("full");
     private static final boolean CHAPTERS_ONLY = markerSays("chapters");

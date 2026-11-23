@@ -47,7 +47,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * Not gameplay: when the JVM is started with {@code -Dgtia.exportRecipes=
+ * Not gameplay: when the JVM is started with {@code -Dtypeomega.exportRecipes=
  * 
 <dir>
  * }, writes every loaded recipe
