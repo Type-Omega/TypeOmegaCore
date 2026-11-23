@@ -87,6 +87,27 @@ final class TypeZeroTestRig {
         return new Placed(origin, nx, ny, nz, controller);
     }
 
+    /**
+     * Removes the controllers of {@code definition} left within {@code range} blocks of {@code center} by earlier
+     * runs: the test world is kept, and when the test layout shifts an old Rocket Assembler can fall within the
+     * Cosmodrome's link range.
+     */
+    static void removeControllers(GameTestHelper h, MultiblockMachineDefinition definition, BlockPos center,
+                                  int range) {
+        var level = h.getLevel();
+        List<BlockPos> found = new ArrayList<>();
+        for (int cx = (center.getX() - range) >> 4; cx <= (center.getX() + range) >> 4; cx++)
+            for (int cz = (center.getZ() - range) >> 4; cz <= (center.getZ() + range) >> 4; cz++) {
+                var chunk = level.getChunkSource().getChunkNow(cx, cz);
+                if (chunk == null) continue;
+                for (var entity : chunk.getBlockEntities().values())
+                    if (entity instanceof com.gregtechceu.gtceu.api.machine.IMachineBlockEntity holder &&
+                            holder.getMetaMachine().getDefinition() == definition)
+                        found.add(entity.getBlockPos());
+            }
+        for (BlockPos pos : found) level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2 | 16);
+    }
+
     /** Checks the pattern the way the world does, runs the formation hook and fixes the maintenance hatches. */
     static boolean form(MultiblockControllerMachine controller) {
         if (!controller.checkPatternWithLock()) return false;

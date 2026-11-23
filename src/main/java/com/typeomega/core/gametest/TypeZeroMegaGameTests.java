@@ -120,7 +120,10 @@ public final class TypeZeroMegaGameTests {
         BlockPos origin = TypeZeroTestRig.slot(h, 2);
         var cosmodrome = TypeZeroTestRig.place(h, Cosmodrome.DEFINITION, origin, team, null);
         var mission = (CosmodromeMachine) cosmodrome.controller();
+        TypeZeroTestRig.removeControllers(h, GTIARocketAssembler.ROCKET_ASSEMBLER, mission.getPos(),
+                CosmodromeMachine.LINK_RANGE + 16);
         h.assertTrue(TypeZeroTestRig.form(mission), "the Cosmodrome preview must form");
+        mission.relink();
         h.assertTrue(mission.linkedAssembler() == null, "no Rocket Assembler nearby: no link");
         h.assertFalse(kardashev(h).built(team, Cosmodrome.ID), "an unlinked Cosmodrome does not count");
         var survey = (GTRecipe) h.getLevel().getServer().getRecipeManager()
