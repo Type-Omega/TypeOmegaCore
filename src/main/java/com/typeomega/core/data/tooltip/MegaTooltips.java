@@ -201,7 +201,8 @@ public final class MegaTooltips {
                         value(pow2(QsoPhysics.DRAW_STEP) + " EU/s"), value(QsoPhysics.DRAW_MAX))
                 .line(own(id, "leak"), value(pct(QsoPhysics.LEAK)), value(num(QsoPhysics.LEAK)))
                 .line(own(id, "shot"), value(pow2(QsoPhysics.AIM)), value(QsoPhysics.SIZE_MAX))
-                .line(own(id, "negentropy"), value(pow2(QsoPhysics.AIM)), value(pow2(QsoPhysics.EU_PER_UNIT)))
+                .line(own(id, "negentropy"), value(pow2(QsoPhysics.AIM)), value(pow2(QsoPhysics.AIM)),
+                        value(pow2(QsoPhysics.EU_PER_UNIT)))
                 .line(own(id, "tradeoff"))
                 .separator()
                 .warning(own(id, "finite"))
