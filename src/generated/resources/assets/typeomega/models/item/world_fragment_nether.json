@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "minecraft:block/netherrack"
+    "layer0": "typeomega:item/world_fragment_nether"
   }
 }
