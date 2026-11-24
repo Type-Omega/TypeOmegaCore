@@ -17,13 +17,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
 import com.typeomega.core.GTIAMod;
-import com.typeomega.core.rules.GTIARules;
-import com.typeomega.core.rules.WorldRules;
 
 import java.util.function.Consumer;
 
 /** Organ recipes, the GTO 0.6 ones with GTIA materials for the wings (GTIA-D-279). */
 public final class OrganRecipes {
+
+    /** Multiplies every part of an organ recipe (GTO's Normal organ cost). */
+    public static final int ORGAN_COST = 2;
 
     private OrganRecipes() {}
 
@@ -61,10 +62,10 @@ public final class OrganRecipes {
     /** Organ tier 1 to 4 uses MV, EV, LuV and UV parts; field generators are one tier lower (GTO). */
     private static void tier(Consumer<FinishedRecipe> provider, int organTier) {
         int voltage = organTier * 2;
-        // EN: The organ cost rule multiplies every part (GTO: ×2 on Normal, ×1 on Easy); tiers 2+ cost twice that.
-        // PT: A regra de custo dos órgãos multiplica cada peça (GTO: ×2 no Normal, ×1 no Easy); tier 2+ custa o dobro.
-        // ZH: 器官成本规则乘以每个部件（GTO：普通 ×2，简单 ×1）；2 级以上再翻倍。
-        int scale = (int) WorldRules.get(GTIARules.ORGAN_COST) * (organTier == 1 ? 1 : 2);
+        // EN: Every part costs twice (GTO's Normal organ cost, GTIA-D-436); tiers 2+ cost twice that.
+        // PT: Cada peça custa o dobro (custo de órgão do Normal do GTO, GTIA-D-436); tier 2+ custa o dobro disso.
+        // ZH: 每个部件成本翻倍（GTO 普通模式的器官成本，GTIA-D-436）；2 级以上再翻倍。
+        int scale = ORGAN_COST * (organTier == 1 ? 1 : 2);
         Item motor = pick(voltage, GTItems.ELECTRIC_MOTOR_MV, GTItems.ELECTRIC_MOTOR_EV, GTItems.ELECTRIC_MOTOR_LuV,
                 GTItems.ELECTRIC_MOTOR_UV);
         Item conveyor = pick(voltage, GTItems.CONVEYOR_MODULE_MV, GTItems.CONVEYOR_MODULE_EV,

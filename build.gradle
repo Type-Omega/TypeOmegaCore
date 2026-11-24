@@ -101,8 +101,6 @@ legacyForge {
             sourceSet = sourceSets.main
             programArguments.addAll('--refresh-dependencies')
             systemProperty('forge.enabledGameTestNamespaces', project.mod_id)
-            // ./gradlew runClient -PgtiaRulesSelfTest runs the create-world rules self-test and quits.
-            if (project.hasProperty('gtiaRulesSelfTest')) systemProperty('typeomega.rulesSelfTest', 'true')
             // ./gradlew runClient -PquickPlay="New World" opens that save directly (smoke tests).
             if (project.hasProperty('quickPlay')) programArguments.addAll('--quickPlaySingleplayer', project.quickPlay)
         }
@@ -223,7 +221,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
-    // Mixin (GTIA Rules hooks)
+    // Mixin
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
 }

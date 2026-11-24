@@ -5,11 +5,9 @@
   "refmap": "typeomega.refmap.json",
   "minVersion": "0.8",
   "mixins": [
-    "GTRecipeBuilderMixin",
     "ItemDescriptionMixin",
     "TagLoaderMixin",
     "adastra.AdAstraModUtilsMixin",
-    "ServerPacksSourceMixin",
     "kardashev.LargeBoilerMachineMixin",
     "kardashev.NexusEnergyNetworkMixin",
     "kardashev.SteamBoilerMachineMixin",
@@ -19,11 +17,7 @@
     "defaultRequire": 1
   },
   "client": [
-    "client.CreateWorldGameTabMixin",
-    "client.CreateWorldScreenAccessor",
-    "client.CreateWorldScreenMixin",
     "client.ItemStackModNameMixin",
-    "client.WorldOpenFlowsMixin",
     "client.WindowAccessor"
   ]
 }

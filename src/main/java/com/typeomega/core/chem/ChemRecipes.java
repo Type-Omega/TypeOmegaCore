@@ -14,8 +14,6 @@ import net.minecraftforge.fluids.FluidStack;
 
 import com.typeomega.core.GTIAMod;
 import com.typeomega.core.data.GTIAAlloys;
-import com.typeomega.core.rules.GTIARules;
-import com.typeomega.core.rules.WorldRules;
 
 import java.util.function.Consumer;
 
@@ -30,17 +28,19 @@ public final class ChemRecipes {
 
     private ChemRecipes() {}
 
-    /** A catalyst: kept, or worn out now and then under the catalyst wear rule (GTIA-D-284). */
+    // EN: Chance per run, in hundredths of a percent, that a chemistry catalyst wears out: 1% (GTIA-D-284, D-436).
+    // PT: Chance por execução, em centésimos de por cento, de o catalisador se gastar: 1% (GTIA-D-284, D-436).
+    // ZH: 每次运行化学催化剂损耗的概率（万分比）：1%（GTIA-D-284、D-436）。
+    private static final int CATALYST_WEAR = 100;
+
+    /** A catalyst: worn out now and then (GTIA-D-284). */
     static GTRecipeBuilder catalyst(GTRecipeBuilder builder, TagPrefix prefix, Material material) {
-        int wear = (int) WorldRules.get(GTIARules.CATALYST_WEAR);
-        if (wear <= 0) return builder.notConsumable(prefix, material);
-        return builder.chancedInput(ChemicalHelper.get(prefix, material), wear, 0);
+        return builder.chancedInput(ChemicalHelper.get(prefix, material), CATALYST_WEAR, 0);
     }
 
-    /** Steam recovered from a plant's heat, scaled by the heat recovery rule. */
+    /** Steam recovered from a plant's heat. */
     static FluidStack steam(int amount) {
-        return GTMaterials.Steam
-                .getFluid(Math.max(0, (int) Math.round(amount * WorldRules.get(GTIARules.HEAT_RECOVERY))));
+        return GTMaterials.Steam.getFluid(Math.max(0, amount));
     }
 
     public static void addRecipes(Consumer<FinishedRecipe> provider) {

@@ -16,9 +16,6 @@ import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.items.ItemStackHandler;
 
-import com.typeomega.core.rules.GTIARules;
-import com.typeomega.core.rules.WorldRules;
-
 import java.util.Map;
 import java.util.UUID;
 
@@ -44,6 +41,10 @@ public final class OrganEffects {
     private static final Map<String, Integer> PLANET_TIERS = Map.of("ad_astra:moon", 1, "ad_astra:mars", 2,
             "ad_astra:venus", 3, "ad_astra:mercury", 3);
     private static final int PLANET_HITS_TO_DIE = 40;
+    // EN: Planets never hurt players for their organ set (GTIA-D-338); the GTO port stays for a later decision.
+    // PT: Planetas nunca ferem o jogador pelo conjunto de órgãos (GTIA-D-338); o port do GTO fica para decisão futura.
+    // ZH: 星球不会因器官套装等级伤害玩家（GTIA-D-338）；GTO 移植逻辑保留待日后决定。
+    static final boolean PLANETS_NEED_ORGANS = false;
 
     private OrganEffects() {}
 
@@ -147,7 +148,7 @@ public final class OrganEffects {
         var data = player.getPersistentData();
         int required = requiredSetTier(player.level().dimension().location().toString());
         if (required == 0 || set >= required || !player.gameMode.isSurvival() ||
-                WorldRules.get(GTIARules.ORGAN_PLANET_REQUIREMENT) == 0) {
+                !PLANETS_NEED_ORGANS) {
             data.remove(PLANET_HITS);
             return;
         }

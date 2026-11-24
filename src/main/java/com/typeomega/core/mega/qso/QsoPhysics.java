@@ -9,7 +9,7 @@ package com.typeomega.core.mega.qso;
  * The capacitor leaks 1 % of its charge a second, so it saturates at (input / 0.01): bigger shots need a heavier
  * hole.</li>
  * <li>Each shot pays a fixed aiming cost; what is left is ordered energy fired against the 2.7 K sky, harvested as
- * negentropy. The world holds a finite stock of it (a world rule).</li>
+ * negentropy. The world holds a finite stock of it ({@link #WORLD_STOCK}), shared by all players.</li>
  * </ul>
  */
 public final class QsoPhysics {
@@ -17,6 +17,10 @@ public final class QsoPhysics {
     public static final double EUT_PER_SOLAR_MASS = Math.pow(2, 40), DRAW_STEP = Math.pow(2, 42), LEAK = 0.01,
             AIM = Math.pow(2, 50), EU_PER_UNIT = Math.pow(2, 48);
     public static final int DRAW_MAX = 16, SIZE_MAX = 7;
+    // EN: Negentropy units the whole world can harvest; the last shot after that ends the game (GTIA-D-312/D-332).
+    // PT: Unidades de negentropia que o mundo inteiro pode colher; o tiro seguinte encerra o jogo (GTIA-D-312/D-332).
+    // ZH: 整个世界可收集的负熵单位；耗尽后的下一发终结游戏（GTIA-D-312/D-332）。
+    public static final double WORLD_STOCK = 100_000;
 
     private QsoPhysics() {}
 

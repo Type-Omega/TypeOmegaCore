@@ -17,15 +17,13 @@ import com.typeomega.core.mega.EraStore;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 import com.typeomega.core.mega.system.StarSystems;
-import com.typeomega.core.rules.GTIARules;
-import com.typeomega.core.rules.WorldRules;
 
 import java.util.List;
 
 /**
  * Controller of the Quasi-Stellar Obliterator (GTIA-D-332): charges a capacitor from its system's quasar and the
- * Nexus network, fires it, and harvests negentropy from the world's finite stock. With the stock spent and the
- * world rule on, the last shot ends the game.
+ * Nexus network, fires it, and harvests negentropy from the world's finite stock. With the stock spent, the last
+ * shot ends the game.
  */
 public class QsoMachine extends MegaMachine {
 
@@ -119,7 +117,7 @@ public class QsoMachine extends MegaMachine {
         var star = star();
         double mass = star == null ? 0 : star.mass;
         var era = EraStore.get(level.getServer());
-        double stock = WorldRules.get(GTIARules.NEGENTROPY_STOCK);
+        double stock = QsoPhysics.WORLD_STOCK;
         double left = Math.max(0, stock - era.get(EraStore.NEGENTROPY_TAKEN, EraStore.WORLD));
         int k = Math.min(size, QsoPhysics.maxSize(phases));
         double shot = QsoPhysics.shot(k);
@@ -141,7 +139,7 @@ public class QsoMachine extends MegaMachine {
                     if (networkOwner != null) era.add(EraStore.NEGENTROPY, networkOwner, got);
                     era.add(EraStore.NEGENTROPY_TAKEN, EraStore.WORLD, got);
                     left -= got;
-                } else if (WorldRules.get(GTIARules.FINAL_ENDING) != 0) {
+                } else {
                     end(level, era);
                 }
             }

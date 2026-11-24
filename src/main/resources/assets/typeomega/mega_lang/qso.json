@@ -94,26 +94,6 @@
   "Manual de campo - Obliterador",
   "现场手册 - 类星体湮灭炮"
  ],
- "typeomega.rule.machines.negentropy_stock": [
-  "Negentropy in the world",
-  "Negentropia do mundo",
-  "世界负熵储量"
- ],
- "typeomega.rule.machines.negentropy_stock.desc": [
-  "Units of negentropy the Final era can harvest in this world, all players together.",
-  "Unidades de negentropia que a Era Final pode colher neste mundo, somando todos os jogadores.",
-  "本世界终末纪元可收集的负熵总量（所有玩家合计）。"
- ],
- "typeomega.rule.machines.final_ending": [
-  "The last shot ends the game",
-  "O último tiro encerra o jogo",
-  "最后一发终结游戏"
- ],
- "typeomega.rule.machines.final_ending.desc": [
-  "When the world's negentropy is spent, the Obliterator's next shot ends the game.",
-  "Com a negentropia do mundo esgotada, o próximo tiro do Obliterador encerra o jogo.",
-  "世界负熵耗尽后，湮灭炮的下一发将终结游戏。"
- ],
  "typeomega.qso.ui.manual.0": [
   "#The quasar",
   "#O quasar",
@@ -160,18 +140,18 @@
   "#终结"
  ],
  "typeomega.qso.ui.manual.9": [
-  "Ordered energy fired at the 2.7 K sky is negentropy; the world holds only so much (a world rule), shared by all.",
-  "Energia ordenada disparada contra o céu de 2,7 K é negentropia; o mundo só tem um tanto (regra do mundo), dividido por todos.",
-  "向 2.7 K 天空发射的有序能量即为负熵；世界总量有限（世界规则），所有人共享。"
+  "Ordered energy fired at the 2.7 K sky is negentropy; the world holds only so much, shared by all.",
+  "Energia ordenada disparada contra o céu de 2,7 K é negentropia; o mundo só tem um tanto, dividido por todos.",
+  "向 2.7 K 天空发射的有序能量即为负熵；世界总量有限，所有人共享。"
  ],
  "typeomega.qso.ui.manual.10": [
-  "When it is spent and the world rule allows it, the next shot is the last: the Final era closes and the game ends.",
-  "Quando acaba e a regra do mundo permite, o próximo tiro é o último: a Era Final se fecha e o jogo acaba.",
-  "耗尽且世界规则允许时，下一发即最后一发：终末纪元关闭，游戏结束。"
+  "When it is spent, the next shot is the last: the Final era closes and the game ends.",
+  "Quando acaba, o próximo tiro é o último: a Era Final se fecha e o jogo acaba.",
+  "耗尽后，下一发即最后一发：终末纪元关闭，游戏结束。"
  ],
  "typeomega.qso.ui.manual.11": [
-  "Modpacks set the stock and may turn the ending off; the negentropy is kept for their own final recipes.",
-  "Os modpacks definem o estoque e podem desligar o final; a negentropia fica guardada para as receitas finais deles.",
-  "整合包可设定储量并关闭结局；负熵会保留供其终局配方使用。"
+  "The world holds 100,000 units; what you harvest is kept for the final recipes.",
+  "O mundo tem 100.000 unidades; o que você colhe fica guardado para as receitas finais.",
+  "世界共有 100,000 单位负熵；收集到的负熵保留供终局配方使用。"
  ]
 }

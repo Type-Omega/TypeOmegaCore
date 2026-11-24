@@ -11,8 +11,6 @@ import com.typeomega.core.mega.qso.QsoMachine;
 import com.typeomega.core.mega.qso.QsoPhysics;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 import com.typeomega.core.mega.system.StarSystems;
-import com.typeomega.core.rules.GTIARules;
-import com.typeomega.core.rules.WorldRules;
 
 import java.util.UUID;
 
@@ -56,9 +54,8 @@ final class QsoTestRig {
             helper.assertTrue(m.shots() > 0 && era.get(EraStore.NEGENTROPY, owner) > 0,
                     "it fires and harvests " + "negentropy: " + m.shots());
             MegaTestRig.lit(helper, m, "shot", "quasar_jet_n", "quasar_jet_s");
-            // The world's stock spent: with the ending rule on, the next shot is the last.
-            helper.assertTrue(WorldRules.get(GTIARules.FINAL_ENDING) != 0, "the ending is on by default");
-            era.set(EraStore.NEGENTROPY_TAKEN, EraStore.WORLD, WorldRules.get(GTIARules.NEGENTROPY_STOCK));
+            // The world's stock spent: the next shot is the last.
+            era.set(EraStore.NEGENTROPY_TAKEN, EraStore.WORLD, QsoPhysics.WORLD_STOCK);
             long before = m.shots();
             for (int i = 0; i < 200 && !m.ended(); i++) m.testSecond(owner);
             helper.assertTrue(m.ended() && m.shots() == before + 1 && era.get(EraStore.FINAL_DONE, EraStore.WORLD) == 1,

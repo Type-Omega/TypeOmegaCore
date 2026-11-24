@@ -62,15 +62,13 @@ public final class GTIAAddon implements IGTAddon {
         com.typeomega.core.route.ProgressionGates.removeRecipes(consumer);
         com.typeomega.core.route.NanoCircuits.removeRecipes(consumer);
         com.typeomega.core.mega.typezero.WirelessHatchGate.removeRecipes(consumer);
-        // EN: Normal worlds move steam through pipes; only Journey crafts the GTNA wireless steam hatches (GTIA-D-340).
-        // PT: No Normal o vapor vai por canos; só o Journey fabrica os hatches de vapor sem fio do GTNA (GTIA-D-340).
-        // ZH: 普通模式下蒸汽走管道；只有旅程模式能合成 GTNA 无线蒸汽仓（GTIA-D-340）。
-        if (com.typeomega.core.rules.WorldRules.get(com.typeomega.core.rules.GTIARules.WIRELESS_STEAM) == 0) {
-            for (String id : new String[] { "gtna:wireless_steam_input_hatch", "gtna:wireless_steam_output_hatch",
-                    "gtceu:hydraulic_manufacturing/wireless_steam_input_hatch_steel",
-                    "gtceu:hydraulic_manufacturing/wireless_steam_output_hatch_steel" })
-                consumer.accept(new ResourceLocation(id));
-        }
+        // EN: Steam moves through pipes: the GTNA wireless steam hatches have no recipe (GTIA-D-340, D-436).
+        // PT: O vapor vai por canos: os hatches de vapor sem fio do GTNA não têm receita (GTIA-D-340, D-436).
+        // ZH: 蒸汽通过管道输送：GTNA 无线蒸汽仓没有配方（GTIA-D-340、D-436）。
+        for (String id : new String[] { "gtna:wireless_steam_input_hatch", "gtna:wireless_steam_output_hatch",
+                "gtceu:hydraulic_manufacturing/wireless_steam_input_hatch_steel",
+                "gtceu:hydraulic_manufacturing/wireless_steam_output_hatch_steel" })
+            consumer.accept(new ResourceLocation(id));
     }
 
     @Override

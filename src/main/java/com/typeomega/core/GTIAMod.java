@@ -18,9 +18,6 @@ import com.typeomega.core.data.GTIABeeMachines;
 import com.typeomega.core.data.GTIAItems;
 import com.typeomega.core.data.GTIALang;
 import com.typeomega.core.data.GTIARecipeTypes;
-import com.typeomega.core.rules.GTIARulesNetwork;
-import com.typeomega.core.rules.GTIASteamRules;
-import com.typeomega.core.rules.WorldRules;
 import com.typeomega.core.tools.RecipeExport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -37,10 +34,10 @@ public final class GTIAMod {
         GTIALang.init();
         com.typeomega.core.mega.GTIAMegaLang.init();
         com.typeomega.core.mega.common.MegaLang.init();
-        com.typeomega.core.rules.GTIARuleEffects.applyStartupRules();
+        com.typeomega.core.balance.TypeOmegaBalance.apply();
         GTIAItems.init();
         com.typeomega.core.organ.GTIAOrgans.init();
-        MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.rules.GTIASurvivalRules::onPlayerTick);
+        MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.balance.ExtraRegeneration::onPlayerTick);
         MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.mega.system.SystemWipe::onServerAboutToStart);
         com.typeomega.core.station.GTIAStation.init();
         com.typeomega.core.kardashev.KardashevMeter.init();
@@ -58,8 +55,6 @@ public final class GTIAMod {
                 com.typeomega.core.mega.GTIAMegastructures.gtna())
             modBus.addListener(com.typeomega.core.mega.common.client.MegaFxShaders::register);
         REGISTRATE.registerRegistrate();
-        MinecraftForge.EVENT_BUS.addListener(
-                (net.minecraftforge.event.server.ServerStartedEvent e) -> WorldRules.onServerStarted(e.getServer()));
         MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.data.RecipeAuditCommand::register);
         if (net.minecraftforge.fml.ModList.get().isLoaded("productivebees")) {
             MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.data.ProductiveBeesRecipeFilter::onServerStarted);
@@ -75,15 +70,9 @@ public final class GTIAMod {
             MinecraftForge.EVENT_BUS
                     .addListener(com.typeomega.core.data.rocket.AdAstraRecipeFilter::onDatapackSync);
         }
-        GTIARulesNetwork.register();
         com.typeomega.core.mega.system.SkyStarNetwork.register();
         MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.mega.system.SkyStarNetwork::onServerTick);
-        if (net.minecraftforge.fml.ModList.get().isLoaded("gtna")) GTIASteamRules.install();
         if (net.minecraftforge.fml.loading.FMLEnvironment.dist.isClient()) {
-            MinecraftForge.EVENT_BUS.addListener(
-                    (net.minecraftforge.client.event.ClientPlayerNetworkEvent.LoggingOut e) -> WorldRules.leaveWorld());
-            MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.client.GTIARulesClient::onRegisterCommands);
-            MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.client.GTIARulesClient::onClientTick);
             if (com.typeomega.core.mega.GTIAMegastructures.available()) {
                 // The dynamic render type has to exist before the machine models load.
                 var ignored = com.typeomega.core.mega.common.client.MegaRenderer.Render.TYPE;
@@ -94,24 +83,7 @@ public final class GTIAMod {
                 MinecraftForge.EVENT_BUS.addListener(
                         com.typeomega.core.mega.common.client.MegaDevCommand::register);
             }
-            // Same test as GTIARulesSelfTest.ENABLED, read here: that class touches EMI, which may be absent.
-            if (Boolean.getBoolean("typeomega.rulesSelfTest") || java.nio.file.Files.exists(
-                    java.nio.file.Path.of("gtia_rules_selftest"))) {
-                MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.client.GTIARulesSelfTest::onClientTick);
-            }
         }
-        MinecraftForge.EVENT_BUS
-                .addListener((net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent e) -> {
-                    if (e.getEntity() instanceof net.minecraft.server.level.ServerPlayer player) {
-                        GTIARulesNetwork.sendTo(player);
-                        com.typeomega.core.rules.ModeStage.apply(player);
-                    }
-                    String warning = WorldRules.takeWarning();
-                    if (warning != null) {
-                        e.getEntity().sendSystemMessage(net.minecraft.network.chat.Component.translatable(warning,
-                                WorldRules.active().preset().id()).withStyle(net.minecraft.ChatFormatting.GOLD));
-                    }
-                });
         if (System.getProperty(RecipeExport.PROPERTY) != null) {
             MinecraftForge.EVENT_BUS.addListener(RecipeExport::onServerStarted);
         }
