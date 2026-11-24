@@ -84,9 +84,21 @@ public final class MegaRenderer {
                 var shape = m.shape();
                 var motion = MegaMotion.get(m.shapeName());
                 if (shape == null || motion == null) continue;
-                var baked = BAKED.computeIfAbsent(
-                        new Placement(m.shapeName(), m.getPos().immutable(), m.getFrontFacing()),
-                        p -> bake(shape, p));
+                var placement = new Placement(m.shapeName(), m.getPos().immutable(), m.getFrontFacing());
+                var baked = BAKED.get(placement);
+                if (baked == null) {
+                    // EN: Evict outside computeIfAbsent; clearing the map inside it threw
+                    // ConcurrentModificationException.
+                    // PT: Limpa fora do computeIfAbsent; limpar o mapa dentro dele lançava
+                    // ConcurrentModificationException.
+                    // ZH: 在 computeIfAbsent 之外清理；在其内部清空映射会抛出 ConcurrentModificationException。
+                    if (BAKED.size() > 4) {
+                        BAKED.values().forEach(Baked::close);
+                        BAKED.clear();
+                    }
+                    baked = bake(shape, placement);
+                    BAKED.put(placement, baked);
+                }
                 drawRings(m, baked, motion, event.getPoseStack(), cam, projection, seconds);
                 var fx = MegaFx.get(m.shapeName());
                 if (fx != null) MegaFxRenderer.draw(m, fx, placement(shape, baked, motion, event.getPoseStack(), cam,
@@ -164,10 +176,6 @@ public final class MegaRenderer {
     // ------------------------------------------------------------------ baking
 
     private static Baked bake(MegaShape shape, Placement p) {
-        if (BAKED.size() > 4) {
-            BAKED.values().forEach(Baked::close);
-            BAKED.clear();
-        }
         float[] a = MegaShape.axes(p.front());
         var axes = new Matrix3f(a[0], a[3], a[6], a[1], a[4], a[7], a[2], a[5], a[8]);
         var rel = new Vector3f(shape.pivotX - shape.ck, shape.pivotY - shape.cj, shape.pivotZ - shape.ci).mul(axes);
