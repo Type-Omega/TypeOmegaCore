@@ -305,10 +305,10 @@ public final class GTIARulesSelfTest {
                     wait = 20;
                 }
                 case 83 -> {
-                    // The pause menu has no GTIA Rules button any more; the rules are behind /typeomega rules.
+                    // The pause menu has no rules button any more; the rules are behind /typeomega rules.
                     boolean button = mc.screen != null && mc.screen.children().stream()
                             .anyMatch(w -> w instanceof net.minecraft.client.gui.components.AbstractWidget aw &&
-                                    aw.getMessage().getString().contains("GTIA"));
+                                    aw.getMessage().getString().contains("Rules"));
                     GTIAMod.LOGGER.info("GTIA rules self-test: pause menu without the GTIA Rules button: {}",
                             mc.screen instanceof net.minecraft.client.gui.screens.PauseScreen && !button ? "PASS" :
                                     "FAIL (" + mc.screen + ")");

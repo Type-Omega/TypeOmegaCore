@@ -30,7 +30,7 @@ public final class RecipeAuditCommand {
         event.getDispatcher().register(Commands.literal("typeomega").requires(s -> s.hasPermission(2))
                 .then(Commands.literal("audit").then(Commands.literal("recipes").executes(ctx -> {
                     int broken = audit(ctx.getSource().getServer());
-                    ctx.getSource().sendSuccess(() -> Component.literal("GTIA recipe audit: " + broken +
+                    ctx.getSource().sendSuccess(() -> Component.literal("Type Omega recipe audit: " + broken +
                             " recipes with empty inputs, see typeomega-recipe-audit.txt"), true);
                     return broken;
                 }))));

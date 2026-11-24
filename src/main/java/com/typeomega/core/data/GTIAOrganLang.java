@@ -71,7 +71,7 @@ public final class GTIAOrganLang {
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.group.chemistry", "Chemistry");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rule.chemistry.catalyst_wear", "Catalyst wear");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rule.chemistry.catalyst_wear.desc",
-                "Chance per run, in hundredths of a percent, that the catalyst of a GTIA chemistry plant wears out. 0 keeps every catalyst forever.");
+                "Chance per run, in hundredths of a percent, that the catalyst of a Type Omega chemistry plant wears out. 0 keeps every catalyst forever.");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rule.chemistry.heat_recovery", "Heat recovery");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rule.chemistry.heat_recovery.desc",
                 "Multiplies the steam the chemistry plants make from their own reaction heat.");

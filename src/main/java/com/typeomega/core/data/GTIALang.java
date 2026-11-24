@@ -25,11 +25,11 @@ public final class GTIALang {
         GTIAMod.REGISTRATE.addRawLang("typeomega.crafting_station.side.down",
                 "below");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.screen.title",
-                "GTIA Rules");
+                "Type Omega Rules");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.screen.title.world",
-                "GTIA Rules of this world");
+                "Type Omega Rules of this world");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.screen.button",
-                "GTIA Rules: %s");
+                "Type Omega Rules: %s");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.screen.button.tooltip",
                 "Difficulty preset of this world: Journey, Normal or Custom. It can't be changed after the world is created.");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.screen.search",
@@ -39,7 +39,7 @@ public final class GTIALang {
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.screen.values",
                 "Journey %s · Normal %s · range %s to %s");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.command.no_world",
-                "Join a world to see its GTIA Rules.");
+                "Join a world to see its Type Omega Rules.");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.preset.journey",
                 "Journey");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.preset.normal",
@@ -273,9 +273,9 @@ public final class GTIALang {
         GTIAMod.REGISTRATE.addRawLang("typeomega.rule.survival.keep_inventory.desc",
                 "Players keep their items on death. Set when the world is created; /gamerule can change it.");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.warning.missing",
-                "This world had lost its GTIA rules, so it was set to %s. Back up your saves before moving them around.");
+                "This world had lost its Type Omega Rules, so it was set to %s. Back up your saves before moving them around.");
         GTIAMod.REGISTRATE.addRawLang("typeomega.rules.warning.file_mismatch",
-                "gtia_rules.json was edited, but a world's rules can't change. This world stays %s.");
+                "The world's rules file was edited, but a world's rules can't change. This world stays %s.");
         GTIAMod.REGISTRATE.addRawLang("tagprefix.gtia_double_ingot", "Double %s Ingot");
         GTIAMod.REGISTRATE.addRawLang("tagprefix.gtia_triple_ingot", "Triple %s Ingot");
         GTIAMod.REGISTRATE.addRawLang("tagprefix.gtia_quadruple_ingot", "Quadruple %s Ingot");

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Adds the "GTIA Rules: <preset>" button under the vanilla options of the Game tab. */
+/** Adds the "Type Omega Rules: <preset>" button under the vanilla options of the Game tab. */
 @Mixin(targets = "net.minecraft.client.gui.screens.worldselection.CreateWorldScreen$GameTab")
 public abstract class CreateWorldGameTabMixin extends GridLayoutTab {
 

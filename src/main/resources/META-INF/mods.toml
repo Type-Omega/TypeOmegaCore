@@ -10,7 +10,7 @@ license = "${mod_license}"
     logoFile = "assets/typeomega/textures/logo.png"
     authors="${mod_author}"
     description = '''
-Core Java do modpack GregTech Infinity Ascension. Integra materiais, processos e progressao ao GTCEu Modern.
+Core mod of the Type Omega modpack: materials, processing chains, megastructures and progression on top of GTCEu Modern.
 '''
 
     [[dependencies.${mod_id}]]
