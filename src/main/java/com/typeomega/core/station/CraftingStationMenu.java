@@ -1,155 +1,118 @@
 package com.typeomega.core.station;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.ResultContainer;
 import net.minecraft.world.inventory.ResultSlot;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.inventory.TransientCraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.ChestBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.properties.ChestType;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Crafting grid plus the containers next to the station. Every container slot is a real menu slot (so shift-click,
- * EMI recipe filling and normal dragging all work); only the selected tab and page are active on screen.
+ * Menu of the Crafting Station, after the Tinkers' Construct station of GTNH (1.7.10): the grid stays in the block,
+ * every container touching the station is a source with its own tab, and shift-click moves between the player and
+ * those containers. Every container slot is a real menu slot, so shift-click, EMI recipe filling and dragging work;
+ * only the selected tab and page are active on screen.
+ * <p>
+ * Slots: 0 result, 1-9 grid, 10-45 player, then the containers in tab order.
  */
 public class CraftingStationMenu extends AbstractContainerMenu {
 
-    /** Sides checked, in tab order: the four horizontal sides and below, never above. */
-    public static final Direction[] SIDES = { Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST,
-            Direction.DOWN };
     public static final int COLUMNS = 9;
     public static final int ROWS = 6;
     public static final int PAGE_SIZE = COLUMNS * ROWS;
-    /** Large storages show their first slots only; keeps the menu small enough to sync. */
-    public static final int MAX_SLOTS_PER_SIDE = PAGE_SIZE * 10;
-    public static final int PANEL_X = 180;
+    /** Width of the container panel on the left; the crafting table sits right of it. */
+    public static final int PANEL_WIDTH = 180;
 
     public static final int BUTTON_PREVIOUS_PAGE = 10;
     public static final int BUTTON_NEXT_PAGE = 11;
+    public static final int BUTTON_DUMP = 12;
 
-    public record Side(Direction direction, IItemHandler handler, ItemStack icon, Component name) {}
+    static final int RESULT = 0, GRID_START = 1, GRID_END = 10, PLAYER_END = 46;
 
     private final ContainerLevelAccess access;
     private final BlockPos pos;
     private final Player player;
-    private final TransientCraftingContainer craftSlots = new TransientCraftingContainer(this, 3, 3);
+    private final CraftingStationBlockEntity station;
+    private final StationGrid craftSlots;
     private final ResultContainer resultSlots = new ResultContainer();
-    private final List<Side> sides;
+    private final List<StationSides.Side> sides;
     private final DataSlot tab = DataSlot.standalone();
     private final DataSlot page = DataSlot.standalone();
     private final int firstSideSlot;
+    private final int craftX;
+    /** The stack on the cursor was picked up from a neighbouring container. */
+    private boolean carriedFromSide;
 
     /** Server side. */
-    public CraftingStationMenu(int id, Inventory inventory, BlockPos pos, List<Side> sides) {
-        this(GTIAStation.MENU.get(), id, inventory, pos, sides);
+    public CraftingStationMenu(int id, Inventory inventory, BlockPos pos, List<StationSides.Side> sides) {
+        this(GTIAStation.MENU.get(), id, inventory, pos, sides,
+                inventory.player.level().getBlockEntity(pos) instanceof CraftingStationBlockEntity be ? be : null);
     }
 
-    protected CraftingStationMenu(MenuType<?> type, int id, Inventory inventory, BlockPos pos, List<Side> sides) {
+    protected CraftingStationMenu(MenuType<?> type, int id, Inventory inventory, BlockPos pos,
+                                  List<StationSides.Side> sides, CraftingStationBlockEntity station) {
         super(type, id);
         this.player = inventory.player;
         this.pos = pos;
         this.sides = sides;
+        this.station = station;
         this.access = ContainerLevelAccess.create(inventory.player.level(), pos);
-        addSlot(new ResultSlot(inventory.player, craftSlots, resultSlots, 0, 124, 35));
+        NonNullList<ItemStack> items = station != null ? station.grid() :
+                NonNullList.withSize(CraftingStationBlockEntity.GRID, ItemStack.EMPTY);
+        this.craftSlots = new StationGrid(items, this::gridChanged);
+        this.craftX = PANEL_WIDTH;
+        addSlot(new ResultSlot(inventory.player, craftSlots, resultSlots, 0, craftX + 124, 35));
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
-                addSlot(new Slot(craftSlots, col + row * 3, 30 + col * 18, 17 + row * 18));
+                addSlot(new Slot(craftSlots, col + row * 3, craftX + 30 + col * 18, 17 + row * 18));
             }
         }
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
-                addSlot(new Slot(inventory, col + row * 9 + 9, 8 + col * 18, 84 + row * 18));
+                addSlot(new Slot(inventory, col + row * 9 + 9, craftX + 8 + col * 18, 84 + row * 18));
             }
         }
-        for (int col = 0; col < 9; col++) addSlot(new Slot(inventory, col, 8 + col * 18, 142));
+        for (int col = 0; col < 9; col++) addSlot(new Slot(inventory, col, craftX + 8 + col * 18, 142));
         firstSideSlot = slots.size();
         for (int s = 0; s < sides.size(); s++) {
             IItemHandler handler = sides.get(s).handler();
-            int count = Math.min(handler.getSlots(), MAX_SLOTS_PER_SIDE);
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < sides.get(s).slots(); i++) {
                 int inPage = i % PAGE_SIZE;
-                addSlot(new SideSlot(handler, i, PANEL_X + 8 + (inPage % COLUMNS) * 18, 18 + (inPage / COLUMNS) * 18,
-                        s, i / PAGE_SIZE));
+                addSlot(new SideSlot(handler, i, 8 + (inPage % COLUMNS) * 18, 18 + (inPage / COLUMNS) * 18, s,
+                        i / PAGE_SIZE));
             }
         }
         addDataSlot(tab);
         addDataSlot(page);
+        if (station != null && !player.level().isClientSide) station.open(this);
+        refreshResult();
     }
 
     /** Client side, from the open-screen packet. */
     public static CraftingStationMenu fromNetwork(MenuType<CraftingStationMenu> type, int id, Inventory inventory,
                                                   FriendlyByteBuf buf) {
         BlockPos pos = buf.readBlockPos();
-        int count = buf.readVarInt();
-        List<Side> sides = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            Direction direction = buf.readEnum(Direction.class);
-            int slots = buf.readVarInt();
-            ItemStack icon = buf.readItem();
-            Component name = buf.readComponent();
-            sides.add(new Side(direction, new ItemStackHandler(slots), icon, name));
-        }
-        return new CraftingStationMenu(type, id, inventory, pos, sides);
+        return new CraftingStationMenu(type, id, inventory, pos, StationSides.read(buf), null);
     }
 
-    public static void writeSides(FriendlyByteBuf buf, BlockPos pos, List<Side> sides) {
-        buf.writeBlockPos(pos);
-        buf.writeVarInt(sides.size());
-        for (Side side : sides) {
-            buf.writeEnum(side.direction());
-            buf.writeVarInt(Math.min(side.handler().getSlots(), MAX_SLOTS_PER_SIDE));
-            buf.writeItem(side.icon());
-            buf.writeComponent(side.name());
-        }
-    }
-
-    /** Containers with an item handler on the sides of the station; a double chest touching twice counts once. */
-    public static List<Side> findContainers(Level level, BlockPos pos) {
-        List<Side> found = new ArrayList<>();
-        List<BlockPos> seenChests = new ArrayList<>();
-        for (Direction direction : SIDES) {
-            BlockPos at = pos.relative(direction);
-            BlockEntity entity = level.getBlockEntity(at);
-            if (entity == null) continue;
-            var state = level.getBlockState(at);
-            if (state.getBlock() instanceof ChestBlock && state.hasProperty(ChestBlock.TYPE) &&
-                    state.getValue(ChestBlock.TYPE) != ChestType.SINGLE) {
-                BlockPos other = at.relative(ChestBlock.getConnectedDirection(state));
-                if (seenChests.contains(other)) continue;
-                seenChests.add(at);
-            }
-            entity.getCapability(ForgeCapabilities.ITEM_HANDLER, direction.getOpposite()).resolve()
-                    .filter(handler -> handler.getSlots() > 0)
-                    .ifPresent(handler -> found.add(new Side(direction, handler,
-                            new ItemStack(state.getBlock().asItem()), state.getBlock().getName())));
-        }
-        return found;
-    }
-
-    public List<Side> sides() {
+    public List<StationSides.Side> sides() {
         return sides;
     }
 
@@ -161,11 +124,25 @@ public class CraftingStationMenu extends AbstractContainerMenu {
         return page.get();
     }
 
+    /** X of the crafting table part, right of the container panel. */
+    public int craftX() {
+        return craftX;
+    }
+
     public int pageCount() {
         if (sides.isEmpty()) return 0;
-        int slotsOnTab = Math.min(sides.get(Math.min(tab.get(), sides.size() - 1)).handler().getSlots(),
-                MAX_SLOTS_PER_SIDE);
+        int slotsOnTab = sides.get(Math.min(tab.get(), sides.size() - 1)).slots();
         return Math.max(1, (slotsOnTab + PAGE_SIZE - 1) / PAGE_SIZE);
+    }
+
+    /** First menu index of the container slots (grid and player inventory come before). */
+    public int firstSideSlot() {
+        return firstSideSlot;
+    }
+
+    /** Whether grid slot {@code index} (menu index 1-9) was filled from a neighbouring container. */
+    public boolean gridFromSide(int index) {
+        return station != null && station.fromSide(index - GRID_START);
     }
 
     @Override
@@ -183,11 +160,25 @@ public class CraftingStationMenu extends AbstractContainerMenu {
             page.set(page.get() + 1);
             return true;
         }
+        if (id == BUTTON_DUMP && !sides.isEmpty()) {
+            dumpGrid();
+            return true;
+        }
         return false;
+    }
+
+    private void gridChanged() {
+        slotsChanged(craftSlots);
+        if (station != null && !player.level().isClientSide) station.gridChanged(this);
     }
 
     @Override
     public void slotsChanged(net.minecraft.world.Container container) {
+        refreshResult();
+    }
+
+    /** Recomputes the crafting result from the grid (server side). */
+    void refreshResult() {
         access.execute((level, at) -> updateResult(level));
     }
 
@@ -204,53 +195,111 @@ public class CraftingStationMenu extends AbstractContainerMenu {
         }
         resultSlots.setItem(0, result);
         setRemoteSlot(0, result);
-        serverPlayer.connection.send(new ClientboundContainerSetSlotPacket(containerId, incrementStateId(), 0, result));
+        if (serverPlayer.connection != null) {
+            serverPlayer.connection.send(
+                    new ClientboundContainerSetSlotPacket(containerId, incrementStateId(), 0, result));
+        }
     }
 
+    /**
+     * Shift-click as in the GTNH station: the result refills matching stacks in the containers first, then goes to
+     * the player; a grid stack goes back where it came from; the player's items go into the container on screen (the
+     * grid when there is no container); a container's items go to the player.
+     */
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
         Slot slot = slots.get(index);
         if (!slot.hasItem()) return ItemStack.EMPTY;
         ItemStack stack = slot.getItem();
         ItemStack copy = stack.copy();
-        int gridEnd = 10, inventoryEnd = 46;
-        if (index == 0) {
+        boolean moved;
+        if (index == RESULT) {
             access.execute((level, at) -> stack.getItem().onCraftedBy(stack, level, player));
-            if (!moveItemStackTo(stack, 10, inventoryEnd, true)) return ItemStack.EMPTY;
-            slot.onQuickCraft(stack, copy);
-        } else if (index < gridEnd) {
-            if (!moveItemStackTo(stack, 10, inventoryEnd, false)) return ItemStack.EMPTY;
-        } else if (index < inventoryEnd) {
-            // From the player: into the container shown on screen, else into the grid.
+            moved = refill(stack, firstSideSlot, slots.size());
+            moved |= moveItemStackTo(stack, GRID_END, PLAYER_END, true);
+            if (moved) slot.onQuickCraft(stack, copy);
+        } else if (index < GRID_END) {
+            moved = gridFromSide(index) && toSides(stack);
+            moved |= moveItemStackTo(stack, GRID_END, PLAYER_END, false);
+        } else if (index < PLAYER_END) {
             int[] range = activeSideRange();
-            boolean moved = range != null && moveItemStackTo(stack, range[0], range[1], false);
-            if (!moved && !moveItemStackTo(stack, 1, gridEnd, false)) return ItemStack.EMPTY;
-        } else if (!moveItemStackTo(stack, 10, inventoryEnd, false)) {
-            return ItemStack.EMPTY;
+            moved = range != null ? moveItemStackTo(stack, range[0], range[1], false) :
+                    moveItemStackTo(stack, GRID_START, GRID_END, false);
+        } else {
+            moved = moveItemStackTo(stack, GRID_END, PLAYER_END, false);
         }
+        if (!moved) return ItemStack.EMPTY;
         if (stack.isEmpty()) slot.setByPlayer(ItemStack.EMPTY);
         else slot.setChanged();
         if (stack.getCount() == copy.getCount()) return ItemStack.EMPTY;
         slot.onTake(player, stack);
-        if (index == 0) player.drop(stack, false);
+        if (index == RESULT && !stack.isEmpty()) player.drop(stack, false);
         return copy;
+    }
+
+    /** Only into stacks of the same item that are already there (the GTNH station's chest refill). */
+    private boolean refill(ItemStack stack, int start, int end) {
+        boolean moved = false;
+        for (int i = start; i < end && !stack.isEmpty(); i++) {
+            Slot target = slots.get(i);
+            ItemStack there = target.getItem();
+            if (there.isEmpty() || !ItemStack.isSameItemSameTags(there, stack)) continue;
+            int room = Math.min(target.getMaxStackSize(there), there.getMaxStackSize()) - there.getCount();
+            if (room <= 0) continue;
+            int amount = Math.min(room, stack.getCount());
+            there.grow(amount);
+            stack.shrink(amount);
+            target.setChanged();
+            moved = true;
+        }
+        return moved;
+    }
+
+    /** Into the container on screen first, then any other one. */
+    private boolean toSides(ItemStack stack) {
+        int[] active = activeSideRange();
+        if (active == null) return false;
+        boolean moved = moveItemStackTo(stack, active[0], active[1], false);
+        if (!stack.isEmpty()) moved |= moveItemStackTo(stack, firstSideSlot, slots.size(), false);
+        return moved;
+    }
+
+    /** The dump button: the grid goes into the containers, what does not fit to the player. */
+    public void dumpGrid() {
+        for (int i = GRID_START; i < GRID_END; i++) {
+            Slot slot = slots.get(i);
+            if (!slot.hasItem()) continue;
+            ItemStack stack = slot.getItem().copy();
+            refill(stack, firstSideSlot, slots.size());
+            if (!stack.isEmpty()) moveItemStackTo(stack, firstSideSlot, slots.size(), false);
+            if (!stack.isEmpty()) moveItemStackTo(stack, GRID_END, PLAYER_END, false);
+            slot.set(stack);
+        }
+    }
+
+    /** Keeps track of stacks carried from a container to the grid, so a shift-click sends them back. */
+    @Override
+    public void clicked(int slotId, int button, ClickType type, Player player) {
+        boolean carriedBefore = !getCarried().isEmpty();
+        ItemStack gridBefore = slotId >= GRID_START && slotId < GRID_END ? slots.get(slotId).getItem().copy() :
+                ItemStack.EMPTY;
+        super.clicked(slotId, button, type, player);
+        if (type != ClickType.PICKUP || slotId < 0 || slotId >= slots.size()) return;
+        if (slotId >= firstSideSlot && !carriedBefore && !getCarried().isEmpty()) carriedFromSide = true;
+        if (slotId >= GRID_START && slotId < GRID_END && station != null && carriedBefore && carriedFromSide) {
+            ItemStack now = slots.get(slotId).getItem();
+            if (now.getCount() > gridBefore.getCount()) station.setFromSide(slotId - GRID_START, true);
+        }
+        if (getCarried().isEmpty()) carriedFromSide = false;
     }
 
     /** Menu slot range of the selected container, or null when there is none. */
     private int[] activeSideRange() {
         if (sides.isEmpty()) return null;
         int start = firstSideSlot;
-        for (int s = 0; s < tab.get() && s < sides.size(); s++) {
-            start += Math.min(sides.get(s).handler().getSlots(), MAX_SLOTS_PER_SIDE);
-        }
-        int size = Math.min(sides.get(Math.min(tab.get(), sides.size() - 1)).handler().getSlots(),
-                MAX_SLOTS_PER_SIDE);
-        return new int[] { start, start + size };
-    }
-
-    /** First menu index of the container slots (grid and player inventory come before). */
-    public int firstSideSlot() {
-        return firstSideSlot;
+        int selected = Math.min(tab.get(), sides.size() - 1);
+        for (int s = 0; s < selected; s++) start += sides.get(s).slots();
+        return new int[] { start, start + sides.get(selected).slots() };
     }
 
     @Override
@@ -261,7 +310,11 @@ public class CraftingStationMenu extends AbstractContainerMenu {
     @Override
     public void removed(Player player) {
         super.removed(player);
-        access.execute((level, at) -> clearContainer(player, craftSlots));
+        if (station != null) {
+            station.close(this);
+        } else {
+            access.execute((level, at) -> clearContainer(player, craftSlots));
+        }
     }
 
     @Override

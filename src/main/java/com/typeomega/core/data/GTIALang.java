@@ -13,7 +13,11 @@ public final class GTIALang {
         GTIAMod.REGISTRATE.addRawLang("typeomega.crafting_station.tab",
                 "%s (%s)");
         GTIAMod.REGISTRATE.addRawLang("typeomega.crafting_station.empty",
-                "Place chests or other containers on the sides or below the station to craft from them.");
+                "Place chests or other containers against any side of the station, above and below too, to craft from them.");
+        GTIAMod.REGISTRATE.addRawLang("typeomega.crafting_station.dump",
+                "Move the crafting grid into the containers");
+        GTIAMod.REGISTRATE.addRawLang("typeomega.crafting_station.side.up",
+                "above");
         GTIAMod.REGISTRATE.addRawLang("typeomega.crafting_station.side.north",
                 "north");
         GTIAMod.REGISTRATE.addRawLang("typeomega.crafting_station.side.east",

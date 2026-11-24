@@ -91,15 +91,15 @@ public final class GTIAMod {
     }
 
     /**
-     * Crafting Chain (optional) crafts from the containers around an open Crafting Station, the same five sides the
-     * station shows. Sent over IMC, so GTIACore needs no compile dependency on it.
+     * Crafting Chain (optional) crafts from the containers around an open Crafting Station, the same six sides the
+     * station shows. Sent over IMC, so the core needs no compile dependency on it.
      */
     private void sendCraftingSources(net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent event) {
         if (!net.minecraftforge.fml.ModList.get().isLoaded("craftingchain")) return;
         net.minecraftforge.fml.InterModComms.sendTo("craftingchain", "sources",
                 () -> (java.util.function.Function<net.minecraft.server.level.ServerPlayer, java.util.List<net.minecraftforge.items.IItemHandler>>) player -> player.containerMenu instanceof com.typeomega.core.station.CraftingStationMenu station ?
                         station.sides().stream()
-                                .map(com.typeomega.core.station.CraftingStationMenu.Side::handler)
+                                .map(com.typeomega.core.station.StationSides.Side::handler)
                                 .toList() :
                         java.util.List.of());
     }

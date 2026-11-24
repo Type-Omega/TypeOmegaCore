@@ -21,7 +21,7 @@
   "tagprefix.gtia_triple_plate": "Placa Tripla de %s",
   "block.typeomega.crafting_station": "Estação de Crafting",
   "typeomega.crafting_station.tab": "%s (%s)",
-  "typeomega.crafting_station.empty": "Coloque baús ou outros contêineres nas laterais ou embaixo da estação para craftar com eles.",
+  "typeomega.crafting_station.empty": "Coloque baús ou outros contêineres encostados em qualquer lado da estação, em cima e embaixo também, para craftar com eles.",
   "typeomega.crafting_station.side.north": "norte",
   "typeomega.crafting_station.side.east": "leste",
   "typeomega.crafting_station.side.south": "sul",
@@ -1183,5 +1183,7 @@
   "itemGroup.typeomega.machines": "Type Omega: Máquinas",
   "itemGroup.typeomega.multiblocks": "Type Omega: Multiblocos e Megaestruturas",
   "itemGroup.typeomega.materials": "Type Omega: Materiais e Itens",
-  "itemGroup.typeomega.blocks": "Type Omega: Blocos e Carcaças"
+  "itemGroup.typeomega.blocks": "Type Omega: Blocos e Carcaças",
+  "typeomega.crafting_station.dump": "Mover a grade de crafting para os contêineres",
+  "typeomega.crafting_station.side.up": "em cima"
 }

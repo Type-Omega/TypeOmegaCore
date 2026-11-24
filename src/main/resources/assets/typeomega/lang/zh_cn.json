@@ -21,7 +21,7 @@
   "tagprefix.gtia_triple_plate": "三重%s板",
   "block.typeomega.crafting_station": "合成站",
   "typeomega.crafting_station.tab": "%s（%s）",
-  "typeomega.crafting_station.empty": "在合成站的侧面或下方放置箱子或其他容器，即可直接使用其中的物品合成。",
+  "typeomega.crafting_station.empty": "在合成站的任意一面（包括上方和下方）放置箱子或其他容器，即可直接使用其中的物品合成。",
   "typeomega.crafting_station.side.north": "北",
   "typeomega.crafting_station.side.east": "东",
   "typeomega.crafting_station.side.south": "南",
@@ -1183,5 +1183,7 @@
   "itemGroup.typeomega.machines": "Type Omega：机器",
   "itemGroup.typeomega.multiblocks": "Type Omega：多方块与巨构",
   "itemGroup.typeomega.materials": "Type Omega：材料与物品",
-  "itemGroup.typeomega.blocks": "Type Omega：方块与机壳"
+  "itemGroup.typeomega.blocks": "Type Omega：方块与机壳",
+  "typeomega.crafting_station.dump": "将合成网格中的物品移入容器",
+  "typeomega.crafting_station.side.up": "上方"
 }
