@@ -34,17 +34,17 @@ public final class SingleModeGameTests {
     /** The rules screen, its create-world button, the command and their texts are gone. */
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
     public static void noRulesCommandScreenOrText(GameTestHelper h) {
+        h.assertTrue(SingleModeGameTests.class.getClassLoader()
+                .getResource("com/typeomega/core/balance/TypeOmegaBalance.class") != null, "class files are visible");
         for (String removed : List.of("com.typeomega.core.client.GTIARulesScreen",
                 "com.typeomega.core.client.GTIARulesClient", "com.typeomega.core.client.GTIARestartScreen",
                 "com.typeomega.core.rules.WorldRules", "com.typeomega.core.rules.GTIARules",
                 "com.typeomega.core.mixin.client.CreateWorldGameTabMixin")) {
-            boolean present;
-            try {
-                Class.forName(removed, false, SingleModeGameTests.class.getClassLoader());
-                present = true;
-            } catch (ClassNotFoundException e) {
-                present = false;
-            }
+            // EN: Look for the class file, not the class: Mixin refuses to load anything from a mixin package.
+            // PT: Procura o arquivo da classe, não a classe: o Mixin recusa carregar algo de um pacote de mixin.
+            // ZH: 查找类文件而非加载类：Mixin 禁止加载 mixin 包中的任何类。
+            boolean present = SingleModeGameTests.class.getClassLoader()
+                    .getResource(removed.replace('.', '/') + ".class") != null;
             h.assertFalse(present, removed + " still exists");
         }
         var root = h.getLevel().getServer().getCommands().getDispatcher().getRoot().getChild(GTIAMod.MOD_ID);
