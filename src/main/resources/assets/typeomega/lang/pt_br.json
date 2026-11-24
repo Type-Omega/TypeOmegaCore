@@ -1179,5 +1179,9 @@
   "typeomega.machine.large_fragment_collector.tooltip.humor": "A mesma mineração por correspondência, agora com doca de carga.",
   "typeomega.machine.national_dispatch_center.tooltip.humor": "Toda hatch sem fio do país responde a esta sala. A cafeteira também.",
   "typeomega.machine.cosmodrome.tooltip.humor": "Controle de missão: dez telas, um grande botão vermelho, ninguém encosta.",
-  "typeomega.machine.tokamak_hv.tooltip.humor": "Uma estrela num donut. O primeiro passo da Type Omega para ter uma de verdade."
+  "typeomega.machine.tokamak_hv.tooltip.humor": "Uma estrela num donut. O primeiro passo da Type Omega para ter uma de verdade.",
+  "itemGroup.typeomega.machines": "Type Omega: Máquinas",
+  "itemGroup.typeomega.multiblocks": "Type Omega: Multiblocos e Megaestruturas",
+  "itemGroup.typeomega.materials": "Type Omega: Materiais e Itens",
+  "itemGroup.typeomega.blocks": "Type Omega: Blocos e Carcaças"
 }

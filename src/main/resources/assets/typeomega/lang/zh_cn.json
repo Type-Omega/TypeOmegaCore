@@ -1179,5 +1179,9 @@
   "typeomega.machine.large_fragment_collector.tooltip.humor": "同样的邮购采矿，现在配了装卸码头。",
   "typeomega.machine.national_dispatch_center.tooltip.humor": "全国每个无线仓都听命于这间控制室，咖啡机也一样。",
   "typeomega.machine.cosmodrome.tooltip.humor": "任务控制中心：十块屏幕，一个大红按钮，谁也别碰。",
-  "typeomega.machine.tokamak_hv.tooltip.humor": "甜甜圈里的恒星。Type Omega 拥有真恒星的第一步。"
+  "typeomega.machine.tokamak_hv.tooltip.humor": "甜甜圈里的恒星。Type Omega 拥有真恒星的第一步。",
+  "itemGroup.typeomega.machines": "Type Omega：机器",
+  "itemGroup.typeomega.multiblocks": "Type Omega：多方块与巨构",
+  "itemGroup.typeomega.materials": "Type Omega：材料与物品",
+  "itemGroup.typeomega.blocks": "Type Omega：方块与机壳"
 }

@@ -45,6 +45,7 @@ public final class GTIAMod {
         com.typeomega.core.mega.typezero.TypeZeroMegas.init();
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         com.typeomega.core.miner.GTIAMiners.registerSerializers(modBus);
+        com.typeomega.core.data.GTIACreativeTabs.register(modBus);
         com.typeomega.core.loot.GTOreFortune.register(modBus);
         modBus.addListener(this::registerMaterialRegistry);
         modBus.addListener(this::sendCraftingSources);
