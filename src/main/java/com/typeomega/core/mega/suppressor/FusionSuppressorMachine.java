@@ -225,14 +225,14 @@ public class FusionSuppressorMachine extends MegaMachine {
             for (int i = 0; i < R_PROCESS.length; i++)
                 owed[i] += SuppressorPhysics.supernovaDust(star.mass, star.metallicity, phases >= 5);
             star.kind = Kind.NEUTRON_STAR;
-            star.mass = 1.4;
+            star.mass = SuppressorPhysics.NEUTRON_STAR_MASS;
             event = 1;
-            addResearch(level, 2000);
+            addResearch(level, SuppressorPhysics.SUPERNOVA_RESEARCH);
         } else {
             star.kind = Kind.BLACK_HOLE;
             star.mass = SuppressorPhysics.holeMass(star.mass);
             event = 2;
-            addResearch(level, 5000);
+            addResearch(level, SuppressorPhysics.HOLE_RESEARCH);
         }
         star.fuel = 0;
         eventSeconds = 0;

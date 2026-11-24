@@ -4,21 +4,6 @@
   "Supressor de Fusão",
   "聚变抑制器"
  ],
- "typeomega.machine.fusion_suppressor.tooltip.0": [
-  "Damps the fusion of the star of its system and reads its neutrinos for research, built in five phases.",
-  "Abafa a fusão da estrela do sistema e lê os neutrinos dela para pesquisa, construído em cinco fases.",
-  "抑制所在恒星系恒星的聚变并读取中微子用于研究，分五个阶段建造。"
- ],
- "typeomega.machine.fusion_suppressor.tooltip.1": [
-  "A star of 8 M☉ or more, held until its core gives way, ends as you choose: a supernova (r-process dust) or a black hole.",
-  "Uma estrela com 8 M☉ ou mais, segurada até o núcleo ceder, termina como você escolher: supernova (pós de processo r) ou buraco negro.",
-  "质量 8 M☉ 及以上的恒星在核心崩溃时，可选择结局：超新星（r 过程粉末）或黑洞。"
- ],
- "typeomega.machine.fusion_suppressor.tooltip.2": [
-  "Lighter stars only flare: a helium flash hits the suppressor rings.",
-  "Estrelas mais leves só têm uma erupção: um flash de hélio atinge os anéis supressores.",
-  "较轻的恒星只会爆发：氦闪会冲击抑制环。"
- ],
  "typeomega.fusion_suppressor.state": [
   "Suppression %s%%, core deficit %s%%",
   "Supressão %s%%, déficit do núcleo %s%%",

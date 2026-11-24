@@ -139,7 +139,7 @@ public final class FragmentCollectors {
             })
             .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
                     GTCEu.id("block/multiblock/large_miner"))
-            .tooltips(GTIATooltips.multiblock("fragment_collector"))
+            .tooltipBuilder(GTIATooltips.lazy("fragment_collector"))
             .register();
 
     public static final MultiblockMachineDefinition LARGE_FRAGMENT_COLLECTOR = GTIAMod.REGISTRATE
@@ -169,7 +169,7 @@ public final class FragmentCollectors {
             })
             .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_stable_titanium"),
                     GTCEu.id("block/multiblock/large_miner"))
-            .tooltips(GTIATooltips.multiblock("large_fragment_collector"))
+            .tooltipBuilder(GTIATooltips.lazy("large_fragment_collector"))
             .register();
 
     private FragmentCollectors() {}

@@ -14,7 +14,7 @@ public final class HraeDefinition {
 
     /** The station's hatches take the matter fed to the disk. */
     public static MultiblockMachineDefinition register() {
-        return MegaDefinition.register(HraeMachine.SHAPE, HraeMachine::new, 3,
+        return MegaDefinition.register(HraeMachine.SHAPE, HraeMachine::new,
                 GTCEu.id("block/casings/fusion/fusion_casing_mk3"),
                 new Hatch(PartAbility.IMPORT_ITEMS, 4), new Hatch(PartAbility.IMPORT_FLUIDS, 4));
     }

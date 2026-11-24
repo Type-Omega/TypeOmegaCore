@@ -69,7 +69,7 @@ public final class GTIAProcessing {
             })
             .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
                     GTCEu.id("block/multiblock/electric_blast_furnace"))
-            .tooltips(GTIATooltips.multiblock("large_furnace"))
+            .tooltipBuilder(GTIATooltips.lazy("large_furnace"))
             .register();
 
     public static final MultiblockMachineDefinition ORE_PROCESSING_PLANT = GTIAMod.REGISTRATE
@@ -99,7 +99,7 @@ public final class GTIAProcessing {
             })
             .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_frost_proof"),
                     GTCEu.id("block/multiblock/large_miner"))
-            .tooltips(GTIATooltips.multiblock("ore_processing_plant"))
+            .tooltipBuilder(GTIATooltips.lazy("ore_processing_plant"))
             .register();
 
     public static final MultiblockMachineDefinition PROCESSING_PLUS = plus("processing_plus", "Processing Factory Plus",
@@ -149,7 +149,7 @@ public final class GTIAProcessing {
                 })
                 .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_frost_proof"),
                         GTCEu.id("block/multiblock/large_chemical_reactor"))
-                .tooltips(GTIATooltips.multiblock(id))
+                .tooltipBuilder(GTIATooltips.lazy(id))
                 .register();
     }
 

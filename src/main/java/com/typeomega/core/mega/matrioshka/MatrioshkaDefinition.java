@@ -17,6 +17,9 @@ import static com.gregtechceu.gtceu.api.pattern.Predicates.abilities;
 /** Registration and pattern of the Matrioshka Brain; loaded only with GTNA (see GTIAMegastructures). */
 public final class MatrioshkaDefinition {
 
+    /** Optical Data Transmission Hatches the station takes. */
+    public static final int DATA_HATCHES = 2;
+
     private MatrioshkaDefinition() {}
 
     public static MultiblockMachineDefinition register() {
@@ -38,14 +41,15 @@ public final class MatrioshkaDefinition {
                         GTCEu.id("block/multiblock/hpca"))
                         .andThen(builder -> builder.addDynamicRenderer(
                                 com.typeomega.core.mega.common.client.MegaRenderer.Render::new)))
-                .tooltips(GTIATooltips.megastructure("matrioshka_brain", 3))
+                .tooltipBuilder(GTIATooltips.lazy("matrioshka_brain"))
                 .register();
     }
 
     /** The pattern of all five phases; the station's casings take CWU, coolant and repair hatches. */
     public static BlockPattern pattern(MultiblockMachineDefinition definition) {
         return MegaPattern.build(MatrioshkaBrainMachine.SHAPE, definition, casing -> casing
-                .or(abilities(PartAbility.COMPUTATION_DATA_TRANSMISSION).setMaxGlobalLimited(2).setPreviewCount(1))
+                .or(abilities(PartAbility.COMPUTATION_DATA_TRANSMISSION).setMaxGlobalLimited(DATA_HATCHES)
+                        .setPreviewCount(1))
                 .or(abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
                 .or(abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1)));
     }

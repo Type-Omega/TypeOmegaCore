@@ -32,6 +32,17 @@ public final class CreatorPhysics {
         STABILIZE
     }
 
+    /** Systems made for the Dimensional era levels I, II and III. */
+    public static final int[] ERA_SYSTEMS = { 1, 3, 6 };
+    /** Plasma counts this many times its volume of hydrogen in the cloud. */
+    public static final int PLASMA_FACTOR = 10;
+    /** Ψ per M☉ and per unit of metallicity, and how many times more a remnant needs. */
+    public static final long PSI_PER_SOLAR_MASS = 1L << 20;
+    public static final int REMNANT_PSI = 4;
+    /** Free-fall time limits, seconds, and the binding energy per M☉²/R☉ the Candle pays, EU. */
+    public static final int COLLAPSE_MIN = 20, COLLAPSE_MAX = 300;
+    public static final double IGNITE_EU = Math.pow(2, 41);
+
     private CreatorPhysics() {}
 
     /** Phase that unlocks each kind: the Candle for white stars, the Creator for giants, the lens for remnants. */
@@ -64,8 +75,8 @@ public final class CreatorPhysics {
     }
 
     public static long psi(Kind kind, double z) {
-        double factor = kind == Kind.NEUTRON_STAR || kind == Kind.BLACK_HOLE ? 4 : 1;
-        return Math.round((1L << 20) * cloudMass(kind) * z * factor);
+        double factor = kind == Kind.NEUTRON_STAR || kind == Kind.BLACK_HOLE ? REMNANT_PSI : 1;
+        return Math.round(PSI_PER_SOLAR_MASS * cloudMass(kind) * z * factor);
     }
 
     public static int dust(Kind kind, double z) {
@@ -76,17 +87,20 @@ public final class CreatorPhysics {
     public static int collapseSeconds(Kind kind) {
         double r = Math.max(0.1, StarPhysics.radius(Kind.YELLOW_DWARF, cloudMass(kind)));
         double t = 60 * Math.sqrt(r * r * r / cloudMass(kind));
-        return (int) Math.max(20, Math.min(300, Math.round(t)));
+        return (int) Math.max(COLLAPSE_MIN, Math.min(COLLAPSE_MAX, Math.round(t)));
     }
 
     /** Binding energy the Candle pays, EU in total. */
     public static double igniteEu(Kind kind) {
         double m = cloudMass(kind), r = Math.max(0.1, StarPhysics.radius(Kind.YELLOW_DWARF, m));
-        return Math.pow(2, 41) * m * m / r;
+        return IGNITE_EU * m * m / r;
     }
 
     /** Level of the Dimensional era (D-312) for the systems an owner has made: I at 1, II at 3, III at 6. */
     public static int era(int systems) {
-        return systems >= 6 ? 3 : systems >= 3 ? 2 : systems >= 1 ? 1 : 0;
+        for (int level = ERA_SYSTEMS.length; level > 0; level--) {
+            if (systems >= ERA_SYSTEMS[level - 1]) return level;
+        }
+        return 0;
     }
 }

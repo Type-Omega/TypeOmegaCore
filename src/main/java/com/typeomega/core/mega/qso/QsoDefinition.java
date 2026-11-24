@@ -12,7 +12,7 @@ public final class QsoDefinition {
 
     /** No hatches: it draws from the Nexus network and its harvest is negentropy. */
     public static MultiblockMachineDefinition register() {
-        return MegaDefinition.register(QsoMachine.SHAPE, QsoMachine::new, 3,
+        return MegaDefinition.register(QsoMachine.SHAPE, QsoMachine::new,
                 GTCEu.id("block/casings/fusion/fusion_casing_mk3"));
     }
 }

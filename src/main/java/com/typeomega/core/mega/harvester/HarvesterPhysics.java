@@ -18,6 +18,9 @@ public final class HarvesterPhysics {
     public static final double EU_PER_SOLAR_MASS = Math.pow(2, 60), EUT_PER_SUN = Math.pow(2, 30), CNO_MASS = 1.3,
             HEAT_PER_PHASE = 0.3, HEAT_STEP = 0.05, BOOST_MAX = 1e6;
 
+    /** Remnant by mass: white dwarf below the first, neutron star below the second, black hole above (M☉). */
+    public static final double WHITE_DWARF_LIMIT = 8, NEUTRON_STAR_LIMIT = 20;
+
     private HarvesterPhysics() {}
 
     /** Temperature exponent of the fusion rate: 4 (p-p chain) or 16 (CNO cycle). */
@@ -54,7 +57,8 @@ public final class HarvesterPhysics {
     }
 
     public static Kind remnant(double mass) {
-        return mass < 8 ? Kind.WHITE_DWARF : mass < 20 ? Kind.NEUTRON_STAR : Kind.BLACK_HOLE;
+        return mass < WHITE_DWARF_LIMIT ? Kind.WHITE_DWARF :
+                mass < NEUTRON_STAR_LIMIT ? Kind.NEUTRON_STAR : Kind.BLACK_HOLE;
     }
 
     public static double remnantMass(double mass) {

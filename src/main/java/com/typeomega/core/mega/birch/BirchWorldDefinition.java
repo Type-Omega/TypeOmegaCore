@@ -14,7 +14,7 @@ public final class BirchWorldDefinition {
 
     /** The station takes the module controllers and the inputs of their recipes, and gives the outputs. */
     public static MultiblockMachineDefinition register() {
-        return MegaDefinition.register(BirchWorldMachine.SHAPE, BirchWorldMachine::new, 3,
+        return MegaDefinition.register(BirchWorldMachine.SHAPE, BirchWorldMachine::new,
                 GTCEu.id("block/casings/fusion/fusion_casing_mk3"),
                 new Hatch(PartAbility.IMPORT_ITEMS, 4), new Hatch(PartAbility.IMPORT_FLUIDS, 2),
                 new Hatch(PartAbility.EXPORT_ITEMS, 2), new Hatch(PartAbility.EXPORT_FLUIDS, 2));

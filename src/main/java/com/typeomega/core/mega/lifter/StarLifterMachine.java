@@ -177,7 +177,7 @@ public class StarLifterMachine extends MegaMachine {
             if (gain == 0) instability = Math.max(0, instability - 10);
             // A flare when the star cannot take more: the girdle takes the blow.
             if (instability >= LifterPhysics.INTEGRITY) {
-                integrity = Math.max(0, integrity - 250);
+                integrity = Math.max(0, integrity - LifterPhysics.FLARE_WEAR);
                 instability = LifterPhysics.INTEGRITY / 2;
             }
             var server = level.getServer();

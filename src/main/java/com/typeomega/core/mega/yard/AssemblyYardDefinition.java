@@ -14,7 +14,7 @@ public final class AssemblyYardDefinition {
 
     /** The station takes the parts and fluids of the assemblies and gives the finished ones. */
     public static MultiblockMachineDefinition register() {
-        return MegaDefinition.register(AssemblyYardMachine.SHAPE, AssemblyYardMachine::new, 3,
+        return MegaDefinition.register(AssemblyYardMachine.SHAPE, AssemblyYardMachine::new,
                 GTCEu.id("block/casings/fusion/fusion_casing_mk3"),
                 new Hatch(PartAbility.IMPORT_ITEMS, 4), new Hatch(PartAbility.IMPORT_FLUIDS, 2),
                 new Hatch(PartAbility.EXPORT_ITEMS, 2));

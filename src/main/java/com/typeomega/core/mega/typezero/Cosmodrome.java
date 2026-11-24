@@ -64,7 +64,7 @@ public final class Cosmodrome {
             })
             .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
                     GTCEu.id("block/multiblock/research_station"))
-            .tooltips(GTIATooltips.multiblock(ID))
+            .tooltipBuilder(GTIATooltips.lazy(ID))
             .register();
 
     private Cosmodrome() {}

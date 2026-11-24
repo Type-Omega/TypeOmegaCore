@@ -19,6 +19,9 @@ public final class BirchPhysics {
     public static final double SPEED = 64, INTEREST = 0.0005, CREDIT_PER_LAYER_MASS = Math.pow(2, 44),
             REPAY_STEP = Math.pow(2, 40);
 
+    /** Debt paid back, as powers of two of EU, for the Causal era levels I, II and III. */
+    public static final int[] ERA_EXPONENTS = { 50, 55, 60 };
+
     private BirchPhysics() {}
 
     public static int layers(int phases) {
@@ -49,6 +52,9 @@ public final class BirchPhysics {
 
     /** Level of the Causal era by debt paid back: I, II, III at 2^50, 2^55, 2^60 EU. */
     public static int eraLevel(double paid) {
-        return paid >= Math.pow(2, 60) ? 3 : paid >= Math.pow(2, 55) ? 2 : paid >= Math.pow(2, 50) ? 1 : 0;
+        for (int level = ERA_EXPONENTS.length; level > 0; level--) {
+            if (paid >= Math.pow(2, ERA_EXPONENTS[level - 1])) return level;
+        }
+        return 0;
     }
 }

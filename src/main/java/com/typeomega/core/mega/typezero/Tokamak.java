@@ -73,7 +73,7 @@ public final class Tokamak {
             })
             .workableCasingModel(GTIAMod.id("block/casings/neutron_shield_casing"),
                     com.gregtechceu.gtceu.GTCEu.id("block/multiblock/fusion_reactor"))
-            .tooltips(GTIATooltips.multiblock(ID))
+            .tooltipBuilder(GTIATooltips.lazy(ID))
             .register();
 
     private Tokamak() {}

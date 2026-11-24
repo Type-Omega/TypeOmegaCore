@@ -38,7 +38,7 @@ public final class StellarEngineDefinition {
                         GTCEu.id("block/multiblock/fusion_reactor"))
                         .andThen(builder -> builder.addDynamicRenderer(
                                 com.typeomega.core.mega.common.client.MegaRenderer.Render::new)))
-                .tooltips(GTIATooltips.megastructure("stellar_engine", 3))
+                .tooltipBuilder(GTIATooltips.lazy("stellar_engine"))
                 .register();
     }
 

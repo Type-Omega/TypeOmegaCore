@@ -4,21 +4,6 @@
   "Hiperforja Nidavellir",
   "尼达维勒超级熔炉"
  ],
- "typeomega.machine.nidavellir.tooltip.0": [
-  "A disc of five concentric rings round the star of its system, built in five phases. Runs Alloy Blast Smelter and Ultimate Material Forge recipes in huge batches.",
-  "Um disco de cinco anéis concêntricos em volta da estrela do sistema, construído em cinco fases. Roda receitas do Alloy Blast Smelter e da Ultimate Material Forge em lotes enormes.",
-  "围绕所在恒星系恒星的五重同心环圆盘，分五个阶段建造。以巨量批次运行合金冶炼炉和终极材料熔炉配方。"
- ],
- "typeomega.machine.nidavellir.tooltip.1": [
-  "Each batch is pressed under neutronium dust: compression 0-4 gives 256 × 2^c parallels for 2^c dust.",
-  "Cada lote é prensado sob pó de neutrônio: compressão 0-4 dá 256 × 2^c paralelos por 2^c de pó.",
-  "每批次在中子素粉下压制：压缩等级 0-4 提供 256 × 2^c 并行，消耗 2^c 粉。"
- ],
- "typeomega.machine.nidavellir.tooltip.2": [
-  "Around a neutron star the magnetosphere presses four times as fast; from the pulsar vicinity, half the neutronium.",
-  "Em volta de uma estrela de nêutrons a magnetosfera prensa quatro vezes mais rápido; a partir das vizinhanças do pulsar, metade do neutrônio.",
-  "在中子星周围，磁层压制速度提高四倍；到达脉冲星附近后，中子素消耗减半。"
- ],
  "typeomega.nidavellir.state": [
   "Parallel %s, speed ×%s",
   "Paralelo %s, velocidade ×%s",

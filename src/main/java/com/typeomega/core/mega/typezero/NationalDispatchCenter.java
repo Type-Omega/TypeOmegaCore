@@ -65,7 +65,7 @@ public final class NationalDispatchCenter {
             })
             .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
                     GTCEu.id("block/multiblock/power_substation"))
-            .tooltips(GTIATooltips.multiblock(ID))
+            .tooltipBuilder(GTIATooltips.lazy(ID))
             .register();
 
     private NationalDispatchCenter() {}

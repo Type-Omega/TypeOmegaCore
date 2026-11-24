@@ -14,7 +14,7 @@ public final class DisintegratorDefinition {
 
     /** The station gives the dusts and the gases of the system taken apart. */
     public static MultiblockMachineDefinition register() {
-        return MegaDefinition.register(DisintegratorMachine.SHAPE, DisintegratorMachine::new, 3,
+        return MegaDefinition.register(DisintegratorMachine.SHAPE, DisintegratorMachine::new,
                 GTCEu.id("block/casings/fusion/fusion_casing_mk3"),
                 new Hatch(PartAbility.EXPORT_ITEMS, 4), new Hatch(PartAbility.EXPORT_FLUIDS, 2));
     }

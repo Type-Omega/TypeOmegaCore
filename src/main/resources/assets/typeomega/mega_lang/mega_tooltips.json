@@ -1,0 +1,902 @@
+{
+ "typeomega.machine.stellar_engine.tooltip.purpose": [
+  "Moves the whole Nexus System with a Shkadov mirror and a Caplan engine round its star; works only there",
+  "Move o Sistema Nexus inteiro com um espelho de Shkadov e um motor de Caplan em volta da estrela; só funciona lá",
+  "以什卡多夫镜与卡普兰引擎推动整个 Nexus 星系；仅在该处工作"
+ ],
+ "typeomega.machine.stellar_engine.tooltip.shkadov": [
+  "Shkadov mirror (phase 2): F = %s × L / c, the light leaves on one side only",
+  "Espelho de Shkadov (fase 2): F = %s × L / c, a luz sai só por um lado",
+  "什卡多夫镜（阶段 2）：F = %s × L / c，光只从一侧离开"
+ ],
+ "typeomega.machine.stellar_engine.tooltip.caplan": [
+  "Caplan engine (phase 4): F = β × ṁ × vₑ, with ṁ = %s and vₑ = %s",
+  "Motor de Caplan (fase 4): F = β × ṁ × vₑ, com ṁ = %s e vₑ = %s",
+  "卡普兰引擎（阶段 4）：F = β × ṁ × vₑ，ṁ = %s，vₑ = %s"
+ ],
+ "typeomega.machine.stellar_engine.tooltip.power": [
+  "Its magnets draw %s from the Nexus network; unpowered, only the mirror pushes",
+  "Os ímãs puxam %s da rede Nexus; sem energia, só o espelho empurra",
+  "磁体从 Nexus 网络抽取 %s；无电时仅镜面推进"
+ ],
+ "typeomega.machine.stellar_engine.tooltip.plasma": [
+  "At full power it gives %s mB/s of hydrogen plasma and %s mB/s of helium plasma",
+  "Na potência máxima dá %s mB/s de plasma de hidrogênio e %s mB/s de plasma de hélio",
+  "满功率时产出 %s mB/s 氢等离子体与 %s mB/s 氦等离子体"
+ ],
+ "typeomega.machine.stellar_engine.tooltip.dv": [
+  "Δv per second = F / M × %s years; the Δv gathered is the owner's and never goes back",
+  "Δv por segundo = F / M × %s anos; o Δv juntado é do dono e nunca volta",
+  "每秒 Δv = F / M × %s 年；累计的 Δv 归所有者，永不回退"
+ ],
+ "typeomega.machine.stellar_engine.tooltip.beta": [
+  "Main jet share β from %s to %s, in steps of %s; the rest goes back into the star",
+  "Parte do jato principal β de %s a %s, em passos de %s; o resto volta para a estrela",
+  "主喷流份额 β 为 %s 至 %s，步长 %s；其余返回恒星"
+ ],
+ "typeomega.machine.stellar_engine.tooltip.tension": [
+  "Above %s the counter-jet cannot hold the star: the cage loses %s integrity a second at full tension",
+  "Acima de %s o contrajato não segura a estrela: a gaiola perde %s de integridade por segundo na tensão máxima",
+  "超过 %s 时反喷流无法稳住恒星：满张力时笼架每秒损失 %s 完整度"
+ ],
+ "typeomega.machine.stellar_engine.tooltip.regions": [
+  "Regions by Δv (km/s): %s",
+  "Regiões por Δv (km/s): %s",
+  "按 Δv 划分的区域（km/s）：%s"
+ ],
+ "typeomega.machine.stellar_engine.tooltip.bonuses": [
+  "Orion edge: +%s lifted matter · interarm void: Matrioshka shells %s colder · emission nebula: %s hydrogen plasma · pulsar vicinity: fresh neutronium",
+  "Borda de Órion: +%s de matéria sugada · vazio entre braços: cascas da Matrioshka %s mais frias · nebulosa de emissão: %s de plasma de hidrogênio · vizinhança do pulsar: neutrônio fresco",
+  "猎户臂边缘：抽取物质 +%s · 旋臂间空洞：套娃脑外壳降温 %s · 发射星云：氢等离子体 %s · 脉冲星附近：新鲜中子素"
+ ],
+ "typeomega.machine.stellar_engine.tooltip.era": [
+  "Every region reached raises the Stellar era, up to %s at the galactic core",
+  "Cada região alcançada sobe a era Estelar, até %s no núcleo galáctico",
+  "每到达一个区域都会提升恒星时代，银河核心处最高 %s 级"
+ ],
+ "typeomega.machine.stellar_engine.tooltip.repair_blocks": [
+  "rib and hoop blocks",
+  "blocos de costela e de aro",
+  "肋条与箍环方块"
+ ],
+ "typeomega.machine.stellar_engine.tooltip.humor": [
+  "Relocating headquarters, star included. Type Omega regrets any inconvenience to neighbouring systems.",
+  "Mudança de sede, estrela inclusa. A Type Omega lamenta o transtorno aos sistemas vizinhos.",
+  "总部搬迁，恒星随行。Type Omega 对邻近星系造成的不便深表歉意。"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.purpose": [
+  "Wraps the Nexus star in shells of computers, one per phase; works only in the Nexus System",
+  "Envolve a estrela Nexus em cascas de computadores, uma por fase; só funciona no Sistema Nexus",
+  "以计算机外壳包裹 Nexus 恒星，每阶段一层；仅在 Nexus 星系工作"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.shell": [
+  "Shell n: 2^(21+n) CWU/t × clock × %s / T (Landauer's limit), from %s to %s CWU/t",
+  "Casca n: 2^(21+n) CWU/t × clock × %s / T (limite de Landauer), de %s a %s CWU/t",
+  "第 n 层外壳：2^(21+n) CWU/t × 频率 × %s / T（兰道尔极限），%s 至 %s CWU/t"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.temperature": [
+  "Shell temperature T = %s / √(r / %s blocks) × clock^(1/4): cold outer shells compute the most",
+  "Temperatura da casca T = %s / √(r / %s blocos) × clock^(1/4): as cascas frias de fora calculam mais",
+  "外壳温度 T = %s / √(r / %s 格) × 频率^(1/4)：外层冷壳算力最高"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.clock": [
+  "Clock from %s to %s, in steps of %s",
+  "Clock de %s a %s, em passos de %s",
+  "频率 %s 至 %s，步长 %s"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.coolant": [
+  "The best coolant in the hatches pulls T towards its own: T' = Tc + (T − Tc) × (1 − η × supply)",
+  "O melhor refrigerante das hatches puxa T para o dele: T' = Tc + (T − Tc) × (1 − η × fornecimento)",
+  "仓内最好的冷却剂将 T 拉向其自身温度：T' = Tc + (T − Tc) × (1 − η × 供给)"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.coolant.liquid_helium": [
+  "Liquid Helium",
+  "Hélio Líquido",
+  "液氦"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.coolant.superfluid_helium": [
+  "Superfluid Helium",
+  "Hélio Superfluido",
+  "超流氦"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.coolant.shifted_superfluid": [
+  "Dimensionally Shifted Superfluid",
+  "Superfluido Dimensionalmente Deslocado",
+  "维度偏移超流体"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.inertia": [
+  "Temperatures close %s of the gap a second: a short clock peak can be held",
+  "As temperaturas fecham %s da diferença por segundo: um pico curto de clock aguenta",
+  "温度每秒缩小 %s 的差距：可短暂维持频率峰值"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.overheat": [
+  "Above %s (%s with phase 4) a shell computes nothing and loses %s integrity a second, half with phase 5",
+  "Acima de %s (%s com a fase 4) uma casca não calcula nada e perde %s de integridade por segundo, metade com a fase 5",
+  "超过 %s（有阶段 4 时为 %s）外壳停止计算并每秒损失 %s 完整度，有阶段 5 时减半"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.fracture": [
+  "At 0%% integrity a shell fractures and stays off until repaired",
+  "Com 0%% de integridade a casca racha e fica desligada até o reparo",
+  "完整度为 0%% 时外壳破裂，修复前保持关闭"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.psi": [
+  "CWU nobody asks for becomes Ψ: Ψ/s = (max CWU/t × 20 − CWU used) / %s",
+  "CWU que ninguém pede vira Ψ: Ψ/s = (CWU/t máx × 20 − CWU usado) / %s",
+  "无人请求的 CWU 转为 Ψ：Ψ/s = (最大 CWU/t × 20 − 已用 CWU) / %s"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.hatches": [
+  "Sends CWU through up to %s Optical Data Transmission Hatches",
+  "Envia CWU por até %s Optical Data Transmission Hatches",
+  "通过最多 %s 个光学数据传输仓输出 CWU"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.void": [
+  "Past the interarm void (Stellar Engine) the shells run %s colder",
+  "Depois do vazio entre braços (Motor Estelar) as cascas ficam %s mais frias",
+  "越过旋臂间空洞（恒星引擎）后外壳降温 %s"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.repair_blocks": [
+  "the shell's own blocks",
+  "os blocos da própria casca",
+  "外壳自身的方块"
+ ],
+ "typeomega.machine.matrioshka_brain.tooltip.humor": [
+  "Thinks about your production lines so you don't have to. Type Omega owns the thoughts.",
+  "Pensa nas suas linhas de produção para você não precisar. Os pensamentos são da Type Omega.",
+  "替你思考生产线，省得你费心。所有想法归 Type Omega 所有。"
+ ],
+ "typeomega.machine.star_lifter.tooltip.purpose": [
+  "Lifts matter off the star of the system it stands in",
+  "Suga matéria da estrela do sistema onde está",
+  "从所在星系的恒星上抽取物质"
+ ],
+ "typeomega.machine.star_lifter.tooltip.escape": [
+  "Each kilogram climbs out of the well: e = G M / R (%s for the Sun), at %s efficiency",
+  "Cada quilo sobe para fora do poço: e = G M / R (%s para o Sol), com %s de eficiência",
+  "每千克物质需爬出引力井：e = G M / R（太阳为 %s），效率 %s"
+ ],
+ "typeomega.machine.star_lifter.tooltip.power": [
+  "EU/t = %s × (ṁ / %s kg/s) × (e / e☉), from the Nexus network",
+  "EU/t = %s × (ṁ / %s kg/s) × (e / e☉), da rede Nexus",
+  "EU/t = %s × (ṁ / %s kg/s) × (e / e☉)，来自 Nexus 网络"
+ ],
+ "typeomega.machine.star_lifter.tooltip.modes": [
+  "Thermal wind (phase %s) up to %s kg/s · ring current (phase %s) up to %s kg/s · deep stirring (phase %s)",
+  "Vento térmico (fase %s) até %s kg/s · corrente anelar (fase %s) até %s kg/s · agitação profunda (fase %s)",
+  "热风（阶段 %s）最高 %s kg/s · 环电流（阶段 %s）最高 %s kg/s · 深层搅拌（阶段 %s）"
+ ],
+ "typeomega.machine.star_lifter.tooltip.rate": [
+  "Lift rate from %s to %s, in steps of %s",
+  "Taxa de sucção de %s a %s, em passos de %s",
+  "抽取速率 %s 至 %s，步长 %s"
+ ],
+ "typeomega.machine.star_lifter.tooltip.capture": [
+  "The collector rings (phase 3) catch %s of the outflow; without them %s",
+  "Os anéis coletores (fase 3) pegam %s do fluxo; sem eles, %s",
+  "收集环（阶段 3）捕获 %s 的外流；没有时仅 %s"
+ ],
+ "typeomega.machine.star_lifter.tooltip.output": [
+  "Out: %s mB of plasma and %s dust per kg caught; until the spires (phase 4) only hydrogen and helium plasma",
+  "Saída: %s mB de plasma e %s de pó por kg pego; até as torres (fase 4) só plasma de hidrogênio e hélio",
+  "产出：每捕获 1 kg 得 %s mB 等离子体与 %s 份粉；尖塔（阶段 4）建成前仅产氢、氦等离子体"
+ ],
+ "typeomega.machine.star_lifter.tooltip.star": [
+  "One second of play is %s years of lifting: the star really gets lighter, dimmer and longer-lived (L ∝ M⁴)",
+  "Um segundo de jogo são %s anos de sucção: a estrela fica mesmo mais leve, mais fraca e mais longeva (L ∝ M⁴)",
+  "游戏中一秒等于 %s 年的抽取：恒星确实变轻、变暗、寿命变长（L ∝ M⁴）"
+ ],
+ "typeomega.machine.star_lifter.tooltip.deep": [
+  "Deep stirring brings helium and metals up and mixes fresh hydrogen down: fuel += %s × ΔM / M",
+  "A agitação profunda traz hélio e metais para cima e mistura hidrogênio novo: combustível += %s × ΔM / M",
+  "深层搅拌把氦与金属带上来、把新鲜氢混下去：燃料 += %s × ΔM / M"
+ ],
+ "typeomega.machine.star_lifter.tooltip.orion": [
+  "Past the Orion arm's edge (Stellar Engine) the star's wind is %s richer",
+  "Depois da borda do braço de Órion (Motor Estelar) o vento da estrela é %s mais rico",
+  "越过猎户臂边缘（恒星引擎）后恒星风富集 %s"
+ ],
+ "typeomega.machine.star_lifter.tooltip.instability": [
+  "Deep stirring above %s grows instability; at full instability a flare costs the sphere %s",
+  "Agitação profunda acima de %s gera instabilidade; com instabilidade cheia, uma erupção custa %s da esfera",
+  "深层搅拌超过 %s 会累积不稳定度；满值时耀斑使球体损失 %s"
+ ],
+ "typeomega.machine.star_lifter.tooltip.min_mass": [
+  "Below %s M☉ the ring current cannot hold the outflow",
+  "Abaixo de %s M☉ a corrente anelar não segura o fluxo",
+  "低于 %s M☉ 时环电流无法维持外流"
+ ],
+ "typeomega.machine.star_lifter.tooltip.repair_blocks": [
+  "sphere and spoke blocks",
+  "blocos de esfera e de raio",
+  "球体与辐条方块"
+ ],
+ "typeomega.machine.star_lifter.tooltip.humor": [
+  "Sustainable sourcing: the star has plenty more. Type Omega's auditors have not been to the photosphere.",
+  "Fornecimento sustentável: a estrela tem muito mais. Os auditores da Type Omega ainda não visitaram a fotosfera.",
+  "可持续采购：恒星还多得是。Type Omega 的审计员尚未去过光球层。"
+ ],
+ "typeomega.machine.stellar_hoop.tooltip.purpose": [
+  "A hoop that turns through the corona of the star of any system",
+  "Um aro que gira pela coroa da estrela de qualquer sistema",
+  "在任意星系恒星日冕中旋转的巨环"
+ ],
+ "typeomega.machine.stellar_hoop.tooltip.recipes": [
+  "Runs Fusion Reactor, Electric Blast Furnace and Plasma Forge recipes with the corona's heat",
+  "Faz receitas de Reator de Fusão, Electric Blast Furnace e Plasma Forge com o calor da coroa",
+  "以日冕热量运行聚变反应堆、电力高炉与等离子锻炉配方"
+ ],
+ "typeomega.machine.stellar_hoop.tooltip.corona": [
+  "Corona heat T(h) = %s + %s × (1 − e^(−h/4%%)), up to %s: recipes up to that heat run",
+  "Calor da coroa T(h) = %s + %s × (1 − e^(−h/4%%)), até %s: rodam as receitas até esse calor",
+  "日冕温度 T(h) = %s + %s × (1 − e^(−h/4%%))，最高 %s：不超过该温度的配方均可运行"
+ ],
+ "typeomega.machine.stellar_hoop.tooltip.speed": [
+  "Works %s as fast and pays %s of the EU: the star brings the heat, the network only the magnets",
+  "Trabalha %s mais rápido e paga %s do EU: a estrela dá o calor, a rede só os ímãs",
+  "速度 %s，仅需 %s 的 EU：热量由恒星提供，网络只负责磁体"
+ ],
+ "typeomega.machine.stellar_hoop.tooltip.height": [
+  "Dive height from %s to %s of R☉, in steps of %s",
+  "Altura do mergulho de %s a %s de R☉, em passos de %s",
+  "下潜高度为 R☉ 的 %s 至 %s，步长 %s"
+ ],
+ "typeomega.machine.stellar_hoop.tooltip.parallel": [
+  "Parallel = P₀ × e^(−(h − %s)/10%%), P₀ = %s by phase",
+  "Paralelo = P₀ × e^(−(h − %s)/10%%), P₀ = %s por fase",
+  "并行 = P₀ × e^(−(h − %s)/10%%)，各阶段 P₀ = %s"
+ ],
+ "typeomega.machine.stellar_hoop.tooltip.load": [
+  "Shield load Q = 100 × e^(−(h − 2%%)/5%%) × P / 256; the radiators (phase 4) cut it by %s",
+  "Carga nos escudos Q = 100 × e^(−(h − 2%%)/5%%) × P / 256; os radiadores (fase 4) cortam %s",
+  "护盾负荷 Q = 100 × e^(−(h − 2%%)/5%%) × P / 256；散热器（阶段 4）降低 %s"
+ ],
+ "typeomega.machine.stellar_hoop.tooltip.coolants": [
+  "Load units per mB: liquid helium %s, Helium II %s, shifted superfluid %s; the best in the hatches is used",
+  "Unidades de carga por mB: hélio líquido %s, Hélio II %s, superfluido deslocado %s; usa o melhor das hatches",
+  "每 mB 带走的负荷：液氦 %s、氦 II %s、偏移超流体 %s；使用仓内最好的一种"
+ ],
+ "typeomega.machine.stellar_hoop.tooltip.wear": [
+  "Uncooled load wears the shields up to %s a second; at 0%% the hoop stops",
+  "Carga sem refrigeração gasta os escudos até %s por segundo; com 0%% o aro para",
+  "未冷却的负荷每秒最多磨损护盾 %s；降至 0%% 时巨环停机"
+ ],
+ "typeomega.machine.stellar_hoop.tooltip.second_hoop": [
+  "The second hoop (phase 5) runs higher and doubles the crucibles",
+  "O segundo aro (fase 5) passa mais alto e dobra os cadinhos",
+  "第二道环（阶段 5）运行更高并使坩埚翻倍"
+ ],
+ "typeomega.machine.stellar_hoop.tooltip.repair_blocks": [
+  "shield and hull blocks",
+  "blocos de escudo e de casco",
+  "护盾与船体方块"
+ ],
+ "typeomega.machine.stellar_hoop.tooltip.humor": [
+  "Our furnace runs at two million kelvin. Please keep your hands inside the corona.",
+  "Nossa fornalha roda a dois milhões de kelvin. Mantenha as mãos dentro da coroa.",
+  "本熔炉工作温度两百万开尔文。请将双手保持在日冕内。"
+ ],
+ "typeomega.machine.stellar_harvester.tooltip.purpose": [
+  "Heats the core of its system's star until it burns its whole life in hours, and pays the light to the Nexus network",
+  "Aquece o núcleo da estrela do sistema até ela queimar a vida inteira em horas e paga a luz à rede Nexus",
+  "加热所在星系恒星的核心，使其在数小时内燃尽一生，并把光能送入 Nexus 网络"
+ ],
+ "typeomega.machine.stellar_harvester.tooltip.boost": [
+  "Burn boost = (1 + h)^n: n = %s for the proton-proton chain, %s for the CNO cycle above %s M☉",
+  "Reforço da queima = (1 + h)^n: n = %s na cadeia próton-próton, %s no ciclo CNO acima de %s M☉",
+  "燃烧增益 = (1 + h)^n：质子-质子链 n = %s，CNO 循环 n = %s（%s M☉ 以上）"
+ ],
+ "typeomega.machine.stellar_harvester.tooltip.heat": [
+  "Core heating h up to %s a phase, in steps of %s",
+  "Aquecimento do núcleo h até %s por fase, em passos de %s",
+  "核心加热 h 每阶段最高 %s，步长 %s"
+ ],
+ "typeomega.machine.stellar_harvester.tooltip.power": [
+  "Power = %s × L/L☉ × boost, boost at most %s",
+  "Potência = %s × L/L☉ × reforço, reforço no máximo %s",
+  "功率 = %s × L/L☉ × 增益，增益最高 %s"
+ ],
+ "typeomega.machine.stellar_harvester.tooltip.budget": [
+  "Budget = %s × M/M☉ × fuel left: heating harder burns it faster, never more",
+  "Orçamento = %s × M/M☉ × combustível restante: aquecer mais queima mais rápido, nunca mais",
+  "预算 = %s × M/M☉ × 剩余燃料：加热越猛燃得越快，但总量不会增加"
+ ],
+ "typeomega.machine.stellar_harvester.tooltip.end": [
+  "When the core is spent the star ends by its mass: white dwarf below %s M☉, neutron star to %s, black hole above (%s of the mass)",
+  "Quando o núcleo acaba a estrela termina pela massa: anã branca abaixo de %s M☉, estrela de nêutrons até %s, buraco negro acima (%s da massa)",
+  "核心耗尽后恒星按质量终结：%s M☉ 以下为白矮星，%s 以下为中子星，以上为黑洞（保留 %s 质量）"
+ ],
+ "typeomega.machine.stellar_harvester.tooltip.remnants": [
+  "A neutron star feeds the Nidavellir, a black hole the HRAE-MC",
+  "Uma estrela de nêutrons alimenta o Nidavellir; um buraco negro, o HRAE-MC",
+  "中子星可供尼达维勒使用，黑洞可供 HRAE-MC 使用"
+ ],
+ "typeomega.machine.stellar_harvester.tooltip.final": [
+  "A spent core cannot be undone: use a system made for it",
+  "Um núcleo gasto não volta: use um sistema feito para isso",
+  "耗尽的核心无法复原：请使用专门制造的星系"
+ ],
+ "typeomega.machine.stellar_harvester.tooltip.humor": [
+  "Why burn a star for ten billion years when the quarter ends on Friday?",
+  "Por que queimar uma estrela por dez bilhões de anos se o trimestre fecha na sexta?",
+  "季度周五就结算，何必让恒星烧一百亿年？"
+ ],
+ "typeomega.machine.fusion_suppressor.tooltip.purpose": [
+  "Damps the fusion of its system's star and reads its neutrinos for research",
+  "Amortece a fusão da estrela do sistema e lê os neutrinos dela para pesquisa",
+  "抑制所在星系恒星的聚变，并读取其中微子用于研究"
+ ],
+ "typeomega.machine.fusion_suppressor.tooltip.suppression": [
+  "Suppression S from 0 to %s, in steps of %s",
+  "Supressão S de 0 a %s, em passos de %s",
+  "抑制度 S 为 0 至 %s，步长 %s"
+ ],
+ "typeomega.machine.fusion_suppressor.tooltip.research": [
+  "Research/s = %s × S × √(L/L☉) from phase 2, to the owner's GTNA knowledge (typeomega:astrophysics)",
+  "Pesquisa/s = %s × S × √(L/L☉) a partir da fase 2, para o conhecimento GTNA do dono (typeomega:astrophysics)",
+  "研究点/秒 = %s × S × √(L/L☉)（阶段 2 起），计入所有者的 GTNA 知识（typeomega:astrophysics）"
+ ],
+ "typeomega.machine.fusion_suppressor.tooltip.field": [
+  "The field draws %s × S × √(L/L☉); the surface cools to T × (1 − %s S)",
+  "O campo puxa %s × S × √(L/L☉); a superfície esfria para T × (1 − %s S)",
+  "抑制场消耗 %s × S × √(L/L☉)；表面降温至 T × (1 − %s S)"
+ ],
+ "typeomega.machine.fusion_suppressor.tooltip.deficit": [
+  "Core pressure deficit: +(S − 50%%)/2 per mille a second above half, −5 below",
+  "Déficit de pressão do núcleo: +(S − 50%%)/2 por mil por segundo acima da metade, −5 abaixo",
+  "核心压力亏损：超过一半时每秒 +(S − 50%%)/2‰，低于一半时 −5‰"
+ ],
+ "typeomega.machine.fusion_suppressor.tooltip.ready": [
+  "At a full deficit a star of %s M☉ or more is ready to end, once the probes (phase 4) are built",
+  "Com o déficit cheio uma estrela de %s M☉ ou mais está pronta para acabar, com as sondas (fase 4) prontas",
+  "亏损满值且探针（阶段 4）建成后，%s M☉ 以上的恒星可被终结"
+ ],
+ "typeomega.machine.fusion_suppressor.tooltip.supernova": [
+  "Supernova: %s × M × Z dust of each r-process element (a tenth without phase 5), leaves a %s M☉ neutron star, %s research",
+  "Supernova: %s × M × Z de pó de cada elemento do processo r (um décimo sem a fase 5), deixa uma estrela de nêutrons de %s M☉, %s de pesquisa",
+  "超新星：每种 r 过程元素粉 %s × M × Z（无阶段 5 时为十分之一），留下 %s M☉ 中子星，研究点 %s"
+ ],
+ "typeomega.machine.fusion_suppressor.tooltip.hole": [
+  "Black hole: %s of the star stays as the hole, %s research",
+  "Buraco negro: %s da estrela fica como buraco, %s de pesquisa",
+  "黑洞：恒星 %s 的质量化为黑洞，研究点 %s"
+ ],
+ "typeomega.machine.fusion_suppressor.tooltip.flash": [
+  "A lighter star only flares: a helium flash costs the rings %s and half the deficit",
+  "Uma estrela mais leve só tem uma erupção: um flash de hélio custa %s dos anéis e metade do déficit",
+  "较轻的恒星只会耀发：氦闪使抑制环损失 %s 并减半亏损"
+ ],
+ "typeomega.machine.fusion_suppressor.tooltip.final": [
+  "The star does not come back: do it in a system made for it",
+  "A estrela não volta: faça isso num sistema feito para isso",
+  "恒星不会恢复：请在专门制造的星系中进行"
+ ],
+ "typeomega.machine.fusion_suppressor.tooltip.repair_blocks": [
+  "suppressor ring blocks",
+  "blocos de anel supressor",
+  "抑制环方块"
+ ],
+ "typeomega.machine.fusion_suppressor.tooltip.humor": [
+  "Market research, stellar edition: we turn the star down and see who complains.",
+  "Pesquisa de mercado, edição estelar: abaixamos a estrela e vemos quem reclama.",
+  "恒星版市场调研：把恒星调暗，看看谁会投诉。"
+ ],
+ "typeomega.machine.system_creator.tooltip.purpose": [
+  "Gathers a hydrogen cloud, collapses it and lights a new star in a new star system",
+  "Junta uma nuvem de hidrogênio, colapsa e acende uma estrela nova num sistema novo",
+  "收集氢云、使其坍缩，并在新星系中点燃一颗新恒星"
+ ],
+ "typeomega.machine.system_creator.tooltip.cloud": [
+  "Cloud = M × %s mB of hydrogen (plasma counts %s), gathered at up to %s mB/s",
+  "Nuvem = M × %s mB de hidrogênio (plasma conta %s), juntada a até %s mB/s",
+  "星云 = M × %s mB 氢（等离子体按 %s 计），每秒最多收集 %s mB"
+ ],
+ "typeomega.machine.system_creator.tooltip.cost": [
+  "Costs Ψ = %s × M × Z and %s × M × Z iron dust",
+  "Custa Ψ = %s × M × Z e %s × M × Z de pó de ferro",
+  "消耗 Ψ = %s × M × Z 与铁粉 %s × M × Z"
+ ],
+ "typeomega.machine.system_creator.tooltip.collapse": [
+  "Collapses in its free-fall time: %s s for a Sun, from %s to %s s",
+  "Colapsa no tempo de queda livre: %s s para um Sol, de %s a %s s",
+  "按自由落体时间坍缩：太阳为 %s 秒，范围 %s 至 %s 秒"
+ ],
+ "typeomega.machine.system_creator.tooltip.ignite": [
+  "The Fusion Candle (phase 3) pays E = %s × M² / R over %s s; without it only a red dwarf lights",
+  "A Fusion Candle (fase 3) paga E = %s × M² / R em %s s; sem ela só acende uma anã vermelha",
+  "聚变烛台（阶段 3）支付 E = %s × M² / R，耗时 %s 秒；没有它只能点燃红矮星"
+ ],
+ "typeomega.machine.system_creator.tooltip.kind.red_dwarf": [
+  "Red Dwarf",
+  "Anã Vermelha",
+  "红矮星"
+ ],
+ "typeomega.machine.system_creator.tooltip.kind.yellow_dwarf": [
+  "Yellow Dwarf",
+  "Anã Amarela",
+  "黄矮星"
+ ],
+ "typeomega.machine.system_creator.tooltip.kind.white_star": [
+  "White Star",
+  "Estrela Branca",
+  "白星"
+ ],
+ "typeomega.machine.system_creator.tooltip.kind.blue_giant": [
+  "Blue Giant",
+  "Gigante Azul",
+  "蓝巨星"
+ ],
+ "typeomega.machine.system_creator.tooltip.kind.neutron_star": [
+  "Neutron Star",
+  "Estrela de Nêutrons",
+  "中子星"
+ ],
+ "typeomega.machine.system_creator.tooltip.kind.black_hole": [
+  "Black Hole",
+  "Buraco Negro",
+  "黑洞"
+ ],
+ "typeomega.machine.system_creator.tooltip.remnant_psi": [
+  "Remnants are computed through the lens: %s the Ψ",
+  "Remanescentes são calculados pela lente: %s o Ψ",
+  "残骸需通过透镜计算：Ψ %s"
+ ],
+ "typeomega.machine.system_creator.tooltip.metallicity": [
+  "Metallicity Z: %s × the Sun; it sets how rich the system is",
+  "Metalicidade Z: %s × o Sol; define a riqueza do sistema",
+  "金属丰度 Z：太阳的 %s 倍；决定星系的资源丰度"
+ ],
+ "typeomega.machine.system_creator.tooltip.systems": [
+  "Each star becomes a system of its own (%s slots); the screen travels to its landing platform",
+  "Cada estrela vira um sistema próprio (%s vagas); a tela viaja até a plataforma de pouso",
+  "每颗恒星成为独立星系（%s 个槽位）；界面可传送至其着陆平台"
+ ],
+ "typeomega.machine.system_creator.tooltip.era": [
+  "Dimensional era: I at %s system, II at %s, III at %s",
+  "Era Dimensional: I com %s sistema, II com %s, III com %s",
+  "维度时代：%s 个星系为 I，%s 个为 II，%s 个为 III"
+ ],
+ "typeomega.machine.system_creator.tooltip.disperse": [
+  "Dispersing a cloud loses what was gathered and the Ψ spent",
+  "Dispersar uma nuvem perde o que foi juntado e o Ψ gasto",
+  "驱散星云会损失已收集的物质与已花费的 Ψ"
+ ],
+ "typeomega.machine.system_creator.tooltip.humor": [
+  "New star systems, made to order. Type Omega does not accept returns after ignition.",
+  "Sistemas estelares novos, sob encomenda. A Type Omega não aceita devolução depois da ignição.",
+  "新星系，按需定制。点火后 Type Omega 概不退换。"
+ ],
+ "typeomega.machine.assembly_yard.tooltip.purpose": [
+  "A shipyard ring round the star of its system, with lasers fed by starlight",
+  "Um anel-estaleiro em volta da estrela do sistema, com lasers alimentados pela luz estelar",
+  "环绕所在星系恒星的船坞环，激光由星光供能"
+ ],
+ "typeomega.machine.assembly_yard.tooltip.recipes": [
+  "Runs Assembly Line and Assembler recipes",
+  "Faz receitas de Assembly Line e de Montadora",
+  "运行装配线与组装机配方"
+ ],
+ "typeomega.machine.assembly_yard.tooltip.slipways": [
+  "%s slipways per phase (%s at phase 5); each open slipway adds %s parallels",
+  "%s carreiras por fase (%s na fase 5); cada carreira aberta soma %s paralelos",
+  "每阶段 %s 条船台（阶段 5 共 %s 条）；每条开放船台增加 %s 并行"
+ ],
+ "typeomega.machine.assembly_yard.tooltip.closed": [
+  "Closed slipways cost nothing",
+  "Carreiras fechadas não custam nada",
+  "关闭的船台不消耗任何资源"
+ ],
+ "typeomega.machine.assembly_yard.tooltip.light": [
+  "Build rate = 1 + log10(L/L☉), from %s round a dim star to %s round a blue giant",
+  "Ritmo = 1 + log10(L/L☉), de %s numa estrela fraca a %s numa gigante azul",
+  "建造速率 = 1 + log10(L/L☉)，暗星旁 %s，蓝巨星旁 %s"
+ ],
+ "typeomega.machine.assembly_yard.tooltip.rush": [
+  "Rush shifts: rate %s, EU %s",
+  "Turnos de pressa: ritmo %s, EU %s",
+  "赶工班次：速率 %s，EU %s"
+ ],
+ "typeomega.machine.assembly_yard.tooltip.controllers": [
+  "Megastructure controller recipes cost %s of the EU here",
+  "Receitas de controlador de megaestrutura custam %s do EU aqui",
+  "巨构控制器配方在此仅需 %s 的 EU"
+ ],
+ "typeomega.machine.assembly_yard.tooltip.energy": [
+  "EU comes from the Nexus network, as in the base recipe",
+  "O EU vem da rede Nexus, como na receita base",
+  "EU 来自 Nexus 网络，与基础配方相同"
+ ],
+ "typeomega.machine.assembly_yard.tooltip.humor": [
+  "Ninety slipways, zero parking spaces. Type Omega builds megastructures, not excuses.",
+  "Noventa carreiras, zero vagas de estacionamento. A Type Omega constrói megaestruturas, não desculpas.",
+  "九十条船台，零个停车位。Type Omega 造的是巨构，不是借口。"
+ ],
+ "typeomega.machine.nidavellir.tooltip.purpose": [
+  "A disc of five concentric rings round the star of its system that presses alloys under degenerate matter",
+  "Um disco de cinco anéis concêntricos em volta da estrela do sistema que prensa ligas sob matéria degenerada",
+  "环绕所在星系恒星的五环圆盘，以简并物质压制合金"
+ ],
+ "typeomega.machine.nidavellir.tooltip.recipes": [
+  "Runs Alloy Blast Smelter and Ultimate Material Forge recipes in huge batches",
+  "Faz receitas de Alloy Blast Smelter e Ultimate Material Forge em lotes enormes",
+  "以超大批次运行合金冶炼炉与终极材料锻炉配方"
+ ],
+ "typeomega.machine.nidavellir.tooltip.compression": [
+  "Compression c from 0 to %s, one step per phase after the first: %s × 2^c parallels for 2^c neutronium dust a batch",
+  "Compressão c de 0 a %s, um passo por fase depois da primeira: %s × 2^c paralelos por 2^c de pó de neutrônio por lote",
+  "压缩等级 c 为 0 至 %s，首阶段后每阶段 +1：每批 %s × 2^c 并行，消耗 2^c 中子素粉"
+ ],
+ "typeomega.machine.nidavellir.tooltip.range": [
+  "At full compression: %s parallels for %s neutronium dust",
+  "Na compressão máxima: %s paralelos por %s de pó de neutrônio",
+  "满压缩：%s 并行，消耗 %s 中子素粉"
+ ],
+ "typeomega.machine.nidavellir.tooltip.magnetosphere": [
+  "Round a neutron star the magnetosphere presses %s as fast",
+  "Em volta de uma estrela de nêutrons a magnetosfera prensa %s mais rápido",
+  "在中子星旁磁层压制速度 %s"
+ ],
+ "typeomega.machine.nidavellir.tooltip.pulsar": [
+  "From the pulsar vicinity on (Stellar Engine), half the neutronium, at least 1",
+  "Da vizinhança do pulsar em diante (Motor Estelar), metade do neutrônio, no mínimo 1",
+  "到达脉冲星附近后（恒星引擎），中子素消耗减半，至少 1"
+ ],
+ "typeomega.machine.nidavellir.tooltip.energy": [
+  "EU comes from the Nexus network, as in the base recipe",
+  "O EU vem da rede Nexus, como na receita base",
+  "EU 来自 Nexus 网络，与基础配方相同"
+ ],
+ "typeomega.machine.nidavellir.tooltip.waits": [
+  "Without dust for one batch the forge waits",
+  "Sem pó para um lote a forja espera",
+  "中子素粉不足一批时锻炉等待"
+ ],
+ "typeomega.machine.nidavellir.tooltip.humor": [
+  "Our press brake is a neutron star. Health and safety signed off from a different galaxy.",
+  "Nossa prensa é uma estrela de nêutrons. A segurança do trabalho assinou de outra galáxia.",
+  "我们的压力机是一颗中子星。安全部门在另一个星系签的字。"
+ ],
+ "typeomega.machine.yggdrasil.tooltip.purpose": [
+  "A gas giant seeded with floating gardens inside a shell of hexagonal glass",
+  "Um gigante gasoso semeado com jardins flutuantes dentro de uma casca de vidro hexagonal",
+  "在六边形玻璃壳内播种漂浮花园的气态巨行星"
+ ],
+ "typeomega.machine.yggdrasil.tooltip.recipes": [
+  "Runs Greenhouse recipes with the seeds in the input bus",
+  "Faz receitas de Greenhouse com as sementes do input bus",
+  "以输入总线中的种子运行温室配方"
+ ],
+ "typeomega.machine.yggdrasil.tooltip.parallel": [
+  "%s parallels per phase; every harvest also gives %s mB of biomass",
+  "%s paralelos por fase; cada colheita também dá %s mB de biomassa",
+  "每阶段 %s 并行；每次收获额外产出 %s mB 生物质"
+ ],
+ "typeomega.machine.yggdrasil.tooltip.growth": [
+  "Light I = L e^−z, carbon c = %s e^z, growth = I/(I + %s) × c/(c + %s)",
+  "Luz I = L e^−z, carbono c = %s e^z, crescimento = I/(I + %s) × c/(c + %s)",
+  "光照 I = L e^−z，碳 c = %s e^z，生长 = I/(I + %s) × c/(c + %s)"
+ ],
+ "typeomega.machine.yggdrasil.tooltip.depth": [
+  "Garden depth z from 0 to %s scale heights, in steps of %s",
+  "Profundidade z de 0 a %s alturas de escala, em passos de %s",
+  "花园深度 z 为 0 至 %s 个标高，步长 %s"
+ ],
+ "typeomega.machine.yggdrasil.tooltip.rate": [
+  "Rate = %s × growth, from %s to %s",
+  "Ritmo = %s × crescimento, de %s a %s",
+  "速率 = %s × 生长，%s 至 %s"
+ ],
+ "typeomega.machine.yggdrasil.tooltip.best": [
+  "Best depth z* = 0.5 ln(L × K_C / (c₀ × K_I)): %s round the Sun, deeper round a brighter star",
+  "Profundidade ideal z* = 0,5 ln(L × K_C / (c₀ × K_I)): %s no Sol, mais fundo numa estrela mais brilhante",
+  "最佳深度 z* = 0.5 ln(L × K_C / (c₀ × K_I))：太阳为 %s，恒星越亮越深"
+ ],
+ "typeomega.machine.yggdrasil.tooltip.energy": [
+  "EU comes from the Nexus network, as in the base recipe",
+  "O EU vem da rede Nexus, como na receita base",
+  "EU 来自 Nexus 网络，与基础配方相同"
+ ],
+ "typeomega.machine.yggdrasil.tooltip.humor": [
+  "Farm to table, planet to inventory. Organic, if you don't count the gas giant.",
+  "Da fazenda à mesa, do planeta ao inventário. Orgânico, se não contar o gigante gasoso.",
+  "从农场到餐桌，从行星到背包。不算气态巨行星的话，纯有机。"
+ ],
+ "typeomega.machine.kugelblitz.tooltip.purpose": [
+  "A black hole made of light, held between two claws; works in any star system",
+  "Um buraco negro feito de luz, preso entre duas garras; funciona em qualquer sistema",
+  "由光构成、夹于双爪之间的黑洞；可在任何星系工作"
+ ],
+ "typeomega.machine.kugelblitz.tooltip.mass": [
+  "Light becomes mass, 1 kg = %s; the hole forms once it holds %s",
+  "A luz vira massa, 1 kg = %s; o buraco se forma ao juntar %s",
+  "光转化为质量，1 kg = %s；累积到 %s 时黑洞形成"
+ ],
+ "typeomega.machine.kugelblitz.tooltip.lasers": [
+  "The lasers pour up to %s (phase 1), %s with the battery of phase 2",
+  "Os lasers despejam até %s (fase 1), %s com a bateria da fase 2",
+  "激光最高注入 %s（阶段 1），有阶段 2 电池组时 %s"
+ ],
+ "typeomega.machine.kugelblitz.tooltip.hawking": [
+  "Hawking radiation P ∝ 1/M²: %s at 10^6 kg, ×100 for each tenth of the mass",
+  "Radiação Hawking P ∝ 1/M²: %s com 10^6 kg, ×100 a cada décimo da massa",
+  "霍金辐射 P ∝ 1/M²：10^6 kg 时为 %s，质量每缩小十倍 ×100"
+ ],
+ "typeomega.machine.kugelblitz.tooltip.lifetime": [
+  "Unfed it lasts ∝ M³: a small hole is bright and brief, a big one dim and nearly eternal",
+  "Sem alimentar dura ∝ M³: um buraco pequeno brilha e dura pouco, um grande é fraco e quase eterno",
+  "无补给寿命 ∝ M³：小黑洞明亮短命，大黑洞暗淡近乎永恒"
+ ],
+ "typeomega.machine.kugelblitz.tooltip.blades": [
+  "The outer blades (phase 5) catch %s as EU for the Nexus network; before them it is lost as heat",
+  "As lâminas de fora (fase 5) pegam %s como EU para a rede Nexus; antes delas vira calor",
+  "外层叶片（阶段 5）将 %s 转为 EU 送入 Nexus 网络；此前以热量损失"
+ ],
+ "typeomega.machine.kugelblitz.tooltip.targets": [
+  "The charge stops at the target mass, from %s to %s",
+  "A carga para na massa-alvo, de %s a %s",
+  "充能在目标质量处停止，%s 至 %s"
+ ],
+ "typeomega.machine.kugelblitz.tooltip.vault": [
+  "From phase 4 the vault takes any item, and 1000 mB of any fluid, as %s of mass",
+  "Da fase 4 em diante o cofre pega qualquer item, e 1000 mB de qualquer fluido, como %s de massa",
+  "阶段 4 起保险库将任意物品或每 1000 mB 流体计为 %s 质量"
+ ],
+ "typeomega.machine.kugelblitz.tooltip.critical": [
+  "Below %s (%s with the stabilisers of phase 3) it flashes out: everything held is gone and the chamber breaks",
+  "Abaixo de %s (%s com os estabilizadores da fase 3) ele estoura: tudo o que guardava some e a câmara quebra",
+  "低于 %s（有阶段 3 稳定环时为 %s）会爆闪：储存的一切消失，收容室损坏"
+ ],
+ "typeomega.machine.kugelblitz.tooltip.repair_blocks": [
+  "the chamber's own blocks",
+  "os blocos da própria câmara",
+  "收容室自身的方块"
+ ],
+ "typeomega.machine.kugelblitz.tooltip.humor": [
+  "Handle with care: contents may be heavier than they appear. Type Omega accepts no liability for spaghettification.",
+  "Manuseie com cuidado: o conteúdo pode pesar mais do que parece. A Type Omega não se responsabiliza por espaguetificação.",
+  "小心轻放：内容物可能比看上去更重。Type Omega 对意面化不承担责任。"
+ ],
+ "typeomega.machine.hraemc.tooltip.purpose": [
+  "A power plant round the black hole of its system",
+  "Uma usina em volta do buraco negro do sistema",
+  "环绕所在星系黑洞的发电站"
+ ],
+ "typeomega.machine.hraemc.tooltip.where": [
+  "Only where the star collapsed or was made as a black hole",
+  "Só onde a estrela colapsou ou foi feita como buraco negro",
+  "仅限恒星已坍缩或被制造为黑洞的星系"
+ ],
+ "typeomega.machine.hraemc.tooltip.accretion": [
+  "Accretion: each unit gives %s × η; η from %s without spin to %s at a = %s",
+  "Acreção: cada unidade dá %s × η; η de %s sem rotação a %s com a = %s",
+  "吸积：每单位产出 %s × η；η 由无自旋时的 %s 升至 %s（a = %s）"
+ ],
+ "typeomega.machine.hraemc.tooltip.eddington": [
+  "Capped at the Eddington limit, %s × M/M☉",
+  "Limitada pelo limite de Eddington, %s × M/M☉",
+  "受爱丁顿极限限制：%s × M/M☉"
+ ],
+ "typeomega.machine.hraemc.tooltip.feed": [
+  "One unit is an item or 1000 mB of any fluid; feeding spins the hole up (%s per unit at 1 M☉)",
+  "Uma unidade é um item ou 1000 mB de qualquer fluido; alimentar acelera a rotação (%s por unidade com 1 M☉)",
+  "一单位为一件物品或 1000 mB 任意流体；投喂会使黑洞加速自旋（1 M☉ 时每单位 %s）"
+ ],
+ "typeomega.machine.hraemc.tooltip.penrose": [
+  "Penrose process: %s × M/M☉ × share × a, up to %s of the mass; it spins the hole down (share in steps of %s)",
+  "Processo de Penrose: %s × M/M☉ × parte × a, até %s da massa; freia a rotação (parte em passos de %s)",
+  "彭罗斯过程：%s × M/M☉ × 份额 × a，最多取质量的 %s；会使黑洞减速（份额步长 %s）"
+ ],
+ "typeomega.machine.hraemc.tooltip.jets": [
+  "The polar collars (phase 4) catch the Blandford-Znajek jets: accretion × a²",
+  "Os colares polares (fase 4) pegam os jatos de Blandford-Znajek: acreção × a²",
+  "极环（阶段 4）捕获布兰德福德-日纳杰克喷流：吸积 × a²"
+ ],
+ "typeomega.machine.hraemc.tooltip.research": [
+  "The antennas (phase 5) give log₂(power) / 4 research a second (typeomega:astrophysics)",
+  "As antenas (fase 5) dão log₂(potência) / 4 de pesquisa por segundo (typeomega:astrophysics)",
+  "天线（阶段 5）每秒提供 log₂(功率) / 4 研究点（typeomega:astrophysics）"
+ ],
+ "typeomega.machine.hraemc.tooltip.mass": [
+  "Everything swallowed adds to the hole's mass and raises the Eddington limit; EU goes to the Nexus network",
+  "Tudo o que é engolido soma à massa do buraco e sobe o limite de Eddington; o EU vai para a rede Nexus",
+  "吞噬的一切都会增加黑洞质量并提高爱丁顿极限；EU 送入 Nexus 网络"
+ ],
+ "typeomega.machine.hraemc.tooltip.humor": [
+  "Waste disposal that pays you back. The event horizon has a strict no-refunds policy.",
+  "Descarte de resíduos que ainda paga você. O horizonte de eventos tem política rígida de não devolução.",
+  "会倒贴钱的垃圾处理。事件视界一律不予退款。"
+ ],
+ "typeomega.machine.suprashell.tooltip.purpose": [
+  "A shell world held static round the black hole of its system",
+  "Um mundo-casca parado em volta do buraco negro do sistema",
+  "静止悬于所在星系黑洞周围的壳层世界"
+ ],
+ "typeomega.machine.suprashell.tooltip.where": [
+  "Only where the centre of the system is a black hole",
+  "Só onde o centro do sistema é um buraco negro",
+  "仅限中心为黑洞的星系"
+ ],
+ "typeomega.machine.suprashell.tooltip.modules": [
+  "GTCEu multiblock controllers in its input buses are modules; it runs all their recipe types, %s parallels each",
+  "Controladores de multibloco do GTCEu nos input buses são módulos; roda todos os tipos de receita deles, %s paralelos cada",
+  "输入总线中的 GTCEu 多方块控制器即为模块；运行其全部配方类型，每个 %s 并行"
+ ],
+ "typeomega.machine.suprashell.tooltip.room": [
+  "Room = r² modules (r in Schwarzschild radii), at most %s per phase",
+  "Espaço = r² módulos (r em raios de Schwarzschild), no máximo %s por fase",
+  "容量 = r² 个模块（r 以史瓦西半径计），每阶段最多 %s 个"
+ ],
+ "typeomega.machine.suprashell.tooltip.radius": [
+  "Shell radius from %s to %s rs, in steps of %s",
+  "Raio da casca de %s a %s rs, em passos de %s",
+  "壳层半径 %s 至 %s rs，步长 %s"
+ ],
+ "typeomega.machine.suprashell.tooltip.tau": [
+  "Clocks run at τ = √(1 − rs/r): %s at %s rs, %s at %s rs",
+  "Os relógios andam a τ = √(1 − rs/r): %s a %s rs, %s a %s rs",
+  "时钟速率 τ = √(1 − rs/r)：%s（%s rs），%s（%s rs）"
+ ],
+ "typeomega.machine.suprashell.tooltip.lowering": [
+  "Lowering matter pays 1 − τ of its rest energy: EU per recipe = base × τ",
+  "Baixar matéria paga 1 − τ da energia de repouso: EU por receita = base × τ",
+  "下放物质释放其静能的 1 − τ：每个配方 EU = 基础 × τ"
+ ],
+ "typeomega.machine.suprashell.tooltip.energy": [
+  "Close: cheap and slow, few modules. Far: full price, fast, room for hundreds",
+  "Perto: barato e lento, poucos módulos. Longe: preço cheio, rápido, espaço para centenas",
+  "近：便宜但慢，模块少。远：全价但快，可容纳数百个"
+ ],
+ "typeomega.machine.suprashell.tooltip.humor": [
+  "Prime real estate with a view of nothing at all. Commute times may vary relativistically.",
+  "Imóvel nobre com vista para absolutamente nada. O tempo de deslocamento pode variar relativisticamente.",
+  "黄金地段，坐拥一片虚无的景观。通勤时间可能存在相对论性差异。"
+ ],
+ "typeomega.machine.disintegrator.tooltip.purpose": [
+  "Takes a made star system of yours apart, layer by layer, paying its binding energy",
+  "Desmonta um sistema estelar feito por você, camada por camada, pagando a energia de ligação",
+  "逐层拆解你制造的星系，并支付其引力束缚能"
+ ],
+ "typeomega.machine.disintegrator.tooltip.binding": [
+  "Binding energy U = %s × (M/M☉)², paid from the Nexus network at %s per phase",
+  "Energia de ligação U = %s × (M/M☉)², paga pela rede Nexus a %s por fase",
+  "束缚能 U = %s × (M/M☉)²，由 Nexus 网络支付，每阶段 %s"
+ ],
+ "typeomega.machine.disintegrator.tooltip.share": [
+  "Taking a share f of the mass costs e = 1 − (1 − f)^(5/3) of U",
+  "Tirar uma parte f da massa custa e = 1 − (1 − f)^(5/3) de U",
+  "取走质量份额 f 需支付 U 的 e = 1 − (1 − f)^(5/3)"
+ ],
+ "typeomega.machine.disintegrator.tooltip.crust": [
+  "Crust (to %s): %s",
+  "Crosta (até %s): %s",
+  "地壳（至 %s）：%s"
+ ],
+ "typeomega.machine.disintegrator.tooltip.mantle": [
+  "Mantle (to %s): %s",
+  "Manto (até %s): %s",
+  "地幔（至 %s）：%s"
+ ],
+ "typeomega.machine.disintegrator.tooltip.core": [
+  "Core (to %s): %s",
+  "Núcleo (até %s): %s",
+  "地核（至 %s）：%s"
+ ],
+ "typeomega.machine.disintegrator.tooltip.dust": [
+  "Dust of each element = %s × %% taken × M/M☉ × metallicity",
+  "Pó de cada elemento = %s × %% tirado × M/M☉ × metalicidade",
+  "每种元素粉 = %s × 取走百分比 × M/M☉ × 金属丰度"
+ ],
+ "typeomega.machine.disintegrator.tooltip.star": [
+  "The last %s is the star: %s mB of gas per %% per M☉, three parts hydrogen to one helium",
+  "Os últimos %s são a estrela: %s mB de gás por %% por M☉, três partes de hidrogênio para uma de hélio",
+  "最后 %s 是恒星：每 1%% 每 M☉ 产出 %s mB 气体，氢与氦三比一"
+ ],
+ "typeomega.machine.disintegrator.tooltip.stop": [
+  "Pick where to stop: before the star the system stays",
+  "Escolha onde parar: antes da estrela o sistema fica",
+  "可选择停止点：在恒星之前停下则星系保留"
+ ],
+ "typeomega.machine.disintegrator.tooltip.wipe": [
+  "Taking the star erases the system; its terrain is wiped at the next server start",
+  "Tirar a estrela apaga o sistema; o terreno dele é limpo no próximo início do servidor",
+  "取走恒星将抹除该星系；其地形在服务器下次启动时清除"
+ ],
+ "typeomega.machine.disintegrator.tooltip.humor": [
+  "Decommissioning services for the whole solar system. Please remove personal belongings first.",
+  "Serviço de desativação do sistema solar inteiro. Retire seus pertences pessoais antes.",
+  "整个太阳系的退役服务。请先带走个人物品。"
+ ],
+ "typeomega.machine.birch_world.tooltip.purpose": [
+  "Shells round a black hole whose rotating interior allows closed timelike curves: the Causal era",
+  "Cascas em volta de um buraco negro cujo interior em rotação permite curvas temporais fechadas: a era Causal",
+  "环绕黑洞的壳层，其旋转内部允许闭合类时曲线：因果时代"
+ ],
+ "typeomega.machine.birch_world.tooltip.modules": [
+  "Multiblock controllers in its input buses are modules, as in the Suprashell",
+  "Controladores de multibloco nos input buses são módulos, como na Suprashell",
+  "输入总线中的多方块控制器即为模块，与超壳相同"
+ ],
+ "typeomega.machine.birch_world.tooltip.speed": [
+  "Recipes run %s as fast; their EU is not drawn but owed as causal debt",
+  "As receitas rodam %s mais rápido; o EU delas não é puxado, vira dívida causal",
+  "配方速度 %s；其 EU 不被扣除，而是记为因果债务"
+ ],
+ "typeomega.machine.birch_world.tooltip.room": [
+  "%s parallels per module; room for %s modules a layer, %s layers a phase",
+  "%s paralelos por módulo; espaço para %s módulos por camada, %s camadas por fase",
+  "每模块 %s 并行；每层可容纳 %s 个模块，每阶段 %s 层"
+ ],
+ "typeomega.machine.birch_world.tooltip.interest": [
+  "The loop's tension makes the debt grow %s a second",
+  "A tensão do laço faz a dívida crescer %s por segundo",
+  "时间环的张力使债务每秒增长 %s"
+ ],
+ "typeomega.machine.birch_world.tooltip.repay": [
+  "Repay %s × dial (0 to %s) from the Nexus network",
+  "Pague %s × mostrador (0 a %s) pela rede Nexus",
+  "从 Nexus 网络还款：%s × 刻度（0 至 %s）"
+ ],
+ "typeomega.machine.birch_world.tooltip.credit": [
+  "Credit = %s × layers × M/M☉: feed the hole (HRAE-MC) to raise it",
+  "Crédito = %s × camadas × M/M☉: alimente o buraco (HRAE-MC) para subir",
+  "信用额度 = %s × 层数 × M/M☉：给黑洞投喂（HRAE-MC）可提高"
+ ],
+ "typeomega.machine.birch_world.tooltip.paradox": [
+  "Past the credit a paradox erases the debt and everything in the output buses; the loops close for %s s",
+  "Passando do crédito, um paradoxo apaga a dívida e tudo dos output buses; os laços fecham por %s s",
+  "超过信用额度会引发悖论：债务与输出总线中的一切被抹除，时间环关闭 %s 秒"
+ ],
+ "typeomega.machine.birch_world.tooltip.era": [
+  "Causal era by debt paid back: I at %s EU, II at %s, III at %s",
+  "Era Causal pela dívida paga: I com %s EU, II com %s, III com %s",
+  "按已偿还债务计因果时代：%s EU 为 I，%s 为 II，%s 为 III"
+ ],
+ "typeomega.machine.birch_world.tooltip.humor": [
+  "Buy now, pay yesterday. Type Omega Causal Finance: terms and conditions apply retroactively.",
+  "Compre agora, pague ontem. Type Omega Finanças Causais: termos e condições valem retroativamente.",
+  "现在购买，昨天付款。Type Omega 因果金融：条款追溯生效。"
+ ],
+ "typeomega.machine.qso.tooltip.purpose": [
+  "A gun the size of a system round its quasar: the Final era",
+  "Um canhão do tamanho de um sistema em volta do seu quasar: a era Final",
+  "环绕类星体、星系大小的巨炮：终末时代"
+ ],
+ "typeomega.machine.qso.tooltip.input": [
+  "Charge input = %s × M/M☉ × 20 + %s × draw (0 to %s) from the Nexus network, each second",
+  "Entrada de carga = %s × M/M☉ × 20 + %s × consumo (0 a %s) da rede Nexus, por segundo",
+  "每秒充能 = %s × M/M☉ × 20 + %s × 抽取档位（0 至 %s，来自 Nexus 网络）"
+ ],
+ "typeomega.machine.qso.tooltip.leak": [
+  "The capacitor leaks %s a second: ceiling = input / %s",
+  "O capacitor vaza %s por segundo: teto = entrada / %s",
+  "电容每秒泄漏 %s：上限 = 输入 / %s"
+ ],
+ "typeomega.machine.qso.tooltip.shot": [
+  "A shot of size k holds %s × 2^(k+1) EU; sizes up to 2 + phases, at most %s",
+  "Um disparo de tamanho k guarda %s × 2^(k+1) EU; tamanhos até 2 + fases, no máximo %s",
+  "k 级射击储能 %s × 2^(k+1) EU；等级最高为 2 + 阶段数，上限 %s"
+ ],
+ "typeomega.machine.qso.tooltip.negentropy": [
+  "Aiming costs %s; each shot harvests (shot − %s) / %s units of negentropy",
+  "Mirar custa %s; cada disparo colhe (disparo − %s) / %s unidades de negentropia",
+  "瞄准消耗 %s；每次射击收获 (射击 − %s) / %s 单位负熵"
+ ],
+ "typeomega.machine.qso.tooltip.tradeoff": [
+  "Big shots waste less on aiming but fill slowly and leak; past the ceiling they never fire",
+  "Disparos grandes perdem menos na mira, mas enchem devagar e vazam; acima do teto nunca disparam",
+  "大射击瞄准损耗少，但充能慢且会泄漏；超过上限则永远无法发射"
+ ],
+ "typeomega.machine.qso.tooltip.finite": [
+  "The world's negentropy is finite and shared by everyone (world rule)",
+  "A negentropia do mundo é finita e de todos (regra do mundo)",
+  "世界的负熵有限且由所有人共享（世界规则）"
+ ],
+ "typeomega.machine.qso.tooltip.end": [
+  "With it spent and the world rule on, the next shot is the last: the game ends",
+  "Com ela esgotada e a regra do mundo ligada, o próximo disparo é o último: o jogo acaba",
+  "负熵耗尽且世界规则开启时，下一次射击即为最后一击：游戏结束"
+ ],
+ "typeomega.machine.qso.tooltip.humor": [
+  "Final quarterly report. Type Omega thanks you for your business, and for the universe.",
+  "Relatório trimestral final. A Type Omega agradece a preferência, e o universo.",
+  "最终季度报告。Type Omega 感谢您的惠顾，以及这个宇宙。"
+ ]
+}

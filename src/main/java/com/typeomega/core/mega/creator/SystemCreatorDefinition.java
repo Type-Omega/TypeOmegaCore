@@ -14,7 +14,7 @@ public final class SystemCreatorDefinition {
 
     /** The station takes hydrogen (gas or plasma) and the iron dust that seeds the metals. */
     public static MultiblockMachineDefinition register() {
-        return MegaDefinition.register(SystemCreatorMachine.SHAPE, SystemCreatorMachine::new, 3,
+        return MegaDefinition.register(SystemCreatorMachine.SHAPE, SystemCreatorMachine::new,
                 GTCEu.id("block/casings/fusion/fusion_casing_mk3"),
                 new Hatch(PartAbility.IMPORT_FLUIDS, 4), new Hatch(PartAbility.IMPORT_ITEMS, 4));
     }

@@ -4,21 +4,6 @@
   "Orquídea Yggdrasil",
   "尤克特拉希尔兰花"
  ],
- "typeomega.machine.yggdrasil.tooltip.0": [
-  "A gas giant seeded with floating gardens inside a shell of hexagonal glass, built in five phases.",
-  "Um gigante gasoso semeado com jardins flutuantes numa casca de vidro hexagonal, construído em cinco fases.",
-  "在六边形玻璃外壳中播种漂浮花园的气态巨行星，分五个阶段建造。"
- ],
- "typeomega.machine.yggdrasil.tooltip.1": [
-  "Runs Greenhouse recipes, 256 parallels per phase; every harvest also gives 100 mB of biomass.",
-  "Roda receitas da Greenhouse, 256 paralelos por fase; cada colheita também dá 100 mB de biomassa.",
-  "运行温室配方，每阶段 256 并行；每次收获另产 100 mB 生物质。"
- ],
- "typeomega.machine.yggdrasil.tooltip.2": [
-  "Pick the gardens' depth: light fades as they sink, carbon dioxide rises. The best depth depends on the star.",
-  "Escolha a profundidade dos jardins: a luz cai ao descer, o gás carbônico sobe. A melhor profundidade depende da estrela.",
-  "选择花园深度：越深光越弱、二氧化碳越多。最佳深度取决于恒星。"
- ],
  "typeomega.yggdrasil.state": [
   "Gardens at depth %s, growth %s",
   "Jardins na profundidade %s, crescimento %s",

@@ -4,21 +4,6 @@
   "Elevador Estelar",
   "恒星抽取器"
  ],
- "typeomega.machine.star_lifter.tooltip.0": [
-  "Lifts matter off the star of the system it stands in, built in five phases.",
-  "Tira matéria da estrela do sistema onde está, construído em cinco fases.",
-  "从所在恒星系的恒星上抽取物质，分五个阶段建造。"
- ],
- "typeomega.machine.star_lifter.tooltip.1": [
-  "Hydrogen and helium plasma, oxygen, neon, nitrogen and metal dusts; the star gets lighter, dimmer and longer-lived.",
-  "Plasma de hidrogênio e hélio, oxigênio, neônio, nitrogênio e pós metálicos; a estrela fica mais leve, mais fraca e vive mais.",
-  "产出氢与氦等离子体、氧、氖、氮和金属粉；恒星变轻、变暗、寿命延长。"
- ],
- "typeomega.machine.star_lifter.tooltip.2": [
-  "Power from the owner's Nexus network: the deeper the star's gravity well, the more it costs.",
-  "Energia da rede Nexus do dono: quanto mais fundo o poço gravitacional da estrela, mais caro.",
-  "能量来自所有者的 Nexus 网络：恒星引力井越深，耗能越高。"
- ],
  "typeomega.star_lifter.needs_star": [
   "No star here: the Star Lifter works around the star of a star system.",
   "Sem estrela aqui: o Elevador Estelar funciona em volta da estrela de um sistema estelar.",

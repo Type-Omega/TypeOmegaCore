@@ -31,13 +31,13 @@ public final class MegaDefinition {
 
     public static MultiblockMachineDefinition register(String id,
                                                        Function<IMachineBlockEntity, ? extends MegaMachine> factory,
-                                                       int tooltips, ResourceLocation casing, Hatch... hatches) {
-        return register(id, factory, tooltips, casing, GTRecipeTypes.DUMMY_RECIPES, hatches);
+                                                       ResourceLocation casing, Hatch... hatches) {
+        return register(id, factory, casing, GTRecipeTypes.DUMMY_RECIPES, hatches);
     }
 
     public static MultiblockMachineDefinition register(String id,
                                                        Function<IMachineBlockEntity, ? extends MegaMachine> factory,
-                                                       int tooltips, ResourceLocation casing, GTRecipeType type,
+                                                       ResourceLocation casing, GTRecipeType type,
                                                        Hatch... hatches) {
         return GTIAMod.REGISTRATE
                 .multiblock(id, factory::apply)
@@ -60,7 +60,7 @@ public final class MegaDefinition {
                         casing, GTCEu.id("block/multiblock/fusion_reactor"))
                         .andThen(builder -> builder.addDynamicRenderer(
                                 com.typeomega.core.mega.common.client.MegaRenderer.Render::new)))
-                .tooltips(GTIATooltips.megastructure(id, tooltips))
+                .tooltipBuilder(GTIATooltips.lazy(id))
                 .register();
     }
 }

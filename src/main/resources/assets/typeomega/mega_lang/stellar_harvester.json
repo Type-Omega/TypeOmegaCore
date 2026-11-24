@@ -4,21 +4,6 @@
   "Colhedora Estelar",
   "恒星收割器"
  ],
- "typeomega.machine.stellar_harvester.tooltip.0": [
-  "Heats the core of its system's star until it burns its whole life in hours, built in five phases.",
-  "Aquece o núcleo da estrela do sistema até ela queimar a vida inteira em horas, construída em cinco fases.",
-  "加热所在恒星系恒星的核心，使其在数小时内燃尽一生，分五个阶段建造。"
- ],
- "typeomega.machine.stellar_harvester.tooltip.1": [
-  "Pays the boosted starlight to the Nexus network: the budget is the core's hydrogen, 2^60 EU per solar mass.",
-  "Paga a luz reforçada para a rede Nexus: o orçamento é o hidrogênio do núcleo, 2^60 EU por massa solar.",
-  "将增强的星光输入 Nexus 网络：预算为核心氢，每个太阳质量 2^60 EU。"
- ],
- "typeomega.machine.stellar_harvester.tooltip.2": [
-  "When it runs out the star ends by its mass: white dwarf, neutron star or black hole.",
-  "Quando acaba, a estrela termina pela massa: anã branca, estrela de nêutrons ou buraco negro.",
-  "耗尽后恒星按质量终结：白矮星、中子星或黑洞。"
- ],
  "typeomega.stellar_harvester.state": [
   "Heat %s, boost x%s, fuel %s",
   "Aquecimento %s, reforço x%s, combustível %s",

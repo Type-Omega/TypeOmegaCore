@@ -4,21 +4,6 @@
   "Desintegrador de Sistemas Solares",
   "星系解体器"
  ],
- "typeomega.machine.disintegrator.tooltip.0": [
-  "Takes a made star system of yours apart, layer by layer, paying its binding energy; built in five phases.",
-  "Desmonta camada por camada um sistema estelar criado por você, pagando a energia de ligação; construído em cinco fases.",
-  "逐层拆解你创造的恒星系，支付其引力束缚能；分五个阶段建造。"
- ],
- "typeomega.machine.disintegrator.tooltip.1": [
-  "Crust, mantle and core give their metals; the star gives hydrogen and helium, and the system is gone.",
-  "Crosta, manto e núcleo dão seus metais; a estrela dá hidrogênio e hélio, e o sistema some.",
-  "地壳、地幔和核心产出金属；恒星产出氢和氦，星系随之消失。"
- ],
- "typeomega.machine.disintegrator.tooltip.2": [
-  "Pick where to stop: before the star the system stays.",
-  "Escolha onde parar: antes da estrela o sistema fica.",
-  "选择停止层级：在恒星之前停止则星系保留。"
- ],
  "typeomega.disintegrator.state": [
   "Target system %s, %s taken",
   "Sistema alvo %s, %s desmontado",

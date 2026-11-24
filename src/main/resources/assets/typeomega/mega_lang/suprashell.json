@@ -4,21 +4,6 @@
   "Supracasca do Buraco Negro",
   "黑洞超壳"
  ],
- "typeomega.machine.suprashell.tooltip.0": [
-  "A shell world round the black hole of its system, built in five phases: only where the centre is a hole.",
-  "Um mundo-casca em volta do buraco negro do sistema, construído em cinco fases: só onde o centro é um buraco.",
-  "围绕所在恒星系黑洞的壳层世界，分五个阶段建造：仅限中心为黑洞的系统。"
- ],
- "typeomega.machine.suprashell.tooltip.1": [
-  "Hosts GTCEu multiblock controllers put in its buses as modules and runs their recipes, 64 parallels each.",
-  "Hospeda controladores de multiblocos do GTCEu postos nos barramentos como módulos e roda as receitas deles, 64 paralelos cada.",
-  "将放入总线的 GTCEu 多方块控制器作为模块托管并运行其配方，每个 64 并行。"
- ],
- "typeomega.machine.suprashell.tooltip.2": [
-  "Close to the hole the shell's clocks run slow, but lowering matter pays the EU: pick its radius.",
-  "Perto do buraco os relógios da casca andam devagar, mas baixar matéria paga o EU: escolha o raio.",
-  "靠近黑洞时壳上时钟变慢，但下放物质可支付 EU：请选择半径。"
- ],
  "typeomega.suprashell.state": [
   "Modules %s/%s, radius %s rs, tau %s",
   "Módulos %s/%s, raio %s rs, tau %s",

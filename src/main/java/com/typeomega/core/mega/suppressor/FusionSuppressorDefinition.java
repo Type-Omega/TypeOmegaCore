@@ -14,7 +14,7 @@ public final class FusionSuppressorDefinition {
 
     /** The station takes repair blocks and gives the supernova's dust. */
     public static MultiblockMachineDefinition register() {
-        return MegaDefinition.register(FusionSuppressorMachine.SHAPE, FusionSuppressorMachine::new, 3,
+        return MegaDefinition.register(FusionSuppressorMachine.SHAPE, FusionSuppressorMachine::new,
                 GTCEu.id("block/casings/fusion/fusion_casing_mk3"),
                 new Hatch(PartAbility.IMPORT_ITEMS, 2), new Hatch(PartAbility.EXPORT_ITEMS, 6));
     }

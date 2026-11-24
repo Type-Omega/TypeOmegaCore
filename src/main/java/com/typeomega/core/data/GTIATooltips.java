@@ -1,42 +1,82 @@
 package com.typeomega.core.data;
 
-import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
+import com.gregtechceu.gtceu.api.registry.GTRegistries;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
 
-import com.typeomega.core.data.rocket.GTIARocketRecipes;
-import com.typeomega.core.kardashev.KardashevScale;
+import com.mojang.logging.LogUtils;
+import com.typeomega.core.GTIAMod;
+import com.typeomega.core.data.tooltip.MegaTooltips;
+import com.typeomega.core.data.tooltip.ProcessingTooltips;
+import com.typeomega.core.data.tooltip.StellarTooltips;
+import com.typeomega.core.data.tooltip.TypeZeroTooltips;
 import com.typeomega.core.mega.common.MegaLang;
-import com.typeomega.core.mega.typezero.CosmodromeMachine;
-import com.typeomega.core.mega.typezero.Tokamak;
-import com.typeomega.core.mega.typezero.TokamakMachine;
-import com.typeomega.core.mega.typezero.TypeZeroRecipes;
-import com.typeomega.core.miner.FragmentCollectorLogic;
-import com.typeomega.core.processing.TierParallel;
 import com.typeomega.lib.lang.Tr;
-import com.typeomega.lib.tooltip.Hatch;
 import com.typeomega.lib.tooltip.MultiblockTooltip;
 import com.typeomega.lib.tooltip.MultiblockTooltipBuilder;
-import com.typeomega.lib.tooltip.TooltipRow;
+import com.typeomega.lib.tooltip.StructureInfo;
+import com.typeomega.lib.tooltip.structure.GtceuPatterns;
+import org.slf4j.Logger;
 
-import java.util.Locale;
-
-import static com.typeomega.lib.tooltip.TooltipArg.emphasis;
-import static com.typeomega.lib.tooltip.TooltipArg.highlight;
-import static com.typeomega.lib.tooltip.TooltipArg.value;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.BiConsumer;
+import java.util.function.Supplier;
 
 /**
- * Multiblock tooltips in the GTNH layout of the lib (GTIA-D-410). The texts, in three languages, are in
- * {@code mega_lang/multiblock_tooltips.json}; every number comes from the constant the machine logic or the recipe
- * uses. The real-world fact of each machine stays as the grey italic line (GTIA-D-343).
+ * Multiblock tooltips in the GTNH layout of the lib (GTIA-D-410) with the whole mechanic of each machine (GTIA-D-432):
+ * every number comes from the constant the machine logic uses. The texts, in three languages, are in
+ * {@code mega_lang/multiblock_tooltips.json} and {@code mega_lang/mega_tooltips.json}. No structure section and no
+ * pollution line (GTIA-D-431). Families live in {@code data/tooltip/}; the tooltip is built when it is shown, so
+ * the language is current.
  */
 public final class GTIATooltips {
 
     /** Shown in blue italics on the last line: the displayName of mods.toml ({@code mod_name}). */
     public static final String MOD_NAME = "TypeOmega Core";
 
+    private static final Logger LOGGER = LogUtils.getLogger();
+    private static final Map<String, Supplier<List<Component>>> TOOLTIPS = new LinkedHashMap<>();
+    private static final Set<String> UNREADABLE = ConcurrentHashMap.newKeySet();
+    private static boolean initialised;
+
     private GTIATooltips() {}
+
+    private static synchronized void init() {
+        if (initialised) return;
+        initialised = true;
+        ProcessingTooltips.register();
+        TypeZeroTooltips.register();
+        StellarTooltips.register();
+        MegaTooltips.register();
+    }
+
+    public static void register(String id, Supplier<List<Component>> tooltip) {
+        if (TOOLTIPS.put(id, tooltip) != null) throw new IllegalStateException(id + " tooltip registered twice");
+    }
+
+    /** Registry paths of the multiblocks with a tooltip here. */
+    public static List<String> ids() {
+        init();
+        return List.copyOf(TOOLTIPS.keySet());
+    }
+
+    public static List<Component> build(String id) {
+        init();
+        Supplier<List<Component>> tooltip = TOOLTIPS.get(id);
+        if (tooltip == null) throw new IllegalArgumentException("no tooltip for " + id);
+        return tooltip.get();
+    }
+
+    /** For {@code MultiblockMachineBuilder.tooltipBuilder}: the tooltip of {@code id}, built when it is shown. */
+    public static BiConsumer<ItemStack, List<Component>> lazy(String id) {
+        return (stack, lines) -> lines.addAll(build(id));
+    }
 
     /** Shared text {@code typeomega.tooltip.<key>}. */
     public static Tr shared(String key) {
@@ -55,189 +95,27 @@ public final class GTIATooltips {
         return MultiblockTooltip.builder().machineType(trs);
     }
 
-    /** The fact line and the mod name that close every tooltip. */
-    public static Component[] finish(MultiblockTooltipBuilder builder, String id) {
-        return builder.humor(own(id, "fact")).mod(MOD_NAME).toArray();
+    /** The modes and the "Supports ...!" line read from the machine, then the humour line and the mod name. */
+    public static List<Component> finish(MultiblockTooltipBuilder builder, String id) {
+        if (GTRegistries.MACHINES.get(GTIAMod.id(id)) instanceof MultiblockMachineDefinition definition) {
+            builder.modes(GtceuPatterns.modes(definition));
+            StructureInfo info = structure(definition);
+            // EN: Only the "Supports" line is read from the pattern; the structure section is off (GTIA-D-431).
+            // PT: Só a linha "Suporta" vem do padrão; a seção de estrutura está desligada (GTIA-D-431).
+            // ZH: 只从结构模式读取“支持”一行；结构部分已关闭（GTIA-D-431）。
+            if (info != null) builder.hatches(info);
+        }
+        return builder.humor(own(id, "humor")).mod(MOD_NAME).build();
     }
 
-    public static Component[] multiblock(String id) {
-        return switch (id) {
-            case "large_furnace" -> largeFurnace();
-            case "ore_processing_plant" -> orePlant();
-            case "processing_plus", "assembling_plus", "separating_plus", "mixing_plus" -> plus(id);
-            case "rocket_assembler" -> rocketAssembler();
-            case "fragment_collector" -> fragmentCollector();
-            case "large_fragment_collector" -> largeFragmentCollector();
-            case "national_dispatch_center" -> dispatchCenter();
-            case "cosmodrome" -> cosmodrome();
-            case Tokamak.ID -> tokamak();
-            default -> throw new IllegalArgumentException("no tooltip for " + id);
-        };
-    }
-
-    /**
-     * A megastructure: the first mega_lang line describes it, the others are its rules. Their numbers are formulas
-     * of the machine's physics, so they stay in the text.
-     */
-    public static Component[] megastructure(String id, int lines) {
-        var b = start("megastructure").line(own(id, "0"));
-        if (lines > 1) b.separator();
-        for (int i = 1; i < lines; i++) b.line(own(id, String.valueOf(i)));
-        return b.mod(MOD_NAME).toArray();
-    }
-
-    private static Component parallels(int amount) {
-        return shared("parallels").component(value(amount));
-    }
-
-    private static MultiblockTooltipBuilder parallelRules(MultiblockTooltipBuilder b) {
-        return b.line(shared("parallels_items"), emphasis(shared("not")));
-    }
-
-    private static Component[] largeFurnace() {
-        String id = "large_furnace";
-        var b = start("furnace")
-                .line(own(id, "purpose"), highlight(own(id, "purpose.parallels")))
-                .line(own(id, "parallels"), parallels(TierParallel.largeFurnace(GTValues.LV)),
-                        value(GTValues.VN[GTValues.LV]));
-        parallelRules(b).separator()
-                .line(own(id, "hatches"))
-                .line(shared("parallel_hatch"), highlight(shared("parallel_hatch.name")))
-                .line(shared("overclock"))
-                .hatches(Hatch.MULTI_AMP);
-        return finish(b, id);
-    }
-
-    private static Component[] orePlant() {
-        String id = "ore_processing_plant";
-        int mv = TierParallel.orePlant(GTValues.MV);
-        var b = start("ore_processor")
-                .line(own(id, "purpose"), highlight(own(id, "purpose.water")))
-                .line(own(id, "parallels"), parallels(mv), value(GTValues.VN[GTValues.MV]),
-                        value(TierParallel.orePlant(GTValues.HV) - mv));
-        parallelRules(b).separator()
-                .line(own(id, "hatches"))
-                .warning(own(id, "no_hatches"), emphasis(own(id, "no")))
-                .line(shared("overclock"))
-                .hatches(Hatch.MULTI_AMP);
-        return finish(b, id);
-    }
-
-    private static Component[] plus(String id) {
-        var b = start(id)
-                .line(own(id, "purpose"))
-                .line(shared("plus.parallels"), parallels(TierParallel.plus(GTValues.LV)),
-                        value(GTValues.VN[GTValues.LV]), value(TierParallel.plus(GTValues.IV)),
-                        value(GTValues.VN[GTValues.IV]));
-        parallelRules(b).separator()
-                .line(shared("plus.hatches"))
-                .line(shared("switch_type"))
-                .line(shared("overclock"))
-                .hatches(Hatch.MULTI_AMP);
-        return b.humor(shared("plus.fact")).mod(MOD_NAME).toArray();
-    }
-
-    private static Component[] rocketAssembler() {
-        String id = "rocket_assembler";
-        var b = start("rocket_assembler")
-                .line(own(id, "purpose"))
-                .separator()
-                .table(rocket(own(id, "tier_1"), GTIARocketRecipes.TIER_1_EUT, GTIARocketRecipes.TIER_1_TICKS),
-                        rocket(own(id, "tier_2"), GTIARocketRecipes.TIER_2_EUT, GTIARocketRecipes.TIER_2_TICKS))
-                .separator()
-                .line(own(id, "pad"), highlight("3 x 3"))
-                .line(own(id, "hatches"))
-                .line(shared("overclock"))
-                .hatches(Hatch.MULTI_AMP);
-        return finish(b, id);
-    }
-
-    private static TooltipRow rocket(Tr name, int eut, int ticks) {
-        return TooltipRow.of(name, ChatFormatting.GOLD, shared("eut").component(eut),
-                shared("seconds").component(ticks / 20));
-    }
-
-    private static Component[] fragmentCollector() {
-        String id = "fragment_collector";
-        int seconds = FragmentCollectorLogic.DURATION / 20;
-        var b = start("miner")
-                .line(own(id, "purpose"), highlight(own(id, "fragment")))
-                .separator()
-                .table(TooltipRow.of(own(id, "alone"), ChatFormatting.GOLD, FragmentCollectorLogic.OPERATIONS,
-                        shared("seconds").component(seconds)).effect(own(id, "alone.effect")),
-                        TooltipRow.of(own(id, "card"), ChatFormatting.GOLD, FragmentCollectorLogic.OPERATIONS,
-                                shared("seconds").component(seconds)).effect(own(id, "card.effect")))
-                .separator()
-                .line(own(id, "keep"), emphasis(own(id, "never")),
-                        value(FragmentCollectorLogic.DUPLICATE_CHANCE / 100 + "%"))
-                .line(own(id, "hatches"))
-                .line(shared("overclock"))
-                .hatches(Hatch.MULTI_AMP);
-        return finish(b, id);
-    }
-
-    private static Component[] largeFragmentCollector() {
-        String id = "large_fragment_collector";
-        var b = start("miner")
-                .line(own(id, "purpose"), value(FragmentCollectorLogic.LARGE_PARALLEL),
-                        value(GTValues.VN[GTValues.EV]))
-                .line(own(id, "parallel"), highlight(shared("parallel_hatch.name")))
-                .separator()
-                .line(own(id, "hatches"))
-                .line(shared("overclock"))
-                .hatches(Hatch.MULTI_AMP);
-        return finish(b, id);
-    }
-
-    /** "Megastructure n of Type 0: raises your team's Kardashev cap to 0.nn" for the first two. */
-    private static MultiblockTooltipBuilder typeZero(String type, int number) {
-        String cap = String.format(Locale.ROOT, "%.2f", KardashevScale.capHundredths(number) / 100.0);
-        return start(type, "megastructure").line(shared("type_zero.mega"), value(number))
-                .line(shared("type_zero.cap"), value(cap));
-    }
-
-    private static Component[] dispatchCenter() {
-        String id = "national_dispatch_center";
-        var b = typeZero("grid_dispatch", 1)
-                .line(own(id, "purpose"), highlight(own(id, "transponder")))
-                .separator()
-                .line(shared("type_zero.hatches"))
-                .line(shared("overclock"))
-                .hatches(Hatch.MULTI_AMP);
-        return finish(b, id);
-    }
-
-    private static Component[] cosmodrome() {
-        String id = "cosmodrome";
-        var b = typeZero("mission_control", 2)
-                .line(own(id, "purpose"))
-                .warning(own(id, "no_survey"))
-                .separator()
-                .line(own(id, "link"), value(CosmodromeMachine.LINK_RANGE))
-                .line(shared("type_zero.hatches"))
-                .line(shared("overclock"))
-                .hatches(Hatch.MULTI_AMP);
-        return finish(b, id);
-    }
-
-    private static Component[] tokamak() {
-        String id = Tokamak.ID;
-        var b = start("fusion_reactor", "generator", "megastructure")
-                .line(shared("type_zero.mega"), value(3))
-                .line(own(id, "closes"))
-                .separator()
-                .table(TooltipRow.of("D-T", ChatFormatting.LIGHT_PURPLE,
-                        shared("eut").component(TypeZeroRecipes.DT_EUT))
-                        .effect(own(id, "dt"), value(TypeZeroRecipes.TRITIUM_BRED),
-                                value(TypeZeroRecipes.TRITIUM_BURNT)),
-                        TooltipRow.of("D-He3", ChatFormatting.LIGHT_PURPLE,
-                                shared("eut").component(TypeZeroRecipes.DHE3_EUT)).effect(own(id, "dhe3")))
-                .line(own(id, "coolant"))
-                .separator()
-                .line(own(id, "start"), value(TokamakMachine.START_EU))
-                .warning(own(id, "cools"), value(TokamakMachine.COOL_AFTER_TICKS / 20))
-                .line(own(id, "dynamos"), value(1), value(Tokamak.MAX_DYNAMOS))
-                .warning(own(id, "no_overclock"), emphasis(own(id, "no")));
-        return finish(b, id);
+    private static StructureInfo structure(MultiblockMachineDefinition definition) {
+        String id = definition.getId().toString();
+        if (UNREADABLE.contains(id)) return null;
+        try {
+            return GtceuPatterns.of(definition);
+        } catch (RuntimeException e) {
+            if (UNREADABLE.add(id)) LOGGER.warn("Cannot read the structure of {} for its tooltip", id, e);
+            return null;
+        }
     }
 }

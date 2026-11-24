@@ -4,21 +4,6 @@
   "HRAE-MC",
   "HRAE-MC"
  ],
- "typeomega.machine.hraemc.tooltip.0": [
-  "A power plant around the black hole of its system, built in five phases: only where the star collapsed or was made as one.",
-  "Uma usina em volta do buraco negro do sistema, construída em cinco fases: só onde a estrela colapsou ou foi feita assim.",
-  "围绕所在恒星系黑洞建造的发电站，分五个阶段建造：仅限恒星已坍缩或被创造为黑洞的系统。"
- ],
- "typeomega.machine.hraemc.tooltip.1": [
-  "Accretion (efficiency by the hole's spin, capped by Eddington), the Penrose process (takes the spin) and the polar jets.",
-  "Acreção (eficiência pelo spin do buraco, limitada por Eddington), o processo de Penrose (tira o spin) e os jatos polares.",
-  "吸积（效率取决于黑洞自旋，受爱丁顿极限限制）、彭罗斯过程（消耗自旋）和极向喷流。"
- ],
- "typeomega.machine.hraemc.tooltip.2": [
-  "Feeding spins the hole up, Penrose slows it: keep them in balance. EU to the Nexus network, research with the antennas.",
-  "Alimentar acelera o buraco, Penrose freia: mantenha os dois em equilíbrio. EU para a rede Nexus, pesquisa com as antenas.",
-  "进料使黑洞加速旋转，彭罗斯使其减速：需保持平衡。EU 送入 Nexus 网络，天线产生研究点数。"
- ],
  "typeomega.hraemc.needs_hole": [
   "No black hole here: the HRAE-MC needs a system whose centre is one.",
   "Sem buraco negro aqui: o HRAE-MC precisa de um sistema com um no centro.",

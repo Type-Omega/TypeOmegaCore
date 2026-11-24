@@ -4,21 +4,6 @@
   "Aro Estelar",
   "恒星环"
  ],
- "typeomega.machine.stellar_hoop.tooltip.0": [
-  "A hoop that turns through the star's corona, built in five phases; works around the star of any star system.",
-  "Um aro que gira pela coroa da estrela, construído em cinco fases; funciona em volta da estrela de qualquer sistema estelar.",
-  "穿过恒星日冕旋转的圆环，分五个阶段建造；可在任何恒星系的恒星周围工作。"
- ],
- "typeomega.machine.stellar_hoop.tooltip.1": [
-  "Runs fusion, Electric Blast Furnace and Plasma Forge recipes with the corona's heat: up to 1024 in parallel, twice as fast, half the EU.",
-  "Roda receitas de fusão, Electric Blast Furnace e Plasma Forge com o calor da coroa: até 1024 em paralelo, com o dobro da velocidade e metade do EU.",
-  "利用日冕热量运行聚变、电力高炉和等离子锻炉配方：最多 1024 并行，速度翻倍，EU 减半。"
- ],
- "typeomega.machine.stellar_hoop.tooltip.2": [
-  "The lower it dives, the more parallel and the hotter the shields: feed it helium coolant.",
-  "Quanto mais baixo mergulha, mais paralelo e mais quente o escudo: alimente com hélio refrigerante.",
-  "下潜越低，并行越多、护盾越热：需要供应氦冷却剂。"
- ],
  "typeomega.stellar_hoop.needs_star": [
   "No star here: the Stellar Hoop works around the star of a star system.",
   "Sem estrela aqui: o Aro Estelar funciona em volta da estrela de um sistema estelar.",

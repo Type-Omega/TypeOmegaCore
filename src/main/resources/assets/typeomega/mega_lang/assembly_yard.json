@@ -4,21 +4,6 @@
   "Estaleiro Hiperestrutural",
   "超结构装配船坞"
  ],
- "typeomega.machine.assembly_yard.tooltip.0": [
-  "A shipyard ring round the star of its system, built in five phases: up to ninety slipways.",
-  "Um estaleiro em anel em volta da estrela do sistema, construído em cinco fases: até noventa rampas.",
-  "围绕所在恒星系恒星的环形船坞，分五个阶段建造：最多九十条船台。"
- ],
- "typeomega.machine.assembly_yard.tooltip.1": [
-  "Runs Assembly Line and Assembler recipes: 16 parallels per open slipway.",
-  "Roda receitas da Assembly Line e do Assembler: 16 paralelos por rampa aberta.",
-  "运行装配线和组装机配方：每条开放船台 16 并行。"
- ],
- "typeomega.machine.assembly_yard.tooltip.2": [
-  "The fabrication lasers run on starlight: brighter stars build faster. Rush shifts: x2 speed, x2.5 EU.",
-  "Os lasers de fabricação usam a luz da estrela: estrelas mais claras constroem mais rápido. Turno acelerado: velocidade x2, EU x2,5.",
-  "制造激光以星光为能源：恒星越亮建造越快。赶工班次：速度 x2，EU x2.5。"
- ],
  "typeomega.assembly_yard.state": [
   "Slipways %s/%s, speed x%s",
   "Rampas %s/%s, velocidade x%s",

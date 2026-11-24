@@ -19,7 +19,8 @@ public final class MegaLang {
     /** Files under mega_lang, without the extension. */
     public static final String[] FILES = { "common", "star_lifter", "stellar_hoop", "system_creator",
             "fusion_suppressor", "kugelblitz", "hraemc", "nidavellir", "assembly_yard", "yggdrasil",
-            "stellar_harvester", "suprashell", "disintegrator", "birch_world", "qso", "multiblock_tooltips" };
+            "stellar_harvester", "suprashell", "disintegrator", "birch_world", "qso", "multiblock_tooltips",
+            "mega_tooltips" };
 
     /** The three texts of every key, read once on first use. */
     private static Map<String, String[]> texts;

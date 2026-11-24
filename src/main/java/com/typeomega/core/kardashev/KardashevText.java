@@ -84,7 +84,8 @@ public final class KardashevText {
                 value(decimal(KardashevScale.capHundredths(1))), value(decimal(KardashevScale.capHundredths(2))))
                 .withStyle(ChatFormatting.GRAY));
         lines.add(tr("tooltip.use").withStyle(ChatFormatting.DARK_GRAY));
-        lines.add(Component.literal(com.typeomega.core.data.GTIATooltips.MOD_NAME).withStyle(ChatFormatting.BLUE, ChatFormatting.ITALIC));
+        lines.add(Component.literal(com.typeomega.core.data.GTIATooltips.MOD_NAME).withStyle(ChatFormatting.BLUE,
+                ChatFormatting.ITALIC));
         return lines;
     }
 

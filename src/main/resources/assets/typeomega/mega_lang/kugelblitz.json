@@ -4,21 +4,6 @@
   "Silo de Contenção Kugelblitz",
   "Kugelblitz 收容仓"
  ],
- "typeomega.machine.kugelblitz.tooltip.0": [
-  "A black hole made of light, held between two claws, built in five phases; works in any star system.",
-  "Um buraco negro feito de luz, preso entre duas garras, construído em cinco fases; funciona em qualquer sistema estelar.",
-  "由光构成的黑洞，夹于双爪之间，分五个阶段建造；可在任何恒星系中工作。"
- ],
- "typeomega.machine.kugelblitz.tooltip.1": [
-  "Lasers and the vault give it mass (E = mc²); it gives energy back as Hawking radiation (P ∝ 1/M²).",
-  "Lasers e o cofre dão massa a ele (E = mc²); ele devolve energia como radiação Hawking (P ∝ 1/M²).",
-  "激光与保险库为其提供质量（E = mc²）；它以霍金辐射返还能量（P ∝ 1/M²）。"
- ],
- "typeomega.machine.kugelblitz.tooltip.2": [
-  "A small hole is a strong generator but close to running away: below the critical mass it flashes out.",
-  "Um buraco pequeno é um gerador forte, mas perto de disparar: abaixo da massa crítica ele estoura.",
-  "小黑洞是强力发电机，但接近失控：低于临界质量时会爆闪消失。"
- ],
  "typeomega.kugelblitz.mass": [
   "Hole mass: %s kg",
   "Massa do buraco: %s kg",

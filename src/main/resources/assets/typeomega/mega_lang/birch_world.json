@@ -4,21 +4,6 @@
   "Mundo Birch",
   "伯奇世界"
  ],
- "typeomega.machine.birch_world.tooltip.0": [
-  "Shells round a black hole whose time loops make almost anything, built in five phases: the Causal era.",
-  "Camadas em volta de um buraco negro cujos laços temporais fazem quase tudo, construído em cinco fases: a Era Causal.",
-  "围绕黑洞的多层壳体，其时间回路几乎能制造一切，分五个阶段建造：因果纪元。"
- ],
- "typeomega.machine.birch_world.tooltip.1": [
-  "Hosts multiblock controllers like the Suprashell; recipes run 64 times as fast and their EU becomes causal debt.",
-  "Hospeda controladores de multibloco como a Supracasca; as receitas rodam 64 vezes mais rápido e o EU vira dívida causal.",
-  "像超壳一样托管多方块控制器；配方速度 x64，EU 记为因果债务。"
- ],
- "typeomega.machine.birch_world.tooltip.2": [
-  "Pay it back from the Nexus network; past the credit, a paradox erases the debt and what it bought.",
-  "Pague de volta pela rede Nexus; passando do crédito, um paradoxo apaga a dívida e o que ela comprou.",
-  "通过 Nexus 网络偿还；超过信用额度时，悖论会抹除债务及其所购之物。"
- ],
  "typeomega.birch_world.state": [
   "Causal debt %s / %s, paradoxes %s",
   "Dívida causal %s / %s, paradoxos %s",

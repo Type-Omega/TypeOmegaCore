@@ -125,7 +125,7 @@ public final class GTIARocketAssembler {
             })
             .workableCasingModel(GTIAMod.id("block/casings/rocket_assembly_casing"),
                     GTCEu.id("block/multiblock/gcym/large_assembler"))
-            .tooltips(GTIATooltips.multiblock("rocket_assembler"))
+            .tooltipBuilder(GTIATooltips.lazy("rocket_assembler"))
             .register();
 
     /**

@@ -28,6 +28,10 @@ public final class LifterPhysics {
     public static final int RATE_MIN = 10, RATE_MAX = 100, RATE_STEP = 10;
     /** Deep stirring above this rate grows instability (per mille per second at full rate). */
     public static final int DEEP_SAFE = 60, INSTABILITY_RATE = 25, INTEGRITY = 1000, REPAIR = 50;
+    /** Integrity a flare takes from the sphere when the instability is full, per mille. */
+    public static final int FLARE_WEAR = 250;
+    /** Core fuel deep stirring mixes down per unit of mass lifted. */
+    public static final double FUEL_MIX = 3.5;
 
     /** How the matter is lifted. */
     public enum Mode {
@@ -115,7 +119,7 @@ public final class LifterPhysics {
     // agitação profunda no máximo repor cerca de um quinto do combustível.
     // ZH: 把新鲜氢混入核心是恒星返老还童的方式；系数 3.5 为平衡取值，使满速深层搅拌一小时约补充五分之一燃料。
     public static double fuelAdded(Mode mode, double lost, double mass) {
-        return mode == Mode.DEEP ? 3.5 * lost / Math.max(mass, 1e-6) : 0;
+        return mode == Mode.DEEP ? FUEL_MIX * lost / Math.max(mass, 1e-6) : 0;
     }
 
     /** Instability gained per second: deep stirring above {@link #DEEP_SAFE} % only. */

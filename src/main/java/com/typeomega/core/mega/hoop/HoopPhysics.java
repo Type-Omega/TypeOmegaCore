@@ -17,7 +17,9 @@ public final class HoopPhysics {
 
     public static final int HEIGHT_MIN = 2, HEIGHT_MAX = 30, HEIGHT_STEP = 2;
     /** Parallel at the lowest dive, by phases built (index 0 = phase 1). */
-    static final int[] PARALLEL = { 16, 256, 512, 512, 1024 };
+    public static final int[] PARALLEL = { 16, 256, 512, 512, 1024 };
+    /** Share of the shield load left with the radiators of phase 4. */
+    public static final double RADIATORS = 0.6;
     /** Ticks of work per second: the corona does the heating, so recipes run twice as fast. */
     public static final double SPEED = 2;
     /** EU share the hoop pays: the star brings the heat, the network only the magnets. */
@@ -40,7 +42,7 @@ public final class HoopPhysics {
     /** Heat load on the shields, units per second. */
     public static double load(int phases, int heightPct) {
         double q = 100 * Math.exp(-(heightPct - HEIGHT_MIN) / 5.0) * parallel(phases, heightPct) / 256.0;
-        return phases >= 4 ? q * 0.6 : q;
+        return phases >= 4 ? q * RADIATORS : q;
     }
 
     /** Coolant needed this second, mB, for a coolant of the given tier (1..3). */

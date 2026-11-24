@@ -4,21 +4,6 @@
   "Obliterador Quase-Estelar",
   "类星体湮灭炮"
  ],
- "typeomega.machine.qso.tooltip.0": [
-  "A gun the size of a system round its quasar, built in five phases: the Final era.",
-  "Uma arma do tamanho de um sistema em volta do quasar, construída em cinco fases: a Era Final.",
-  "围绕类星体的星系级巨炮，分五个阶段建造：终末纪元。"
- ],
- "typeomega.machine.qso.tooltip.1": [
-  "Charges a capacitor from the quasar and the Nexus network and fires it; each shot harvests negentropy.",
-  "Carrega um capacitor com o quasar e a rede Nexus e dispara; cada tiro colhe negentropia.",
-  "以类星体和 Nexus 网络为电容充能并发射；每次发射收集负熵。"
- ],
- "typeomega.machine.qso.tooltip.2": [
-  "The world's negentropy is finite. With it spent, the last shot may end the game (a world rule).",
-  "A negentropia do mundo é finita. Esgotada, o último tiro pode encerrar o jogo (regra do mundo).",
-  "世界负熵有限。耗尽后，最后一发可能终结游戏（世界规则）。"
- ],
  "typeomega.qso.state": [
   "Capacitor %s, world stock %s",
   "Capacitor %s, estoque do mundo %s",

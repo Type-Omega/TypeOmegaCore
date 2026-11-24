@@ -196,9 +196,11 @@ public class SystemCreatorMachine extends MegaMachine {
             }
             case GATHER -> {
                 long want = Math.min(CreatorPhysics.GATHER_MB_PER_SECOND, CreatorPhysics.hydrogen(k) - gathered);
-                long plasma = drain(f -> f == GTMaterials.Hydrogen.getFluid(FluidStorageKeys.PLASMA), want / 10);
-                long gas = drain(f -> f == GTMaterials.Hydrogen.getFluid(), want - plasma * 10);
-                gathered += plasma * 10 + gas;
+                long plasma = drain(f -> f == GTMaterials.Hydrogen.getFluid(FluidStorageKeys.PLASMA),
+                        want / CreatorPhysics.PLASMA_FACTOR);
+                long gas = drain(f -> f == GTMaterials.Hydrogen.getFluid(),
+                        want - plasma * CreatorPhysics.PLASMA_FACTOR);
+                gathered += plasma * CreatorPhysics.PLASMA_FACTOR + gas;
                 message = plasma + gas > 0 ? "" : "hydrogen";
                 if (gathered >= CreatorPhysics.hydrogen(k)) next(Stage.COLLAPSE);
             }

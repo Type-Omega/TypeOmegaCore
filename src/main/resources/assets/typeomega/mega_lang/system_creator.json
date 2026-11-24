@@ -4,21 +4,6 @@
   "Criador de Sistemas Interestelares",
   "星际系统创造者"
  ],
- "typeomega.machine.system_creator.tooltip.0": [
-  "A stellar foundry, built in five phases: gathers a hydrogen cloud, collapses it and lights a new star in a new star system.",
-  "Uma fundição estelar, construída em cinco fases: junta uma nuvem de hidrogênio, colapsa e acende uma estrela nova num sistema estelar novo.",
-  "恒星铸造厂，分五个阶段建造：聚集氢云、使其坍缩，并在新的恒星系中点燃新恒星。"
- ],
- "typeomega.machine.system_creator.tooltip.1": [
-  "Red dwarfs from phase 1; yellow with the rings, white with the Fusion Candle, blue giants with the Artificial Star Creator, neutron stars and black holes with the collapse lens.",
-  "Anãs vermelhas desde a fase 1; amarelas com os anéis, brancas com a Fusion Candle, gigantes azuis com o Artificial Star Creator, estrelas de nêutrons e buracos negros com a lente de colapso.",
-  "第 1 阶段可造红矮星；有压缩环可造黄矮星，有聚变烛台可造白星，有人造恒星创造器可造蓝巨星，有坍缩透镜可造中子星和黑洞。"
- ],
- "typeomega.machine.system_creator.tooltip.2": [
-  "Costs hydrogen, iron dust and Ψ; every system made raises the Dimensional era. Its screen travels to the systems.",
-  "Custa hidrogênio, pó de ferro e Ψ; cada sistema feito sobe a Era Dimensional. A tela leva aos sistemas.",
-  "消耗氢、铁粉和 Ψ；每创造一个系统都会提升维度纪元。界面可前往各系统。"
- ],
  "typeomega.system_creator.stage": [
   "Forge: %s, %s%%",
   "Fundição: %s, %s%%",

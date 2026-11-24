@@ -124,16 +124,6 @@
   "%s no %s, dobrando a cada tier de energia acima",
   "%2$s 时 %1$s，每高一级能量等级翻倍"
  ],
- "typeomega.machine.large_furnace.tooltip.hatches": [
-  "Hatches go on the solid steel casings of the plinth",
-  "As escotilhas vão nos casings de aço sólido do plinto",
-  "仓室放在基座的坚固钢外壳上"
- ],
- "typeomega.machine.large_furnace.tooltip.fact": [
-  "Steel mills ran rows of identical furnaces off one gas main and two stacks",
-  "Siderúrgicas tocavam fileiras de fornos iguais com um só coletor de gás e duas chaminés",
-  "钢厂用一条煤气总管和两座烟囱带动一排相同的熔炉"
- ],
  "typeomega.machine.ore_processing_plant.tooltip.purpose": [
   "Turns raw ore into final dusts and byproducts in one step, with %s",
   "Transforma minério bruto em pós finais e subprodutos num passo, com %s",
@@ -149,11 +139,6 @@
   "%s no %s, +%s a cada tier de energia acima",
   "%2$s 时 %1$s，每高一级能量等级 +%3$s"
  ],
- "typeomega.machine.ore_processing_plant.tooltip.hatches": [
-  "Hatches go on the aluminium casings",
-  "As escotilhas vão nos casings de alumínio",
-  "仓室放在铝制外壳上"
- ],
  "typeomega.machine.ore_processing_plant.tooltip.no_hatches": [
   "%s Parallel Hatch or Maintenance Hatch",
   "%s Parallel Hatch nem Maintenance Hatch",
@@ -164,25 +149,10 @@
   "Sem",
   "不支持"
  ],
- "typeomega.machine.ore_processing_plant.tooltip.fact": [
-  "A beneficiation plant crushes, grinds, washes and separates ore in one line",
-  "Uma usina de beneficiamento britava, moía, lavava e separava o minério numa só linha",
-  "选矿厂在一条线上完成破碎、研磨、洗涤与分选"
- ],
  "typeomega.tooltip.plus.parallels": [
   "%s at %s, doubled per tier, fixed at %s from %s",
   "%s no %s, dobrando por tier, %s fixo do %s em diante",
   "%2$s 时 %1$s，每级翻倍，%4$s 起固定 %3$s"
- ],
- "typeomega.tooltip.plus.hatches": [
-  "Hatches go on the aluminium casings",
-  "As escotilhas vão nos casings de alumínio",
-  "仓室放在铝制外壳上"
- ],
- "typeomega.tooltip.plus.fact": [
-  "One hall, many lines: the module in the middle tells the family apart",
-  "Um galpão, várias linhas: o módulo do meio diz qual é a família",
-  "一座厂房，多条产线：中间的模块标明所属类别"
  ],
  "typeomega.machine.processing_plus.tooltip.purpose": [
   "Bending, pressing, cutting, extruding, turning, wire, engraving and solidifying",
@@ -224,16 +194,6 @@
   "Uma Plataforma de Lançamento do Ad Astra (%s) no meio da base",
   "平台中央放置一个 Ad Astra 发射台（%s）"
  ],
- "typeomega.machine.rocket_assembler.tooltip.hatches": [
-  "Hatches go on the casings of the base and the control house in front",
-  "As escotilhas vão nos casings da base e da casa de controle da frente",
-  "仓口安装在底座和前方控制室的外壳上"
- ],
- "typeomega.machine.rocket_assembler.tooltip.fact": [
-  "The Saturn V was stacked upright in a building 160 m tall, then rolled to the pad",
-  "O Saturn V era montado de pé num prédio de 160 m de altura e depois levado até a plataforma",
-  "土星五号是在一座 160 米高的大楼里竖直组装，然后运往发射台的"
- ],
  "typeomega.machine.fragment_collector.tooltip.purpose": [
   "Mines the veins of the dimension of the %s in its input bus",
   "Minera os veios da dimensão do %s no barramento de entrada",
@@ -274,16 +234,6 @@
   "nunca",
   "永不"
  ],
- "typeomega.machine.fragment_collector.tooltip.hatches": [
-  "Hatches go on the steel platform casings",
-  "As escotilhas vão nos casings da plataforma de aço",
-  "仓室放在钢制平台外壳上"
- ],
- "typeomega.machine.fragment_collector.tooltip.fact": [
-  "Survey rigs read the rock through cores before any shaft is sunk",
-  "Sondas de prospecção leem a rocha por testemunhos antes de abrir qualquer poço",
-  "勘探钻机在开凿任何竖井之前先通过岩芯读取岩层"
- ],
  "typeomega.machine.large_fragment_collector.tooltip.purpose": [
   "The Fragment Collector, %s operations at once on an %s platform",
   "O Coletor de Fragmentos, %s operações de uma vez numa plataforma %s",
@@ -293,16 +243,6 @@
   "Accepts a %s for more",
   "Aceita %s para mais",
   "可安装%s以获得更多并行"
- ],
- "typeomega.machine.large_fragment_collector.tooltip.hatches": [
-  "Hatches go on the titanium platform casings",
-  "As escotilhas vão nos casings da plataforma de titânio",
-  "仓室放在钛制平台外壳上"
- ],
- "typeomega.machine.large_fragment_collector.tooltip.fact": [
-  "Offshore platforms drill several wells from one deck",
-  "Plataformas offshore perfuram vários poços a partir de um só convés",
-  "海上平台从同一甲板钻探多口井"
  ],
  "typeomega.tooltip.type_zero.mega": [
   "Megastructure %s of Type 0",
@@ -314,11 +254,6 @@
   "sobe o teto Kardashev do time para %s",
   "将队伍的卡尔达肖夫上限提升到 %s"
  ],
- "typeomega.tooltip.type_zero.hatches": [
-  "Hatches go on the clean stainless steel casings of the control hall",
-  "Os hatches vão nos cascos de aço inox limpo da sala de controle",
-  "仓口安装在控制大厅的洁净不锈钢外壳上"
- ],
  "typeomega.machine.national_dispatch_center.tooltip.purpose": [
   "Programs the %s that every wireless energy hatch needs",
   "Programa os %s que todo hatch de energia sem fio pede",
@@ -328,11 +263,6 @@
   "Grid Transponders",
   "Transponders de Rede",
   "电网应答器"
- ],
- "typeomega.machine.national_dispatch_center.tooltip.fact": [
-  "A national grid is balanced minute by minute from one control room",
-  "Uma rede nacional é equilibrada minuto a minuto a partir de uma sala de controle",
-  "国家电网由一间控制室逐分钟进行平衡"
  ],
  "typeomega.machine.cosmodrome.tooltip.purpose": [
   "Launches the Lunar Probe with Rocket Fuel and returns the Lunar Survey Data",
@@ -348,11 +278,6 @@
   "A formed Rocket Assembler within %s blocks: the mission control links to it",
   "Uma Montadora de Foguetes formada a até %s blocos: o controle de missão se liga a ela",
   "%s 格内需有一座已成型的火箭装配机：任务控制会与其连接"
- ],
- "typeomega.machine.cosmodrome.tooltip.fact": [
-  "Mission control watches every launch from kilometres away, through its tracking dishes",
-  "O controle de missão acompanha cada lançamento a quilômetros de distância, pelas antenas de rastreio",
-  "任务控制中心在数公里外通过跟踪天线监视每次发射"
  ],
  "typeomega.machine.tokamak_hv.tooltip.closes": [
   "closes Type 0 and opens the Type I cap",
@@ -399,39 +324,179 @@
   "Sem",
   "不可"
  ],
- "typeomega.machine.tokamak_hv.tooltip.fact": [
-  "A tokamak holds a plasma hotter than the Sun's core in a ring of magnetic field",
-  "Um tokamak prende um plasma mais quente que o núcleo do Sol num anel de campo magnético",
-  "托卡马克用环形磁场约束比太阳核心更热的等离子体"
+ "typeomega.tooltip.overclock.rule": [
+  "Each overclock: %s speed for %s EU",
+  "Cada overclock: velocidade %s por %s de EU",
+  "每次超频：速度 %s，耗能 %s"
  ],
- "typeomega.machine.stellar_engine.tooltip.0": [
-  "Moves the Nexus System: a Shkadov mirror and a Caplan engine around its star, built in five phases. Works only there.",
-  "Move o Sistema Nexus: espelho de Shkadov e motor de Caplan em volta da estrela, construídos em cinco fases. Só funciona lá.",
-  "推动连结星系：围绕恒星的沙卡多夫镜与卡普兰引擎，分五个阶段建造。只能在那里运作。"
+ "typeomega.tooltip.mega.phases": [
+  "Built in %s phases: a phase counts once its blocks and those of the phases before it are in place",
+  "Construída em %s fases: uma fase conta quando os blocos dela e das anteriores estão no lugar",
+  "分 %s 个阶段建造：某阶段及之前所有阶段的方块就位后才计入"
  ],
- "typeomega.machine.stellar_engine.tooltip.1": [
-  "The Δv it gathers takes the system to new regions of the galaxy, each with its own bonus (the Stellar era).",
-  "O Δv acumulado leva o sistema a novas regiões da galáxia, cada uma com o seu bônus (a Era Estelar).",
-  "累积的 Δv 把星系带到银河的新区域，每个区域都有加成（恒星纪元）。"
+ "typeomega.tooltip.mega.repair": [
+  "Repair: idle, it takes %s from an input bus, +%s integrity each",
+  "Reparo: parada, pega %s de um input bus, +%s de integridade cada",
+  "修复：空闲时从输入总线取用%s，每个恢复 %s 完整度"
  ],
- "typeomega.machine.stellar_engine.tooltip.2": [
-  "The Caplan engine draws EU from the Nexus network and gives hydrogen and helium plasma.",
-  "O motor de Caplan puxa EU da rede Nexus e solta plasma de hidrogênio e de hélio.",
-  "卡普兰引擎从连结网络获取 EU，并产出氢和氦等离子体。"
+ "typeomega.tooltip.mega.phase": [
+  "Phase %s",
+  "Fase %s",
+  "阶段 %s"
  ],
- "typeomega.machine.matrioshka_brain.tooltip.0": [
-  "Shells of computers around the star of the Nexus System, built in five phases. Works only there.",
-  "Cascas de computadores em volta da estrela do Sistema Nexus, construídas em cinco fases. Só funciona lá.",
-  "环绕连结星系恒星的计算机外壳，分五个阶段建造。只能在那里运作。"
+ "typeomega.tooltip.type.propulsion": [
+  "Stellar Propulsion",
+  "Propulsão Estelar",
+  "恒星推进"
  ],
- "typeomega.machine.matrioshka_brain.tooltip.1": [
-  "Each phase adds a shell: 2^(21+n) CWU/t at 300 K, more on cold outer shells (Landauer's limit).",
-  "Cada fase soma uma casca: 2^(21+n) CWU/t a 300 K, mais nas cascas frias de fora (limite de Landauer).",
-  "每个阶段增加一层外壳：300 K 时 2^(21+n) CWU/t，外层冷壳更多（兰道尔极限）。"
+ "typeomega.tooltip.type.computer": [
+  "Computer",
+  "Computador",
+  "计算机"
  ],
- "typeomega.machine.matrioshka_brain.tooltip.2": [
-  "Sends CWU through Optical Data Transmission Hatches; CWU nobody asks for becomes Ψ.",
-  "Envia CWU por Hatches de Transmissão Óptica de Dados; o CWU que ninguém pede vira Ψ.",
-  "通过光学数据传输仓输出 CWU；无人请求的 CWU 转为 Ψ。"
+ "typeomega.tooltip.type.star_lifting": [
+  "Star Lifting",
+  "Sucção Estelar",
+  "恒星抽取"
+ ],
+ "typeomega.tooltip.type.stellar_forge": [
+  "Stellar Forge",
+  "Forja Estelar",
+  "恒星锻炉"
+ ],
+ "typeomega.tooltip.type.research": [
+  "Research",
+  "Pesquisa",
+  "研究"
+ ],
+ "typeomega.tooltip.type.star_foundry": [
+  "Star Foundry",
+  "Fundição de Estrelas",
+  "造星厂"
+ ],
+ "typeomega.tooltip.type.shipyard": [
+  "Shipyard",
+  "Estaleiro",
+  "船坞"
+ ],
+ "typeomega.tooltip.type.alloy_forge": [
+  "Alloy Forge",
+  "Forja de Ligas",
+  "合金锻炉"
+ ],
+ "typeomega.tooltip.type.greenhouse": [
+  "Greenhouse",
+  "Estufa",
+  "温室"
+ ],
+ "typeomega.tooltip.type.module_host": [
+  "Module Host",
+  "Hospedeiro de Módulos",
+  "模块宿主"
+ ],
+ "typeomega.tooltip.type.demolition": [
+  "System Demolition",
+  "Demolição de Sistemas",
+  "星系拆除"
+ ],
+ "typeomega.tooltip.type.weapon": [
+  "Weapon",
+  "Arma",
+  "武器"
+ ],
+ "typeomega.machine.large_furnace.tooltip.cap": [
+  "Tops out at %s from %s",
+  "Chega ao máximo de %s a partir do %s",
+  "上限 %s（%s 起）"
+ ],
+ "typeomega.machine.fragment_collector.tooltip.energy": [
+  "Runs at %s EU/t (%s)",
+  "Roda a %s EU/t (%s)",
+  "运行功率 %s EU/t（%s）"
+ ],
+ "typeomega.machine.large_fragment_collector.tooltip.energy": [
+  "Runs at %s EU/t for %s ore operations a cycle",
+  "Roda a %s EU/t por %s operações de minério por ciclo",
+  "运行功率 %s EU/t，每周期 %s 次采矿操作"
+ ],
+ "typeomega.machine.large_fragment_collector.tooltip.keep": [
+  "Fragments and cards are never used up; each cycle has a %s chance of a fragment copy",
+  "Fragmentos e cartões nunca se gastam; cada ciclo tem %s de chance de uma cópia do fragmento",
+  "碎片与矿脉卡永不消耗；每周期有 %s 概率复制碎片"
+ ],
+ "typeomega.machine.national_dispatch_center.tooltip.recipe": [
+  "Transponders take %s EU/t (%s), an HV circuit, aluminium plates and fine gold wire",
+  "Transponders levam %s EU/t (%s), um circuito HV, placas de alumínio e fio fino de ouro",
+  "应答器配方：%s EU/t（%s），一个 HV 电路、铝板与细金导线"
+ ],
+ "typeomega.machine.national_dispatch_center.tooltip.gate": [
+  "GTNA wireless energy and dynamo hatches can't be made without a transponder",
+  "Hatches de energia e dínamo sem fio do GTNA não saem sem um transponder",
+  "没有应答器无法制作 GTNA 无线能源仓与动力仓"
+ ],
+ "typeomega.machine.tokamak_hv.tooltip.cycle": [
+  "Each fusion cycle lasts %s s",
+  "Cada ciclo de fusão dura %s s",
+  "每个聚变周期 %s 秒"
+ ],
+ "typeomega.machine.large_furnace.tooltip.humor": [
+  "Sixty-four furnaces, one invoice. Type Omega bills the coal by the trainload.",
+  "Sessenta e quatro fornalhas, uma nota fiscal. A Type Omega cobra o carvão por trem.",
+  "六十四座熔炉，一张发票。Type Omega 按火车皮结算煤炭。"
+ ],
+ "typeomega.machine.ore_processing_plant.tooltip.humor": [
+  "Rock goes in, quarterly results come out. The water is recycled for the press release.",
+  "Entra pedra, sai resultado trimestral. A água é reciclada para o comunicado de imprensa.",
+  "进去的是石头，出来的是季度业绩。用水已为新闻稿循环利用。"
+ ],
+ "typeomega.machine.processing_plus.tooltip.humor": [
+  "Eleven machines, one hall, one manager. Guess who got the corner office.",
+  "Onze máquinas, um galpão, um gerente. Adivinhe quem ganhou a sala de canto.",
+  "十一台机器，一座厂房，一位经理。猜猜谁拿到了转角办公室。"
+ ],
+ "typeomega.machine.assembling_plus.tooltip.humor": [
+  "Circuits by the hundred. Type Omega's quality control checks every tenth thousandth.",
+  "Circuitos às centenas. O controle de qualidade da Type Omega confere um a cada dez mil.",
+  "电路成百上千。Type Omega 质检每一万件抽查一件。"
+ ],
+ "typeomega.machine.separating_plus.tooltip.humor": [
+  "We take things apart for a living. The centrifuge is the only one who enjoys it.",
+  "Separamos coisas por profissão. A centrífuga é a única que se diverte.",
+  "拆分是我们的本职工作。只有离心机乐在其中。"
+ ],
+ "typeomega.machine.mixing_plus.tooltip.humor": [
+  "Four chemistry departments, one fume hood budget.",
+  "Quatro departamentos de química, um orçamento de capela.",
+  "四个化学部门，共用一份通风橱预算。"
+ ],
+ "typeomega.machine.rocket_assembler.tooltip.humor": [
+  "Some assembly required. Type Omega provides the rocket, you provide the courage.",
+  "Requer montagem. A Type Omega fornece o foguete; a coragem é por sua conta.",
+  "需要自行组装。Type Omega 提供火箭，勇气请自备。"
+ ],
+ "typeomega.machine.fragment_collector.tooltip.humor": [
+  "Mining by mail: send a piece of the world, get the ore back.",
+  "Mineração por correspondência: mande um pedaço do mundo, receba o minério.",
+  "邮购采矿：寄来世界的一角，寄回满箱矿石。"
+ ],
+ "typeomega.machine.large_fragment_collector.tooltip.humor": [
+  "The same mail-order mine, now with a loading dock.",
+  "A mesma mineração por correspondência, agora com doca de carga.",
+  "同样的邮购采矿，现在配了装卸码头。"
+ ],
+ "typeomega.machine.national_dispatch_center.tooltip.humor": [
+  "Every wireless hatch in the country answers to this room. So does the coffee machine.",
+  "Toda hatch sem fio do país responde a esta sala. A cafeteira também.",
+  "全国每个无线仓都听命于这间控制室，咖啡机也一样。"
+ ],
+ "typeomega.machine.cosmodrome.tooltip.humor": [
+  "Mission control: ten screens, one big red button, zero touching it.",
+  "Controle de missão: dez telas, um grande botão vermelho, ninguém encosta.",
+  "任务控制中心：十块屏幕，一个大红按钮，谁也别碰。"
+ ],
+ "typeomega.machine.tokamak_hv.tooltip.humor": [
+  "A star in a doughnut. Type Omega's first step to owning the real thing.",
+  "Uma estrela num donut. O primeiro passo da Type Omega para ter uma de verdade.",
+  "甜甜圈里的恒星。Type Omega 拥有真恒星的第一步。"
  ]
 }
