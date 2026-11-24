@@ -91,6 +91,13 @@ public final class GTIARecipeTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.ARC);
 
+    static {
+        // EN: Illustrated screen (GTIA-D-435): the torus with the fuel placed in the drawing.
+        // PT: Tela ilustrada (GTIA-D-435): o toroide com o combustível posicionado no desenho.
+        // ZH: 图解界面（GTIA-D-435）：环形装置，燃料槽位画在插图中。
+        TOKAMAK_FUSION.setRecipeUI(com.typeomega.core.mega.typezero.TokamakScreen.recipeUI(TOKAMAK_FUSION));
+    }
+
     private GTIARecipeTypes() {}
 
     public static void init() {}

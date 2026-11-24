@@ -1185,5 +1185,8 @@
   "itemGroup.typeomega.materials": "Type Omega：材料与物品",
   "itemGroup.typeomega.blocks": "Type Omega：方块与机壳",
   "typeomega.crafting_station.dump": "将合成网格中的物品移入容器",
-  "typeomega.crafting_station.side.up": "上方"
+  "typeomega.crafting_station.side.up": "上方",
+  "typeomega.ui.tokamak.start": "启动能量：%s EU",
+  "typeomega.ui.tokamak.ignition": "点火温度：%s K",
+  "typeomega.ui.tokamak.tab": "聚变"
 }

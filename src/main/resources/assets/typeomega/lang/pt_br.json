@@ -1185,5 +1185,8 @@
   "itemGroup.typeomega.materials": "Type Omega: Materiais e Itens",
   "itemGroup.typeomega.blocks": "Type Omega: Blocos e Carcaças",
   "typeomega.crafting_station.dump": "Mover a grade de crafting para os contêineres",
-  "typeomega.crafting_station.side.up": "em cima"
+  "typeomega.crafting_station.side.up": "em cima",
+  "typeomega.ui.tokamak.start": "Partida: %s EU",
+  "typeomega.ui.tokamak.ignition": "Ignição: %s K",
+  "typeomega.ui.tokamak.tab": "Fusão"
 }

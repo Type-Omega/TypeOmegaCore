@@ -3,6 +3,7 @@ package com.typeomega.core.mega.typezero;
 import com.gregtechceu.gtceu.api.capability.IEnergyContainer;
 import com.gregtechceu.gtceu.api.capability.recipe.EURecipeCapability;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
+import com.gregtechceu.gtceu.api.gui.fancy.TabsWidget;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.TickableSubscription;
 import com.gregtechceu.gtceu.api.misc.EnergyContainerList;
@@ -131,6 +132,20 @@ public class TokamakMachine extends TypeZeroMegaMachine {
     @Override
     public boolean keepSubscribing() {
         return true;
+    }
+
+    /** The D-T recipe, shown on the Fusion tab before the first run. */
+    public @Nullable GTRecipe defaultRecipe() {
+        if (getLevel() == null) return null;
+        return getLevel().getRecipeManager().byKey(TypeZeroRecipes.DT_RECIPE)
+                .map(r -> r instanceof GTRecipe recipe ? recipe : null).orElse(null);
+    }
+
+    /** The Fusion tab: the same illustrated screen as the EMI page (GTIA-D-435, U6). */
+    @Override
+    public void attachSideTabs(TabsWidget sideTabs) {
+        super.attachSideTabs(sideTabs);
+        sideTabs.attachSubTab(TokamakScreen.tab(this));
     }
 
     @Override

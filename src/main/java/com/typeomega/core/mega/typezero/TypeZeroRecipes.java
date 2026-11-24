@@ -35,6 +35,17 @@ public final class TypeZeroRecipes {
     public static final int FUSION_TICKS = 200;
     /** Tritium burnt and bred back by the lithium blanket per D-T cycle. */
     public static final int TRITIUM_BURNT = 100, TRITIUM_BRED = 90;
+    // EN: Ignition temperatures shown on the Tokamak screen (GTIA-D-435): D-T ignites near 150 million K (about
+    // 13 keV, the ITER target); D-He3 needs about four times that (about 50 keV).
+    // PT: Temperaturas de ignição mostradas na tela do Tokamak (GTIA-D-435): a D-T acende perto de 150 milhões de K
+    // (uns 13 keV, a meta do ITER); a D-He3 pede umas quatro vezes isso (uns 50 keV).
+    // ZH: 托卡马克界面显示的点火温度（GTIA-D-435）：D-T 约 1.5 亿 K 点火（约 13 keV，ITER 的目标）；
+    // D-He3 约需四倍（约 50 keV）。
+    public static final long DT_IGNITION_K = 150_000_000L, DHE3_IGNITION_K = 580_000_000L;
+    /** Recipe data key of the ignition temperature in kelvin. */
+    public static final String IGNITION_KEY = "ignition_k";
+    public static final net.minecraft.resources.ResourceLocation DT_RECIPE = GTIAMod
+            .id("tokamak_fusion/deuterium_tritium");
 
     private TypeZeroRecipes() {}
 
@@ -173,6 +184,7 @@ public final class TypeZeroRecipes {
                 .inputFluids(GTMaterials.Helium.getFluid(FluidStorageKeys.LIQUID, 50))
                 .outputFluids(GTMaterials.Helium.getFluid(150))
                 .outputFluids(GTMaterials.Tritium.getFluid(TRITIUM_BRED))
+                .addData(IGNITION_KEY, DT_IGNITION_K)
                 .duration(FUSION_TICKS).outputEU(GTValues.V[HV], DT_EUT / GTValues.V[HV]).save(provider);
         GTIARecipeTypes.TOKAMAK_FUSION.recipeBuilder(GTIAMod.id("deuterium_helium_3"))
                 .inputFluids(GTMaterials.Deuterium.getFluid(100))
@@ -180,6 +192,7 @@ public final class TypeZeroRecipes {
                 .inputFluids(GTMaterials.Helium.getFluid(FluidStorageKeys.LIQUID, 50))
                 .outputFluids(GTMaterials.Helium.getFluid(150))
                 .outputFluids(GTMaterials.Hydrogen.getFluid(100))
+                .addData(IGNITION_KEY, DHE3_IGNITION_K)
                 .duration(FUSION_TICKS).outputEU(GTValues.V[HV], DHE3_EUT / GTValues.V[HV]).save(provider);
     }
 
