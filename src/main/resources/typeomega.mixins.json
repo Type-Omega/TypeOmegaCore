@@ -22,6 +22,7 @@
     "client.CreateWorldGameTabMixin",
     "client.CreateWorldScreenAccessor",
     "client.CreateWorldScreenMixin",
+    "client.ItemStackModNameMixin",
     "client.WorldOpenFlowsMixin",
     "client.WindowAccessor"
   ]

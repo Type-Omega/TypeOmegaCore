@@ -33,8 +33,8 @@ import static com.typeomega.lib.tooltip.TooltipArg.value;
  */
 public final class GTIATooltips {
 
-    /** Shown in blue italics on the last line, as the mod list names the mod. */
-    public static final String MOD_NAME = "TypeOmegaCore";
+    /** Shown in blue italics on the last line: the displayName of mods.toml ({@code mod_name}). */
+    public static final String MOD_NAME = "TypeOmega Core";
 
     private GTIATooltips() {}
 
