@@ -1201,7 +1201,15 @@
   "item.typeomega.cable_me_interface_iv": "ME接口(IV)",
   "block.typeomega.me_interface_v": "ME接口(V)",
   "item.typeomega.cable_me_interface_v": "ME接口(V)",
+  "item.typeomega.speed_card_ii": "加速卡(II)",
+  "item.typeomega.speed_card_iii": "加速卡(III)",
+  "item.typeomega.speed_card_iv": "加速卡(IV)",
+  "item.typeomega.speed_card_v": "加速卡(V)",
   "typeomega.me_interface.slots": "%s 个配置槽位和 %s 个存储槽位",
   "typeomega.me_interface.capacity": "每个槽位可存放 %s 倍堆叠：物品最多 %s 个，流体最多 %s B",
-  "typeomega.me_interface.upgrade": "潜行右键同形态的低级接口可直接替换，保留其配置与内容"
+  "typeomega.me_interface.upgrade": "潜行右键同形态的低级接口可直接替换，保留其配置与内容",
+  "typeomega.speed_card.desc": "每张相当于 %s 张加速卡",
+  "typeomega.speed_card.limit": "与其他等级的加速卡共用机器的加速卡上限，高等级优先计入",
+  "typeomega.speed_card.scope": "加速 AE2 与 ExtendedAE 的输入/输出总线和 IO 端口",
+  "typeomega.speed_card.replace": "潜行右键已达加速卡上限的机器，可替换其中最低等级的加速卡"
 }

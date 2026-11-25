@@ -1201,7 +1201,15 @@
   "item.typeomega.cable_me_interface_iv": "Interface ME (IV)",
   "block.typeomega.me_interface_v": "Interface ME (V)",
   "item.typeomega.cable_me_interface_v": "Interface ME (V)",
+  "item.typeomega.speed_card_ii": "Cartão de Aceleração (II)",
+  "item.typeomega.speed_card_iii": "Cartão de Aceleração (III)",
+  "item.typeomega.speed_card_iv": "Cartão de Aceleração (IV)",
+  "item.typeomega.speed_card_v": "Cartão de Aceleração (V)",
   "typeomega.me_interface.slots": "%s slots de configuração e %s slots de armazenamento",
   "typeomega.me_interface.capacity": "Cada slot guarda %sx uma pilha: até %s itens ou %s B de fluido",
-  "typeomega.me_interface.upgrade": "Clique direito agachado numa interface de tier menor, da mesma forma, para substituí-la mantendo configuração e conteúdo"
+  "typeomega.me_interface.upgrade": "Clique direito agachado numa interface de tier menor, da mesma forma, para substituí-la mantendo configuração e conteúdo",
+  "typeomega.speed_card.desc": "Cada cartão vale %s Cartões de Aceleração",
+  "typeomega.speed_card.limit": "Divide o limite de Cartões de Aceleração da máquina com os outros tiers; os tiers mais altos contam primeiro",
+  "typeomega.speed_card.scope": "Acelera as buses de importação/exportação e as IO Ports do AE2 e do ExtendedAE",
+  "typeomega.speed_card.replace": "Clique direito agachado numa máquina no limite de cartões para trocar o cartão de menor tier"
 }
