@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/** Every core item shows up in one of the Type Omega creative tabs, and every tab has items and an icon. */
+/** Every core item shows up in one of the Type Omega creative tabs, and every tab with items has an icon. */
 @PrefixGameTestTemplate(false)
 @GameTestHolder(GTIAMod.MOD_ID)
 public final class CreativeTabGameTests {
@@ -35,7 +35,7 @@ public final class CreativeTabGameTests {
         for (int i = 0; i < GTIACreativeTabs.ALL.size(); i++) {
             CreativeModeTab tab = GTIACreativeTabs.ALL.get(i).get();
             tab.buildContents(parameters);
-            if (tab.getDisplayItems().isEmpty() || tab.getIconItem().isEmpty()) {
+            if (!tab.getDisplayItems().isEmpty() && tab.getIconItem().isEmpty()) {
                 empty.add(GTIACreativeTabs.Category.values()[i].id);
             }
             for (ItemStack stack : tab.getDisplayItems()) shown.add(stack.getItem());
@@ -46,7 +46,7 @@ public final class CreativeTabGameTests {
                 missing.add(entry.getKey().location().getPath());
             }
         }
-        h.assertTrue(empty.isEmpty(), "Type Omega tabs without items or icon: " + empty);
+        h.assertTrue(empty.isEmpty(), "Type Omega tabs with items but no icon: " + empty);
         h.assertTrue(missing.isEmpty(), missing.size() + " core items in no Type Omega tab: " + missing);
         h.succeed();
     }

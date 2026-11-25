@@ -1181,12 +1181,16 @@
   "typeomega.machine.cosmodrome.tooltip.humor": "任务控制中心：十块屏幕，一个大红按钮，谁也别碰。",
   "typeomega.machine.tokamak_hv.tooltip.humor": "甜甜圈里的恒星。Type Omega 拥有真恒星的第一步。",
   "itemGroup.typeomega.machines": "Type Omega：机器",
-  "itemGroup.typeomega.multiblocks": "Type Omega：多方块与巨构",
-  "itemGroup.typeomega.materials": "Type Omega：材料与物品",
-  "itemGroup.typeomega.blocks": "Type Omega：方块与机壳",
+  "itemGroup.typeomega.blocks": "Type Omega：方块",
   "typeomega.crafting_station.dump": "将合成网格中的物品移入容器",
   "typeomega.crafting_station.side.up": "上方",
   "typeomega.ui.tokamak.start": "启动能量：%s EU",
   "typeomega.ui.tokamak.ignition": "点火温度：%s K",
-  "typeomega.ui.tokamak.tab": "聚变"
+  "typeomega.ui.tokamak.tab": "聚变",
+  "itemGroup.typeomega.material_items": "Type Omega：材料物品",
+  "itemGroup.typeomega.material_blocks": "Type Omega：材料方块",
+  "itemGroup.typeomega.fluids": "Type Omega：流体",
+  "itemGroup.typeomega.pipes": "Type Omega：管道与导线",
+  "itemGroup.typeomega.items": "Type Omega：物品",
+  "itemGroup.typeomega.wireless": "Type Omega：无线"
 }

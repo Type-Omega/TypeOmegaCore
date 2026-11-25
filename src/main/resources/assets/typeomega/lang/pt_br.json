@@ -1181,12 +1181,16 @@
   "typeomega.machine.cosmodrome.tooltip.humor": "Controle de missão: dez telas, um grande botão vermelho, ninguém encosta.",
   "typeomega.machine.tokamak_hv.tooltip.humor": "Uma estrela num donut. O primeiro passo da Type Omega para ter uma de verdade.",
   "itemGroup.typeomega.machines": "Type Omega: Máquinas",
-  "itemGroup.typeomega.multiblocks": "Type Omega: Multiblocos e Megaestruturas",
-  "itemGroup.typeomega.materials": "Type Omega: Materiais e Itens",
-  "itemGroup.typeomega.blocks": "Type Omega: Blocos e Carcaças",
+  "itemGroup.typeomega.blocks": "Type Omega: Blocos",
   "typeomega.crafting_station.dump": "Mover a grade de crafting para os contêineres",
   "typeomega.crafting_station.side.up": "em cima",
   "typeomega.ui.tokamak.start": "Partida: %s EU",
   "typeomega.ui.tokamak.ignition": "Ignição: %s K",
-  "typeomega.ui.tokamak.tab": "Fusão"
+  "typeomega.ui.tokamak.tab": "Fusão",
+  "itemGroup.typeomega.material_items": "Type Omega: Itens de Material",
+  "itemGroup.typeomega.material_blocks": "Type Omega: Blocos de Material",
+  "itemGroup.typeomega.fluids": "Type Omega: Fluidos",
+  "itemGroup.typeomega.pipes": "Type Omega: Canos e Fios",
+  "itemGroup.typeomega.items": "Type Omega: Itens",
+  "itemGroup.typeomega.wireless": "Type Omega: Sem Fio"
 }
