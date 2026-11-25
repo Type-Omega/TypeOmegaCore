@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#ae2:interface",
+    {"id": "#expatternprovider:extended_interface", "required": false}
+  ]
+}

@@ -46,6 +46,7 @@ public final class GTIAAddon implements IGTAddon {
         com.typeomega.core.route.RouteRecipes.addRecipes(provider);
         com.typeomega.core.route.ProgressionGates.addRecipes(provider);
         com.typeomega.core.route.AE2Gates.addRecipes(provider);
+        com.typeomega.core.integration.ae.GTIAAe.addRecipes(provider);
         com.typeomega.core.route.NanoCircuits.addRecipes(provider);
         com.typeomega.core.miner.GTIAMiners.addRecipes(provider);
         com.typeomega.core.processing.OrePlantRecipes.add(provider);

@@ -1,0 +1,9 @@
+{
+  "parent": "ae2:item/cable_interface",
+  "textures": {
+    "front": "typeomega:part/me_interface_ii",
+    "sides": "typeomega:part/me_interface_ii_sides",
+    "back": "typeomega:part/me_interface_ii_back",
+    "particle": "typeomega:part/me_interface_ii_back"
+  }
+}

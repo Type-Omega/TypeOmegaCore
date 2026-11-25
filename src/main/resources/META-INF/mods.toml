@@ -39,6 +39,13 @@ Core mod of the Type Omega modpack: materials, processing chains, megastructures
         side = "BOTH"
 
     [[dependencies.${mod_id}]]
+        modId = "expatternprovider"
+        mandatory = ${integration_mandatory}
+        versionRange = "*"
+        ordering = "AFTER"
+        side = "BOTH"
+
+    [[dependencies.${mod_id}]]
         modId = "gtna"
         mandatory = ${integration_mandatory}
         versionRange = "[0.5.3,)"

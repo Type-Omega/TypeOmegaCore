@@ -1192,5 +1192,16 @@
   "itemGroup.typeomega.fluids": "Type Omega: Fluidos",
   "itemGroup.typeomega.pipes": "Type Omega: Canos e Fios",
   "itemGroup.typeomega.items": "Type Omega: Itens",
-  "itemGroup.typeomega.wireless": "Type Omega: Sem Fio"
+  "itemGroup.typeomega.wireless": "Type Omega: Sem Fio",
+  "block.typeomega.me_interface_ii": "Interface ME (II)",
+  "item.typeomega.cable_me_interface_ii": "Interface ME (II)",
+  "block.typeomega.me_interface_iii": "Interface ME (III)",
+  "item.typeomega.cable_me_interface_iii": "Interface ME (III)",
+  "block.typeomega.me_interface_iv": "Interface ME (IV)",
+  "item.typeomega.cable_me_interface_iv": "Interface ME (IV)",
+  "block.typeomega.me_interface_v": "Interface ME (V)",
+  "item.typeomega.cable_me_interface_v": "Interface ME (V)",
+  "typeomega.me_interface.slots": "%s slots de configuração e %s slots de armazenamento",
+  "typeomega.me_interface.capacity": "Cada slot guarda %sx uma pilha: até %s itens ou %s B de fluido",
+  "typeomega.me_interface.upgrade": "Clique direito agachado numa interface de tier menor, da mesma forma, para substituí-la mantendo configuração e conteúdo"
 }

@@ -55,6 +55,8 @@ public final class GTIAMod {
         if (net.minecraftforge.fml.loading.FMLEnvironment.dist.isClient() &&
                 com.typeomega.core.mega.GTIAMegastructures.gtna())
             modBus.addListener(com.typeomega.core.mega.common.client.MegaFxShaders::register);
+        com.typeomega.core.integration.ae.GTIAAe.init();
+        com.typeomega.core.integration.ae.AeLang.init();
         REGISTRATE.registerRegistrate();
         MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.data.RecipeAuditCommand::register);
         if (net.minecraftforge.fml.ModList.get().isLoaded("productivebees")) {

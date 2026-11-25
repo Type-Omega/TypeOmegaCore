@@ -1,5 +1,9 @@
 {
   "values": [
-    "typeomega:kardashev_meter"
+    "typeomega:kardashev_meter",
+    "typeomega:me_interface_ii",
+    "typeomega:me_interface_iii",
+    "typeomega:me_interface_iv",
+    "typeomega:me_interface_v"
   ]
 }
