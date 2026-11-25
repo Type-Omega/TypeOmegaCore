@@ -22,7 +22,7 @@ import com.typeomega.core.mega.system.StarSystems;
 import java.util.List;
 
 /**
- * Controller of the Black Hole Suprashell (GTIA-D-329): hosts GTCEu multiblock controllers placed in its input buses
+ * Controller of the Black Hole Suprashell (D-329): hosts GTCEu multiblock controllers placed in its input buses
  * as modules and runs their recipes, 64 parallels a module, at the time dilation of the shell's radius.
  */
 public class SuprashellMachine extends MegaMachine {

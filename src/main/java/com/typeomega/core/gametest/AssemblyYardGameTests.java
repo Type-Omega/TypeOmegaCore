@@ -5,15 +5,15 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Hyperstructural Assembly Yard (GTIA-D-326): slipways and parallels by phase, build rate by starlight and rush;
+ * The Hyperstructural Assembly Yard (D-326): slipways and parallels by phase, build rate by starlight and rush;
  * it assembles in parallel, waits with every slipway closed; without the hub ring it does not form. Slots 20, 21.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class AssemblyYardGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -21,8 +21,8 @@ public final class AssemblyYardGameTests {
     private AssemblyYardGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.ASSEMBLY_YARD_DEF != null) return false;
-        GTIAMod.LOGGER.warn("Assembly Yard not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.ASSEMBLY_YARD_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("Assembly Yard not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

@@ -6,7 +6,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
-import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.core.data.TypeOmegaTooltips;
 import com.typeomega.core.mega.birch.BirchPhysics;
 import com.typeomega.core.mega.disintegrator.DisintegratorPhysics;
 import com.typeomega.core.mega.hraemc.HraePhysics;
@@ -19,8 +19,8 @@ import com.typeomega.core.mega.yggdrasil.YggdrasilPhysics;
 
 import java.util.List;
 
-import static com.typeomega.core.data.GTIATooltips.finish;
-import static com.typeomega.core.data.GTIATooltips.own;
+import static com.typeomega.core.data.TypeOmegaTooltips.finish;
+import static com.typeomega.core.data.TypeOmegaTooltips.own;
 import static com.typeomega.core.data.tooltip.Fmt.num;
 import static com.typeomega.core.data.tooltip.Fmt.pct;
 import static com.typeomega.core.data.tooltip.Fmt.pow2;
@@ -39,15 +39,15 @@ public final class MegaTooltips {
     private MegaTooltips() {}
 
     public static void register() {
-        GTIATooltips.register("assembly_yard", MegaTooltips::yard);
-        GTIATooltips.register("nidavellir", MegaTooltips::nidavellir);
-        GTIATooltips.register("yggdrasil", MegaTooltips::yggdrasil);
-        GTIATooltips.register("kugelblitz", MegaTooltips::kugelblitz);
-        GTIATooltips.register("hraemc", MegaTooltips::hraemc);
-        GTIATooltips.register("suprashell", MegaTooltips::suprashell);
-        GTIATooltips.register("disintegrator", MegaTooltips::disintegrator);
-        GTIATooltips.register("birch_world", MegaTooltips::birch);
-        GTIATooltips.register("qso", MegaTooltips::qso);
+        TypeOmegaTooltips.register("assembly_yard", MegaTooltips::yard);
+        TypeOmegaTooltips.register("nidavellir", MegaTooltips::nidavellir);
+        TypeOmegaTooltips.register("yggdrasil", MegaTooltips::yggdrasil);
+        TypeOmegaTooltips.register("kugelblitz", MegaTooltips::kugelblitz);
+        TypeOmegaTooltips.register("hraemc", MegaTooltips::hraemc);
+        TypeOmegaTooltips.register("suprashell", MegaTooltips::suprashell);
+        TypeOmegaTooltips.register("disintegrator", MegaTooltips::disintegrator);
+        TypeOmegaTooltips.register("birch_world", MegaTooltips::birch);
+        TypeOmegaTooltips.register("qso", MegaTooltips::qso);
     }
 
     private static List<Component> yard() {

@@ -11,8 +11,8 @@ import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIARecipeTypes;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaRecipeTypes;
 import com.typeomega.core.mega.typezero.Tokamak;
 import com.typeomega.core.mega.typezero.TokamakMachine;
 import com.typeomega.core.mega.typezero.TokamakScreen;
@@ -24,9 +24,9 @@ import com.typeomega.lib.ui.PanelLayout;
 import java.util.List;
 import java.util.UUID;
 
-/** The illustrated Tokamak screen (GTIA-D-435): it mounts, its slots sit inside the picture, its lines are right. */
+/** The illustrated Tokamak screen (D-435): it mounts, its slots sit inside the picture, its lines are right. */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class TokamakScreenGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -34,7 +34,7 @@ public final class TokamakScreenGameTests {
     private TokamakScreenGameTests() {}
 
     private static GTRecipe recipe(GameTestHelper h, String path) {
-        var recipe = h.getLevel().getServer().getRecipeManager().byKey(GTIAMod.id("tokamak_fusion/" + path))
+        var recipe = h.getLevel().getServer().getRecipeManager().byKey(TypeOmegaMod.id("tokamak_fusion/" + path))
                 .orElse(null);
         h.assertTrue(recipe instanceof GTRecipe, "missing Tokamak recipe " + path);
         return (GTRecipe) recipe;
@@ -56,9 +56,9 @@ public final class TokamakScreenGameTests {
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
     public static void recipeScreenMountsWithEverySlotInThePicture(GameTestHelper h) {
         h.assertTrue(TokamakScreen.LAYOUT.problems().isEmpty(), "layout: " + TokamakScreen.LAYOUT.problems());
-        h.assertTrue(GTIARecipeTypes.TOKAMAK_FUSION.getRecipeUI() instanceof IllustratedRecipeUI,
+        h.assertTrue(TypeOmegaRecipeTypes.TOKAMAK_FUSION.getRecipeUI() instanceof IllustratedRecipeUI,
                 "tokamak_fusion uses the illustrated recipe UI");
-        var ui = (IllustratedRecipeUI) GTIARecipeTypes.TOKAMAK_FUSION.getRecipeUI();
+        var ui = (IllustratedRecipeUI) TypeOmegaRecipeTypes.TOKAMAK_FUSION.getRecipeUI();
         var panel = ui.createPanel();
         assertInside(h, panel);
         long tanks = panel.widgets.stream()
@@ -81,7 +81,7 @@ public final class TokamakScreenGameTests {
 
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
     public static void recipeLinesCarryStartUpAndIgnition(GameTestHelper h) {
-        var ui = (IllustratedRecipeUI) GTIARecipeTypes.TOKAMAK_FUSION.getRecipeUI();
+        var ui = (IllustratedRecipeUI) TypeOmegaRecipeTypes.TOKAMAK_FUSION.getRecipeUI();
         var dt = recipe(h, "deuterium_tritium");
         var lines = ui.lines(dt).build();
         h.assertTrue(keys(lines).equals(List.of("typeomegalib.ui.total", "typeomegalib.ui.output",

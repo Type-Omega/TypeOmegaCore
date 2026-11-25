@@ -21,7 +21,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Controller of the Matrioshka Brain (GTIA-D-311): the first megastructure. Built in five phases in the Nexus
+ * Controller of the Matrioshka Brain (D-311): the first megastructure. Built in five phases in the Nexus
  * System, around its star; each finished phase adds a shell of computation. Sends CWU through optical data
  * transmission hatches and turns the CWU nobody asks for into Ψ for its owner.
  *

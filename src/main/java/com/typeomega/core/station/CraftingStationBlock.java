@@ -30,7 +30,7 @@ public class CraftingStationBlock extends Block implements EntityBlock {
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return GTIAStation.BLOCK_ENTITY.create(pos, state);
+        return TypeOmegaStation.BLOCK_ENTITY.create(pos, state);
     }
 
     @Override

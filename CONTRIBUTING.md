@@ -1,6 +1,6 @@
-# Contributing to GTIACore
+# Contributing to TypeOmegaCore
 
-GTIACore holds only what is unique to the GregTech Infinity Ascension modpack. Reusable machines and mechanics belong in [GTNA](https://github.com/Type-Omega/GregTech-Nexus-Addon). Pack-level issues (quests, progression, configs) go to the [modpack repository](https://github.com/Type-Omega/TypeOmega).
+TypeOmegaCore holds only what is unique to the Type Omega modpack. Reusable machines and mechanics belong in [GTNA](https://github.com/Type-Omega/GregTech-Nexus-Addon). Pack-level issues (quests, progression, configs) go to the [modpack repository](https://github.com/Type-Omega/TypeOmega).
 
 ## Before a pull request
 

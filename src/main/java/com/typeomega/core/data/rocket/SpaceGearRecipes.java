@@ -17,18 +17,18 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.ModList;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.chem.ZipDMaterials;
 
 import java.util.function.Consumer;
 
 /**
  * EN: Ad Astra's suits, oxygen gear, base blocks and desh parts through GT machines, with no ostrum, netherite or
- * etrium (GTIA-D-420, D-421, D-423). {@link AdAstraRecipeFilter} drops Ad Astra's own recipes for the same items.
+ * etrium (D-420, D-421, D-423). {@link AdAstraRecipeFilter} drops Ad Astra's own recipes for the same items.
  * PT: Trajes, equipamento de oxigênio, blocos da base e peças de desh do Ad Astra pelas máquinas do GT, sem ostrum,
- * netherite nem etrium (GTIA-D-420, D-421, D-423). {@link AdAstraRecipeFilter} tira as receitas do próprio Ad Astra
+ * netherite nem etrium (D-420, D-421, D-423). {@link AdAstraRecipeFilter} tira as receitas do próprio Ad Astra
  * para os mesmos itens.
- * ZH: Ad Astra 的宇航服、氧气设备、基地方块和戴什部件改由 GT 机器制作，不用紫金、下界合金或 etrium（GTIA-D-420、
+ * ZH: Ad Astra 的宇航服、氧气设备、基地方块和戴什部件改由 GT 机器制作，不用紫金、下界合金或 etrium（D-420、
  * D-421、D-423）。AdAstraRecipeFilter 移除 Ad Astra 自带的同名物品配方。
  */
 public final class SpaceGearRecipes {
@@ -157,12 +157,12 @@ public final class SpaceGearRecipes {
         // PT: O desh só sai do minério pelo GT: desh bruto moído e depois o EBF HV (SpaceMaterials). As receitas de
         // fornalha do Ad Astra saem.
         // ZH: 戴什只能经 GT 从矿石中提取：粉碎粗戴什，再进入 HV 电力高炉（SpaceMaterials）。移除 Ad Astra 的熔炉配方。
-        GTRecipeTypes.MACERATOR_RECIPES.recipeBuilder(GTIAMod.id("rocket/raw_desh"))
+        GTRecipeTypes.MACERATOR_RECIPES.recipeBuilder(TypeOmegaMod.id("rocket/raw_desh"))
                 .inputItems(stack("raw_desh"))
                 .outputItems(TagPrefix.dust, SpaceMaterials.DESH)
                 .chancedOutput(TagPrefix.dust, SpaceMaterials.DESH, 1, 2500, 0)
                 .duration(200).EUt(MV).save(provider);
-        GTRecipeTypes.MACERATOR_RECIPES.recipeBuilder(GTIAMod.id("rocket/desh_ore"))
+        GTRecipeTypes.MACERATOR_RECIPES.recipeBuilder(TypeOmegaMod.id("rocket/desh_ore"))
                 .inputItems(ItemTags.create(new ResourceLocation("forge", "ores/desh")))
                 .outputItems(stack("raw_desh", 2))
                 .duration(200).EUt(MV).save(provider);
@@ -179,7 +179,7 @@ public final class SpaceGearRecipes {
     }
 
     private static GTRecipeBuilder assembler(String name, int eut, int duration) {
-        return GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(GTIAMod.id("rocket/" + name)).duration(duration)
+        return GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(TypeOmegaMod.id("rocket/" + name)).duration(duration)
                 .EUt(eut);
     }
 
@@ -188,7 +188,7 @@ public final class SpaceGearRecipes {
     }
 
     static ItemStack stack(String path, int count) {
-        Item item = GTIARocketRecipes.item(path);
+        Item item = TypeOmegaRocketRecipes.item(path);
         if (item == null) throw new IllegalStateException("Ad Astra item missing: ad_astra:" + path);
         return new ItemStack(item, count);
     }

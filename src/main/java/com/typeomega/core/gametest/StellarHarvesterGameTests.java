@@ -5,15 +5,15 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Stellar Harvester (GTIA-D-328): fusion exponents, boost, budget and remnants; it burns a star's last fuel into
+ * The Stellar Harvester (D-328): fusion exponents, boost, budget and remnants; it burns a star's last fuel into
  * EU and leaves the remnant its mass allows; without the annulus it does not form. Slots 24, 25.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class StellarHarvesterGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -21,8 +21,8 @@ public final class StellarHarvesterGameTests {
     private StellarHarvesterGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.STELLAR_HARVESTER_DEF != null) return false;
-        GTIAMod.LOGGER.warn("Stellar Harvester not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.STELLAR_HARVESTER_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("Stellar Harvester not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

@@ -13,7 +13,7 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,8 +22,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Type Omega has one mode, the former Normal (GTIA-D-436): no world rules, no presets, maintenance from LV on. */
-@GameTestHolder(GTIAMod.MOD_ID)
+/** Type Omega has one mode, the former Normal (D-436): no world rules, no presets, maintenance from LV on. */
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class SingleModeGameTests {
 
@@ -36,9 +36,9 @@ public final class SingleModeGameTests {
     public static void noRulesCommandScreenOrText(GameTestHelper h) {
         h.assertTrue(SingleModeGameTests.class.getClassLoader()
                 .getResource("com/typeomega/core/balance/TypeOmegaBalance.class") != null, "class files are visible");
-        for (String removed : List.of("com.typeomega.core.client.GTIARulesScreen",
-                "com.typeomega.core.client.GTIARulesClient", "com.typeomega.core.client.GTIARestartScreen",
-                "com.typeomega.core.rules.WorldRules", "com.typeomega.core.rules.GTIARules",
+        for (String removed : List.of("com.typeomega.core.client.TypeOmegaRulesScreen",
+                "com.typeomega.core.client.TypeOmegaRulesClient", "com.typeomega.core.client.TypeOmegaRestartScreen",
+                "com.typeomega.core.rules.WorldRules", "com.typeomega.core.rules.TypeOmegaRules",
                 "com.typeomega.core.mixin.client.CreateWorldGameTabMixin")) {
             // EN: Look for the class file, not the class: Mixin refuses to load anything from a mixin package.
             // PT: Procura o arquivo da classe, não a classe: o Mixin recusa carregar algo de um pacote de mixin.
@@ -47,7 +47,7 @@ public final class SingleModeGameTests {
                     .getResource(removed.replace('.', '/') + ".class") != null;
             h.assertFalse(present, removed + " still exists");
         }
-        var root = h.getLevel().getServer().getCommands().getDispatcher().getRoot().getChild(GTIAMod.MOD_ID);
+        var root = h.getLevel().getServer().getCommands().getDispatcher().getRoot().getChild(TypeOmegaMod.MOD_ID);
         h.assertTrue(root == null || root.getChild("rules") == null, "/typeomega rules is still registered");
 
         JsonObject mixins = json("/typeomega.mixins.json");
@@ -56,7 +56,7 @@ public final class SingleModeGameTests {
 
         List<String> found = new ArrayList<>();
         for (String language : List.of("en_us", "pt_br", "zh_cn")) {
-            json("/assets/" + GTIAMod.MOD_ID + "/lang/" + language + ".json").entrySet().forEach(e -> {
+            json("/assets/" + TypeOmegaMod.MOD_ID + "/lang/" + language + ".json").entrySet().forEach(e -> {
                 if (e.getKey().startsWith("typeomega.rule") || e.getValue().getAsString().contains("Journey"))
                     found.add(language + ":" + e.getKey());
             });

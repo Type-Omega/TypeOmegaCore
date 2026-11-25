@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
@@ -19,7 +19,7 @@ import java.util.Set;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 
 /**
- * The veins with purity (GTIA-D-310): GTCEu virtual bedrock veins (3 × 3 chunks, one every 16 chunks), never depleted.
+ * The veins with purity (D-310): GTCEu virtual bedrock veins (3 × 3 chunks, one every 16 chunks), never depleted.
  * The GTCEu Bedrock Ore Miner stays off ({@code doBedrockOres: false}); only the Entangled Miner mines them.
  */
 public final class BedrockVeins {
@@ -47,7 +47,7 @@ public final class BedrockVeins {
 
     /** {@code materials}: material, weight, material, weight... */
     private static void vein(String name, int weight, Set<ResourceKey<Level>> dimensions, Object... materials) {
-        var builder = BedrockOreDefinition.builder(GTIAMod.id(name)).weight(weight).size(3).yield(1, 1)
+        var builder = BedrockOreDefinition.builder(TypeOmegaMod.id(name)).weight(weight).size(3).yield(1, 1)
                 .depletionAmount(0).depletionChance(0).depletedYield(1).dimensions(dimensions);
         for (int i = 0; i < materials.length; i += 2) builder.material((Material) materials[i], (int) materials[i + 1]);
         builder.register();

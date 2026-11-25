@@ -19,14 +19,14 @@ import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 
 /**
- * AE2 from GT machines, GTO-style (GTIA-D-349), with the basic network moved to LV (GTIA-D-408, D-415): prints from
+ * AE2 from GT machines, GTO-style (D-349), with the basic network moved to LV (D-408, D-415): prints from
  * the LV Laser Engraver, processors in the Circuit Assembler at LV, controller, drive, terminal, the two cores and
  * the 1k item cell from the LV Assembler (LV hull, steel instead of aluminium), fluix from certus in the LV Mixer
  * (no Nether quartz); the other network blocks from the MV Assembler; the refinement (wireless, P2P, ExtendedAE's
@@ -93,7 +93,7 @@ public final class AE2Gates {
         int count = all.size() - kept.size();
         if (count > 0) {
             manager.replaceRecipes(kept);
-            GTIAMod.LOGGER.info("Dropped {} AE2 recipes now made in GT machines (GTIA-D-349)", count);
+            TypeOmegaMod.LOGGER.info("Dropped {} AE2 recipes now made in GT machines (D-349)", count);
         }
         return count;
     }
@@ -115,14 +115,14 @@ public final class AE2Gates {
                 { "silicon", "silicon" } };
         for (String[] kind : kinds) {
             String print = kind[0].equals("silicon") ? "ae2:printed_silicon" : "ae2:printed_" + kind[0] + "_processor";
-            GTRecipeTypes.LASER_ENGRAVER_RECIPES.recipeBuilder(GTIAMod.id("ae2/printed_" + kind[0]))
+            GTRecipeTypes.LASER_ENGRAVER_RECIPES.recipeBuilder(TypeOmegaMod.id("ae2/printed_" + kind[0]))
                     .inputItems(item("gtceu:" + kind[1] + "_plate", 1))
                     .notConsumable(item("ae2:" + kind[0] + (kind[0].equals("silicon") ? "" : "_processor") + "_press",
                             1))
                     .outputItems(item(print, 1))
                     .duration(200).EUt(LV).save(provider);
             if (kind[0].equals("silicon")) continue;
-            GTRecipeTypes.CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder(GTIAMod.id("ae2/" + kind[0] + "_processor"))
+            GTRecipeTypes.CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder(TypeOmegaMod.id("ae2/" + kind[0] + "_processor"))
                     .inputItems(item(print, 1))
                     .inputItems(item("ae2:printed_silicon", 1))
                     .inputItems(TagPrefix.dust, GTMaterials.Redstone)
@@ -131,10 +131,10 @@ public final class AE2Gates {
                     .outputItems(item("ae2:" + kind[0] + "_processor", 1))
                     .duration(200).EUt(LV).save(provider);
         }
-        // EN: AE2's in-world fluix needs Nether quartz; the LV Mixer makes it from certus instead (GTIA-D-408).
-        // PT: O fluix do AE2 no mundo pede quartzo do Nether; o Misturador LV o faz com certus (GTIA-D-408).
-        // ZH: AE2 在世界中合成福鲁伊克斯需要下界石英；LV 搅拌机改用赛特斯石英制作（GTIA-D-408）。
-        GTRecipeTypes.MIXER_RECIPES.recipeBuilder(GTIAMod.id("ae2/fluix_crystal"))
+        // EN: AE2's in-world fluix needs Nether quartz; the LV Mixer makes it from certus instead (D-408).
+        // PT: O fluix do AE2 no mundo pede quartzo do Nether; o Misturador LV o faz com certus (D-408).
+        // ZH: AE2 在世界中合成福鲁伊克斯需要下界石英；LV 搅拌机改用赛特斯石英制作（D-408）。
+        GTRecipeTypes.MIXER_RECIPES.recipeBuilder(TypeOmegaMod.id("ae2/fluix_crystal"))
                 .inputItems(item("ae2:charged_certus_quartz_crystal", 1))
                 .inputItems(TagPrefix.dust, GTMaterials.Redstone)
                 .inputItems(TagPrefix.dust, GTMaterials.CertusQuartz)
@@ -144,10 +144,10 @@ public final class AE2Gates {
     }
 
     private static void network(Consumer<FinishedRecipe> provider) {
-        // EN: Certus crystals take the Nether quartz's place; the formation core keeps certus dust (GTIA-D-408).
+        // EN: Certus crystals take the Nether quartz's place; the formation core keeps certus dust (D-408).
         // PT: Cristais de certus no lugar do quartzo do Nether; o núcleo de formação mantém o pó de certus
-        // (GTIA-D-408).
-        // ZH: 用赛特斯石英水晶代替下界石英；成型核心仍用赛特斯石英粉（GTIA-D-408）。
+        // (D-408).
+        // ZH: 用赛特斯石英水晶代替下界石英；成型核心仍用赛特斯石英粉（D-408）。
         assembler(provider, "annihilation_core", LV, item("ae2:annihilation_core", 2))
                 .inputItems(TagPrefix.plate, GTMaterials.Steel, 2).inputItems(item("ae2:logic_processor", 1))
                 .inputItems(TagPrefix.gem, GTMaterials.CertusQuartz, 2).inputItems(CustomTags.LV_CIRCUITS)
@@ -265,7 +265,7 @@ public final class AE2Gates {
     }
 
     private static GTRecipeBuilder assembler(Consumer<FinishedRecipe> provider, String name, int eu, ItemStack out) {
-        return GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(GTIAMod.id("ae2/" + name))
+        return GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(TypeOmegaMod.id("ae2/" + name))
                 .outputItems(out).duration(200).EUt(eu);
     }
 

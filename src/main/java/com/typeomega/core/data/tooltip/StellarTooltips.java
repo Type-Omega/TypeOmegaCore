@@ -3,7 +3,7 @@ package com.typeomega.core.data.tooltip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 
-import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.core.data.TypeOmegaTooltips;
 import com.typeomega.core.mega.creator.CreatorPhysics;
 import com.typeomega.core.mega.engine.EnginePhysics;
 import com.typeomega.core.mega.harvester.HarvesterPhysics;
@@ -20,10 +20,10 @@ import com.typeomega.lib.tooltip.TooltipRow;
 import java.util.List;
 import java.util.StringJoiner;
 
-import static com.typeomega.core.data.GTIATooltips.finish;
-import static com.typeomega.core.data.GTIATooltips.own;
-import static com.typeomega.core.data.GTIATooltips.shared;
-import static com.typeomega.core.data.GTIATooltips.start;
+import static com.typeomega.core.data.TypeOmegaTooltips.finish;
+import static com.typeomega.core.data.TypeOmegaTooltips.own;
+import static com.typeomega.core.data.TypeOmegaTooltips.shared;
+import static com.typeomega.core.data.TypeOmegaTooltips.start;
 import static com.typeomega.core.data.tooltip.Fmt.num;
 import static com.typeomega.core.data.tooltip.Fmt.pct;
 import static com.typeomega.core.data.tooltip.Fmt.perMille;
@@ -42,13 +42,13 @@ public final class StellarTooltips {
     private StellarTooltips() {}
 
     public static void register() {
-        GTIATooltips.register("stellar_engine", StellarTooltips::engine);
-        GTIATooltips.register("matrioshka_brain", StellarTooltips::matrioshka);
-        GTIATooltips.register("star_lifter", StellarTooltips::lifter);
-        GTIATooltips.register("stellar_hoop", StellarTooltips::hoop);
-        GTIATooltips.register("stellar_harvester", StellarTooltips::harvester);
-        GTIATooltips.register("fusion_suppressor", StellarTooltips::suppressor);
-        GTIATooltips.register("system_creator", StellarTooltips::creator);
+        TypeOmegaTooltips.register("stellar_engine", StellarTooltips::engine);
+        TypeOmegaTooltips.register("matrioshka_brain", StellarTooltips::matrioshka);
+        TypeOmegaTooltips.register("star_lifter", StellarTooltips::lifter);
+        TypeOmegaTooltips.register("stellar_hoop", StellarTooltips::hoop);
+        TypeOmegaTooltips.register("stellar_harvester", StellarTooltips::harvester);
+        TypeOmegaTooltips.register("fusion_suppressor", StellarTooltips::suppressor);
+        TypeOmegaTooltips.register("system_creator", StellarTooltips::creator);
     }
 
     /** Machine Type, the purpose line and the five-phase rule every megastructure shares. */

@@ -3,8 +3,8 @@ package com.typeomega.core.balance;
 import com.gregtechceu.gtceu.config.ConfigHolder;
 
 /**
- * The one Type Omega balance (GTIA-D-436): the GTCEu settings of the former Normal preset, fixed for every world.
- * The world rules and their presets are gone; a world's old {@code gtia_rules.json} is no longer read.
+ * The one Type Omega balance (D-436): the GTCEu settings of the former Normal preset, fixed for every world.
+ * The world rules and their presets are gone; a world's old {@code typeomega_rules.json} is no longer read.
  */
 public final class TypeOmegaBalance {
 
@@ -40,9 +40,9 @@ public final class TypeOmegaBalance {
         recipes.enchantedTools = false;
 
         var machines = ConfigHolder.INSTANCE.machines;
-        // EN: Multiblocks need a maintenance hatch from the first LV machine on (the Normal preset, GTIA-D-436).
-        // PT: Multiblocos precisam de escotilha de manutenção desde a primeira máquina LV (o Normal, GTIA-D-436).
-        // ZH: 从第一台 LV 机器起，多方块结构需要维护仓（原普通模式，GTIA-D-436）。
+        // EN: Multiblocks need a maintenance hatch from the first LV machine on (the Normal preset, D-436).
+        // PT: Multiblocos precisam de escotilha de manutenção desde a primeira máquina LV (o Normal, D-436).
+        // ZH: 从第一台 LV 机器起，多方块结构需要维护仓（原普通模式，D-436）。
         machines.enableMaintenance = true;
         machines.enableCleanroom = true;
         machines.cleanMultiblocks = false;

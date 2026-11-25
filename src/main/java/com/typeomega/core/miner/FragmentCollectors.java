@@ -11,15 +11,15 @@ import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIARecipeTypes;
-import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaRecipeTypes;
+import com.typeomega.core.data.TypeOmegaTooltips;
 
 import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
 
 /**
- * Fragment Collector (LV, "survey tower", GTIA-D-362) and Large Fragment Collector (EV, "drilling platform",
- * GTIA-D-363). Shapes from design/estudos/fusao_f2 (col_b, big_b), approved on the F2 artifact on 2026-11-11.
+ * Fragment Collector (LV, "survey tower", D-362) and Large Fragment Collector (EV, "drilling platform",
+ * D-363). Shapes from design/estudos/fusao_f2 (col_b, big_b), approved on the F2 artifact on 2026-11-11.
  */
 public final class FragmentCollectors {
 
@@ -112,11 +112,11 @@ public final class FragmentCollectors {
                     ".............", "............." },
     };
 
-    public static final MultiblockMachineDefinition FRAGMENT_COLLECTOR = GTIAMod.REGISTRATE
+    public static final MultiblockMachineDefinition FRAGMENT_COLLECTOR = TypeOmegaMod.REGISTRATE
             .multiblock("fragment_collector", WorkableElectricMultiblockMachine::new)
             .langValue("Fragment Collector")
             .rotationState(RotationState.NON_Y_AXIS)
-            .recipeType(GTIARecipeTypes.FRAGMENT_COLLECTOR)
+            .recipeType(TypeOmegaRecipeTypes.FRAGMENT_COLLECTOR)
             .recipeModifiers(GTRecipeModifiers.OC_NON_PERFECT_SUBTICK)
             .appearanceBlock(GTBlocks.CASING_STEEL_SOLID)
             .pattern(definition -> {
@@ -139,14 +139,14 @@ public final class FragmentCollectors {
             })
             .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
                     GTCEu.id("block/multiblock/large_miner"))
-            .tooltipBuilder(GTIATooltips.lazy("fragment_collector"))
+            .tooltipBuilder(TypeOmegaTooltips.lazy("fragment_collector"))
             .register();
 
-    public static final MultiblockMachineDefinition LARGE_FRAGMENT_COLLECTOR = GTIAMod.REGISTRATE
+    public static final MultiblockMachineDefinition LARGE_FRAGMENT_COLLECTOR = TypeOmegaMod.REGISTRATE
             .multiblock("large_fragment_collector", Large::new)
             .langValue("Large Fragment Collector")
             .rotationState(RotationState.NON_Y_AXIS)
-            .recipeType(GTIARecipeTypes.FRAGMENT_COLLECTOR)
+            .recipeType(TypeOmegaRecipeTypes.FRAGMENT_COLLECTOR)
             .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK)
             .appearanceBlock(GTBlocks.CASING_TITANIUM_STABLE)
             .pattern(definition -> {
@@ -169,12 +169,12 @@ public final class FragmentCollectors {
             })
             .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_stable_titanium"),
                     GTCEu.id("block/multiblock/large_miner"))
-            .tooltipBuilder(GTIATooltips.lazy("large_fragment_collector"))
+            .tooltipBuilder(TypeOmegaTooltips.lazy("large_fragment_collector"))
             .register();
 
     private FragmentCollectors() {}
 
     public static void init() {
-        GTIARecipeTypes.FRAGMENT_COLLECTOR.addCustomRecipeLogic(FragmentCollectorLogic.INSTANCE);
+        TypeOmegaRecipeTypes.FRAGMENT_COLLECTOR.addCustomRecipeLogic(FragmentCollectorLogic.INSTANCE);
     }
 }

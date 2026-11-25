@@ -27,8 +27,8 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.rocket.GTIARocketAssembler;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.rocket.TypeOmegaRocketAssembler;
 import com.typeomega.core.kardashev.KardashevData;
 import com.typeomega.core.mega.typezero.Cosmodrome;
 import com.typeomega.core.mega.typezero.CosmodromeMachine;
@@ -45,11 +45,11 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * The three Type 0 megastructures (GTIA-D-390): each forms from its preview and fails without a part, counts once on
+ * The three Type 0 megastructures (D-390): each forms from its preview and fails without a part, counts once on
  * its team's Kardashev meter, and does its job (transponder gate, Cosmodrome link and Moon gate, Tokamak fusion).
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class TypeZeroMegaGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -93,7 +93,7 @@ public final class TypeZeroMegaGameTests {
     @GameTest(template = TEMPLATE, batch = "type_zero_megas", timeoutTicks = 20)
     public static void wirelessHatchesNeedTheTransponder(GameTestHelper h) {
         var manager = h.getLevel().getServer().getRecipeManager();
-        h.assertTrue(manager.byKey(GTIAMod.id("grid_dispatch/grid_transponder")).isPresent(),
+        h.assertTrue(manager.byKey(TypeOmegaMod.id("grid_dispatch/grid_transponder")).isPresent(),
                 "the Dispatch Center programs the transponder");
         if (!ModList.get().isLoaded("gtna")) {
             h.succeed();
@@ -103,7 +103,7 @@ public final class TypeZeroMegaGameTests {
             String path = "wireless_energy_" + io + "_1a_hv";
             h.assertTrue(manager.byKey(new ResourceLocation("gtceu", "assembler/" + path)).isEmpty(),
                     "GTNA's ungated " + path + " is removed");
-            var gated = (GTRecipe) manager.byKey(GTIAMod.id("assembler/wireless/" + path)).orElse(null);
+            var gated = (GTRecipe) manager.byKey(TypeOmegaMod.id("assembler/wireless/" + path)).orElse(null);
             h.assertTrue(gated != null, "the gated " + path + " exists");
             boolean transponder = RecipeHelper.getInputItems(gated).stream()
                     .anyMatch(stack -> stack.is(TypeZeroItems.GRID_TRANSPONDER.get()));
@@ -123,19 +123,19 @@ public final class TypeZeroMegaGameTests {
         BlockPos origin = TypeZeroTestRig.slot(h, 2);
         var cosmodrome = TypeZeroTestRig.place(h, Cosmodrome.DEFINITION, origin, team, null);
         var mission = (CosmodromeMachine) cosmodrome.controller();
-        TypeZeroTestRig.removeControllers(h, GTIARocketAssembler.ROCKET_ASSEMBLER, mission.getPos(),
+        TypeZeroTestRig.removeControllers(h, TypeOmegaRocketAssembler.ROCKET_ASSEMBLER, mission.getPos(),
                 CosmodromeMachine.LINK_RANGE + 16);
         h.assertTrue(TypeZeroTestRig.form(mission), "the Cosmodrome preview must form");
         mission.relink();
         h.assertTrue(mission.linkedAssembler() == null, "no Rocket Assembler nearby: no link");
         h.assertFalse(kardashev(h).built(team, Cosmodrome.ID), "an unlinked Cosmodrome does not count");
         var survey = (GTRecipe) h.getLevel().getServer().getRecipeManager()
-                .byKey(GTIAMod.id("mission_control/lunar_survey")).orElse(null);
+                .byKey(TypeOmegaMod.id("mission_control/lunar_survey")).orElse(null);
         h.assertTrue(survey != null, "the lunar survey mission exists");
         h.assertTrue(CosmodromeMachine.requireLink(mission, survey).apply(survey) == null,
                 "no mission runs without the link");
 
-        var assembler = TypeZeroTestRig.place(h, GTIARocketAssembler.ROCKET_ASSEMBLER,
+        var assembler = TypeZeroTestRig.place(h, TypeOmegaRocketAssembler.ROCKET_ASSEMBLER,
                 origin.offset(cosmodrome.nx() + 3, 0, 0), team, null);
         h.assertTrue(TypeZeroTestRig.form(assembler.controller()), "the Rocket Assembler preview must form");
         mission.relink();
@@ -187,7 +187,7 @@ public final class TypeZeroMegaGameTests {
         h.succeed();
     }
 
-    /** One dynamo per amp of D-He3 (GTIA-D-438): with one missing the Tokamak does not form. */
+    /** One dynamo per amp of D-He3 (D-438): with one missing the Tokamak does not form. */
     @GameTest(template = TEMPLATE, batch = "type_zero_megas", timeoutTicks = 60)
     public static void tokamakNeedsEveryDynamo(GameTestHelper h) {
         var placed = TypeZeroTestRig.place(h, Tokamak.DEFINITION, TypeZeroTestRig.slot(h, 9), UUID.randomUUID(),
@@ -249,9 +249,9 @@ public final class TypeZeroMegaGameTests {
         // EN: The hatch feeds the charge for real; the test adds the rest instead of waiting minutes.
         // PT: O hatch alimenta a carga de verdade; o teste completa o resto em vez de esperar minutos.
         // ZH: 能源仓真实地为启动充能；测试直接补足其余部分，免去数分钟等待。
-        // EN: EU every tick (GTIA-D-438): the dynamos fill while the first cycle still runs, before its fluids.
-        // PT: EU a cada tick (GTIA-D-438): os dínamos enchem com o primeiro ciclo ainda rodando, antes dos fluidos.
-        // ZH: 每 tick 产出 EU（GTIA-D-438）：第一个周期仍在运行、流体尚未产出时动力仓就开始充能。
+        // EN: EU every tick (D-438): the dynamos fill while the first cycle still runs, before its fluids.
+        // PT: EU a cada tick (D-438): os dínamos enchem com o primeiro ciclo ainda rodando, antes dos fluidos.
+        // ZH: 每 tick 产出 EU（D-438）：第一个周期仍在运行、流体尚未产出时动力仓就开始充能。
         var euDuringCycle = new java.util.concurrent.atomic.AtomicBoolean();
         h.onEachTick(() -> {
             feed.changeEnergy(feed.getEnergyCapacity() - feed.getEnergyStored());
@@ -264,7 +264,7 @@ public final class TypeZeroMegaGameTests {
         h.succeedWhen(() -> {
             if (!tokamak.lit()) {
                 var dt = (GTRecipe) level.getServer().getRecipeManager()
-                        .byKey(GTIAMod.id("tokamak_fusion/deuterium_tritium")).orElse(null);
+                        .byKey(TypeOmegaMod.id("tokamak_fusion/deuterium_tritium")).orElse(null);
                 var match = dt == null ? null : RecipeHelper.matchRecipe(tokamak, dt);
                 h.fail("the plasma lights after the start-up charge (" + tokamak.startCharge() + " EU; formed " +
                         tokamak.isFormed() + ", logic " + tokamak.getRecipeLogic().getStatus() + " " +

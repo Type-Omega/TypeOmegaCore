@@ -9,14 +9,14 @@ import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 import net.minecraftforge.items.ItemStackHandler;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.organ.GTIAOrgans;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.organ.TypeOmegaOrgans;
 import com.typeomega.core.organ.OrganData;
 import com.typeomega.core.organ.OrganEffects;
 import com.typeomega.core.organ.OrganType;
 
-/** Organ system (GTIA-D-279): storage, set tier, effects and the planet requirement. */
-@GameTestHolder(GTIAMod.MOD_ID)
+/** Organ system (D-279): storage, set tier, effects and the planet requirement. */
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class OrganGameTests {
 
@@ -25,7 +25,7 @@ public final class OrganGameTests {
     private static ItemStackHandler fullSet(int tier) {
         ItemStackHandler organs = new ItemStackHandler(OrganData.SLOTS);
         for (int slot = 0; slot < OrganData.WING_START; slot++) {
-            organs.setStackInSlot(slot, GTIAOrgans.TIERED.get(OrganType.TIERED[slot]).get(tier).asStack());
+            organs.setStackInSlot(slot, TypeOmegaOrgans.TIERED.get(OrganType.TIERED[slot]).get(tier).asStack());
         }
         return organs;
     }
@@ -35,18 +35,18 @@ public final class OrganGameTests {
     public static void organsSaveAndSetTier(GameTestHelper helper) {
         var player = TestPlayers.survival(helper);
         ItemStackHandler organs = fullSet(2);
-        organs.setStackInSlot(0, GTIAOrgans.TIERED.get(OrganType.EYE).get(1).asStack());
-        organs.setStackInSlot(OrganData.WING_START, GTIAOrgans.FAIRY_WING.asStack());
+        organs.setStackInSlot(0, TypeOmegaOrgans.TIERED.get(OrganType.EYE).get(1).asStack());
+        organs.setStackInSlot(OrganData.WING_START, TypeOmegaOrgans.FAIRY_WING.asStack());
         OrganData.save(player, organs);
         ItemStackHandler loaded = OrganData.load(player);
         helper.assertTrue(OrganData.setTier(loaded) == 1, "set tier is the lowest organ");
         helper.assertTrue(OrganData.tier(loaded, OrganType.HEART) == 2, "heart tier 2 kept");
-        helper.assertTrue(loaded.getStackInSlot(OrganData.WING_START).is(GTIAOrgans.FAIRY_WING.get()), "wing kept");
+        helper.assertTrue(loaded.getStackInSlot(OrganData.WING_START).is(TypeOmegaOrgans.FAIRY_WING.get()), "wing kept");
         helper.assertTrue(OrganData.setTier(new ItemStackHandler(OrganData.SLOTS)) == 0, "no organs: set tier 0");
-        helper.assertFalse(OrganData.fits(0, GTIAOrgans.TIERED.get(OrganType.HEART).get(1).asStack()),
+        helper.assertFalse(OrganData.fits(0, TypeOmegaOrgans.TIERED.get(OrganType.HEART).get(1).asStack()),
                 "a heart does not fit the eye slot");
-        helper.assertFalse(OrganData.fits(0, GTIAOrgans.FAIRY_WING.asStack()), "a wing does not fit an organ slot");
-        helper.assertTrue(OrganData.fits(OrganData.WING_START + 3, GTIAOrgans.STEEL_WING.asStack()), "wing slot");
+        helper.assertFalse(OrganData.fits(0, TypeOmegaOrgans.FAIRY_WING.asStack()), "a wing does not fit an organ slot");
+        helper.assertTrue(OrganData.fits(OrganData.WING_START + 3, TypeOmegaOrgans.STEEL_WING.asStack()), "wing slot");
         helper.succeed();
     }
 
@@ -75,12 +75,12 @@ public final class OrganGameTests {
     public static void brokenWingAndPlanetTiers(GameTestHelper helper) {
         var player = TestPlayers.survival(helper);
         ItemStackHandler organs = new ItemStackHandler(OrganData.SLOTS);
-        var wing = GTIAOrgans.STEEL_WING.asStack();
+        var wing = TypeOmegaOrgans.STEEL_WING.asStack();
         wing.setDamageValue(wing.getMaxDamage());
         organs.setStackInSlot(OrganData.WING_START, wing);
         OrganEffects.apply(player, organs);
         helper.assertFalse(player.getAbilities().mayfly, "a broken wing does not fly");
-        organs.setStackInSlot(OrganData.WING_START + 1, GTIAOrgans.STEEL_WING.asStack());
+        organs.setStackInSlot(OrganData.WING_START + 1, TypeOmegaOrgans.STEEL_WING.asStack());
         OrganEffects.apply(player, organs);
         helper.assertTrue(player.getAbilities().mayfly, "the next wing flies");
         helper.assertTrue(OrganEffects.requiredSetTier("ad_astra:moon") == 1, "Moon: tier 1");

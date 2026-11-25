@@ -9,8 +9,8 @@ import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIACreativeTabs;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaCreativeTabs;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -19,7 +19,7 @@ import java.util.Set;
 
 /** Every core item shows up in one of the Type Omega creative tabs, and every tab with items has an icon. */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class CreativeTabGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -32,17 +32,17 @@ public final class CreativeTabGameTests {
                 h.getLevel().registryAccess());
         Set<Item> shown = new HashSet<>();
         List<String> empty = new ArrayList<>();
-        for (int i = 0; i < GTIACreativeTabs.ALL.size(); i++) {
-            CreativeModeTab tab = GTIACreativeTabs.ALL.get(i).get();
+        for (int i = 0; i < TypeOmegaCreativeTabs.ALL.size(); i++) {
+            CreativeModeTab tab = TypeOmegaCreativeTabs.ALL.get(i).get();
             tab.buildContents(parameters);
             if (!tab.getDisplayItems().isEmpty() && tab.getIconItem().isEmpty()) {
-                empty.add(GTIACreativeTabs.Category.values()[i].id);
+                empty.add(TypeOmegaCreativeTabs.Category.values()[i].id);
             }
             for (ItemStack stack : tab.getDisplayItems()) shown.add(stack.getItem());
         }
         List<String> missing = new ArrayList<>();
         for (var entry : ForgeRegistries.ITEMS.getEntries()) {
-            if (GTIAMod.MOD_ID.equals(entry.getKey().location().getNamespace()) && !shown.contains(entry.getValue())) {
+            if (TypeOmegaMod.MOD_ID.equals(entry.getKey().location().getNamespace()) && !shown.contains(entry.getValue())) {
                 missing.add(entry.getKey().location().getPath());
             }
         }

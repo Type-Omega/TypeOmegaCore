@@ -20,11 +20,11 @@ public final class KardashevData extends SavedData {
 
     private static final String DATA_NAME = "typeomega_kardashev";
 
-    // EN: GTIA-D-372: K uses the average of the last 10 minutes; 30 buckets of 20 s keep it exact to 20 s and cost
+    // EN: D-372: K uses the average of the last 10 minutes; 30 buckets of 20 s keep it exact to 20 s and cost
     // 30 numbers per team.
-    // PT: GTIA-D-372: o K usa a média dos últimos 10 min; 30 baldes de 20 s mantêm a média exata a cada 20 s com
+    // PT: D-372: o K usa a média dos últimos 10 min; 30 baldes de 20 s mantêm a média exata a cada 20 s com
     // 30 números por time.
-    // ZH: GTIA-D-372：K 取最近 10 分钟的平均值；30 个 20 秒的桶让平均值每 20 秒精确一次，每队只存 30 个数。
+    // ZH: D-372：K 取最近 10 分钟的平均值；30 个 20 秒的桶让平均值每 20 秒精确一次，每队只存 30 个数。
     public static final int BUCKET_TICKS = 400;
     public static final int BUCKETS = 30;
     public static final long WINDOW_TICKS = (long) BUCKET_TICKS * BUCKETS;
@@ -113,7 +113,7 @@ public final class KardashevData extends SavedData {
 
     /**
      * Records that {@code team} formed the megastructure {@code id}; the cap follows. A megastructure counts once,
-     * the first time it forms, and stays counted if it is later broken (like the type reached, GTIA-D-372).
+     * the first time it forms, and stays counted if it is later broken (like the type reached, D-372).
      *
      * @return whether this was the first time
      */
@@ -130,7 +130,7 @@ public final class KardashevData extends SavedData {
         return state != null && state.built.contains(id);
     }
 
-    /** Highest integer type the team reached; it never drops (GTIA-D-372). */
+    /** Highest integer type the team reached; it never drops (D-372). */
     public int reachedType(UUID team, long gameTime) {
         Team state = teams.get(team);
         if (state == null) return 0;

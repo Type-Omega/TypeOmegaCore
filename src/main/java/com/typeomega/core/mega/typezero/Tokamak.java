@@ -10,19 +10,19 @@ import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIARecipeTypes;
-import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaRecipeTypes;
+import com.typeomega.core.data.TypeOmegaTooltips;
 
 import static com.gregtechceu.gtceu.api.pattern.Predicates.abilities;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
 
 /**
- * Mega 3 of Type 0, the HV Tokamak (GTIA-D-379, D-390, D-421, D-425 option C): a 23 x 17 x 27 torus with a D-shaped
+ * Mega 3 of Type 0, the HV Tokamak (D-379, D-390, D-421, D-425 option C): a 23 x 17 x 27 torus with a D-shaped
  * section. The titanium vacuum chamber is lined by the lithium blanket over a divertor; eight MgB2 toroidal field
  * coils, the central solenoid and two poloidal rings hold the plasma; two neutral beam injectors heat it; a liquid
  * helium manifold and the cryostat cage cool the magnets; the neutron shield wall in front carries the hatches.
- * Closes Type 0 and opens the Type I cap (GTIA-D-389).
+ * Closes Type 0 and opens the Type I cap (D-389).
  */
 public final class Tokamak {
 
@@ -35,11 +35,11 @@ public final class Tokamak {
     /** The layout, legend in {@code data/typeomega/multiblock/typezero/tokamak_hv.txt}. */
     public static final String[][] AISLES = TypeZeroPattern.read(ID);
 
-    public static final MultiblockMachineDefinition DEFINITION = GTIAMod.REGISTRATE
+    public static final MultiblockMachineDefinition DEFINITION = TypeOmegaMod.REGISTRATE
             .multiblock(ID, TokamakMachine::new)
             .langValue("HV Tokamak")
             .rotationState(RotationState.NON_Y_AXIS)
-            .recipeType(GTIARecipeTypes.TOKAMAK_FUSION)
+            .recipeType(TypeOmegaRecipeTypes.TOKAMAK_FUSION)
             .generator(true)
             // EN: Fixed output: the GTCEu overclock reads the dynamos as the voltage limit and would cancel fusion.
             // PT: Saída fixa: o overclock do GTCEu lê os dínamos como limite de tensão e cancelaria a fusão.
@@ -52,11 +52,11 @@ public final class Tokamak {
                 return builder
                         .where('K', Predicates.controller(blocks(definition.getBlock())))
                         .where('H', blocks(TypeZeroBlocks.NEUTRON_SHIELD_CASING.get()).setMinGlobalLimited(140)
-                                // EN: Exactly DYNAMOS HV dynamos, one per amp of D-He3 (GTIA-D-438): a smaller
+                                // EN: Exactly DYNAMOS HV dynamos, one per amp of D-He3 (D-438): a smaller
                                 // buffer could not take the EU of one tick. One Energy Hatch charges the start-up.
-                                // PT: Exatamente DYNAMOS dínamos HV, um por ampere da D-He3 (GTIA-D-438): um buffer
+                                // PT: Exatamente DYNAMOS dínamos HV, um por ampere da D-He3 (D-438): um buffer
                                 // menor não comportaria o EU de um tick. Um Energy Hatch carrega a partida.
-                                // ZH: 恰好 DYNAMOS 个 HV 动力仓，D-He3 每安培一个（GTIA-D-438）：更小的缓存装不下
+                                // ZH: 恰好 DYNAMOS 个 HV 动力仓，D-He3 每安培一个（D-438）：更小的缓存装不下
                                 // 一个 tick 的 EU。一个能源仓为启动充能。
                                 .or(blocks(GTMachines.ENERGY_OUTPUT_HATCH[GTValues.HV]
                                         .getBlock())
@@ -80,9 +80,9 @@ public final class Tokamak {
                         .where('.', Predicates.any())
                         .build();
             })
-            .workableCasingModel(GTIAMod.id("block/casings/neutron_shield_casing"),
+            .workableCasingModel(TypeOmegaMod.id("block/casings/neutron_shield_casing"),
                     com.gregtechceu.gtceu.GTCEu.id("block/multiblock/fusion_reactor"))
-            .tooltipBuilder(GTIATooltips.lazy(ID))
+            .tooltipBuilder(TypeOmegaTooltips.lazy(ID))
             .register();
 
     private Tokamak() {}

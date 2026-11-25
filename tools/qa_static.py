@@ -1,4 +1,4 @@
-"""Small, dependency-free checks for resources shipped with the GTIACore mod."""
+"""Small, dependency-free checks for resources shipped with the TypeOmegaCore mod."""
 
 import json
 import struct
@@ -36,7 +36,7 @@ def check_languages() -> None:
 
 
 def check_overlays() -> None:
-    """Every machine overlay is a 16x16 RGBA PNG (the Catalytic Dehydrator set this rule; it left in GTIA-D-336)."""
+    """Every machine overlay is a 16x16 RGBA PNG (the Catalytic Dehydrator set this rule; it left in D-336)."""
     for path in MACHINE_TEXTURES.glob("*/overlay_*.png"):
         data = path.read_bytes()
         if data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR":
@@ -49,14 +49,14 @@ def check_overlays() -> None:
 def check_built_jar() -> None:
     jars = sorted((ROOT / "build/libs").glob("typeomega-*.jar"))
     if not jars:
-        raise ValueError("No built GTIA jar found")
+        raise ValueError("No built Type Omega jar found")
     with ZipFile(jars[-1]) as jar:
         metadata = tomllib.loads(jar.read("META-INF/mods.toml").decode("utf-8"))
         dependencies = {entry["modId"]: entry for entry in metadata["dependencies"]["typeomega"]}
         gtna = dependencies.get("gtna", {})
         if (gtna.get("mandatory") is not True or gtna.get("versionRange") != "[0.5.3,)"
                 or gtna.get("ordering") != "AFTER" or gtna.get("side") != "BOTH"):
-            raise ValueError("Distribution jar must require GTNA 0.5.3+ on both sides, loaded before GTIACore")
+            raise ValueError("Distribution jar must require GTNA 0.5.3+ on both sides, loaded before TypeOmegaCore")
         packed_lang = json.loads(jar.read("assets/typeomega/lang/en_us.json"))
         source_lang = json.loads((ROOT / "src/generated/resources/assets/typeomega/lang/en_us.json")
                                  .read_text(encoding="utf-8"))

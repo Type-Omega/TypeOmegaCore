@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Resources of the later eras and of the megastructures that keep a balance per owner (GTIA-D-312): causal debt,
+ * Resources of the later eras and of the megastructures that keep a balance per owner (D-312): causal debt,
  * negentropy, contained mass, research... One number per (resource, owner), kept with the world. Ψ and the Stellar
  * era's Δv keep their own stores.
  */
@@ -20,7 +20,7 @@ public final class EraStore extends SavedData {
     /** Owner key for values of the whole world (the negentropy stock taken, the end). */
     public static final java.util.UUID WORLD = new java.util.UUID(0, 0);
 
-    private static final String NAME = "gtia_era_store";
+    private static final String NAME = "typeomega_era_store";
     private final Map<String, Map<UUID, Double>> values = new HashMap<>();
 
     public static EraStore get(MinecraftServer server) {

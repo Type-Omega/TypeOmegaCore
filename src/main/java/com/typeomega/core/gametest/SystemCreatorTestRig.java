@@ -13,7 +13,7 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.PsiStore;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
@@ -53,7 +53,7 @@ final class SystemCreatorTestRig {
         try {
             MegaMachine.anyDimensionForTests = true;
             SystemCreatorMachine m = MegaTestRig.build(helper, SystemCreatorMachine.SHAPE,
-                    GTIAMegastructures.SYSTEM_CREATOR_DEF, 5, 10);
+                    TypeOmegaMegastructures.SYSTEM_CREATOR_DEF, 5, 10);
             var bus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
             var tank = (FluidHatchPartMachine) MegaTestRig.hatch(helper, m, 1,
                     GTMachines.FLUID_IMPORT_HATCH[GTValues.LuV]);
@@ -105,7 +105,7 @@ final class SystemCreatorTestRig {
 
     static void noTalonNoCreator(GameTestHelper helper) {
         SystemCreatorMachine m = MegaTestRig.build(helper, SystemCreatorMachine.SHAPE,
-                GTIAMegastructures.SYSTEM_CREATOR_DEF, 5, 11);
+                TypeOmegaMegastructures.SYSTEM_CREATOR_DEF, 5, 11);
         var shape = MegaShape.get(SystemCreatorMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "talons", "body"));
         helper.getLevel().setBlock(shape.world(m.getPos(), MegaTestRig.FRONT, c[0], c[1], c[2]),

@@ -3,7 +3,7 @@ package com.typeomega.core.integration.ae.interfaces;
 import appeng.helpers.InterfaceLogic;
 import appeng.helpers.InterfaceLogicHost;
 import appeng.util.ConfigInventory;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -69,7 +69,7 @@ final class InterfaceLogicTier {
         try {
             method.invoke(logic);
         } catch (ReflectiveOperationException e) {
-            GTIAMod.LOGGER.error("Tiered interface listener failed", e);
+            TypeOmegaMod.LOGGER.error("Tiered interface listener failed", e);
         }
     }
 

@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.system;
 
 /**
- * Stars of the star systems (GTIA-D-316), in solar units: mass M (M☉), luminosity L (L☉), radius R (R☉), effective
+ * Stars of the star systems (D-316), in solar units: mass M (M☉), luminosity L (L☉), radius R (R☉), effective
  * temperature T (K).
  *
  * <ul>

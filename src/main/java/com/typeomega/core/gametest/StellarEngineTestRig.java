@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.Blocks;
 
 import com.raishxn.gtna.api.capability.WirelessEnergyManager;
 import com.raishxn.gtna.common.data.NexusEnergyNetwork;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.StellarEraStore;
 import com.typeomega.core.mega.common.MegaCapture;
 import com.typeomega.core.mega.common.MegaMachine;
@@ -24,7 +24,7 @@ final class StellarEngineTestRig {
     private StellarEngineTestRig() {}
 
     private static StellarEngineMachine build(GameTestHelper helper, int phases, int slot) {
-        return MegaTestRig.build(helper, StellarEngineMachine.SHAPE, GTIAMegastructures.STELLAR_ENGINE_DEF, phases,
+        return MegaTestRig.build(helper, StellarEngineMachine.SHAPE, TypeOmegaMegastructures.STELLAR_ENGINE_DEF, phases,
                 slot);
     }
 

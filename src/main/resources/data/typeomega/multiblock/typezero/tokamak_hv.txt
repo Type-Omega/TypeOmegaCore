@@ -1,4 +1,4 @@
-# HV Tokamak, option C of GTIA-D-425: 23 x 17 x 27, 2771 blocks.
+# HV Tokamak, option C of D-425: 23 x 17 x 27, 2771 blocks.
 # D-shaped torus with 8 toroidal field coils, central solenoid, 2 poloidal rings, divertor, helium manifold,
 # 2 neutral beam injectors (back), cryostat cage and lid, shield wall (front, controller).
 # Aisles back to front (controller last), separated by a blank line; one line per layer from the ground up.

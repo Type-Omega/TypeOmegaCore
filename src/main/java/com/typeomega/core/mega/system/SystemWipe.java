@@ -5,7 +5,7 @@ import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.storage.LevelResource;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,13 +14,13 @@ import java.util.Comparator;
 import java.util.TreeSet;
 
 /**
- * Erasing a disintegrated star system's terrain (GTIA-D-330). Region files cannot be deleted while the server runs,
- * so the slot is written to {@code gtia_wipe.txt} in the world folder and its dimension folder is removed at the next
+ * Erasing a disintegrated star system's terrain (D-330). Region files cannot be deleted while the server runs,
+ * so the slot is written to {@code typeomega_wipe.txt} in the world folder and its dimension folder is removed at the next
  * start, before any level loads. Making a new star in the slot first cancels the wipe.
  */
 public final class SystemWipe {
 
-    private static final String FILE = "gtia_wipe.txt";
+    private static final String FILE = "typeomega_wipe.txt";
 
     private SystemWipe() {}
 
@@ -35,7 +35,7 @@ public final class SystemWipe {
                 for (String line : Files.readAllLines(file))
                     if (!line.isBlank()) out.add(Integer.parseInt(line.trim()));
         } catch (IOException | NumberFormatException e) {
-            GTIAMod.LOGGER.warn("Unreadable {}", file, e);
+            TypeOmegaMod.LOGGER.warn("Unreadable {}", file, e);
         }
         return out;
     }
@@ -45,7 +45,7 @@ public final class SystemWipe {
             if (slots.isEmpty()) Files.deleteIfExists(file);
             else Files.write(file, slots.stream().map(String::valueOf).toList());
         } catch (IOException e) {
-            GTIAMod.LOGGER.warn("Could not write {}", file, e);
+            TypeOmegaMod.LOGGER.warn("Could not write {}", file, e);
         }
     }
 
@@ -80,9 +80,9 @@ public final class SystemWipe {
                     try (var walk = Files.walk(dir)) {
                         walk.sorted(Comparator.reverseOrder()).forEach(p -> p.toFile().delete());
                     }
-                GTIAMod.LOGGER.info("Disintegrated system {} wiped: {}", slot + 1, dir);
+                TypeOmegaMod.LOGGER.info("Disintegrated system {} wiped: {}", slot + 1, dir);
             } catch (IOException e) {
-                GTIAMod.LOGGER.warn("Could not wipe {}", dir, e);
+                TypeOmegaMod.LOGGER.warn("Could not wipe {}", dir, e);
             }
         }
         write(f, new TreeSet<>());

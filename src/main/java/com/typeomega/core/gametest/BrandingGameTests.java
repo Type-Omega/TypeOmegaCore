@@ -14,8 +14,8 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaTooltips;
 import com.typeomega.core.data.ModNameLine;
 
 import java.io.InputStream;
@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
 
 /** What the player reads carries the Type Omega name, never the old GTIA one. */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class BrandingGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -39,7 +39,7 @@ public final class BrandingGameTests {
     public static void noVisibleTextUsesTheOldPackName(GameTestHelper h) {
         List<String> found = new ArrayList<>();
         for (String language : List.of("en_us", "pt_br", "zh_cn")) {
-            String path = "/assets/" + GTIAMod.MOD_ID + "/lang/" + language + ".json";
+            String path = "/assets/" + TypeOmegaMod.MOD_ID + "/lang/" + language + ".json";
             try (InputStream in = BrandingGameTests.class.getResourceAsStream(path)) {
                 h.assertTrue(in != null, "missing " + path);
                 JsonObject lang = JsonParser.parseReader(new InputStreamReader(in, StandardCharsets.UTF_8))
@@ -58,10 +58,10 @@ public final class BrandingGameTests {
     /** The tooltip names the mod as the mod list does (mods.toml displayName). */
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
     public static void tooltipModNameIsTheDisplayName(GameTestHelper h) {
-        String display = ModList.get().getModContainerById(GTIAMod.MOD_ID).orElseThrow().getModInfo()
+        String display = ModList.get().getModContainerById(TypeOmegaMod.MOD_ID).orElseThrow().getModInfo()
                 .getDisplayName();
-        h.assertTrue(GTIATooltips.MOD_NAME.equals(display),
-                "tooltip says " + GTIATooltips.MOD_NAME + ", mods.toml says " + display);
+        h.assertTrue(TypeOmegaTooltips.MOD_NAME.equals(display),
+                "tooltip says " + TypeOmegaTooltips.MOD_NAME + ", mods.toml says " + display);
         h.succeed();
     }
 
@@ -70,21 +70,21 @@ public final class BrandingGameTests {
     public static void multiblockTooltipNamesTheModOnce(GameTestHelper h) {
         int checked = 0;
         for (var definition : GTRegistries.MACHINES) {
-            if (!GTIAMod.MOD_ID.equals(definition.getId().getNamespace()) ||
+            if (!TypeOmegaMod.MOD_ID.equals(definition.getId().getNamespace()) ||
                     !(definition instanceof MultiblockMachineDefinition) || definition.getTooltipBuilder() == null) {
                 continue;
             }
             List<Component> lines = new ArrayList<>();
             definition.getTooltipBuilder().accept(ItemStack.EMPTY, lines);
-            if (lines.stream().noneMatch(l -> GTIATooltips.MOD_NAME.equals(l.getString()))) continue;
+            if (lines.stream().noneMatch(l -> TypeOmegaTooltips.MOD_NAME.equals(l.getString()))) continue;
             // EN: What EMI's ItemStackMixin appends at the end of every item tooltip.
             // PT: O que o ItemStackMixin do EMI acrescenta no fim de toda tooltip de item.
             // ZH: EMI 的 ItemStackMixin 在每个物品提示末尾添加的内容。
-            lines.add(Component.literal(GTIATooltips.MOD_NAME).withStyle(ChatFormatting.BLUE, ChatFormatting.ITALIC));
-            ModNameLine.keepOnce(lines, GTIATooltips.MOD_NAME);
-            long names = lines.stream().filter(l -> GTIATooltips.MOD_NAME.equals(l.getString())).count();
+            lines.add(Component.literal(TypeOmegaTooltips.MOD_NAME).withStyle(ChatFormatting.BLUE, ChatFormatting.ITALIC));
+            ModNameLine.keepOnce(lines, TypeOmegaTooltips.MOD_NAME);
+            long names = lines.stream().filter(l -> TypeOmegaTooltips.MOD_NAME.equals(l.getString())).count();
             h.assertTrue(names == 1, definition.getId() + " names the mod " + names + " times");
-            h.assertTrue(GTIATooltips.MOD_NAME.equals(lines.get(lines.size() - 1).getString()),
+            h.assertTrue(TypeOmegaTooltips.MOD_NAME.equals(lines.get(lines.size() - 1).getString()),
                     definition.getId() + " does not end with the mod name");
             checked++;
         }

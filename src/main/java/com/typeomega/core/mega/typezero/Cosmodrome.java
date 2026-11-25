@@ -11,16 +11,16 @@ import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 
 import net.minecraft.world.item.DyeColor;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIARecipeTypes;
-import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaRecipeTypes;
+import com.typeomega.core.data.TypeOmegaTooltips;
 
 import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
 
 /**
- * Mega 2 of Type 0, the Cosmodrome (GTIA-D-390, D-420, D-425 option C): a 23 x 18 x 23 amphitheatre mission control
+ * Mega 2 of Type 0, the Cosmodrome (D-390, D-420, D-425 option C): a 23 x 18 x 23 amphitheatre mission control
  * hall with two tracking dishes, a radome and a telemetry mast, linked to a Rocket Assembler within
- * {@link CosmodromeMachine#LINK_RANGE} blocks. Raises the team's cap to 0.99 (GTIA-D-389) and launches the Lunar Probe
+ * {@link CosmodromeMachine#LINK_RANGE} blocks. Raises the team's cap to 0.99 (D-389) and launches the Lunar Probe
  * whose survey opens the Moon.
  */
 public final class Cosmodrome {
@@ -30,11 +30,11 @@ public final class Cosmodrome {
     /** The layout, legend in {@code data/typeomega/multiblock/typezero/cosmodrome.txt}. */
     public static final String[][] AISLES = TypeZeroPattern.read(ID);
 
-    public static final MultiblockMachineDefinition DEFINITION = GTIAMod.REGISTRATE
+    public static final MultiblockMachineDefinition DEFINITION = TypeOmegaMod.REGISTRATE
             .multiblock(ID, CosmodromeMachine::new)
             .langValue("Cosmodrome")
             .rotationState(RotationState.NON_Y_AXIS)
-            .recipeType(GTIARecipeTypes.MISSION_CONTROL)
+            .recipeType(TypeOmegaRecipeTypes.MISSION_CONTROL)
             .recipeModifiers(CosmodromeMachine::requireLink, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK)
             .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
             .pattern(definition -> {
@@ -64,7 +64,7 @@ public final class Cosmodrome {
             })
             .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
                     GTCEu.id("block/multiblock/research_station"))
-            .tooltipBuilder(GTIATooltips.lazy(ID))
+            .tooltipBuilder(TypeOmegaTooltips.lazy(ID))
             .register();
 
     private Cosmodrome() {}

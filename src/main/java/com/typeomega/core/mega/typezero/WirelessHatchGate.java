@@ -17,16 +17,16 @@ import net.minecraftforge.fml.ModList;
 
 import com.raishxn.gtna.common.data.GTNAEnergyHatches;
 import com.raishxn.gtna.common.data.GTNAMaterials;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.util.Locale;
 import java.util.function.Consumer;
 
 /**
- * Wireless energy from the National Dispatch Center on (GTIA-D-401, D-419): the GTNA wireless energy and dynamo
+ * Wireless energy from the National Dispatch Center on (D-401, D-419): the GTNA wireless energy and dynamo
  * hatches made from a GTCEu hatch also take a Grid Transponder, which only the Dispatch Center makes. The higher
  * amperages are made from these, so the whole family is gated. GTNA's own recipes are replaced, not edited, since
- * the gate belongs to the pack (GTIA-D-376).
+ * the gate belongs to the pack (D-376).
  */
 public final class WirelessHatchGate {
 
@@ -86,7 +86,7 @@ public final class WirelessHatchGate {
                         var out = wireless[tier][ampExp];
                         int exp = ampExp;
                         action.accept(id, provider -> GTRecipeTypes.ASSEMBLER_RECIPES
-                                .recipeBuilder(GTIAMod.id("wireless/" + id))
+                                .recipeBuilder(TypeOmegaMod.id("wireless/" + id))
                                 .inputItems(hatch.asStack(), exp <= 2 ? 2 : 1)
                                 .inputItems(sensor, Math.min(16, 2 << Math.min(exp, 3)))
                                 .inputItems(TagPrefix.plate, GTMaterials.EnderPearl, Math.min(16, 2 + 2 * exp))

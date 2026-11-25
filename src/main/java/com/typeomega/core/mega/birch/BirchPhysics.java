@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.birch;
 
 /**
- * Physics of the Birch World (GTIA-D-331), the Causal era (GTIA-D-312): shells round a black hole whose rotating
+ * Physics of the Birch World (D-331), the Causal era (D-312): shells round a black hole whose rotating
  * interior allows closed timelike curves.
  *
  * <ul>

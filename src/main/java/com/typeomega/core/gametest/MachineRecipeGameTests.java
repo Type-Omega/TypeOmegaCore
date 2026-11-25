@@ -13,19 +13,19 @@ import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-/** Every GTIA machine can be made, and so can the items the bee line needs from Productive Bees. */
+/** Every Type Omega machine can be made, and so can the items the bee line needs from Productive Bees. */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class MachineRecipeGameTests {
 
-    /** Productive Bees' recipes are dropped (GTIA-D-268); these must come from GTIA's own. */
+    /** Productive Bees' recipes are dropped (D-268); these must come from Type Omega's own. */
     private static final List<String> BEE_ITEMS = List.of("productivebees:bee_cage", "productivebees:honey_treat");
 
     private MachineRecipeGameTests() {}
@@ -43,7 +43,7 @@ public final class MachineRecipeGameTests {
         }
         Set<String> missing = new TreeSet<>();
         for (var definition : GTRegistries.MACHINES.values()) {
-            if (GTIAMod.MOD_ID.equals(definition.getId().getNamespace()) && !made.contains(definition.getItem()))
+            if (TypeOmegaMod.MOD_ID.equals(definition.getId().getNamespace()) && !made.contains(definition.getItem()))
                 missing.add(definition.getId().toString());
         }
         for (String id : BEE_ITEMS) {

@@ -3,11 +3,11 @@ package com.typeomega.core.chem;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.DISABLE_DECOMPOSITION;
 
-/** Materials of the HV chemistry lines (GTIA-D-281). */
+/** Materials of the HV chemistry lines (D-281). */
 public final class ChemMaterials {
 
     public static Material TRICHLOROSILANE;
@@ -16,13 +16,13 @@ public final class ChemMaterials {
     private ChemMaterials() {}
 
     public static void register() {
-        TRICHLOROSILANE = new Material.Builder(GTIAMod.id("trichlorosilane"))
+        TRICHLOROSILANE = new Material.Builder(TypeOmegaMod.id("trichlorosilane"))
                 .liquid()
                 .color(0xD8E4E0)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(GTMaterials.Silicon, 1, GTMaterials.Hydrogen, 1, GTMaterials.Chlorine, 3)
                 .buildAndRegister();
-        POLYSILICON = new Material.Builder(GTIAMod.id("polysilicon"))
+        POLYSILICON = new Material.Builder(TypeOmegaMod.id("polysilicon"))
                 .dust()
                 .color(0x5A6470)
                 .flags(DISABLE_DECOMPOSITION)

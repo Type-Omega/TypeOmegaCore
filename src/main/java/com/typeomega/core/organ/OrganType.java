@@ -1,7 +1,7 @@
 package com.typeomega.core.organ;
 
 /**
- * Body slots of the organ system, ported from GTO 0.6 (GTIA-D-279). Wings take eight slots and are used one after the
+ * Body slots of the organ system, ported from GTO 0.6 (D-279). Wings take eight slots and are used one after the
  * other; every other type takes one organ, whose tier counts for the organ set.
  */
 public enum OrganType {

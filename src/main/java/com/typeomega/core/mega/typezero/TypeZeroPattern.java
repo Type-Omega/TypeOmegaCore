@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * The block layout of a Type 0 megastructure, read from {@code data/typeomega/multiblock/typezero/<id>.txt}
- * (GTIA-D-425). The file holds the aisles from the back to the front (controller), separated by a blank line; in each
+ * (D-425). The file holds the aisles from the back to the front (controller), separated by a blank line; in each
  * aisle, one line per layer from the ground up, as in {@code FactoryBlockPattern.start()}. Lines starting with
  * {@code #} are comments.
  */

@@ -25,7 +25,7 @@ import static com.raishxn.gtna.common.machine.multiblock.originals.ui.OriginalSc
  */
 public final class StellarEngineScreen {
 
-    private static final Theme T = new Theme("gtia_engine", 0xFF7FD8FF, 0xFFE4F6FF, 0xFF0F1418, 0xFF3A5A6E,
+    private static final Theme T = new Theme("typeomega_engine", 0xFF7FD8FF, 0xFFE4F6FF, 0xFF0F1418, 0xFF3A5A6E,
             0xFF98AEBC);
     private static final int PLASMA = 0xFFBFE6FF, MANUAL_LINES = 16, PAGE_LINES = 4;
 

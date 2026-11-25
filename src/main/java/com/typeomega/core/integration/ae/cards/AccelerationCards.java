@@ -17,7 +17,7 @@ import appeng.core.definitions.AEParts;
 import appeng.core.localization.GuiText;
 import com.glodblock.github.extendedae.common.EPPItemAndBlock;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -31,9 +31,9 @@ public final class AccelerationCards {
 
     static {
         for (AccelerationTier tier : AccelerationTier.values()) {
-            CARDS.put(tier, GTIAMod.REGISTRATE.item(tier.id(), p -> new AccelerationCardItem(p, tier))
+            CARDS.put(tier, TypeOmegaMod.REGISTRATE.item(tier.id(), p -> new AccelerationCardItem(p, tier))
                     .lang("Acceleration Card (" + tier.name() + ")")
-                    .model((ctx, prov) -> prov.generated(ctx, GTIAMod.id("item/" + tier.id())))
+                    .model((ctx, prov) -> prov.generated(ctx, TypeOmegaMod.id("item/" + tier.id())))
                     .register());
         }
     }
@@ -83,7 +83,7 @@ public final class AccelerationCards {
 
     public static void addRecipes(Consumer<FinishedRecipe> provider) {
         for (AccelerationTier tier : AccelerationTier.values()) {
-            VanillaRecipeHelper.addShapedRecipe(provider, true, GTIAMod.id(tier.id()), new ItemStack(card(tier)),
+            VanillaRecipeHelper.addShapedRecipe(provider, true, TypeOmegaMod.id(tier.id()), new ItemStack(card(tier)),
                     " A ", "ACA", " A ",
                     'A', AEItems.SPEED_CARD.asItem(), 'C', tier.circuit);
         }

@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.nidavellir;
 
 /**
- * Physics of the Nidavellir Hyperforge (GTIA-D-323): alloys pressed with degenerate matter.
+ * Physics of the Nidavellir Hyperforge (D-323): alloys pressed with degenerate matter.
  *
  * <ul>
  * <li>Each batch is pressed under a layer of neutronium (degenerate neutron matter, ~4 × 10¹⁷ kg/m³): higher

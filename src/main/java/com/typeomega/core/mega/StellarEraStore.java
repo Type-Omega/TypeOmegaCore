@@ -11,12 +11,12 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * The Stellar era (GTIA-D-312, D-315): how far each owner's Stellar Engine has moved the Nexus System, as the Δv it
+ * The Stellar era (D-312, D-315): how far each owner's Stellar Engine has moved the Nexus System, as the Δv it
  * gathered (km/s). The farthest region reached never goes back; other megastructures read its bonuses.
  */
 public final class StellarEraStore extends SavedData {
 
-    private static final String NAME = "gtia_stellar_era";
+    private static final String NAME = "typeomega_stellar_era";
     private final Map<UUID, Double> dv = new HashMap<>();
 
     public static StellarEraStore get(MinecraftServer server) {

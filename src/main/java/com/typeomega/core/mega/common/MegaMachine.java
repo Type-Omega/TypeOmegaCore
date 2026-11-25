@@ -14,11 +14,11 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 
 import com.raishxn.gtna.common.machine.multiblock.originals.OriginalMachine;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import org.jetbrains.annotations.VisibleForTesting;
 
 /**
- * Base of the megastructures (GTIA-D-311, D-316): a pattern in five phases from {@link MegaShape}, where phases 2 to
+ * Base of the megastructures (D-311, D-316): a pattern in five phases from {@link MegaShape}, where phases 2 to
  * 5 may be missing (their places accept air) and a phase counts once all its blocks and those before it are in
  * place; moving pieces leave the world while it runs ({@link MegaCapture}); built on GTNA's originals (incremental
  * structure checks, Nexus network power).
@@ -29,7 +29,7 @@ public abstract class MegaMachine extends OriginalMachine implements IMachineLif
             OriginalMachine.MANAGED_FIELD_HOLDER);
 
     public static final ResourceKey<Level> NEXUS_SYSTEM = ResourceKey.create(Registries.DIMENSION,
-            GTIAMod.id("nexus_system"));
+            TypeOmegaMod.id("nexus_system"));
     /** Seconds between phase counts while it runs (a count reads every position of the structure). */
     static final int RECOUNT_SECONDS = 30;
 
@@ -64,7 +64,7 @@ public abstract class MegaMachine extends OriginalMachine implements IMachineLif
         return MANAGED_FIELD_HOLDER;
     }
 
-    /** Name of the data folder under {@code gtia_mega/}. */
+    /** Name of the data folder under {@code typeomega_mega/}. */
     public abstract String shapeName();
 
     public MegaShape shape() {
@@ -202,7 +202,7 @@ public abstract class MegaMachine extends OriginalMachine implements IMachineLif
         return fill(stack, com.gregtechceu.gtceu.api.capability.recipe.IO.OUT);
     }
 
-    /** Dev aid ({@code /gtia_dev_fill}): puts a fluid into the input hatches; returns what did not fit. */
+    /** Dev aid ({@code /typeomega_dev_fill}): puts a fluid into the input hatches; returns what did not fit. */
     @VisibleForTesting
     public long fillInputForTests(net.minecraftforge.fluids.FluidStack stack) {
         return fill(stack, com.gregtechceu.gtceu.api.capability.recipe.IO.IN);

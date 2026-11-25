@@ -18,7 +18,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.mega.common.MegaCapture;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.system.StarPhysics;
@@ -30,7 +30,7 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * Controller of the Fusion Suppressor (GTIA-D-320): damps the fusion of the star of its system and reads its
+ * Controller of the Fusion Suppressor (D-320): damps the fusion of the star of its system and reads its
  * neutrinos for research (GTNA's knowledge points, area typeomega:astrophysics). A star of 8 M☉ or more, held
  * suppressed
  * until its core gives way, ends as the player chooses: a supernova (r-process dust, a neutron star left) or a
@@ -211,9 +211,9 @@ public class FusionSuppressorMachine extends MegaMachine {
         research += points;
         try {
             com.raishxn.gtna.research.KnowledgeService.addPoints(level.getServer(), networkOwner,
-                    GTIAMod.id("astrophysics"), points);
+                    TypeOmegaMod.id("astrophysics"), points);
         } catch (RuntimeException e) {
-            GTIAMod.LOGGER.warn("GTNA knowledge points not added", e);
+            TypeOmegaMod.LOGGER.warn("GTNA knowledge points not added", e);
         }
     }
 

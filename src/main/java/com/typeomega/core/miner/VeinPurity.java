@@ -1,6 +1,6 @@
 package com.typeomega.core.miner;
 
-/** Purity of a bedrock vein (GTIA-D-310): the raw ores one Entangled Miner operation takes from it. */
+/** Purity of a bedrock vein (D-310): the raw ores one Entangled Miner operation takes from it. */
 public enum VeinPurity {
 
     IMPURE(1),

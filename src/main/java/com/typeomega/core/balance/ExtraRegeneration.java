@@ -7,9 +7,9 @@ import net.minecraftforge.event.TickEvent;
 public final class ExtraRegeneration {
 
     public static final int PERIOD = 50;
-    // EN: GTO's Normal values: from food 15, heal 2 half hearts every 2.5 s (GTIA-D-280, D-436).
-    // PT: Valores do Normal do GTO: a partir de fome 15, cura 2 meios corações a cada 2,5 s (GTIA-D-280, D-436).
-    // ZH: GTO 普通模式数值：饱食度 15 起，每 2.5 秒恢复 2 点生命（半颗心）（GTIA-D-280、D-436）。
+    // EN: GTO's Normal values: from food 15, heal 2 half hearts every 2.5 s (D-280, D-436).
+    // PT: Valores do Normal do GTO: a partir de fome 15, cura 2 meios corações a cada 2,5 s (D-280, D-436).
+    // ZH: GTO 普通模式数值：饱食度 15 起，每 2.5 秒恢复 2 点生命（半颗心）（D-280、D-436）。
     public static final int FOOD_THRESHOLD = 15;
     public static final float HEAL = 2;
 

@@ -19,15 +19,15 @@ import net.minecraftforge.items.ItemStackHandler;
 import java.util.Map;
 import java.util.UUID;
 
-/** Applies the effects of a player's organs once per second (GTIA-D-279, same effects as GTO 0.6). */
+/** Applies the effects of a player's organs once per second (D-279, same effects as GTO 0.6). */
 public final class OrganEffects {
 
     public static final int ARMOR_PER_TIER = 5;
     public static final double ARM_REACH = 4;
     private static final int PERIOD = 20;
     private static final float VANILLA_FLY_SPEED = 0.05F;
-    private static final String FLIGHT_FLAG = "gtia_organ_flight";
-    private static final String PLANET_HITS = "gtia_planet_hits";
+    private static final String FLIGHT_FLAG = "typeomega_organ_flight";
+    private static final String PLANET_HITS = "typeomega_planet_hits";
     private static final UUID SPEED_ID = UUID.fromString("5b0d4b32-9a3e-4a8e-8f43-7f5a3c1d0a01");
     private static final UUID ARMOR_ID = UUID.fromString("5b0d4b32-9a3e-4a8e-8f43-7f5a3c1d0a02");
     private static final UUID TOUGHNESS_ID = UUID.fromString("5b0d4b32-9a3e-4a8e-8f43-7f5a3c1d0a03");
@@ -41,9 +41,9 @@ public final class OrganEffects {
     private static final Map<String, Integer> PLANET_TIERS = Map.of("ad_astra:moon", 1, "ad_astra:mars", 2,
             "ad_astra:venus", 3, "ad_astra:mercury", 3);
     private static final int PLANET_HITS_TO_DIE = 40;
-    // EN: Planets never hurt players for their organ set (GTIA-D-338); the GTO port stays for a later decision.
-    // PT: Planetas nunca ferem o jogador pelo conjunto de órgãos (GTIA-D-338); o port do GTO fica para decisão futura.
-    // ZH: 星球不会因器官套装等级伤害玩家（GTIA-D-338）；GTO 移植逻辑保留待日后决定。
+    // EN: Planets never hurt players for their organ set (D-338); the GTO port stays for a later decision.
+    // PT: Planetas nunca ferem o jogador pelo conjunto de órgãos (D-338); o port do GTO fica para decisão futura.
+    // ZH: 星球不会因器官套装等级伤害玩家（D-338）；GTO 移植逻辑保留待日后决定。
     static final boolean PLANETS_NEED_ORGANS = false;
 
     private OrganEffects() {}
@@ -170,6 +170,6 @@ public final class OrganEffects {
         AttributeModifier current = instance.getModifier(id);
         if (current != null && current.getAmount() == amount) return;
         if (current != null) instance.removeModifier(id);
-        if (amount != 0) instance.addTransientModifier(new AttributeModifier(id, "gtia_organs", amount, operation));
+        if (amount != 0) instance.addTransientModifier(new AttributeModifier(id, "typeomega_organs", amount, operation));
     }
 }

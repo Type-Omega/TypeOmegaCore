@@ -6,8 +6,8 @@ import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMa
 import com.typeomega.core.kardashev.KardashevMegas;
 
 /**
- * A megastructure of Type 0 (GTIA-D-390): an HV multiblock that counts on the Kardashev meter of its owner's team
- * the first time it forms (GTIA-D-389).
+ * A megastructure of Type 0 (D-390): an HV multiblock that counts on the Kardashev meter of its owner's team
+ * the first time it forms (D-389).
  */
 public class TypeZeroMegaMachine extends WorkableElectricMultiblockMachine {
 

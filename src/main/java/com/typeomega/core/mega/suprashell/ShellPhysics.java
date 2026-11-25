@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.suprashell;
 
 /**
- * Physics of the Black Hole Suprashell (GTIA-D-329): a shell world held static at radius r round a black hole, r in
+ * Physics of the Black Hole Suprashell (D-329): a shell world held static at radius r round a black hole, r in
  * Schwarzschild radii.
  *
  * <ul>

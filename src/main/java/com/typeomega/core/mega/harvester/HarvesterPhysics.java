@@ -4,7 +4,7 @@ import com.typeomega.core.mega.suppressor.SuppressorPhysics;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 
 /**
- * Physics of the Stellar Harvester (GTIA-D-328): a star's core heated until it burns its life in hours.
+ * Physics of the Stellar Harvester (D-328): a star's core heated until it burns its life in hours.
  *
  * <ul>
  * <li>Fusion rate climbs steeply with core temperature: ~T^4 for the proton-proton chain (below ~1.3 M☉), ~T^16 for

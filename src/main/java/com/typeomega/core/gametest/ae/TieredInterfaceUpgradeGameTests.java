@@ -16,7 +16,7 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import appeng.core.definitions.AEParts;
 import appeng.helpers.InterfaceLogicHost;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.integration.ae.interfaces.InterfaceTier;
 import com.typeomega.core.integration.ae.interfaces.InterfaceTiers;
 import com.typeomega.core.integration.ae.interfaces.TieredInterfaceEntity;
@@ -27,7 +27,7 @@ import com.typeomega.core.integration.ae.interfaces.TieredInterfacePart;
  * storage and cards; and the cases where nothing happens.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class TieredInterfaceUpgradeGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";

@@ -5,8 +5,8 @@ import com.gregtechceu.gtceu.api.GTValues;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 
-import com.typeomega.core.data.GTIATooltips;
-import com.typeomega.core.data.rocket.GTIARocketRecipes;
+import com.typeomega.core.data.TypeOmegaTooltips;
+import com.typeomega.core.data.rocket.TypeOmegaRocketRecipes;
 import com.typeomega.core.miner.FragmentCollectorLogic;
 import com.typeomega.core.processing.TierParallel;
 import com.typeomega.lib.lang.Tr;
@@ -15,10 +15,10 @@ import com.typeomega.lib.tooltip.TooltipRow;
 
 import java.util.List;
 
-import static com.typeomega.core.data.GTIATooltips.finish;
-import static com.typeomega.core.data.GTIATooltips.own;
-import static com.typeomega.core.data.GTIATooltips.shared;
-import static com.typeomega.core.data.GTIATooltips.start;
+import static com.typeomega.core.data.TypeOmegaTooltips.finish;
+import static com.typeomega.core.data.TypeOmegaTooltips.own;
+import static com.typeomega.core.data.TypeOmegaTooltips.shared;
+import static com.typeomega.core.data.TypeOmegaTooltips.start;
 import static com.typeomega.lib.tooltip.TooltipArg.emphasis;
 import static com.typeomega.lib.tooltip.TooltipArg.highlight;
 import static com.typeomega.lib.tooltip.TooltipArg.value;
@@ -29,14 +29,14 @@ public final class ProcessingTooltips {
     private ProcessingTooltips() {}
 
     public static void register() {
-        GTIATooltips.register("large_furnace", ProcessingTooltips::largeFurnace);
-        GTIATooltips.register("ore_processing_plant", ProcessingTooltips::orePlant);
+        TypeOmegaTooltips.register("large_furnace", ProcessingTooltips::largeFurnace);
+        TypeOmegaTooltips.register("ore_processing_plant", ProcessingTooltips::orePlant);
         for (String id : List.of("processing_plus", "assembling_plus", "separating_plus", "mixing_plus")) {
-            GTIATooltips.register(id, () -> plus(id));
+            TypeOmegaTooltips.register(id, () -> plus(id));
         }
-        GTIATooltips.register("rocket_assembler", ProcessingTooltips::rocketAssembler);
-        GTIATooltips.register("fragment_collector", ProcessingTooltips::fragmentCollector);
-        GTIATooltips.register("large_fragment_collector", ProcessingTooltips::largeFragmentCollector);
+        TypeOmegaTooltips.register("rocket_assembler", ProcessingTooltips::rocketAssembler);
+        TypeOmegaTooltips.register("fragment_collector", ProcessingTooltips::fragmentCollector);
+        TypeOmegaTooltips.register("large_fragment_collector", ProcessingTooltips::largeFragmentCollector);
     }
 
     static Component parallels(int amount) {
@@ -95,8 +95,8 @@ public final class ProcessingTooltips {
         var b = start("rocket_assembler")
                 .line(own(id, "purpose"))
                 .separator()
-                .table(rocket(own(id, "tier_1"), GTIARocketRecipes.TIER_1_EUT, GTIARocketRecipes.TIER_1_TICKS),
-                        rocket(own(id, "tier_2"), GTIARocketRecipes.TIER_2_EUT, GTIARocketRecipes.TIER_2_TICKS))
+                .table(rocket(own(id, "tier_1"), TypeOmegaRocketRecipes.TIER_1_EUT, TypeOmegaRocketRecipes.TIER_1_TICKS),
+                        rocket(own(id, "tier_2"), TypeOmegaRocketRecipes.TIER_2_EUT, TypeOmegaRocketRecipes.TIER_2_TICKS))
                 .separator()
                 .line(own(id, "pad"), highlight("3 x 3"))
                 .line(shared("overclock"))

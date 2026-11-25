@@ -55,11 +55,11 @@ Core mod of the Type Omega modpack: materials, processing chains, megastructures
     [[dependencies.${mod_id}]]
         modId = "typeomegalib"
         mandatory = true
-        versionRange = "[${gtialib_version},)"
+        versionRange = "[${typeomegalib_version},)"
         ordering = "AFTER"
         side = "BOTH"
 
-    # Optional: loaded after Productive Bees so GTIA's data turns its nests off (GTIA-D-259).
+    # Optional: loaded after Productive Bees so Type Omega's data turns its nests off (D-259).
     [[dependencies.${mod_id}]]
         modId = "productivebees"
         mandatory = false

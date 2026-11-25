@@ -1,7 +1,7 @@
 package com.typeomega.core.processing;
 
 /**
- * Shapes approved on 2026-11-11 (GTIA-D-369), generated from design/estudos/fusao_f3/designs.py (lf_c, op_b, pf_c).
+ * Shapes approved on 2026-11-11 (D-369), generated from design/estudos/fusao_f3/designs.py (lf_c, op_b, pf_c).
  * Back aisle to front aisle; one string per layer from the ground up; '@' controller, '.' anything.
  */
 final class ProcessingShapes {

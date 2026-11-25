@@ -13,7 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 import com.typeomega.core.mega.system.StarSystems;
@@ -21,7 +21,7 @@ import com.typeomega.core.mega.system.StarSystems;
 import java.util.List;
 
 /**
- * Controller of the HRAE-MC (GTIA-D-322): a power plant around the black hole of its system. Matter fed from the
+ * Controller of the HRAE-MC (D-322): a power plant around the black hole of its system. Matter fed from the
  * hatches feeds the accretion disk (η by the hole's spin, capped by Eddington) and spins the hole up; the Penrose
  * ring takes the spin's energy and slows it; the polar bells catch the jets; the antennas turn it all into research.
  */
@@ -135,9 +135,9 @@ public class HraeMachine extends MegaMachine {
             research += points;
             try {
                 com.raishxn.gtna.research.KnowledgeService.addPoints(level.getServer(), networkOwner,
-                        GTIAMod.id("astrophysics"), points);
+                        TypeOmegaMod.id("astrophysics"), points);
             } catch (RuntimeException e) {
-                GTIAMod.LOGGER.warn("GTNA knowledge points not added", e);
+                TypeOmegaMod.LOGGER.warn("GTNA knowledge points not added", e);
             }
         }
         view = new double[] { mass, star.spin, HraePhysics.efficiency(star.spin), HraePhysics.isco(star.spin),

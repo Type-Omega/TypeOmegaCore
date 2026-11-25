@@ -23,7 +23,7 @@ import com.typeomega.core.mega.system.StarSystems;
 import java.util.List;
 
 /**
- * Controller of the Hyperstructural Assembly Yard (GTIA-D-326): runs Assembly Line and Assembler recipes on as many
+ * Controller of the Hyperstructural Assembly Yard (D-326): runs Assembly Line and Assembler recipes on as many
  * slipways as the player opens, at a rate set by the star's light.
  */
 public class AssemblyYardMachine extends MegaMachine {
@@ -104,7 +104,7 @@ public class AssemblyYardMachine extends MegaMachine {
     /** Half the EU for a recipe that makes a megastructure controller. */
     public static double discount(com.gregtechceu.gtceu.api.recipe.GTRecipe recipe) {
         for (var out : com.gregtechceu.gtceu.api.recipe.RecipeHelper.getOutputItems(recipe))
-            if (com.typeomega.core.mega.GTIAMegastructures.isController(out)) return YardPhysics.MEGA_DISCOUNT;
+            if (com.typeomega.core.mega.TypeOmegaMegastructures.isController(out)) return YardPhysics.MEGA_DISCOUNT;
         return 1;
     }
 

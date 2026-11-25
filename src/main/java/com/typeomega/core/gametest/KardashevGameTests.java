@@ -6,7 +6,7 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.kardashev.KardashevData;
 import com.typeomega.core.kardashev.KardashevLedger;
 import com.typeomega.core.kardashev.KardashevMeter;
@@ -15,9 +15,9 @@ import com.typeomega.core.kardashev.KardashevText;
 
 import java.util.UUID;
 
-/** Kardashev Meter (GTIA-D-372, D-380, D-386, D-389, D-406): the tier table, the caps, the window and the sources. */
+/** Kardashev Meter (D-372, D-380, D-386, D-389, D-406): the tier table, the caps, the window and the sources. */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class KardashevGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -45,7 +45,7 @@ public final class KardashevGameTests {
         expect(h, 5.0 / 3, KardashevScale.rawK(32_768), "1 A LuV");
         expect(h, 2.5, KardashevScale.rawK(1_048_576), "half way ZPM to UEV in log4");
         expect(h, 13.0 / 3, KardashevScale.rawK(2_147_483_648.0), "1 A MAX, past OpV on the last slope");
-        // The 0,1 reading quest: about 28 mB/t of steam is K 0.10 (GTIA-D-389).
+        // The 0,1 reading quest: about 28 mB/t of steam is K 0.10 (D-389).
         h.assertTrue(KardashevScale.rawHundredths(KardashevScale.steamToEu(28)) == 10, "28 mB/t of steam is K 0.10");
         h.assertTrue(KardashevScale.rawK(600) < KardashevScale.rawK(601), "K grows with power");
         h.succeed();
@@ -121,8 +121,8 @@ public final class KardashevGameTests {
     @GameTest(template = TEMPLATE, batch = "kardashev", timeoutTicks = 20)
     public static void wirelessNetworksReportToTheLedger(GameTestHelper h) {
         h.assertTrue(KardashevMeter.BLOCK.get().asItem() != net.minecraft.world.item.Items.AIR, "meter has an item");
-        h.assertTrue(h.getLevel().getServer().getRecipeManager().byKey(GTIAMod.id("kardashev_meter")).isPresent(),
-                "meter has its crafting recipe (GTIA-D-406)");
+        h.assertTrue(h.getLevel().getServer().getRecipeManager().byKey(TypeOmegaMod.id("kardashev_meter")).isPresent(),
+                "meter has its crafting recipe (D-406)");
         if (!ModList.get().isLoaded("gtna")) {
             h.succeed();
             return;

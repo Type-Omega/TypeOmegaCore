@@ -13,8 +13,8 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIAAlloys;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaAlloys;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -23,17 +23,17 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 /**
- * EN: GTNH-style changes to the GTCEu electrolyzer decompositions (GTIA-D-304). Silicates and clays cost MV
+ * EN: GTNH-style changes to the GTCEu electrolyzer decompositions (D-304). Silicates and clays cost MV
  * (120 EU/t); aluminosilicates and ruby give Alumina instead of Aluminium, which then goes through the Hall-Héroult
  * Cell; bastnasite gives Rare Earth instead of pure cerium; lepidolite, the LV fluorine source, drops to 30 EU/t
- * (GTIA-D-408). Same formula as GTCEu's DecompositionRecipeHandler.
- * PT: Mudanças no estilo do GTNH nas decomposições do eletrolisador do GTCEu (GTIA-D-304). Silicatos e argilas
+ * (D-408). Same formula as GTCEu's DecompositionRecipeHandler.
+ * PT: Mudanças no estilo do GTNH nas decomposições do eletrolisador do GTCEu (D-304). Silicatos e argilas
  * passam a MV (120 EU/t); aluminossilicatos e rubi dão Alumina no lugar de Alumínio, que segue para a Hall-Héroult;
  * bastnasita dá Rare Earth em vez de cério puro; a lepidolita, fonte de flúor do LV, desce para 30 EU/t
- * (GTIA-D-408). Mesma fórmula do DecompositionRecipeHandler do GTCEu.
- * ZH: 仿照 GTNH 修改 GTCEu 电解机的分解配方 (GTIA-D-304)。硅酸盐和黏土改为 MV (120 EU/t); 铝硅酸盐和红宝石
+ * (D-408). Mesma fórmula do DecompositionRecipeHandler do GTCEu.
+ * ZH: 仿照 GTNH 修改 GTCEu 电解机的分解配方 (D-304)。硅酸盐和黏土改为 MV (120 EU/t); 铝硅酸盐和红宝石
  * 产出氧化铝而不是铝, 再送入霍尔-埃鲁电解槽; 氟碳铈矿产出稀土而不是纯铈; 锂云母作为 LV 的氟来源降为 30 EU/t
- * (GTIA-D-408)。公式与 GTCEu 的分解配方相同。
+ * (D-408)。公式与 GTCEu 的分解配方相同。
  */
 public final class ElectrolyzerRebalance {
 
@@ -95,7 +95,7 @@ public final class ElectrolyzerRebalance {
             input *= scale;
             dusts.replaceAll((m, n) -> n * scale);
             fluids.replaceAll((m, mb) -> mb * scale);
-            dusts.merge(GTIAAlloys.ALUMINA, oxygen / 3000, Long::sum);
+            dusts.merge(TypeOmegaAlloys.ALUMINA, oxygen / 3000, Long::sum);
             fluids.computeIfPresent(GTMaterials.Oxygen, (m, mb) -> Math.max(0, mb - oxygen));
             fluids.values().removeIf(mb -> mb == 0);
         }
@@ -112,7 +112,7 @@ public final class ElectrolyzerRebalance {
         List<FluidStack> outFluids = new ArrayList<>();
         fluids.forEach((m, mb) -> outFluids.add(m.getFluid((int) (mb / d))));
         GTRecipeTypes.ELECTROLYZER_RECIPES
-                .recipeBuilder(GTIAMod.id("decomposition_electrolyzing_" + material.getName()))
+                .recipeBuilder(TypeOmegaMod.id("decomposition_electrolyzing_" + material.getName()))
                 .inputItems(TagPrefix.dust, material, (int) (input / d))
                 .outputItems(outItems.toArray(ItemStack[]::new))
                 .outputFluids(outFluids.toArray(FluidStack[]::new))

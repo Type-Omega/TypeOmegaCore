@@ -5,16 +5,16 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Quasi-Stellar Obliterator (GTIA-D-332): charge, ceiling, shot sizes and yield; it fires and harvests
+ * The Quasi-Stellar Obliterator (D-332): charge, ceiling, shot sizes and yield; it fires and harvests
  * negentropy, and with the world's stock spent the next shot ends the game; without the cage it does not form.
  * Slots 32, 33.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class QsoGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -22,8 +22,8 @@ public final class QsoGameTests {
     private QsoGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.QSO_DEF != null) return false;
-        GTIAMod.LOGGER.warn("QSO not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.QSO_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("QSO not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

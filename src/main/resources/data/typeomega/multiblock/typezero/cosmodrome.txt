@@ -1,4 +1,4 @@
-# Cosmodrome, option C of GTIA-D-425: 23 x 18 x 23, 1856 blocks.
+# Cosmodrome, option C of D-425: 23 x 18 x 23, 1856 blocks.
 # Amphitheatre control hall (front), two tracking dishes, 7-block radome and 16-block telemetry mast.
 # Aisles back to front (controller last), separated by a blank line; one line per layer from the ground up.
 # C clean stainless casing (hatches), S light concrete, W console casing (rows of consoles), L lamp (trajectory

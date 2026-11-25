@@ -19,7 +19,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.lib.lang.Tr;
 import com.typeomega.lib.ui.DisplaySlots;
 import com.typeomega.lib.ui.IllustratedPanel;
@@ -36,13 +36,13 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * The illustrated screen of the HV Tokamak (GTIA-D-435, U5): the cutaway torus with the plasma, the fuel tanks on
+ * The illustrated screen of the HV Tokamak (D-435, U5): the cutaway torus with the plasma, the fuel tanks on
  * the left feeding it, the exhaust on the right, and under it Total, Output, Time, the start-up charge and the
  * ignition temperature. The EMI page ({@code setRecipeUI}) and the machine tab share the layout and the art.
  */
 public final class TokamakScreen {
 
-    public static final ResourceLocation ART = GTIAMod.id("textures/gui/recipe/tokamak_fusion.png");
+    public static final ResourceLocation ART = TypeOmegaMod.id("textures/gui/recipe/tokamak_fusion.png");
 
     /** Fuel tanks on the left, lithium under them, exhaust on the right; the pipes of the art end at these slots. */
     public static final PanelLayout LAYOUT = PanelLayout.builder(160, 80).art(ART)
@@ -77,7 +77,7 @@ public final class TokamakScreen {
 
     private static Tr text(String id, String en, String pt, String zh) {
         var tr = Tr.of("typeomega.ui.tokamak." + id, en, pt, zh);
-        GTIAMod.REGISTRATE.addRawLang(tr.key(), en);
+        TypeOmegaMod.REGISTRATE.addRawLang(tr.key(), en);
         return tr;
     }
 

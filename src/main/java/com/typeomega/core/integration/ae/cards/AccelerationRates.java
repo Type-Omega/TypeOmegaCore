@@ -6,7 +6,7 @@ import appeng.core.definitions.AEItems;
 import java.util.function.IntToLongFunction;
 
 /**
- * What Acceleration Cards (II) to (V) do (GTIA-D-442). They speed up the transfer machines of AE2 and ExtendedAE: the
+ * What Acceleration Cards (II) to (V) do (D-442). They speed up the transfer machines of AE2 and ExtendedAE: the
  * import and export buses (items per operation round, per tick) and the IO ports (items moved per tick). Every card
  * counts as its multiplier of an AE2 card, and the machine's own table is read for the number of cards installed:
  * {@code table(cards) * (sum of multipliers) / cards}. The machine's card limit is shared by all tiers, highest first.

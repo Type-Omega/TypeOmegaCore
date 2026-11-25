@@ -17,16 +17,16 @@ import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 import net.minecraftforge.items.IItemHandler;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.station.CraftingStationMenu;
-import com.typeomega.core.station.GTIAStation;
+import com.typeomega.core.station.TypeOmegaStation;
 import com.typeomega.core.station.StationSides;
 
 /**
  * The Crafting Station behaves like the Tinkers' Construct station of GTNH: it finds the containers on its six sides,
  * keeps its grid, and shift-click moves between the player and those containers.
  */
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class CraftingStationGameTests {
 
@@ -35,7 +35,7 @@ public final class CraftingStationGameTests {
     private CraftingStationGameTests() {}
 
     private static BlockPos place(GameTestHelper helper) {
-        helper.setBlock(STATION, GTIAStation.BLOCK.get());
+        helper.setBlock(STATION, TypeOmegaStation.BLOCK.get());
         return helper.absolutePos(STATION);
     }
 
@@ -68,7 +68,7 @@ public final class CraftingStationGameTests {
         BlockPos pos = place(helper);
         helper.setBlock(STATION.north(), Blocks.CHEST);
         helper.setBlock(STATION.above(), Blocks.CHEST);
-        helper.setBlock(STATION.south(), GTIAStation.BLOCK.get());
+        helper.setBlock(STATION.south(), TypeOmegaStation.BLOCK.get());
         BlockPos west = STATION.west();
         helper.setBlock(west, Blocks.CHEST.defaultBlockState().setValue(ChestBlock.TYPE, ChestType.RIGHT)
                 .setValue(ChestBlock.FACING, Direction.EAST));

@@ -4,7 +4,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 
 /**
- * Physics of the Solar System Disintegrator (GTIA-D-330): a made system taken apart from the outside in.
+ * Physics of the Solar System Disintegrator (D-330): a made system taken apart from the outside in.
  *
  * <ul>
  * <li>A body's gravitational binding energy is U = 3GM^2 / 5R (uniform sphere). Peeling it down to radius x costs

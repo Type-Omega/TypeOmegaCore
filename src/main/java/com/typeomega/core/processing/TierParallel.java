@@ -13,7 +13,7 @@ import com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
 import java.util.function.IntUnaryOperator;
 
 /**
- * Parallel by energy tier, as in GTL Enhanced (GTIA-D-365 to D-367).
+ * Parallel by energy tier, as in GTL Enhanced (D-365 to D-367).
  * EN: Parallels multiply inputs and outputs but not the energy, as in GTL Enhanced; the overclock still applies.
  * PT: Os paralelos multiplicam entradas e saídas, mas não a energia, como no GTL Enhanced; o overclock continua.
  * ZH: 并行倍增输入与输出但不倍增能耗，与 GTL Enhanced 一致；超频照常生效。

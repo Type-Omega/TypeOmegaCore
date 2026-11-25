@@ -11,7 +11,7 @@ import org.joml.Vector3f;
 import static com.typeomega.core.mega.common.client.MegaFxRenderer.*;
 
 /**
- * The cosmic additions of the effect pass (GTIA-D-324): a black hole's photon sphere and lensed halo, matter streams
+ * The cosmic additions of the effect pass (D-324): a black hole's photon sphere and lensed halo, matter streams
  * along curves, dipole field arcs, orbiting matter and the gravity well. Drawn in the additive pass of
  * {@link MegaFxRenderer}.
  */

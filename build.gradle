@@ -145,10 +145,10 @@ dependencies {
     if (project.hasProperty('gtnaApiJar')) compileOnly files(project.property('gtnaApiJar'))
     else modCompileOnly("com.raishxn.gtna:gtna:${gtna_version}") { transitive = false }
 
-    // EN: Productive Bees only at dev runtime, so GameTests see the HV bee recipes (GTIA-D-259).
-    // PT: Productive Bees só no runtime de dev, para as GameTests verem as receitas de abelha do HV (GTIA-D-259).
-    // ZH: Productive Bees 仅用于开发运行时，使 GameTest 能检查 HV 蜜蜂配方（GTIA-D-259）。
-    if (project.findProperty('gtiaDevOptionalDependencies') == 'true') {
+    // EN: Productive Bees only at dev runtime, so GameTests see the HV bee recipes (D-259).
+    // PT: Productive Bees só no runtime de dev, para as GameTests verem as receitas de abelha do HV (D-259).
+    // ZH: Productive Bees 仅用于开发运行时，使 GameTest 能检查 HV 蜜蜂配方（D-259）。
+    if (project.findProperty('typeOmegaDevOptionalDependencies') == 'true') {
         modRuntimeOnly("maven.modrinth:productivebees:1.20.1-12.6.0")
         // EN: Ad Astra and its libraries, same files as the pack's lock, so the space recipes and fuel tags are tested.
         // PT: Ad Astra e as libs dele, os mesmos arquivos do lock do pack, para testar as receitas e tags de espaço.
@@ -158,24 +158,24 @@ dependencies {
         modRuntimeOnly("curse.maven:resourceful-config-714059:6231176")
         modRuntimeOnly("curse.maven:resourceful-lib-570073:5659871")
     }
-    // EN: FTB Teams is in the pack, so it is at dev runtime too (same files as GTNA); -PgtiaDevFtbTeams=false runs
+    // EN: FTB Teams is in the pack, so it is at dev runtime too (same files as GTNA); -PtypeOmegaDevFtbTeams=false runs
     // the GameTests without it, to cover the solo path.
     // PT: O FTB Teams está no pack, então entra também no runtime de dev (mesmos arquivos do GTNA);
-    // -PgtiaDevFtbTeams=false roda as GameTests sem ele, para cobrir o caminho solo.
-    // ZH: FTB Teams 属于整合包，因此开发运行时也加载（与 GTNA 相同的文件）；-PgtiaDevFtbTeams=false 可在不加载它的
+    // -PtypeOmegaDevFtbTeams=false roda as GameTests sem ele, para cobrir o caminho solo.
+    // ZH: FTB Teams 属于整合包，因此开发运行时也加载（与 GTNA 相同的文件）；-PtypeOmegaDevFtbTeams=false 可在不加载它的
     // 情况下运行 GameTest，以覆盖单人路径。
-    if (project.findProperty('gtiaDevFtbTeams') != 'false') {
+    if (project.findProperty('typeOmegaDevFtbTeams') != 'false') {
         modRuntimeOnly("curse.maven:ftb-library-forge-404465:8226927")
         modRuntimeOnly("curse.maven:ftb-teams-forge-404468:7499810")
         modRuntimeOnly("curse.maven:architectury-api-419699:5137938")
     }
     // EN: Playtest-only mods, never in the pack manifest nor in the GameTests: FTB Chunks and AE2 Wireless Terminals
-    // (universal terminal, Quantum Bridge Card). tools/run_client_full.sh sets -PgtiaDevPlaytest=true.
+    // (universal terminal, Quantum Bridge Card). tools/run_client_full.sh sets -PtypeOmegaDevPlaytest=true.
     // PT: Mods só para teste no cliente, nunca no manifest do pack nem nas GameTests: FTB Chunks e AE2 Wireless
-    // Terminals (terminal universal, Quantum Bridge Card). O tools/run_client_full.sh passa -PgtiaDevPlaytest=true.
+    // Terminals (terminal universal, Quantum Bridge Card). O tools/run_client_full.sh passa -PtypeOmegaDevPlaytest=true.
     // ZH: 仅用于客户端试玩的模组，绝不进入整合包清单或 GameTest：FTB Chunks 与 AE2 Wireless Terminals
-    // （通用终端、量子桥卡）。tools/run_client_full.sh 会传入 -PgtiaDevPlaytest=true。
-    if (project.findProperty('gtiaDevPlaytest') == 'true') {
+    // （通用终端、量子桥卡）。tools/run_client_full.sh 会传入 -PtypeOmegaDevPlaytest=true。
+    if (project.findProperty('typeOmegaDevPlaytest') == 'true') {
         modRuntimeOnly("curse.maven:ftb-chunks-forge-314906:8216874")
         modRuntimeOnly("curse.maven:applied-energistics-2-wireless-terminals-459929:7251206")
         modRuntimeOnly("curse.maven:curios-309927:6418456")
@@ -203,7 +203,7 @@ dependencies {
     if (project.hasProperty('agronomicaDevJar')) runtimeOnly files(project.property('agronomicaDevJar'))
     if (project.hasProperty('modernManipulatorJar')) runtimeOnly files(project.property('modernManipulatorJar'))
 
-    modImplementation("com.typeomega:typeomega-lib:${gtialib_version}") { transitive = false }
+    modImplementation("com.typeomega:typeomega-lib:${typeomegalib_version}") { transitive = false }
 
     compileOnly("org.jetbrains:annotations:26.0.1")
 
@@ -211,16 +211,16 @@ dependencies {
     // currently use registry IDs, so the mod core can compile without their full jars.
     modCompileOnly("curse.maven:applied-energistics-2-223794:7148487") { transitive = false }
     // EN: ExtendedAE only at compile time: the tiered ME Interfaces reuse its 36-slot interface menu, screen and block
-    // EN: entity (GTIA-D-442); the pack ships the mod and the classes are only touched when it is loaded.
+    // EN: entity (D-442); the pack ships the mod and the classes are only touched when it is loaded.
     // PT: ExtendedAE só na compilação: as ME Interface escalonadas reaproveitam o menu, a tela e a block entity de 36
-    // PT: slots dele (GTIA-D-442); o pack traz o mod e as classes só são tocadas quando ele está carregado.
-    // ZH: ExtendedAE 仅用于编译：分级 ME 接口复用其 36 槽菜单、界面与方块实体（GTIA-D-442）；整合包自带该模组，
+    // PT: slots dele (D-442); o pack traz o mod e as classes só são tocadas quando ele está carregado.
+    // ZH: ExtendedAE 仅用于编译：分级 ME 接口复用其 36 槽菜单、界面与方块实体（D-442）；整合包自带该模组，
     // ZH: 仅在其加载时才会访问这些类。
     modCompileOnly("curse.maven:ex-pattern-provider-892005:7248944") { transitive = false }
     modCompileOnly("curse.maven:glodium-957920:5226922") { transitive = false }
-    // EN: Ad Astra's planet API for the Moon gate mixin (GTIA-D-420); the pack ships the mod, the mixin is pseudo.
-    // PT: API de planetas do Ad Astra para o mixin que trava a Lua (GTIA-D-420); o pack traz o mod, o mixin é pseudo.
-    // ZH: 用于登月限制 mixin 的 Ad Astra 星球 API（GTIA-D-420）；整合包自带该模组，mixin 为 pseudo。
+    // EN: Ad Astra's planet API for the Moon gate mixin (D-420); the pack ships the mod, the mixin is pseudo.
+    // PT: API de planetas do Ad Astra para o mixin que trava a Lua (D-420); o pack traz o mod, o mixin é pseudo.
+    // ZH: 用于登月限制 mixin 的 Ad Astra 星球 API（D-420）；整合包自带该模组，mixin 为 pseudo。
     modCompileOnly("curse.maven:ad-astra-635042:8833730") { transitive = false }
 
     // JEI, EMI, Jade
@@ -257,8 +257,8 @@ tasks.named('processResources', ProcessResources).configure {
             "forge_version": forge_version.split("\\.")[0], // only specify major version of forge
             "minecraft_version": minecraft_version,
             "gtceu_version": gtceu_version,
-            "gtialib_version": gtialib_version,
-            "integration_mandatory": project.findProperty('gtiaDevOptionalDependencies') == 'true' ? 'false' : 'true',
+            "typeomegalib_version": typeomegalib_version,
+            "integration_mandatory": project.findProperty('typeOmegaDevOptionalDependencies') == 'true' ? 'false' : 'true',
     ]
     inputs.properties(properties)
 

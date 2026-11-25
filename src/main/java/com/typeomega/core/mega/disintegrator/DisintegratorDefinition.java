@@ -7,7 +7,7 @@ import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.typeomega.core.mega.common.MegaDefinition;
 import com.typeomega.core.mega.common.MegaDefinition.Hatch;
 
-/** Registration of the Solar System Disintegrator; loaded only with GTNA (see GTIAMegastructures). */
+/** Registration of the Solar System Disintegrator; loaded only with GTNA (see TypeOmegaMegastructures). */
 public final class DisintegratorDefinition {
 
     private DisintegratorDefinition() {}

@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 public interface WindowAccessor {
 
     @Accessor("framebufferWidth")
-    void gtia$setFramebufferWidth(int width);
+    void typeomega$setFramebufferWidth(int width);
 
     @Accessor("framebufferHeight")
-    void gtia$setFramebufferHeight(int height);
+    void typeomega$setFramebufferHeight(int height);
 }

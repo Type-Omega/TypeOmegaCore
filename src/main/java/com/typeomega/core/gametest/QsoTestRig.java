@@ -4,7 +4,7 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
 import com.typeomega.core.mega.EraStore;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.qso.QsoMachine;
@@ -43,7 +43,7 @@ final class QsoTestRig {
             MegaMachine.anyDimensionForTests = true;
             star.kind = Kind.BLACK_HOLE;
             star.mass = 1000;
-            QsoMachine m = MegaTestRig.build(helper, QsoMachine.SHAPE, GTIAMegastructures.QSO_DEF, 5, 32);
+            QsoMachine m = MegaTestRig.build(helper, QsoMachine.SHAPE, TypeOmegaMegastructures.QSO_DEF, 5, 32);
             helper.assertTrue(m.checkPatternWithLock(), "the whole gun forms: " + MegaTestRig.error(m));
             m.onStructureFormed();
             UUID owner = UUID.randomUUID();
@@ -72,7 +72,7 @@ final class QsoTestRig {
     }
 
     static void noCageNoGun(GameTestHelper helper) {
-        QsoMachine m = MegaTestRig.build(helper, QsoMachine.SHAPE, GTIAMegastructures.QSO_DEF, 5, 33);
+        QsoMachine m = MegaTestRig.build(helper, QsoMachine.SHAPE, TypeOmegaMegastructures.QSO_DEF, 5, 33);
         var shape = MegaShape.get(QsoMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "cage", "body"));
         helper.getLevel().setBlock(shape.world(m.getPos(), MegaTestRig.FRONT, c[0], c[1], c[2]),

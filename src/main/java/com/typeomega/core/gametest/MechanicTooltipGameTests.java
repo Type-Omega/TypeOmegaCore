@@ -11,8 +11,8 @@ import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaTooltips;
 import com.typeomega.core.data.tooltip.Fmt;
 import com.typeomega.core.mega.kugelblitz.KugelblitzPhysics;
 import com.typeomega.core.mega.matrioshka.MatrioshkaShells;
@@ -25,12 +25,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Multiblock tooltips with the whole mechanic (GTIA-D-432): every core multiblock has one, with enough mechanic lines,
- * a humour line and the mod name, without the structure section or the pollution line (GTIA-D-431), and the numbers
+ * Multiblock tooltips with the whole mechanic (D-432): every core multiblock has one, with enough mechanic lines,
+ * a humour line and the mod name, without the structure section or the pollution line (D-431), and the numbers
  * shown are the ones the code uses.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class MechanicTooltipGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -52,10 +52,10 @@ public final class MechanicTooltipGameTests {
 
     @GameTest(template = TEMPLATE, timeoutTicks = 200)
     public static void everyMultiblockHasTheFullMechanicTooltip(GameTestHelper h) {
-        Set<String> ids = Set.copyOf(GTIATooltips.ids());
+        Set<String> ids = Set.copyOf(TypeOmegaTooltips.ids());
         List<String> missing = new ArrayList<>(), wrong = new ArrayList<>();
         for (var definition : GTRegistries.MACHINES) {
-            if (!GTIAMod.MOD_ID.equals(definition.getId().getNamespace()) ||
+            if (!TypeOmegaMod.MOD_ID.equals(definition.getId().getNamespace()) ||
                     !(definition instanceof MultiblockMachineDefinition)) {
                 continue;
             }
@@ -64,7 +64,7 @@ public final class MechanicTooltipGameTests {
                 missing.add(id);
                 continue;
             }
-            List<Component> lines = GTIATooltips.build(id);
+            List<Component> lines = TypeOmegaTooltips.build(id);
             long mechanic = lines.stream().filter(l -> l.getStyle().getColor() != null &&
                     (l.getStyle().getColor().equals(net.minecraft.network.chat.TextColor.fromLegacyFormat(
                             ChatFormatting.GRAY)) ||
@@ -80,7 +80,7 @@ public final class MechanicTooltipGameTests {
             String unformatted = lines.stream().map(Component::getString).filter(MechanicTooltipGameTests::unformatted)
                     .collect(Collectors.joining(" | "));
             if (mechanic < min || !humor || structure || !unformatted.isEmpty() ||
-                    !GTIATooltips.MOD_NAME.equals(lines.get(lines.size() - 1).getString())) {
+                    !TypeOmegaTooltips.MOD_NAME.equals(lines.get(lines.size() - 1).getString())) {
                 wrong.add(id + " (" + mechanic + " lines, humor " + humor + ", structure " + structure +
                         ", unformatted [" + unformatted + "])");
             }
@@ -103,7 +103,7 @@ public final class MechanicTooltipGameTests {
     }
 
     private static void expect(GameTestHelper h, String id, String text) {
-        String tooltip = GTIATooltips.build(id).stream().map(Component::getString).collect(Collectors.joining("\n"));
+        String tooltip = TypeOmegaTooltips.build(id).stream().map(Component::getString).collect(Collectors.joining("\n"));
         h.assertTrue(tooltip.contains(text), id + " tooltip does not show " + text + ":\n" + tooltip);
     }
 }

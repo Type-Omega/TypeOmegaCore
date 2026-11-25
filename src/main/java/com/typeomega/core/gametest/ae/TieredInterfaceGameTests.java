@@ -17,18 +17,18 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import appeng.core.definitions.AEParts;
 import appeng.helpers.InterfaceLogicHost;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.integration.ae.interfaces.InterfaceRecipes;
 import com.typeomega.core.integration.ae.interfaces.InterfaceTier;
 import com.typeomega.core.integration.ae.interfaces.InterfaceTiers;
 import com.typeomega.core.integration.ae.interfaces.TieredInterfaceEntity;
 
 /**
- * ME Interface (II) to (V) (GTIA-D-442): 36 config and 36 storage slots, each tier's capacity in block and part form,
+ * ME Interface (II) to (V) (D-442): 36 config and 36 storage slots, each tier's capacity in block and part form,
  * the Fuzzy and Crafting cards, and the recipes.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class TieredInterfaceGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -122,7 +122,7 @@ public final class TieredInterfaceGameTests {
     public static void recipesTakeCircuitsAndConvertForms(GameTestHelper h) {
         var manager = h.getLevel().getServer().getRecipeManager();
         for (InterfaceTier tier : InterfaceTier.values()) {
-            var block = manager.byKey(GTIAMod.id("shaped/" + tier.blockId()));
+            var block = manager.byKey(TypeOmegaMod.id("shaped/" + tier.blockId()));
             h.assertTrue(block.isPresent(), "no recipe for " + tier.blockId());
             var shaped = block.get();
             h.assertTrue(shaped.getResultItem(h.getLevel().registryAccess()).is(InterfaceTiers.block(tier).asItem()),
@@ -134,8 +134,8 @@ public final class TieredInterfaceGameTests {
                     net.minecraftforge.registries.ForgeRegistries.ITEMS.tags().getTag(tier.circuit).stream().findFirst()
                             .orElseThrow()))),
                     tier + " does not take its circuit " + tier.circuit.location());
-            var toPart = manager.byKey(GTIAMod.id("shapeless/" + tier.partId()));
-            var toBlock = manager.byKey(GTIAMod.id("shapeless/" + tier.blockId() + "_from_part"));
+            var toPart = manager.byKey(TypeOmegaMod.id("shapeless/" + tier.partId()));
+            var toBlock = manager.byKey(TypeOmegaMod.id("shapeless/" + tier.blockId() + "_from_part"));
             h.assertTrue(toPart.isPresent() && toBlock.isPresent(), tier + " has no block/part conversion");
             h.assertTrue(toPart.get().getResultItem(h.getLevel().registryAccess()).is(InterfaceTiers.part(tier)),
                     "the part conversion of " + tier);

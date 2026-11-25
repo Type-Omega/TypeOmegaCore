@@ -20,8 +20,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIAAlloys;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaAlloys;
 
 @PrefixGameTestTemplate(false)
 @GameTestHolder("typeomega")
@@ -34,13 +34,13 @@ public final class PhaseRouteGameTests {
 
     @GameTest(template = TEMPLATE, batch = "phase", timeoutTicks = 20)
     public static void phaseOreMaceratesInSteam(GameTestHelper helper) {
-        var deposit = GTRegistries.ORE_VEINS.get(GTIAMod.id("phase_matrix_deposit"));
+        var deposit = GTRegistries.ORE_VEINS.get(TypeOmegaMod.id("phase_matrix_deposit"));
         helper.assertTrue(deposit != null, "Overworld phase deposit must be registered");
         helper.assertTrue(deposit.isForBiome(helper.getLevel().getBiome(helper.absolutePos(MACHINE_POS))) &&
                 !deposit.indicatorGenerators().isEmpty(),
                 "Phase deposit must be eligible in the Overworld and have a surface indicator");
-        var rawOre = ChemicalHelper.get(TagPrefix.rawOre, GTIAAlloys.PHASE_MATRIX);
-        var oreBlock = ChemicalHelper.get(TagPrefix.ore, GTIAAlloys.PHASE_MATRIX);
+        var rawOre = ChemicalHelper.get(TagPrefix.rawOre, TypeOmegaAlloys.PHASE_MATRIX);
+        var oreBlock = ChemicalHelper.get(TagPrefix.ore, TypeOmegaAlloys.PHASE_MATRIX);
         helper.assertTrue(!rawOre.isEmpty() && !oreBlock.isEmpty(), "Phase ore and its raw form must exist");
         helper.assertTrue(oreBlock.is(ItemTags.create(new ResourceLocation("forge", "ores"))),
                 "Phase ore must be recognized by Steam and Electric Miners");
@@ -59,7 +59,7 @@ public final class PhaseRouteGameTests {
         machine.recipeLogic.onRecipeFinish();
         var output = machine.exportItems.getStackInSlot(0);
         helper.assertTrue(
-                ItemStack.isSameItem(output, ChemicalHelper.get(TagPrefix.crushed, GTIAAlloys.PHASE_MATRIX)) &&
+                ItemStack.isSameItem(output, ChemicalHelper.get(TagPrefix.crushed, TypeOmegaAlloys.PHASE_MATRIX)) &&
                         output.getCount() == 2,
                 "Macerator must make two crushed phase matrix items");
         helper.succeed();
@@ -68,13 +68,13 @@ public final class PhaseRouteGameTests {
     @GameTest(template = TEMPLATE, batch = "phase", timeoutTicks = 20)
     public static void crushedPhaseMatrixMaceratesToDust(GameTestHelper helper) {
         var machine = placeSteamMachine(helper, GTMachines.STEAM_MACERATOR.left().getBlock());
-        machine.importItems.setStackInSlot(0, ChemicalHelper.get(TagPrefix.crushed, GTIAAlloys.PHASE_MATRIX));
+        machine.importItems.setStackInSlot(0, ChemicalHelper.get(TagPrefix.crushed, TypeOmegaAlloys.PHASE_MATRIX));
         machine.recipeLogic.findAndHandleRecipe();
         helper.assertTrue(machine.recipeLogic.getDuration() == 800,
                 "Steam Macerator must accept crushed phase matrix");
         machine.recipeLogic.onRecipeFinish();
         helper.assertTrue(ItemStack.isSameItem(machine.exportItems.getStackInSlot(0),
-                ChemicalHelper.get(TagPrefix.dustImpure, GTIAAlloys.PHASE_MATRIX)),
+                ChemicalHelper.get(TagPrefix.dustImpure, TypeOmegaAlloys.PHASE_MATRIX)),
                 "Crushed phase matrix must yield impure phase matrix dust");
         helper.succeed();
     }
@@ -83,14 +83,14 @@ public final class PhaseRouteGameTests {
     public static void phaseDustMakesPulsatingAlloy(GameTestHelper helper) {
         var machine = placeSteamMachine(helper, GTMachines.STEAM_ALLOY_SMELTER.left().getBlock());
         machine.importItems.setStackInSlot(0, ChemicalHelper.get(TagPrefix.ingot, GTMaterials.Iron));
-        machine.importItems.setStackInSlot(1, ChemicalHelper.get(TagPrefix.dustImpure, GTIAAlloys.PHASE_MATRIX));
+        machine.importItems.setStackInSlot(1, ChemicalHelper.get(TagPrefix.dustImpure, TypeOmegaAlloys.PHASE_MATRIX));
         machine.recipeLogic.findAndHandleRecipe();
         helper.assertTrue(machine.recipeLogic.getDuration() == 600,
                 "Steam Alloy Smelter must accept impure phase matrix dust and iron");
         machine.recipeLogic.onRecipeFinish();
         helper.assertTrue(ItemStack.isSameItem(machine.exportItems.getStackInSlot(0),
-                ChemicalHelper.get(TagPrefix.ingot, GTIAAlloys.PULSATING_ALLOY)),
-                "Phase route must yield GTIA Pulsating Alloy");
+                ChemicalHelper.get(TagPrefix.ingot, TypeOmegaAlloys.PULSATING_ALLOY)),
+                "Phase route must yield Type Omega Pulsating Alloy");
         helper.succeed();
     }
 

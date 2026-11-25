@@ -18,7 +18,7 @@ import appeng.core.definitions.AEParts;
 import appeng.parts.automation.IOBusPart;
 import com.glodblock.github.extendedae.common.EPPItemAndBlock;
 import com.glodblock.github.extendedae.common.tileentities.TileExIOPort;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.integration.ae.cards.AccelerationCards;
 import com.typeomega.core.integration.ae.cards.AccelerationRates;
 import com.typeomega.core.integration.ae.cards.AccelerationTier;
@@ -28,11 +28,11 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Acceleration Card (II) to (V) (GTIA-D-442): x8 per tier over the AE2 card, applied to the import/export buses and the
+ * Acceleration Card (II) to (V) (D-442): x8 per tier over the AE2 card, applied to the import/export buses and the
  * IO ports of AE2 and ExtendedAE, with the card limit shared by all tiers, highest first.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class AccelerationCardGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -226,7 +226,7 @@ public final class AccelerationCardGameTests {
     public static void recipesAreFourAe2CardsAroundACircuit(GameTestHelper h) {
         var manager = h.getLevel().getServer().getRecipeManager();
         for (AccelerationTier tier : AccelerationTier.values()) {
-            var recipe = manager.byKey(GTIAMod.id("shaped/" + tier.id()));
+            var recipe = manager.byKey(TypeOmegaMod.id("shaped/" + tier.id()));
             h.assertTrue(recipe.isPresent(), "no recipe for " + tier.id());
             h.assertTrue(recipe.get().getResultItem(h.getLevel().registryAccess()).is(AccelerationCards.card(tier)),
                     "wrong output of " + tier);

@@ -28,7 +28,7 @@ public class OrganModifierItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (player instanceof ServerPlayer serverPlayer) {
             NetworkHooks.openScreen(serverPlayer, new SimpleMenuProvider(
-                    (id, inventory, p) -> new OrganMenu(GTIAOrgans.MENU.get(), id, inventory, OrganData.load(p)),
+                    (id, inventory, p) -> new OrganMenu(TypeOmegaOrgans.MENU.get(), id, inventory, OrganData.load(p)),
                     Component.translatable("item.typeomega.organ_modifier")));
         }
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide);

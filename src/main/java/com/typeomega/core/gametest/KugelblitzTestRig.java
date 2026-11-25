@@ -4,7 +4,7 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
 import com.raishxn.gtna.api.capability.WirelessEnergyManager;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.kugelblitz.KugelblitzMachine;
@@ -34,7 +34,7 @@ final class KugelblitzTestRig {
     static void lightIntoAHole(GameTestHelper helper) {
         try {
             MegaMachine.anyDimensionForTests = true;
-            KugelblitzMachine m = MegaTestRig.build(helper, KugelblitzMachine.SHAPE, GTIAMegastructures.KUGELBLITZ_DEF,
+            KugelblitzMachine m = MegaTestRig.build(helper, KugelblitzMachine.SHAPE, TypeOmegaMegastructures.KUGELBLITZ_DEF,
                     5, 14);
             helper.assertTrue(m.checkPatternWithLock(), "the whole silo forms: " + MegaTestRig.error(m));
             m.onStructureFormed();
@@ -70,7 +70,7 @@ final class KugelblitzTestRig {
     }
 
     static void noChamberNoSilo(GameTestHelper helper) {
-        KugelblitzMachine m = MegaTestRig.build(helper, KugelblitzMachine.SHAPE, GTIAMegastructures.KUGELBLITZ_DEF, 5,
+        KugelblitzMachine m = MegaTestRig.build(helper, KugelblitzMachine.SHAPE, TypeOmegaMegastructures.KUGELBLITZ_DEF, 5,
                 15);
         var shape = MegaShape.get(KugelblitzMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "chamber", "body"));

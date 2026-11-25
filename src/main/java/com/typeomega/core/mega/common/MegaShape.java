@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.util.zip.GZIPInputStream;
 
 /**
- * A megastructure's block layout, read from {@code gtia_mega/<name>/pattern.bin.gz} and {@code parts.json}, both
+ * A megastructure's block layout, read from {@code typeomega_mega/<name>/pattern.bin.gz} and {@code parts.json}, both
  * written by the generators in design/estudos (gen_rings_pattern.py, gen_engine_pattern.py). Without the files the
  * megastructure is not registered.
  *
@@ -90,7 +90,7 @@ public final class MegaShape {
     private static final java.util.Map<String, java.util.Optional<MegaShape>> SHAPES = new java.util.concurrent.ConcurrentHashMap<>();
 
     public static String dir(String name) {
-        return "gtia_mega/" + name + "/";
+        return "typeomega_mega/" + name + "/";
     }
 
     /** The shape of a megastructure, or null when its data files are not in the jar. */

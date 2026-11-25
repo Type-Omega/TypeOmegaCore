@@ -10,13 +10,13 @@ import com.gregtechceu.gtceu.common.data.GTMaterials;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIARecipeTypes;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaRecipeTypes;
 
 import java.util.function.Consumer;
 
 /**
- * Ore Processing Plant recipes (GTIA-D-366): raw ore to the final dusts in one step, the yield of the full GTCEu
+ * Ore Processing Plant recipes (D-366): raw ore to the final dusts in one step, the yield of the full GTCEu
  * route (macerate, wash, macerate, centrifuge) without the intermediate items.
  */
 public final class OrePlantRecipes {
@@ -33,7 +33,7 @@ public final class OrePlantRecipes {
             // EN: 2 dusts per raw ore (macerator ×2), two byproducts at 33% and 14% like washer + centrifuge.
             // PT: 2 pós por minério bruto (macerador ×2), dois subprodutos a 33% e 14% como lavadora + centrífuga.
             // ZH: 每个粗矿 2 份粉（研磨 ×2），两个副产物 33% 与 14%，相当于洗矿 + 离心。
-            var b = GTIARecipeTypes.ORE_PROCESSING_PLANT.recipeBuilder(GTIAMod.id("ore_plant_" + m.getName()))
+            var b = TypeOmegaRecipeTypes.ORE_PROCESSING_PLANT.recipeBuilder(TypeOmegaMod.id("ore_plant_" + m.getName()))
                     .inputItems(TagPrefix.rawOre, m)
                     .inputFluids(GTMaterials.Water.getFluid(100))
                     .outputItems(dust)

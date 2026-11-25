@@ -7,7 +7,7 @@ import com.gregtechceu.gtceu.common.data.machines.GTMachineUtils;
 
 import net.minecraft.core.GlobalPos;
 
-/** Entangled Miner (GTIA-D-310): a single block that mines the vein on its Vein Card, from LV to IV. */
+/** Entangled Miner (D-310): a single block that mines the vein on its Vein Card, from LV to IV. */
 public class EntangledMinerMachine extends SimpleTieredMachine implements IMachineLife {
 
     public EntangledMinerMachine(IMachineBlockEntity holder, int tier) {

@@ -18,14 +18,14 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.data.GTIAItems;
+import com.typeomega.core.data.TypeOmegaItems;
 import com.typeomega.core.miner.FragmentCollectorLogic;
 import com.typeomega.core.miner.FragmentCollectors;
 import com.typeomega.core.miner.VeinCardItem;
 import com.typeomega.core.miner.VeinPurity;
 
 /**
- * Fragment Collectors (GTIA-D-362, D-363): both structures form from their preview and break without a gearbox; the
+ * Fragment Collectors (D-362, D-363): both structures form from their preview and break without a gearbox; the
  * logic gives 4 ores per cycle at random, 4 × purity with a card, 16 × at the Large Collector, never uses the fragment.
  */
 @PrefixGameTestTemplate(false)
@@ -97,13 +97,13 @@ public final class FragmentCollectorGameTests {
     @GameTest(template = "qa_empty_5x5", batch = "fragment_collector", timeoutTicks = 20)
     public static void collectorRates(GameTestHelper h) {
         var random = RandomSource.create(7);
-        ItemStack fragment = GTIAItems.WORLD_FRAGMENT_OVERWORLD.asStack();
+        ItemStack fragment = TypeOmegaItems.WORLD_FRAGMENT_OVERWORLD.asStack();
         h.assertTrue(FragmentCollectorLogic.veins(Level.OVERWORLD).size() == 10, "10 overworld veins");
         var rnd = FragmentCollectorLogic.build(new FragmentCollectorLogic.Input(Level.OVERWORLD, fragment, null), 1,
                 random);
         h.assertTrue(rnd != null && ores(rnd) == 4 && rnd.duration == 160, "random: 4 ores per 8 s");
         var card = new VeinCardItem.Record(Level.OVERWORLD.location(), 0, 0,
-                com.typeomega.core.GTIAMod.id("iron"), VeinPurity.PURE);
+                com.typeomega.core.TypeOmegaMod.id("iron"), VeinPurity.PURE);
         var pure = FragmentCollectorLogic.build(new FragmentCollectorLogic.Input(Level.OVERWORLD, fragment, card), 1,
                 random);
         h.assertTrue(pure != null && ores(pure) == 16, "pure card: 16 ores per cycle, got " + ores(pure));

@@ -9,14 +9,14 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/** Every GTIA multiblock controller faces out of its structure, so the player can reach it. */
+/** Every Type Omega multiblock controller faces out of its structure, so the player can reach it. */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class ControllerFacingGameTests {
 
     private ControllerFacingGameTests() {}
@@ -27,7 +27,7 @@ public final class ControllerFacingGameTests {
         int checked = 0;
         for (var definition : GTRegistries.MACHINES.values()) {
             if (!(definition instanceof MultiblockMachineDefinition multi) ||
-                    !GTIAMod.MOD_ID.equals(multi.getId().getNamespace()))
+                    !TypeOmegaMod.MOD_ID.equals(multi.getId().getNamespace()))
                 continue;
             var shapes = multi.getMatchingShapes();
             if (shapes.isEmpty()) continue;
@@ -49,7 +49,7 @@ public final class ControllerFacingGameTests {
                         if (front != null && !front.getBlockState().isAir()) inward.add(multi.getId().toString());
                     }
         }
-        h.assertTrue(checked > 0, "no GTIA multiblock controller was checked");
+        h.assertTrue(checked > 0, "no Type Omega multiblock controller was checked");
         h.assertTrue(inward.isEmpty(), "controllers facing into their structure: " + inward);
         h.succeed();
     }

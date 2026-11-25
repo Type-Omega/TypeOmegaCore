@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-/** Fortune multiplies the drops of GregTech ores with the vanilla ore formula (GTIA-D-348). */
+/** Fortune multiplies the drops of GregTech ores with the vanilla ore formula (D-348). */
 @PrefixGameTestTemplate(false)
 @GameTestHolder("typeomega")
 public final class OreFortuneGameTests {

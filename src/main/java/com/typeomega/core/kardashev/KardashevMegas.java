@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import java.util.UUID;
 
 /**
- * Megastructures report to the meter when they form (GTIA-D-389, D-390): the team of the controller's owner gets
+ * Megastructures report to the meter when they form (D-389, D-390): the team of the controller's owner gets
  * that megastructure counted once, and the cap rises.
  */
 public final class KardashevMegas {

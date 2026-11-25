@@ -5,7 +5,7 @@ import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 
 import com.typeomega.core.mega.common.MegaDefinition;
 
-/** Registration of the Stellar Harvester; loaded only with GTNA (see GTIAMegastructures). */
+/** Registration of the Stellar Harvester; loaded only with GTNA (see TypeOmegaMegastructures). */
 public final class StellarHarvesterDefinition {
 
     private StellarHarvesterDefinition() {}

@@ -70,6 +70,6 @@ public class VeinCardCopyRecipe extends CustomRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return GTIAMiners.CARD_COPY.get();
+        return TypeOmegaMiners.CARD_COPY.get();
     }
 }

@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.engine;
 
 /**
- * Physics of the Stellar Engine (GTIA-D-315): a Shkadov mirror and a Caplan engine moving the Nexus System.
+ * Physics of the Stellar Engine (D-315): a Shkadov mirror and a Caplan engine moving the Nexus System.
  *
  * <ul>
  * <li>Shkadov: {@code F = f L / c}, f the share of the star's sky the mirror covers.</li>

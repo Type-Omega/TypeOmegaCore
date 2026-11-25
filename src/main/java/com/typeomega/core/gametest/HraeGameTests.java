@@ -5,15 +5,15 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The HRAE-MC (GTIA-D-322): Bardeen's orbits and efficiency, the Penrose share; around a black hole feeding gives EU
+ * The HRAE-MC (D-322): Bardeen's orbits and efficiency, the Penrose share; around a black hole feeding gives EU
  * and spin, Penrose takes spin; around a shining star it does nothing; without a hoop it does not form. Slots 16, 17.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class HraeGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -21,8 +21,8 @@ public final class HraeGameTests {
     private HraeGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.HRAEMC_DEF != null) return false;
-        GTIAMod.LOGGER.warn("HRAE-MC not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.HRAEMC_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("HRAE-MC not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

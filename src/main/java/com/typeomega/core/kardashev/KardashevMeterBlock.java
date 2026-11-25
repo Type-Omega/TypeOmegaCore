@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 /**
- * Kardashev Meter: a plain block (GTIA-D-406) that shows the K of the team of whoever uses it. It has no block
+ * Kardashev Meter: a plain block (D-406) that shows the K of the team of whoever uses it. It has no block
  * entity and does no work while nobody looks at it; every reading comes from {@link KardashevData}.
  */
 public class KardashevMeterBlock extends HorizontalDirectionalBlock {

@@ -5,15 +5,15 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Birch World (GTIA-D-331): layers, credit, interest and era levels; hosted work booked as causal debt, paid back,
+ * The Birch World (D-331): layers, credit, interest and era levels; hosted work booked as causal debt, paid back,
  * and a paradox past the credit; without the inner layer it does not form. Slots 30, 31.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class BirchWorldGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -21,8 +21,8 @@ public final class BirchWorldGameTests {
     private BirchWorldGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.BIRCH_WORLD_DEF != null) return false;
-        GTIAMod.LOGGER.warn("Birch World not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.BIRCH_WORLD_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("Birch World not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

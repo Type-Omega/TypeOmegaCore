@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.kugelblitz;
 
 /**
- * Physics of the Kugelblitz Containment Silo (GTIA-D-321): a black hole made of light.
+ * Physics of the Kugelblitz Containment Silo (D-321): a black hole made of light.
  *
  * <ul>
  * <li>Enough light in a small enough volume collapses into a black hole of mass M = E / c².</li>

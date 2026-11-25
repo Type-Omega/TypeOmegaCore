@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaCapture;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
@@ -22,7 +22,7 @@ final class StarLifterTestRig {
     private StarLifterTestRig() {}
 
     private static StarLifterMachine build(GameTestHelper helper, int phases, int slot) {
-        return MegaTestRig.build(helper, StarLifterMachine.SHAPE, GTIAMegastructures.STAR_LIFTER_DEF, phases, slot);
+        return MegaTestRig.build(helper, StarLifterMachine.SHAPE, TypeOmegaMegastructures.STAR_LIFTER_DEF, phases, slot);
     }
 
     static void liftingMath(GameTestHelper helper) {

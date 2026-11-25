@@ -8,7 +8,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Star systems as dimensions (GTIA-D-316): the Nexus System and {@link #SLOTS} systems the Interstellar System Creator
+ * Star systems as dimensions (D-316): the Nexus System and {@link #SLOTS} systems the Interstellar System Creator
  * can make, each with its own star. Megastructures that lift, burn, suppress or take apart a star change the star of
  * the system they stand in; this keeps those stars with the world.
  */
@@ -27,7 +27,7 @@ public final class StarSystems extends SavedData {
     public static final int SLOTS = 6;
     public static final ResourceKey<Level> NEXUS = key("nexus_system");
 
-    private static final String NAME = "gtia_star_systems";
+    private static final String NAME = "typeomega_star_systems";
     /** The server this store was read for (not saved): a new star cancels a pending wipe of its slot. */
     @Nullable
     private transient MinecraftServer server;
@@ -97,7 +97,7 @@ public final class StarSystems extends SavedData {
     private final Map<ResourceLocation, Star> stars = new LinkedHashMap<>();
 
     public static ResourceKey<Level> key(String path) {
-        return ResourceKey.create(Registries.DIMENSION, GTIAMod.id(path));
+        return ResourceKey.create(Registries.DIMENSION, TypeOmegaMod.id(path));
     }
 
     public static ResourceKey<Level> slot(int index) {

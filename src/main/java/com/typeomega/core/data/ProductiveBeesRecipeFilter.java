@@ -4,14 +4,14 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.event.OnDatapackSyncEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 /**
- * EN: Drops every Productive Bees recipe (GTIA-D-259) so bees only enter through GTIA's HV line. PB adds recipes after
+ * EN: Drops every Productive Bees recipe (D-259) so bees only enter through Type Omega's HV line. PB adds recipes after
  * the datapack load, so the filter runs once the server is up and again after each /reload.
- * PT: Descarta todas as receitas do Productive Bees (GTIA-D-259); abelhas só entram pela linha HV do GTIA. O PB
+ * PT: Descarta todas as receitas do Productive Bees (D-259); abelhas só entram pela linha HV do Type Omega. O PB
  * acrescenta receitas depois do carregamento, então o filtro roda com o servidor pronto e após cada /reload.
- * ZH: 移除 Productive Bees 的全部配方（GTIA-D-259），蜜蜂只能通过 GTIA 的 HV 线路获得。PB 在数据包加载后才添加配方，
+ * ZH: 移除 Productive Bees 的全部配方（D-259），蜜蜂只能通过 Type Omega 的 HV 线路获得。PB 在数据包加载后才添加配方，
  * 因此在服务器启动后及每次 /reload 后执行过滤。
  */
 public final class ProductiveBeesRecipeFilter {
@@ -33,7 +33,7 @@ public final class ProductiveBeesRecipeFilter {
         int dropped = all.size() - kept.size();
         if (dropped > 0) {
             manager.replaceRecipes(kept);
-            GTIAMod.LOGGER.info("Dropped {} Productive Bees recipes (GTIA-D-259)", dropped);
+            TypeOmegaMod.LOGGER.info("Dropped {} Productive Bees recipes (D-259)", dropped);
         }
         return dropped;
     }

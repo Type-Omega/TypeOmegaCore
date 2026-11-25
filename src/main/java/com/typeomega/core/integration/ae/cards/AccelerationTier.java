@@ -8,7 +8,7 @@ import net.minecraft.world.item.Item;
 import java.util.Locale;
 
 /**
- * Acceleration Card (II) to (V) (GTIA-D-442): each is 8 times the one before, starting from the AE2 card (tier 0, x1).
+ * Acceleration Card (II) to (V) (D-442): each is 8 times the one before, starting from the AE2 card (tier 0, x1).
  * The recipe is four AE2 Acceleration Cards around a circuit of the listed voltage.
  */
 public enum AccelerationTier {

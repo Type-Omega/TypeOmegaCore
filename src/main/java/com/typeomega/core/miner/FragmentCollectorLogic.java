@@ -16,9 +16,9 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIAItems;
-import com.typeomega.core.data.GTIARecipeTypes;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaItems;
+import com.typeomega.core.data.TypeOmegaRecipeTypes;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Fragment Collectors (GTIA-D-362, D-363). A World Fragment alone mines a random GTIA vein of its dimension; with a
+ * Fragment Collectors (D-362, D-363). A World Fragment alone mines a random Type Omega vein of its dimension; with a
  * Vein Card of that dimension it mines the card's vein at the card's purity. Neither item is consumed, and each cycle
  * may give a copy of the fragment back (GTL's rule, D-362). 4 operations per 8 s cycle at LV; the Large Collector
  * runs 16 at once.
@@ -45,9 +45,9 @@ public enum FragmentCollectorLogic implements GTRecipeType.ICustomRecipeLogic {
 
     @Nullable
     public static ResourceKey<Level> dimensionOf(ItemStack stack) {
-        if (stack.is(GTIAItems.WORLD_FRAGMENT_OVERWORLD.get())) return Level.OVERWORLD;
-        if (stack.is(GTIAItems.WORLD_FRAGMENT_NETHER.get())) return Level.NETHER;
-        if (stack.is(GTIAItems.WORLD_FRAGMENT_END.get())) return Level.END;
+        if (stack.is(TypeOmegaItems.WORLD_FRAGMENT_OVERWORLD.get())) return Level.OVERWORLD;
+        if (stack.is(TypeOmegaItems.WORLD_FRAGMENT_NETHER.get())) return Level.NETHER;
+        if (stack.is(TypeOmegaItems.WORLD_FRAGMENT_END.get())) return Level.END;
         return null;
     }
 
@@ -76,11 +76,11 @@ public enum FragmentCollectorLogic implements GTRecipeType.ICustomRecipeLogic {
         return new Input(dimension, fragment, null);
     }
 
-    /** GTIA veins (D-310 table) of one dimension. */
+    /** Type Omega veins (D-310 table) of one dimension. */
     public static List<BedrockOreDefinition> veins(ResourceKey<Level> dimension) {
         List<BedrockOreDefinition> out = new ArrayList<>();
         for (var id : GTRegistries.BEDROCK_ORE_DEFINITIONS.keys()) {
-            if (!id.getNamespace().equals(GTIAMod.MOD_ID)) continue;
+            if (!id.getNamespace().equals(TypeOmegaMod.MOD_ID)) continue;
             var def = GTRegistries.BEDROCK_ORE_DEFINITIONS.get(id);
             if (def != null && def.dimensionFilter() != null && def.dimensionFilter().contains(dimension)) out.add(def);
         }
@@ -122,7 +122,7 @@ public enum FragmentCollectorLogic implements GTRecipeType.ICustomRecipeLogic {
                 }
             }
         }
-        var builder = GTIARecipeTypes.FRAGMENT_COLLECTOR
+        var builder = TypeOmegaRecipeTypes.FRAGMENT_COLLECTOR
                 .recipeBuilder("fragment_" + Long.toHexString(random.nextLong()))
                 .duration(DURATION).EUt(parallel > 1 ? GTValues.VA[GTValues.EV] : GTValues.VA[GTValues.LV]);
         for (var e : drawn.entrySet()) builder.outputItems(EntangledMinerLogic.raw(e.getKey(), e.getValue()));

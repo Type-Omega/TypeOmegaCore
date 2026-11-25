@@ -10,7 +10,7 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public final class SkyStarNetwork {
 
     private static final String VERSION = "1";
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(GTIAMod.MOD_ID, "sky_star"), () -> VERSION, VERSION::equals, VERSION::equals);
+            new ResourceLocation(TypeOmegaMod.MOD_ID, "sky_star"), () -> VERSION, VERSION::equals, VERSION::equals);
     private static final Map<UUID, Sky> SENT = new HashMap<>();
 
     /** What the client draws: the star of {@link #dimension}, or nothing outside the star systems. */

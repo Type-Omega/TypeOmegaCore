@@ -27,7 +27,7 @@ import com.glodblock.github.extendedae.container.ContainerExInterface;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.integration.ae.AeLang;
 
 import java.util.EnumMap;
@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ME Interface (II) to (V), as block and as cable part (GTIA-D-442). Registers the blocks, block entities, part items,
+ * ME Interface (II) to (V), as block and as cable part (D-442). Registers the blocks, block entities, part items,
  * part models, the shared menu and the cards the tiers accept; the English names are generated, pt_br and zh_cn are in
  * lang.
  */
@@ -73,7 +73,7 @@ public final class InterfaceTiers {
 
     private static void register(InterfaceTier tier) {
         String roman = tier.name();
-        var block = GTIAMod.REGISTRATE.block(tier.blockId(), p -> new TieredInterfaceBlock(tier))
+        var block = TypeOmegaMod.REGISTRATE.block(tier.blockId(), p -> new TieredInterfaceBlock(tier))
                 .lang("ME Interface (" + roman + ")")
                 .tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .blockstate((ctx, prov) -> {})
@@ -83,14 +83,14 @@ public final class InterfaceTiers {
                 .build()
                 .register();
         BLOCKS.put(tier, block);
-        TYPES.put(tier, GTIAMod.REGISTRATE.blockEntity(tier.blockId(), TieredInterfaceEntity::new)
+        TYPES.put(tier, TypeOmegaMod.REGISTRATE.blockEntity(tier.blockId(), TieredInterfaceEntity::new)
                 .validBlock(block)
                 .register());
-        PARTS.put(tier, GTIAMod.REGISTRATE.item(tier.partId(), p -> new TieredInterfacePartItem(p, tier))
+        PARTS.put(tier, TypeOmegaMod.REGISTRATE.item(tier.partId(), p -> new TieredInterfacePartItem(p, tier))
                 .lang("ME Interface (" + roman + ")")
                 .model((ctx, prov) -> {})
                 .register());
-        ResourceLocation front = GTIAMod.id("part/" + tier.blockId());
+        ResourceLocation front = TypeOmegaMod.id("part/" + tier.blockId());
         MODELS.put(tier, new PartModelSet(
                 new PartModel(front, new ResourceLocation("ae2", "part/interface_off")),
                 new PartModel(front, new ResourceLocation("ae2", "part/interface_on")),

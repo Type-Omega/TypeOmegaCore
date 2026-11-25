@@ -3,7 +3,7 @@ package com.typeomega.core.mega.lifter;
 import com.typeomega.core.mega.system.StarPhysics;
 
 /**
- * Physics of the Star Lifter (GTIA-D-317): matter lifted off the star (Criswell's star lifting).
+ * Physics of the Star Lifter (D-317): matter lifted off the star (Criswell's star lifting).
  *
  * <ul>
  * <li>Each kilogram has to climb out of the star's gravity well: e = G M / R (1.9e11 J/kg for the Sun), done at

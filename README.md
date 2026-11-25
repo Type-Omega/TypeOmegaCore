@@ -2,9 +2,9 @@
   <img src="docs/assets/logo.png" width="380" alt="TypeOmega Core logo" />
 </p>
 
-# GTIACore
+# TypeOmegaCore
 
-GTIACore is the core mod of the **GregTech Infinity Ascension (GTIA)** modpack, the way GTOCore and GTLCore are for their packs. It holds only what's unique to GTIA. Reusable machines and mechanics live in [GregTech Nexus Addon (GTNA)](https://github.com/Type-Omega/GregTech-Nexus-Addon), which is a required dependency.
+TypeOmegaCore is the core mod of the **Type Omega** modpack, the way GTOCore and GTLCore are for their packs. It holds only what's unique to Type Omega. Reusable machines and mechanics live in [GregTech Nexus Addon (GTNA)](https://github.com/Type-Omega/GregTech-Nexus-Addon), which is a required dependency.
 
 Started from the [GTCEu Modern addon template](https://github.com/GregTechCEu/GregTech-Addon-Template).
 
@@ -22,7 +22,7 @@ Community: [Discord](https://discord.gg/TW5vugknk5) · questions, bug reports an
 | Area | Content |
 | --- | --- |
 | Materials | Phase Matrix ore (Overworld, Y 40–60), Pulsating Alloy, Conductive Alloy (zero-loss 4 A wire), Draconium and Awakened Draconium, the MV chemistry materials (sodium aluminate, alumina, cryolite, V₂O₅...) |
-| Extra forms | Double to quintuple ingots, triple to quintuple and superdense plates for the GTIA alloys |
+| Extra forms | Double to quintuple ingots, triple to quintuple and superdense plates for the Type Omega alloys |
 | Steam machines | Wood Retort and Lime Kiln (primitive multiblocks built on the Coke Oven) |
 | LV machines | Catalytic Dehydrator, Still, Fermentation Vat (LV to OpV), Diaphragm Cell |
 | MV machines | Bayer Digester, Hall-Héroult Cell, Contact Converter, Ammonia Converter (Haber-Bosch), Solvay Tower |

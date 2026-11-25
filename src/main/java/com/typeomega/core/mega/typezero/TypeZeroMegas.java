@@ -1,8 +1,8 @@
 package com.typeomega.core.mega.typezero;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
-/** Registration of the Type 0 megastructures (GTIA-D-390) and their texts. */
+/** Registration of the Type 0 megastructures (D-390) and their texts. */
 public final class TypeZeroMegas {
 
     private TypeZeroMegas() {}
@@ -29,6 +29,6 @@ public final class TypeZeroMegas {
     }
 
     private static void lang(String key, String english) {
-        GTIAMod.REGISTRATE.addRawLang(key, english);
+        TypeOmegaMod.REGISTRATE.addRawLang(key, english);
     }
 }

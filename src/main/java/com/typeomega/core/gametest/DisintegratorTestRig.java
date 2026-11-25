@@ -8,7 +8,7 @@ import com.gregtechceu.gtceu.common.machine.multiblock.part.ItemBusPartMachine;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.disintegrator.DisintegratorMachine;
@@ -45,7 +45,7 @@ final class DisintegratorTestRig {
             MegaMachine.anyDimensionForTests = true;
             systems.create(slot, Kind.YELLOW_DWARF, owner, 42);
             DisintegratorMachine m = MegaTestRig.build(helper, DisintegratorMachine.SHAPE,
-                    GTIAMegastructures.DISINTEGRATOR_DEF, 5, 28);
+                    TypeOmegaMegastructures.DISINTEGRATOR_DEF, 5, 28);
             var out = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_EXPORT_BUS[GTValues.UV]);
             var gas = (FluidHatchPartMachine) MegaTestRig.hatch(helper, m, 1,
                     GTMachines.FLUID_EXPORT_HATCH[GTValues.UV]);
@@ -91,7 +91,7 @@ final class DisintegratorTestRig {
 
     static void noRingNoDisintegrator(GameTestHelper helper) {
         DisintegratorMachine m = MegaTestRig.build(helper, DisintegratorMachine.SHAPE,
-                GTIAMegastructures.DISINTEGRATOR_DEF, 5, 29);
+                TypeOmegaMegastructures.DISINTEGRATOR_DEF, 5, 29);
         var shape = MegaShape.get(DisintegratorMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "support", "body"));
         helper.getLevel().setBlock(shape.world(m.getPos(), MegaTestRig.FRONT, c[0], c[1], c[2]),

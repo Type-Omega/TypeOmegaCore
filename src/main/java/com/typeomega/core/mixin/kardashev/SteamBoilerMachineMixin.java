@@ -14,10 +14,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 /**
  * EN: Single-block GTCEu boilers have no wireless hatch, but the 0,0 chapter reads their steam on the meter
- * (GTIA-D-389, quest "Primeiro Vapor"). Target: the only steam fill of updateCurrentTemperature.
+ * (D-389, quest "Primeiro Vapor"). Target: the only steam fill of updateCurrentTemperature.
  * PT: As caldeiras de bloco único do GTCEu não têm hatch sem fio, mas o capítulo 0,0 lê o vapor delas no medidor
- * (GTIA-D-389, quest "Primeiro Vapor"). Alvo: o único enchimento de vapor de updateCurrentTemperature.
- * ZH: GTCEu 单方块锅炉没有无线仓，但 0,0 章节要在计量器上读取其蒸汽（GTIA-D-389，任务“第一缕蒸汽”）。
+ * (D-389, quest "Primeiro Vapor"). Alvo: o único enchimento de vapor de updateCurrentTemperature.
+ * ZH: GTCEu 单方块锅炉没有无线仓，但 0,0 章节要在计量器上读取其蒸汽（D-389，任务“第一缕蒸汽”）。
  * 目标：updateCurrentTemperature 中唯一的蒸汽注入。
  */
 @Mixin(value = SteamBoilerMachine.class, remap = false)

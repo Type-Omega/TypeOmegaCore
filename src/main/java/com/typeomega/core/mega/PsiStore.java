@@ -9,12 +9,12 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Ψ (thought cycles), the resource of the Ψ era (GTIA-D-312): one balance per owner, kept with the world like the
+ * Ψ (thought cycles), the resource of the Ψ era (D-312): one balance per owner, kept with the world like the
  * Nexus network's EU.
  */
 public final class PsiStore extends SavedData {
 
-    private static final String NAME = "gtia_psi";
+    private static final String NAME = "typeomega_psi";
     private final Map<UUID, Long> balance = new HashMap<>();
 
     public static PsiStore get(MinecraftServer server) {

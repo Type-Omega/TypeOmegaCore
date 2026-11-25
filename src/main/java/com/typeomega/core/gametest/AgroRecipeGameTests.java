@@ -11,11 +11,11 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
-/** Agronomica biomass in GT machines (GTIA-D-271, GTIA-D-426). Needs -PagronomicaDevJar; skipped without it. */
+/** Agronomica biomass in GT machines (D-271, D-426). Needs -PagronomicaDevJar; skipped without it. */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class AgroRecipeGameTests {
 
     private AgroRecipeGameTests() {}
@@ -23,7 +23,7 @@ public final class AgroRecipeGameTests {
     @GameTest(template = "qa_empty_5x5", batch = "agro_recipes", timeoutTicks = 20)
     public static void lvFermenterMakesLessBiomassThanTheBrewery(GameTestHelper h) {
         if (!ModList.get().isLoaded("agronomica")) {
-            GTIAMod.LOGGER.warn("Agronomica not loaded (run with -PagronomicaDevJar): fermenter biomass test skipped");
+            TypeOmegaMod.LOGGER.warn("Agronomica not loaded (run with -PagronomicaDevJar): fermenter biomass test skipped");
             h.succeed();
             return;
         }

@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * A megastructure's render-only effects (stars, jets, beams, force fields, accretion disks, black holes, planets),
- * read from {@code gtia_mega/<name>/fx.json}, written by its generator. Positions and sizes are in grid cells; an
+ * read from {@code typeomega_mega/<name>/fx.json}, written by its generator. Positions and sizes are in grid cells; an
  * effect moves with its {@link #track} (none: fixed).
  */
 public final class MegaFx {
@@ -69,7 +69,7 @@ public final class MegaFx {
                 for (var e : root.getAsJsonArray("effects")) fx.effects.add(read(e.getAsJsonObject()));
                 return java.util.Optional.of(fx);
             } catch (Exception e) {
-                com.typeomega.core.GTIAMod.LOGGER.error("Effects of {} unreadable", n, e);
+                com.typeomega.core.TypeOmegaMod.LOGGER.error("Effects of {} unreadable", n, e);
                 return java.util.Optional.empty();
             }
         }).orElse(null);

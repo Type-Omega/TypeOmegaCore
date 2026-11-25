@@ -23,7 +23,7 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * Controller of the Kugelblitz Containment Silo (GTIA-D-321): lasers (EU from the Nexus network) and the vault
+ * Controller of the Kugelblitz Containment Silo (D-321): lasers (EU from the Nexus network) and the vault
  * (items and fluids, from phase 4) give a black hole mass; it gives energy back as Hawking radiation, caught as EU
  * by the petals of phase 5. A small hole is a strong generator but close to running away: below the critical mass
  * it flashes out and breaks the chamber.

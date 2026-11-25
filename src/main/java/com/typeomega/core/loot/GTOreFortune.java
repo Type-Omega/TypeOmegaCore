@@ -18,15 +18,15 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
 /**
- * EN: Fortune on GregTech ores (GTIA-D-348). GTCEu 7.5.3 leaves the ore bonus out of its ore loot tables; this puts
+ * EN: Fortune on GregTech ores (D-348). GTCEu 7.5.3 leaves the ore bonus out of its ore loot tables; this puts
  * the vanilla ore formula back on the ore's own drop (raw ore, or gem/dust for ores without raw ore).
- * PT: Fortuna nos minérios do GregTech (GTIA-D-348). O GTCEu 7.5.3 deixa o bônus de minério fora das tabelas; isto
+ * PT: Fortuna nos minérios do GregTech (D-348). O GTCEu 7.5.3 deixa o bônus de minério fora das tabelas; isto
  * devolve a fórmula de minério do vanilla na queda do próprio minério (minério bruto, ou gema/pó quando não há bruto).
- * ZH: GregTech 矿石的时运（GTIA-D-348）。GTCEu 7.5.3 的矿石战利品表去掉了时运加成；这里按原版矿石公式恢复，作用于
+ * ZH: GregTech 矿石的时运（D-348）。GTCEu 7.5.3 的矿石战利品表去掉了时运加成；这里按原版矿石公式恢复，作用于
  * 矿石本身的掉落（粗矿，没有粗矿时为宝石或粉）。
  */
 public final class GTOreFortune extends LootModifier {
@@ -35,7 +35,7 @@ public final class GTOreFortune extends LootModifier {
             .create(inst -> codecStart(inst).apply(inst, GTOreFortune::new));
 
     private static final DeferredRegister<Codec<? extends IGlobalLootModifier>> SERIALIZERS = DeferredRegister
-            .create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, GTIAMod.MOD_ID);
+            .create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, TypeOmegaMod.MOD_ID);
 
     static {
         SERIALIZERS.register("gt_ore_fortune", () -> CODEC);

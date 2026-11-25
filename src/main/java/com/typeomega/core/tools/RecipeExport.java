@@ -33,7 +33,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.BufferedWriter;
@@ -67,9 +67,9 @@ public final class RecipeExport {
         Path dir = Paths.get(System.getProperty(PROPERTY));
         try {
             export(event.getServer(), dir);
-            GTIAMod.LOGGER.info("Exported recipes and registries to {}", dir.toAbsolutePath());
+            TypeOmegaMod.LOGGER.info("Exported recipes and registries to {}", dir.toAbsolutePath());
         } catch (IOException | RuntimeException e) {
-            GTIAMod.LOGGER.error("Recipe export to {} failed", dir.toAbsolutePath(), e);
+            TypeOmegaMod.LOGGER.error("Recipe export to {} failed", dir.toAbsolutePath(), e);
         }
     }
 
@@ -83,7 +83,7 @@ public final class RecipeExport {
                 try {
                     json = recipe instanceof GTRecipe gt ? gtRecipe(gt) : plainRecipe(recipe, access);
                 } catch (RuntimeException e) {
-                    GTIAMod.LOGGER.warn("Recipe {} skipped by the export: {}", recipe.getId(), e.toString());
+                    TypeOmegaMod.LOGGER.warn("Recipe {} skipped by the export: {}", recipe.getId(), e.toString());
                     continue;
                 }
                 out.write(json.toString());
@@ -146,7 +146,7 @@ public final class RecipeExport {
                 new TreeSet<>(ForgeRegistries.ITEMS.getKeys().stream().map(ResourceLocation::toString).toList()));
         Files.write(dir.resolve("fluids.txt"),
                 new TreeSet<>(ForgeRegistries.FLUIDS.getKeys().stream().map(ResourceLocation::toString).toList()));
-        GTIAMod.LOGGER.info("Recipe export wrote {} recipes", count);
+        TypeOmegaMod.LOGGER.info("Recipe export wrote {} recipes", count);
     }
 
     private static JsonObject plainRecipe(Recipe<?> recipe, RegistryAccess access) {

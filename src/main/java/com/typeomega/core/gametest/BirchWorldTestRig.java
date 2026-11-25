@@ -12,7 +12,7 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
 import com.typeomega.core.mega.EraStore;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.birch.BirchPhysics;
 import com.typeomega.core.mega.birch.BirchWorldMachine;
 import com.typeomega.core.mega.common.MegaMachine;
@@ -61,7 +61,7 @@ final class BirchWorldTestRig {
             MegaMachine.anyDimensionForTests = true;
             star.kind = Kind.BLACK_HOLE;
             star.mass = 10;
-            BirchWorldMachine m = MegaTestRig.build(helper, BirchWorldMachine.SHAPE, GTIAMegastructures.BIRCH_WORLD_DEF,
+            BirchWorldMachine m = MegaTestRig.build(helper, BirchWorldMachine.SHAPE, TypeOmegaMegastructures.BIRCH_WORLD_DEF,
                     5, 30);
             var bus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
             var modules = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 1,
@@ -109,7 +109,7 @@ final class BirchWorldTestRig {
     }
 
     static void noLayerNoWorld(GameTestHelper helper) {
-        BirchWorldMachine m = MegaTestRig.build(helper, BirchWorldMachine.SHAPE, GTIAMegastructures.BIRCH_WORLD_DEF, 5,
+        BirchWorldMachine m = MegaTestRig.build(helper, BirchWorldMachine.SHAPE, TypeOmegaMegastructures.BIRCH_WORLD_DEF, 5,
                 31);
         var shape = MegaShape.get(BirchWorldMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "layer_1", "body"));

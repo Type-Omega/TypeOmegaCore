@@ -6,14 +6,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.chem.ChemRouteRemovals;
 
 import java.util.List;
 
-/** The competing direct syntheses are gone (GTIA-D-294) and the GTIA lines that replace them are loaded. */
+/** The competing direct syntheses are gone (D-294) and the Type Omega lines that replace them are loaded. */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class ChemRouteGameTests {
 
     private static final List<String> KEPT = List.of(
@@ -38,7 +38,7 @@ public final class ChemRouteGameTests {
         var present = ChemRouteRemovals.ids().stream().filter(id -> manager.byKey(id).isPresent()).toList();
         var missing = KEPT.stream().map(ResourceLocation::new).filter(id -> manager.byKey(id).isEmpty()).toList();
         h.assertTrue(present.isEmpty(), "competing routes still loaded: " + present);
-        h.assertTrue(missing.isEmpty(), "GTIA lines or kept by-products missing: " + missing);
+        h.assertTrue(missing.isEmpty(), "Type Omega lines or kept by-products missing: " + missing);
         h.succeed();
     }
 }

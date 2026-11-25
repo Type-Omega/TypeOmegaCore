@@ -10,7 +10,7 @@ import com.gregtechceu.gtceu.common.machine.multiblock.part.ItemBusPartMachine;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
@@ -60,7 +60,7 @@ final class AssemblyYardTestRig {
             star.kind = Kind.YELLOW_DWARF;
             star.mass = 1;
             AssemblyYardMachine m = MegaTestRig.build(helper, AssemblyYardMachine.SHAPE,
-                    GTIAMegastructures.ASSEMBLY_YARD_DEF, 5, 20);
+                    TypeOmegaMegastructures.ASSEMBLY_YARD_DEF, 5, 20);
             var bus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
             var out = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 1, GTMachines.ITEM_EXPORT_BUS[GTValues.LuV]);
             helper.assertTrue(m.checkPatternWithLock(), "the whole yard forms: " + MegaTestRig.error(m));
@@ -94,7 +94,7 @@ final class AssemblyYardTestRig {
             GTRecipe mega = null;
             for (var r : helper.getLevel().getRecipeManager().getAllRecipesFor(GTRecipeTypes.ASSEMBLY_LINE_RECIPES))
                 for (var o : RecipeHelper.getOutputItems(r))
-                    if (o.is(GTIAMegastructures.ASSEMBLY_YARD_DEF.asStack().getItem())) mega = r;
+                    if (o.is(TypeOmegaMegastructures.ASSEMBLY_YARD_DEF.asStack().getItem())) mega = r;
             helper.assertTrue(mega != null && AssemblyYardMachine.discount(mega) == YardPhysics.MEGA_DISCOUNT,
                     "a megastructure controller's recipe costs half the EU in the yard");
             m.setRush(true);
@@ -111,7 +111,7 @@ final class AssemblyYardTestRig {
 
     static void noHubNoYard(GameTestHelper helper) {
         AssemblyYardMachine m = MegaTestRig.build(helper, AssemblyYardMachine.SHAPE,
-                GTIAMegastructures.ASSEMBLY_YARD_DEF, 5, 21);
+                TypeOmegaMegastructures.ASSEMBLY_YARD_DEF, 5, 21);
         var shape = MegaShape.get(AssemblyYardMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "hub", "body"));
         helper.getLevel().setBlock(shape.world(m.getPos(), MegaTestRig.FRONT, c[0], c[1], c[2]),

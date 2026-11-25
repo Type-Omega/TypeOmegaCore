@@ -31,7 +31,7 @@ import org.jetbrains.annotations.VisibleForTesting;
 import java.util.List;
 
 /**
- * Controller of the Interstellar System Creator (GTIA-D-319): gathers a hydrogen cloud, collapses it, lights it
+ * Controller of the Interstellar System Creator (D-319): gathers a hydrogen cloud, collapses it, lights it
  * with the Fusion Candle and settles it into a new star system (a dimension slot) with the chosen star and metal
  * content. The systems an owner has made set the Dimensional era. The screen also travels to the systems.
  */

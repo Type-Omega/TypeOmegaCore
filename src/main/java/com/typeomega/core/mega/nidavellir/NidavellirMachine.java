@@ -30,7 +30,7 @@ import com.typeomega.core.mega.system.StarSystems;
 import java.util.List;
 
 /**
- * Controller of the Nidavellir Hyperforge (GTIA-D-323): runs Alloy Blast Smelter and Ultimate Material Forge recipes
+ * Controller of the Nidavellir Hyperforge (D-323): runs Alloy Blast Smelter and Ultimate Material Forge recipes
  * in huge parallel batches, each pressed under neutronium dust from the input buses; four times as fast around a
  * neutron star.
  */

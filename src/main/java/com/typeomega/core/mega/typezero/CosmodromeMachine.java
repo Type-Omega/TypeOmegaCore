@@ -11,14 +11,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 
-import com.typeomega.core.data.rocket.GTIARocketAssembler;
+import com.typeomega.core.data.rocket.TypeOmegaRocketAssembler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 /**
- * Mission control of the Cosmodrome (GTIA-D-420): a controller of its own that links to a formed Rocket Assembler
+ * Mission control of the Cosmodrome (D-420): a controller of its own that links to a formed Rocket Assembler
  * nearby. Only with that link does it run missions and count as the second megastructure of Type 0.
  */
 public class CosmodromeMachine extends TypeZeroMegaMachine {
@@ -64,7 +64,7 @@ public class CosmodromeMachine extends TypeZeroMegaMachine {
                 for (var entity : chunk.getBlockEntities().values()) {
                     if (!(entity instanceof IMachineBlockEntity holder)) continue;
                     MetaMachine machine = holder.getMetaMachine();
-                    if (machine.getDefinition() != GTIARocketAssembler.ROCKET_ASSEMBLER ||
+                    if (machine.getDefinition() != TypeOmegaRocketAssembler.ROCKET_ASSEMBLER ||
                             !(machine instanceof IMultiController controller) || !controller.isFormed())
                         continue;
                     if (entity.getBlockPos().distSqr(origin) <= range2) return entity.getBlockPos();

@@ -1,6 +1,6 @@
 #version 150
 
-// Megastructure effects (GTIA-D-316). Object space per mode:
+// Megastructure effects (D-316). Object space per mode:
 //   sphere modes (star, field, horizon, planet): unit sphere; torus fields: major radius 1 (Shape.x = 1);
 //   tube modes (jet, beam): unit cylinder, y 0..1 along the axis, radius Shape.x..Shape.y with exponent Shape.z;
 //   disk: square in the XZ plane, UV 0..1; billboard and particles: see below;

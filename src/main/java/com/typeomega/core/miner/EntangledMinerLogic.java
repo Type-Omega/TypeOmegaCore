@@ -17,14 +17,14 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 
-import com.typeomega.core.data.GTIARecipeTypes;
+import com.typeomega.core.data.TypeOmegaRecipeTypes;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Entangled Miner recipe (GTIA-D-310), built for each operation from the Vein Card in the input slot: {@code purity}
+ * Entangled Miner recipe (D-310), built for each operation from the Vein Card in the input slot: {@code purity}
  * raw ores drawn by the vein's weights. 8 s at 30 EU/t; GTCEu's overclock does the rest (IV: 0.5 s at 7680 EU/t).
  */
 public enum EntangledMinerLogic implements GTRecipeType.ICustomRecipeLogic {
@@ -103,7 +103,7 @@ public enum EntangledMinerLogic implements GTRecipeType.ICustomRecipeLogic {
         // EN: 8 s at 30 EU/t in LV, normal overclock per tier: light by design, a passive trickle and not a mine.
         // PT: 8 s a 30 EU/t no LV, overclock normal por tier: leve de propósito, um fluxo passivo e não uma mina.
         // ZH: LV 为 8 秒、30 EU/t，每级正常超频：刻意保持轻量，是被动的细流而不是矿场。
-        var builder = GTIARecipeTypes.ENTANGLED_MINER.recipeBuilder("entangled_" + Long.toHexString(random.nextLong()))
+        var builder = TypeOmegaRecipeTypes.ENTANGLED_MINER.recipeBuilder("entangled_" + Long.toHexString(random.nextLong()))
                 .duration(BASE_DURATION).EUt(GTValues.VA[GTValues.LV]);
         for (var e : drawn.entrySet()) builder.outputItems(raw(e.getKey(), e.getValue()));
         return builder.buildRawRecipe();

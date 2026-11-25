@@ -11,11 +11,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import com.typeomega.core.data.GTIARecipeTypes;
+import com.typeomega.core.data.TypeOmegaRecipeTypes;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Seed Analyzer (GTIA-D-271): an Agronomica seed in, the same seed out with {@code analyzed:1}, so its Growth, Gain and
+ * Seed Analyzer (D-271): an Agronomica seed in, the same seed out with {@code analyzed:1}, so its Growth, Gain and
  * Resistance show. Built per stack because each seed carries its own stats.
  */
 public enum SeedAnalyzerLogic implements GTRecipeType.ICustomRecipeLogic {
@@ -52,7 +52,7 @@ public enum SeedAnalyzerLogic implements GTRecipeType.ICustomRecipeLogic {
         // EN: 5 s at 16 EU/t: cheap on purpose, the cost of breeding is in the crops, not the reading.
         // PT: 5 s a 16 EU/t: barato de propósito; o custo do melhoramento está nas plantas, não na leitura.
         // ZH: 5 秒、16 EU/t：故意便宜，育种成本在作物本身而不在分析。
-        return GTIARecipeTypes.SEED_ANALYZER.recipeBuilder("analyze_" + Integer.toHexString(seed.getTag().hashCode()))
+        return TypeOmegaRecipeTypes.SEED_ANALYZER.recipeBuilder("analyze_" + Integer.toHexString(seed.getTag().hashCode()))
                 .inputItems(seed.copyWithCount(1)).outputItems(analyzed(seed))
                 .duration(100).EUt(16).buildRawRecipe();
     }
@@ -65,7 +65,7 @@ public enum SeedAnalyzerLogic implements GTRecipeType.ICustomRecipeLogic {
         seed.getOrCreateTag().putString("species", "hemp");
         GTRecipe recipe = build(seed);
         recipe.setId(recipe.getId().withPrefix("/"));
-        GTIARecipeTypes.SEED_ANALYZER.addToMainCategory(recipe);
+        TypeOmegaRecipeTypes.SEED_ANALYZER.addToMainCategory(recipe);
     }
 
     public static final int FIRST_TIER = GTValues.LV;

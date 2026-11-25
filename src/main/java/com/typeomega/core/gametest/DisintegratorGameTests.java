@@ -5,16 +5,16 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Solar System Disintegrator (GTIA-D-330): binding energy by layers; it takes a made system's crust and keeps the
+ * The Solar System Disintegrator (D-330): binding energy by layers; it takes a made system's crust and keeps the
  * system, then takes the star and erases it, pouring out dust and gas; without the support ring it does not form.
  * Slots 28, 29.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class DisintegratorGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -22,8 +22,8 @@ public final class DisintegratorGameTests {
     private DisintegratorGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.DISINTEGRATOR_DEF != null) return false;
-        GTIAMod.LOGGER.warn("Disintegrator not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.DISINTEGRATOR_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("Disintegrator not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

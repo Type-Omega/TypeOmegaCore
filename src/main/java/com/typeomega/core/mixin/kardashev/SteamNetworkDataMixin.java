@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.UUID;
 
-/** Counts steam that enters the team's GTNA wireless steam network (GTIA-D-386, D-389). */
+/** Counts steam that enters the team's GTNA wireless steam network (D-386, D-389). */
 @Mixin(value = SteamNetworkData.class, remap = false)
 public abstract class SteamNetworkDataMixin {
 

@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.matrioshka;
 
 /**
- * Computation of the Matrioshka Brain's shells (GTIA-D-311, D-313).
+ * Computation of the Matrioshka Brain's shells (D-311, D-313).
  *
  * <p>
  * Each built phase is one shell around the Nexus star. A shell sits in the star's light at its radius and runs at
@@ -95,11 +95,11 @@ public final class MatrioshkaShells {
     }
 
     /** CWU/t of shell {@code phase} (1..5) at temperature {@code t}: 2^(21+phase) x clock x 300 K / T. */
-    // EN: Each shell is a power of two above the one before (2^22 to 2^26 CWU/t at 300 K, GTIA-D-311); the Landauer
+    // EN: Each shell is a power of two above the one before (2^22 to 2^26 CWU/t at 300 K, D-311); the Landauer
     // factor rewards the cold outer shells and costs the hot inner ones.
-    // PT: Cada casca rende uma potência de 2 acima da anterior (2^22 a 2^26 CWU/t a 300 K, GTIA-D-311); o fator de
+    // PT: Cada casca rende uma potência de 2 acima da anterior (2^22 a 2^26 CWU/t a 300 K, D-311); o fator de
     // Landauer premia as cascas frias de fora e cobra das quentes de dentro.
-    // ZH: 每层外壳比上一层高一个 2 的幂（300 K 时 2^22 至 2^26 CWU/t，GTIA-D-311）；兰道尔因子奖励外层冷壳、惩罚内层热壳。
+    // ZH: 每层外壳比上一层高一个 2 的幂（300 K 时 2^22 至 2^26 CWU/t，D-311）；兰道尔因子奖励外层冷壳、惩罚内层热壳。
     public static long shellCwut(int phase, double t, int clockPct) {
         return Math.round((1L << (21 + phase)) * (clockPct / 100.0) * (T_REF / Math.max(1, t)));
     }

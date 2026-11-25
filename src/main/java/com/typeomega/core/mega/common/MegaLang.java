@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.common;
 
 import com.google.gson.JsonParser;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.lib.lang.Tr;
 
 import java.io.InputStreamReader;
@@ -32,7 +32,7 @@ public final class MegaLang {
         return text == null ? key : text[0];
     }
 
-    /** The key as a {@link Tr} with its three texts, for the tooltip builder of the lib (GTIA-D-410). */
+    /** The key as a {@link Tr} with its three texts, for the tooltip builder of the lib (D-410). */
     public static Tr tr(String key) {
         String[] text = texts().get(key);
         if (text == null) throw new IllegalArgumentException("no mega_lang text for " + key);
@@ -42,7 +42,7 @@ public final class MegaLang {
     public static void init() {
         // Controller names go to Registrate as each machine's lang value (see MegaDefinition).
         texts().forEach((key, text) -> {
-            if (!key.startsWith("block.typeomega.")) GTIAMod.REGISTRATE.addRawLang(key, text[0]);
+            if (!key.startsWith("block.typeomega.")) TypeOmegaMod.REGISTRATE.addRawLang(key, text[0]);
         });
     }
 

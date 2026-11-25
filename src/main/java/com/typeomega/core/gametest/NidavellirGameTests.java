@@ -5,16 +5,16 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Nidavellir Hyperforge (GTIA-D-323): parallels and neutronium by compression; it forges an alloy in parallel,
+ * The Nidavellir Hyperforge (D-323): parallels and neutronium by compression; it forges an alloy in parallel,
  * spending neutronium per batch, four times as fast round a neutron star; without neutronium it waits; without the
  * outer ring it does not form. Slots 18, 19.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class NidavellirGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -22,8 +22,8 @@ public final class NidavellirGameTests {
     private NidavellirGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.NIDAVELLIR_DEF != null) return false;
-        GTIAMod.LOGGER.warn("Nidavellir not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.NIDAVELLIR_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("Nidavellir not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

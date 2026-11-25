@@ -18,18 +18,18 @@ import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Recipes moved for the progression of the restructuring: the Eye of Ender only in the HV Assembler (GTIA-D-352),
- * the personal dimension portal only as a quest reward (GTIA-D-347), the Nexus Flux Matrix in HV (GTIA-D-350; its
+ * Recipes moved for the progression of the restructuring: the Eye of Ender only in the HV Assembler (D-352),
+ * the personal dimension portal only as a quest reward (D-347), the Nexus Flux Matrix in HV (D-350; its
  * losses are in the pack's config/gtna/balance/nexus_flux_matrix.json), the GTCEu Terminal with redstone in the
- * first chapter (GTIA-D-409), the Industrial Platform builder after the Bronze Hull (GTIA-D-406, D-408) and
- * Helium-3 only from heated lunar regolith (GTIA-D-420) and an LV silicon plate for the AE2 network of 0,2
- * (GTIA-D-426).
+ * first chapter (D-409), the Industrial Platform builder after the Bronze Hull (D-406, D-408) and
+ * Helium-3 only from heated lunar regolith (D-420) and an LV silicon plate for the AE2 network of 0,2
+ * (D-426).
  */
 public final class ProgressionGates {
 
@@ -56,23 +56,23 @@ public final class ProgressionGates {
         // EN: Red alloy needs the alloy smelter, so the Terminal of the first chapter takes plain redstone (D-409).
         // PT: Liga vermelha pede o alloy smelter, então o Terminal do primeiro capítulo usa redstone puro (D-409).
         // ZH: 红色合金需要合金炉，因此第一章的终端改用普通红石（D-409）。
-        VanillaRecipeHelper.addShapedRecipe(provider, true, GTIAMod.id("basic_terminal"), GTItems.TERMINAL.asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, true, TypeOmegaMod.id("basic_terminal"), GTItems.TERMINAL.asStack(),
                 "SGS", "PBP", "PWP", 'S', new MaterialEntry(TagPrefix.screw, GTMaterials.WroughtIron),
                 'G', Tags.Items.GLASS_PANES, 'B', new ItemStack(Items.BOOK),
                 'P', new MaterialEntry(TagPrefix.plate, GTMaterials.WroughtIron), 'W', new ItemStack(Items.REDSTONE));
         if (ModList.get().isLoaded("industrial_platform")) {
-            VanillaRecipeHelper.addShapedRecipe(provider, GTIAMod.id("platform_builder"),
+            VanillaRecipeHelper.addShapedRecipe(provider, TypeOmegaMod.id("platform_builder"),
                     new ItemStack(ForgeRegistries.ITEMS.getValue(
                             new ResourceLocation("industrial_platform", "platform_builder"))),
                     "PSP", "SCS", "PSP", 'P', new MaterialEntry(TagPrefix.plate, GTMaterials.Bronze),
                     'S', new ItemStack(Items.SMOOTH_STONE), 'C', GTBlocks.BRONZE_HULL.asStack());
         }
-        // EN: HV emitters and sensors are the first parts that need the eye (GTIA-D-352). The Nether stays closed, so
-        // sulfur and redstone stand in for the blaze powder (GTIA-D-419).
-        // PT: Emissores e sensores HV são as primeiras peças que pedem o olho (GTIA-D-352). O Nether segue fechado,
-        // então enxofre e redstone fazem o papel do pó de blaze (GTIA-D-419).
-        // ZH: HV 发射器和传感器是最早需要末影之眼的部件（GTIA-D-352）。下界仍未开放，因此用硫和红石代替烈焰粉（GTIA-D-419）。
-        GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(GTIAMod.id("ender_eye"))
+        // EN: HV emitters and sensors are the first parts that need the eye (D-352). The Nether stays closed, so
+        // sulfur and redstone stand in for the blaze powder (D-419).
+        // PT: Emissores e sensores HV são as primeiras peças que pedem o olho (D-352). O Nether segue fechado,
+        // então enxofre e redstone fazem o papel do pó de blaze (D-419).
+        // ZH: HV 发射器和传感器是最早需要末影之眼的部件（D-352）。下界仍未开放，因此用硫和红石代替烈焰粉（D-419）。
+        GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(TypeOmegaMod.id("ender_eye"))
                 .inputItems(new ItemStack(Items.ENDER_PEARL))
                 .inputItems(TagPrefix.dust, GTMaterials.Sulfur)
                 .inputItems(TagPrefix.dust, GTMaterials.Redstone)
@@ -81,7 +81,7 @@ public final class ProgressionGates {
         addLunarHelium3(provider);
         addLvSiliconPlate(provider);
         if (!ModList.get().isLoaded("gtna")) return;
-        GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(GTIAMod.id("nexus_flux_matrix"))
+        GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(TypeOmegaMod.id("nexus_flux_matrix"))
                 .inputItems(TagPrefix.plateDouble, GTMaterials.StainlessSteel, 4)
                 .inputItems(CustomTags.HV_CIRCUITS, 2)
                 .inputItems(TagPrefix.plate, GTMaterials.EnderEye, 2)
@@ -91,27 +91,27 @@ public final class ProgressionGates {
                 .duration(400).EUt(GTValues.VA[GTValues.HV]).save(provider);
     }
 
-    /** Ids of the LV silicon plate and of the GTCEu blast it stays below (GTIA-D-426). */
+    /** Ids of the LV silicon plate and of the GTCEu blast it stays below (D-426). */
     public static final String LV_SILICON_PLATE = "alloy_smelter/silicon_plate_lv";
     public static final String EBF_SILICON = "gtceu:electric_blast_furnace/blast_silicon";
 
     private static void addLvSiliconPlate(Consumer<FinishedRecipe> provider) {
-        // EN: The EBF comes in 0,3, but the AE2 silicon print is in 0,2 (GTIA-D-426). The LV route costs two dusts per
+        // EN: The EBF comes in 0,3, but the AE2 silicon print is in 0,2 (D-426). The LV route costs two dusts per
         // plate and 80 s, against one dust and about 64 s of EBF (2273 K, mass 28) plus the freezer, so the EBF stays
         // the better one.
-        // PT: O EBF chega no 0,3, mas a gravação de silício do AE2 está no 0,2 (GTIA-D-426). A rota LV custa dois pós
+        // PT: O EBF chega no 0,3, mas a gravação de silício do AE2 está no 0,2 (D-426). A rota LV custa dois pós
         // por placa e 80 s, contra um pó e uns 64 s de EBF (2273 K, massa 28) mais o congelador, então o EBF continua
         // sendo a melhor.
-        // ZH: 电力高炉在 0,3 才出现，但 AE2 的硅压印在 0,2（GTIA-D-426）。LV 路线每块板需要两份粉、80 秒，而电力高炉
+        // ZH: 电力高炉在 0,3 才出现，但 AE2 的硅压印在 0,2（D-426）。LV 路线每块板需要两份粉、80 秒，而电力高炉
         // 只需一份粉、约 64 秒（2273 K，质量 28）再加真空冷冻机，因此电力高炉仍是更优路线。
-        GTRecipeTypes.ALLOY_SMELTER_RECIPES.recipeBuilder(GTIAMod.id("silicon_plate_lv"))
+        GTRecipeTypes.ALLOY_SMELTER_RECIPES.recipeBuilder(TypeOmegaMod.id("silicon_plate_lv"))
                 .inputItems(TagPrefix.dust, GTMaterials.Silicon, 2)
                 .notConsumable(GTItems.SHAPE_MOLD_PLATE)
                 .outputItems(TagPrefix.plate, GTMaterials.Silicon)
                 .duration(1600).EUt(GTValues.VA[GTValues.LV]).save(provider);
     }
 
-    /** Helium-3 from heated lunar regolith, only when Ad Astra is loaded (GTIA-D-420). */
+    /** Helium-3 from heated lunar regolith, only when Ad Astra is loaded (D-420). */
     private static void addLunarHelium3(Consumer<FinishedRecipe> provider) {
         if (!ModList.get().isLoaded("ad_astra")) return;
         var sand = ForgeRegistries.ITEMS.getValue(new ResourceLocation("ad_astra", "moon_sand"));
@@ -122,7 +122,7 @@ public final class ProgressionGates {
         // hidrogênio também sai, mas a Extratora tem uma saída de fluido só, então fica só o He-3.
         // ZH: 加热以 480 EU/t 释放太阳风挥发物；每份月沙 25 mB 是测试版的初始值。氢也会释放，但提取机只有一个流体输出，
         // 因此只保留氦-3。
-        GTRecipeTypes.EXTRACTOR_RECIPES.recipeBuilder(GTIAMod.id("helium_3_from_regolith"))
+        GTRecipeTypes.EXTRACTOR_RECIPES.recipeBuilder(TypeOmegaMod.id("helium_3_from_regolith"))
                 .inputItems(new ItemStack(sand))
                 .outputFluids(GTMaterials.Helium3.getFluid(25))
                 .duration(200).EUt(GTValues.VA[GTValues.HV]).save(provider);

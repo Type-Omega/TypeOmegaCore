@@ -19,7 +19,7 @@ import com.typeomega.core.mega.system.StarSystems;
 import java.util.List;
 
 /**
- * Controller of the Stellar Harvester (GTIA-D-328): heats the system star's core and pays its accelerated output to
+ * Controller of the Stellar Harvester (D-328): heats the system star's core and pays its accelerated output to
  * the Nexus network until the core hydrogen runs out; then the star ends by its mass.
  */
 public class StellarHarvesterMachine extends MegaMachine {

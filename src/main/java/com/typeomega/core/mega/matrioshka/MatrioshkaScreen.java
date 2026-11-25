@@ -22,10 +22,10 @@ import static com.raishxn.gtna.common.machine.multiblock.originals.ui.OriginalSc
 public final class MatrioshkaScreen {
 
     /**
-     * Its own art (assets/gtna/textures/gui/originals_v2/gtia_matrioshka, the GTNA kit's folder): dark warm grey with
+     * Its own art (assets/gtna/textures/gui/originals_v2/typeomega_matrioshka, the GTNA kit's folder): dark warm grey with
      * amber accents and circuit traces on the display.
      */
-    private static final Theme T = new Theme("gtia_matrioshka", 0xFFFFB347, 0xFFFFE6B0, 0xFF16130F, 0xFF5A4A34,
+    private static final Theme T = new Theme("typeomega_matrioshka", 0xFFFFB347, 0xFFFFE6B0, 0xFF16130F, 0xFF5A4A34,
             0xFFB0A088);
     /** Ring tilts of the display, one per phase (the build's ±15°, 0°, 90°, ±30°, ±4°). */
     private static final double[] TILT = { 15, 0, 90, 30, 4 };

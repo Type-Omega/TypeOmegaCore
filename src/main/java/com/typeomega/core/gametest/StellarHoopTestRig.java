@@ -15,7 +15,7 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaCapture;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
@@ -61,7 +61,7 @@ final class StellarHoopTestRig {
         try {
             MegaMachine.anyDimensionForTests = true;
             StellarHoopMachine m = MegaTestRig.build(helper, StellarHoopMachine.SHAPE,
-                    GTIAMegastructures.STELLAR_HOOP_DEF, 5, 8);
+                    TypeOmegaMegastructures.STELLAR_HOOP_DEF, 5, 8);
             var bus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
             var out = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 1, GTMachines.ITEM_EXPORT_BUS[GTValues.LuV]);
             var coolant = (FluidHatchPartMachine) MegaTestRig.hatch(helper, m, 2,
@@ -117,7 +117,7 @@ final class StellarHoopTestRig {
 
     static void noClampNoHoop(GameTestHelper helper) {
         StellarHoopMachine m = MegaTestRig.build(helper, StellarHoopMachine.SHAPE,
-                GTIAMegastructures.STELLAR_HOOP_DEF, 5, 9);
+                TypeOmegaMegastructures.STELLAR_HOOP_DEF, 5, 9);
         var shape = MegaShape.get(StellarHoopMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "clamps", "body"));
         helper.getLevel().setBlock(shape.world(m.getPos(), MegaTestRig.FRONT, c[0], c[1], c[2]),

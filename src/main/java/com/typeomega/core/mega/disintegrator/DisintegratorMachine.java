@@ -26,7 +26,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 
 /**
- * Controller of the Solar System Disintegrator (GTIA-D-330): takes a made system of the same owner apart layer by
+ * Controller of the Solar System Disintegrator (D-330): takes a made system of the same owner apart layer by
  * layer, paying its binding energy from the Nexus network, and gives the matter out; taking the star erases the
  * system.
  */

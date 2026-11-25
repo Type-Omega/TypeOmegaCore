@@ -4,7 +4,7 @@ import com.typeomega.core.mega.system.StarPhysics;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 
 /**
- * Physics of the Interstellar System Creator (GTIA-D-319): a star made from a gas cloud.
+ * Physics of the Interstellar System Creator (D-319): a star made from a gas cloud.
  *
  * <ul>
  * <li>Gather: the cloud is the star's mass in hydrogen, 10⁶ mB per M☉ (plasma counts ten times).</li>

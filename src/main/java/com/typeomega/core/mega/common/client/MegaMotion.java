@@ -43,7 +43,7 @@ public final class MegaMotion {
             try {
                 return java.util.Optional.ofNullable(load(n));
             } catch (IOException | RuntimeException e) {
-                com.typeomega.core.GTIAMod.LOGGER.error("Animation data of {} unreadable", n, e);
+                com.typeomega.core.TypeOmegaMod.LOGGER.error("Animation data of {} unreadable", n, e);
                 return java.util.Optional.empty();
             }
         }).orElse(null);

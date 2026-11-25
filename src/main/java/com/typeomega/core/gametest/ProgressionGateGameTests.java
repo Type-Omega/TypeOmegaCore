@@ -24,7 +24,7 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.route.AE2Gates;
 import com.typeomega.core.route.NanoCircuits;
 import com.typeomega.core.route.ProgressionGates;
@@ -35,11 +35,11 @@ import java.util.List;
 /**
  * The restructuring gates: Eye of Ender in HV, portal only from a quest, basic AE2 in LV and the rest in MV/HV, the
  * Terminal with redstone, the Industrial Platform after the Bronze Hull, the eye without blaze, the nano line in HV
- * and He-3 only from the Moon, the LV silicon plate (GTIA-D-347, D-349, D-352, D-406, D-408, D-409, D-419 to D-421,
+ * and He-3 only from the Moon, the LV silicon plate (D-347, D-349, D-352, D-406, D-408, D-409, D-419 to D-421,
  * D-424, D-426).
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class ProgressionGateGameTests {
 
     private ProgressionGateGameTests() {}
@@ -52,7 +52,7 @@ public final class ProgressionGateGameTests {
         List<String> kept = new ArrayList<>(
                 List.of("typeomega:assembler/ender_eye", "typeomega:assembler/nexus_flux_matrix",
                         "typeomega:shaped/basic_terminal"));
-        NanoCircuits.IDS.forEach(path -> kept.add(GTIAMod.MOD_ID + ":" + path));
+        NanoCircuits.IDS.forEach(path -> kept.add(TypeOmegaMod.MOD_ID + ":" + path));
         if (ModList.get().isLoaded("industrial_platform")) kept.add("typeomega:shaped/platform_builder");
         if (ModList.get().isLoaded("ae2")) {
             removed.addAll(AE2Gates.ids());
@@ -75,11 +75,11 @@ public final class ProgressionGateGameTests {
     @GameTest(template = "qa_empty_5x5", batch = "gates", timeoutTicks = 20)
     public static void terminalTakesRedstone(GameTestHelper h) {
         var manager = h.getLevel().getServer().getRecipeManager();
-        var terminal = manager.byKey(GTIAMod.id("shaped/basic_terminal")).orElse(null);
+        var terminal = manager.byKey(TypeOmegaMod.id("shaped/basic_terminal")).orElse(null);
         h.assertTrue(terminal != null, "the Terminal recipe is missing");
         var ingredients = terminal.getIngredients();
         h.assertTrue(ingredients.stream().anyMatch(i -> i.test(new ItemStack(Items.REDSTONE))),
-                "the Terminal takes redstone (GTIA-D-409)");
+                "the Terminal takes redstone (D-409)");
         h.assertTrue(ingredients.stream().noneMatch(i -> i.test(
                 ChemicalHelper.get(TagPrefix.wireGtSingle, GTMaterials.RedAlloy))),
                 "the Terminal has no red alloy wire");
@@ -93,7 +93,7 @@ public final class ProgressionGateGameTests {
         h.succeed();
     }
 
-    /** The basic AE2 network runs on LV power (GTIA-D-408, D-415), with no Nether quartz in the cores or the fluix. */
+    /** The basic AE2 network runs on LV power (D-408, D-415), with no Nether quartz in the cores or the fluix. */
     @GameTest(template = "qa_empty_5x5", batch = "gates", timeoutTicks = 20)
     public static void basicAe2IsLv(GameTestHelper h) {
         if (!ModList.get().isLoaded("ae2")) {
@@ -106,7 +106,7 @@ public final class ProgressionGateGameTests {
                 "circuit_assembler/ae2/logic_processor", "mixer/ae2/fluix_crystal", "assembler/ae2/annihilation_core",
                 "assembler/ae2/formation_core", "assembler/ae2/controller", "assembler/ae2/drive",
                 "assembler/ae2/terminal", "assembler/ae2/item_cell_housing", "assembler/ae2/cell_component_1k")) {
-            var recipe = (GTRecipe) manager.byKey(GTIAMod.id(path)).orElse(null);
+            var recipe = (GTRecipe) manager.byKey(TypeOmegaMod.id(path)).orElse(null);
             h.assertTrue(recipe != null, "missing typeomega:" + path);
             h.assertTrue(recipe.getInputEUt().getTotalEU() <= GTValues.VA[GTValues.LV], path + " runs on LV");
             var quartz = new ItemStack(Items.QUARTZ);
@@ -119,12 +119,12 @@ public final class ProgressionGateGameTests {
 
     /**
      * The silicon plate for the AE2 print has an LV route in the Alloy Smelter at 30 EU/t, worse than the EBF one,
-     * which stays (GTIA-D-426).
+     * which stays (D-426).
      */
     @GameTest(template = "qa_empty_5x5", batch = "gates", timeoutTicks = 20)
     public static void siliconPlateHasWorseLvRoute(GameTestHelper h) {
         var manager = h.getLevel().getServer().getRecipeManager();
-        var lv = (GTRecipe) manager.byKey(GTIAMod.id(ProgressionGates.LV_SILICON_PLATE)).orElse(null);
+        var lv = (GTRecipe) manager.byKey(TypeOmegaMod.id(ProgressionGates.LV_SILICON_PLATE)).orElse(null);
         var ebf = (GTRecipe) manager.byKey(new ResourceLocation(ProgressionGates.EBF_SILICON)).orElse(null);
         h.assertTrue(lv != null, "the LV silicon plate recipe is missing");
         h.assertTrue(ebf != null, "the EBF silicon route is gone");
@@ -151,10 +151,10 @@ public final class ProgressionGateGameTests {
         h.succeed();
     }
 
-    /** The eye comes from the HV Assembler with no Nether input (GTIA-D-419). */
+    /** The eye comes from the HV Assembler with no Nether input (D-419). */
     @GameTest(template = "qa_empty_5x5", batch = "gates", timeoutTicks = 20)
     public static void enderEyeNeedsNoNether(GameTestHelper h) {
-        var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(GTIAMod.id("assembler/ender_eye"))
+        var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(TypeOmegaMod.id("assembler/ender_eye"))
                 .orElse(null);
         h.assertTrue(recipe != null, "the Eye of Ender recipe is missing");
         h.assertTrue(recipe.getInputEUt().getTotalEU() == GTValues.VA[GTValues.HV], "the eye is an HV craft");
@@ -171,27 +171,27 @@ public final class ProgressionGateGameTests {
     }
 
     /**
-     * The nano line runs at 480 EU/t in a Cleanroom with the GTCEu energy per craft (GTIA-D-421, D-424); the GTCEu
+     * The nano line runs at 480 EU/t in a Cleanroom with the GTCEu energy per craft (D-421, D-424); the GTCEu
      * originals with the same inputs are gone (checked in {@link #gatedRecipesAreReplaced}).
      */
     @GameTest(template = "qa_empty_5x5", batch = "gates", timeoutTicks = 20)
     public static void nanoCircuitsRunInHv(GameTestHelper h) {
         var manager = h.getLevel().getServer().getRecipeManager();
         for (String path : NanoCircuits.IDS) {
-            var recipe = (GTRecipe) manager.byKey(GTIAMod.id(path)).orElse(null);
+            var recipe = (GTRecipe) manager.byKey(TypeOmegaMod.id(path)).orElse(null);
             h.assertTrue(recipe != null, "missing typeomega:" + path);
             h.assertTrue(recipe.getInputEUt().getTotalEU() == GTValues.VA[GTValues.HV], path + " runs at 480 EU/t");
             h.assertTrue(recipe.conditions.stream().anyMatch(c -> c instanceof CleanroomCondition),
                     path + " needs a Cleanroom");
         }
-        var mainframe = (GTRecipe) manager.byKey(GTIAMod.id("circuit_assembler/nano/mainframe")).orElseThrow();
+        var mainframe = (GTRecipe) manager.byKey(TypeOmegaMod.id("circuit_assembler/nano/mainframe")).orElseThrow();
         h.assertTrue(mainframe.duration == 800 * 4, "the HV Mainframe takes four times the GTCEu 800 ticks");
         h.succeed();
     }
 
     /**
      * The nano wafer (1920 EU/t) has no HV copy: it fits the Large Chemical Reactor with two HV Energy Hatches, which
-     * GTCEu lets run one tier up (2 x 2 A x 512 = 2048 EU/t), and not a single HV hatch (GTIA-D-421).
+     * GTCEu lets run one tier up (2 x 2 A x 512 = 2048 EU/t), and not a single HV hatch (D-421).
      */
     @GameTest(template = "qa_empty_5x5", batch = "gates", timeoutTicks = 20)
     public static void nanoWaferFitsTwoHvHatches(GameTestHelper h) {
@@ -205,13 +205,13 @@ public final class ProgressionGateGameTests {
         h.succeed();
     }
 
-    /** He-3 leaves the helium centrifuge and comes from heated lunar regolith when Ad Astra is loaded (GTIA-D-420). */
+    /** He-3 leaves the helium centrifuge and comes from heated lunar regolith when Ad Astra is loaded (D-420). */
     @GameTest(template = "qa_empty_5x5", batch = "gates", timeoutTicks = 20)
     public static void helium3OnlyFromRegolith(GameTestHelper h) {
         var manager = h.getLevel().getServer().getRecipeManager();
         h.assertTrue(manager.byKey(new ResourceLocation("gtceu", "centrifuge/helium_separation")).isEmpty(),
                 "the helium centrifuge no longer makes He-3");
-        var regolith = (GTRecipe) manager.byKey(GTIAMod.id("extractor/helium_3_from_regolith")).orElse(null);
+        var regolith = (GTRecipe) manager.byKey(TypeOmegaMod.id("extractor/helium_3_from_regolith")).orElse(null);
         if (!ModList.get().isLoaded("ad_astra")) {
             h.assertTrue(regolith == null, "no regolith recipe without Ad Astra");
             h.succeed();

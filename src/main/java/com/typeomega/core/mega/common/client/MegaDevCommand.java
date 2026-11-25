@@ -9,8 +9,8 @@ import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 
 /**
- * Development aid for screenshots of a headless client: {@code /gtia_dev_open <pos>} opens the screen of the machine
- * at {@code pos} in the player's dimension, as a right click would; {@code /gtia_dev_power <pos>} makes the player
+ * Development aid for screenshots of a headless client: {@code /typeomega_dev_open <pos>} opens the screen of the machine
+ * at {@code pos} in the player's dimension, as a right click would; {@code /typeomega_dev_power <pos>} makes the player
  * the owner of the megastructure there and fills the player's Nexus network. Only outside production.
  */
 public final class MegaDevCommand {
@@ -19,7 +19,7 @@ public final class MegaDevCommand {
 
     public static void register(RegisterClientCommandsEvent event) {
         if (net.minecraftforge.fml.loading.FMLEnvironment.production) return;
-        event.getDispatcher().register(Commands.literal("gtia_dev_open")
+        event.getDispatcher().register(Commands.literal("typeomega_dev_open")
                 .then(Commands.argument("pos", BlockPosArgument.blockPos()).executes(ctx -> {
                     var mc = Minecraft.getInstance();
                     var server = mc.getSingleplayerServer();
@@ -33,8 +33,8 @@ public final class MegaDevCommand {
                     });
                     return 1;
                 })));
-        // /gtia_dev_click <pos> <action>: runs a screen button's action on the server copy of the machine.
-        event.getDispatcher().register(Commands.literal("gtia_dev_click")
+        // /typeomega_dev_click <pos> <action>: runs a screen button's action on the server copy of the machine.
+        event.getDispatcher().register(Commands.literal("typeomega_dev_click")
                 .then(Commands.argument("pos", BlockPosArgument.blockPos())
                         .then(Commands.argument("action", com.mojang.brigadier.arguments.StringArgumentType.word())
                                 .executes(ctx -> {
@@ -58,13 +58,13 @@ public final class MegaDevCommand {
                                     });
                                     return 1;
                                 }))));
-        event.getDispatcher().register(Commands.literal("gtia_fx_debug").then(Commands
+        event.getDispatcher().register(Commands.literal("typeomega_fx_debug").then(Commands
                 .argument("mask", com.mojang.brigadier.arguments.IntegerArgumentType.integer(0)).executes(ctx -> {
                     MegaFxRenderer.debugMask = com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(ctx,
                             "mask");
                     return 1;
                 })));
-        event.getDispatcher().register(Commands.literal("gtia_dev_power")
+        event.getDispatcher().register(Commands.literal("typeomega_dev_power")
                 .then(Commands.argument("pos", BlockPosArgument.blockPos()).executes(ctx -> {
                     var mc = Minecraft.getInstance();
                     var server = mc.getSingleplayerServer();
@@ -88,7 +88,7 @@ public final class MegaDevCommand {
                     });
                     return 1;
                 })));
-        event.getDispatcher().register(Commands.literal("gtia_dev_fill")
+        event.getDispatcher().register(Commands.literal("typeomega_dev_fill")
                 .then(Commands.argument("pos", BlockPosArgument.blockPos())
                         .then(Commands.argument("fluid", net.minecraft.commands.arguments.ResourceLocationArgument.id())
                                 .then(Commands.argument("mb", com.mojang.brigadier.arguments.IntegerArgumentType
@@ -111,8 +111,8 @@ public final class MegaDevCommand {
                                                         pos) instanceof com.typeomega.core.mega.common.MegaMachine m) {
                                                     long left = m.fillInputForTests(
                                                             new net.minecraftforge.fluids.FluidStack(fluid, mb));
-                                                    com.typeomega.core.GTIAMod.LOGGER.info(
-                                                            "gtia_dev_fill {} {} mB, {} did not fit", id, mb, left);
+                                                    com.typeomega.core.TypeOmegaMod.LOGGER.info(
+                                                            "typeomega_dev_fill {} {} mB, {} did not fit", id, mb, left);
                                                 }
                                             });
                                             return 1;

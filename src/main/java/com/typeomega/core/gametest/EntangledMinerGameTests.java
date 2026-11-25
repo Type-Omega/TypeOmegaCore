@@ -14,18 +14,18 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIAItems;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaItems;
 import com.typeomega.core.miner.BedrockVeins;
 import com.typeomega.core.miner.EntangledMinerLogic;
 import com.typeomega.core.miner.EntangledMinerMachine;
-import com.typeomega.core.miner.GTIAMiners;
+import com.typeomega.core.miner.TypeOmegaMiners;
 import com.typeomega.core.miner.MinerClaims;
 import com.typeomega.core.miner.VeinCardItem;
 import com.typeomega.core.miner.VeinPurity;
 
 /**
- * Veins with purity and the Entangled Miner (GTIA-D-310): purity odds, the card, the table rates, the 4-per-vein
+ * Veins with purity and the Entangled Miner (D-310): purity odds, the card, the table rates, the 4-per-vein
  * limit, no card and the dimension rule.
  */
 @PrefixGameTestTemplate(false)
@@ -40,8 +40,8 @@ public final class EntangledMinerGameTests {
     @GameTest(template = TEMPLATE, batch = "entangled_miner", timeoutTicks = 20)
     public static void veinsAreRegisteredWithPurityOdds(GameTestHelper h) {
         long registered = GTRegistries.BEDROCK_ORE_DEFINITIONS.keys().stream()
-                .filter(id -> id.getNamespace().equals(GTIAMod.MOD_ID)).count();
-        h.assertTrue(registered == 14, "14 GTIA bedrock veins, got " + registered);
+                .filter(id -> id.getNamespace().equals(TypeOmegaMod.MOD_ID)).count();
+        h.assertTrue(registered == 14, "14 Type Omega bedrock veins, got " + registered);
         int[] counts = new int[3];
         for (int x = -50; x < 50; x++)
             for (int z = -50; z < 50; z++)
@@ -108,7 +108,7 @@ public final class EntangledMinerGameTests {
     public static void minerWithoutCardDoesNothing(GameTestHelper h) {
         MinerClaims.clear();
         var lv = place(h, GTValues.LV);
-        lv.importItems.setStackInSlot(0, GTIAItems.VEIN_CARD.asStack());
+        lv.importItems.setStackInSlot(0, TypeOmegaItems.VEIN_CARD.asStack());
         lv.recipeLogic.findAndHandleRecipe();
         h.assertFalse(lv.recipeLogic.isWorking(), "a blank card mines nothing");
         h.assertTrue(lv.check().block() == EntangledMinerLogic.Block.NO_CARD, "reason: no recorded card");
@@ -138,7 +138,7 @@ public final class EntangledMinerGameTests {
     }
 
     private static EntangledMinerMachine place(GameTestHelper h, int tier) {
-        h.setBlock(MACHINE_POS, GTIAMiners.ENTANGLED_MINER[tier].getBlock());
+        h.setBlock(MACHINE_POS, TypeOmegaMiners.ENTANGLED_MINER[tier].getBlock());
         var machine = (EntangledMinerMachine) ((MetaMachineBlockEntity) h.getBlockEntity(MACHINE_POS))
                 .getMetaMachine();
         machine.energyContainer.setEnergyStored(machine.energyContainer.getEnergyCapacity());
@@ -146,7 +146,7 @@ public final class EntangledMinerGameTests {
     }
 
     private static ItemStack recorded(ServerLevel level, BedrockVeins.Vein vein) {
-        ItemStack card = GTIAItems.VEIN_CARD.asStack();
+        ItemStack card = TypeOmegaItems.VEIN_CARD.asStack();
         VeinCardItem.write(card, vein, vein.purity(level.getSeed()));
         return card;
     }

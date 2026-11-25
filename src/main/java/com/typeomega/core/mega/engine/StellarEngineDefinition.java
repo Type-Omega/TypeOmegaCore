@@ -7,20 +7,20 @@ import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.pattern.BlockPattern;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaTooltips;
 import com.typeomega.core.mega.common.MegaPattern;
 import com.typeomega.core.mega.common.MegaShape;
 
 import static com.gregtechceu.gtceu.api.pattern.Predicates.abilities;
 
-/** Registration and pattern of the Stellar Engine; loaded only with GTNA (see GTIAMegastructures). */
+/** Registration and pattern of the Stellar Engine; loaded only with GTNA (see TypeOmegaMegastructures). */
 public final class StellarEngineDefinition {
 
     private StellarEngineDefinition() {}
 
     public static MultiblockMachineDefinition register() {
-        return GTIAMod.REGISTRATE
+        return TypeOmegaMod.REGISTRATE
                 .multiblock("stellar_engine", StellarEngineMachine::new)
                 .langValue("Stellar Engine")
                 .rotationState(RotationState.NON_Y_AXIS)
@@ -38,7 +38,7 @@ public final class StellarEngineDefinition {
                         GTCEu.id("block/multiblock/fusion_reactor"))
                         .andThen(builder -> builder.addDynamicRenderer(
                                 com.typeomega.core.mega.common.client.MegaRenderer.Render::new)))
-                .tooltipBuilder(GTIATooltips.lazy("stellar_engine"))
+                .tooltipBuilder(TypeOmegaTooltips.lazy("stellar_engine"))
                 .register();
     }
 

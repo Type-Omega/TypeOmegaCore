@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Placeholder textures of the tiered ME Interfaces and Acceleration Cards (GTIA-D-442).
+"""Placeholder textures of the tiered ME Interfaces and Acceleration Cards (D-442).
 
 Reads the AE2 interface and speed card textures from the AE2 jar, rotates the hue of their coloured pixels to a tier
 colour and marks the tier with 2 to 5 dots; the greys are kept. Usage: ae_tier_textures.py PATH_TO_AE2_JAR

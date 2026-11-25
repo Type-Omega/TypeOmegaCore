@@ -32,7 +32,7 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * Controller of the Star Lifter (GTIA-D-317): lifts matter off the star of the system it stands in. Phase 1 heats
+ * Controller of the Star Lifter (D-317): lifts matter off the star of the system it stands in. Phase 1 heats
  * (thermal wind), phase 2's ring current funnels the plasma out of the poles, phase 3's chalices catch it, phase 4's
  * spires sort it into elements, phase 5's arcs stir the core. The star loses mass: dimmer and longer-lived.
  */

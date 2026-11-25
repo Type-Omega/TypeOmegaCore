@@ -14,11 +14,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.UUID;
 
 /**
- * EN: The Kardashev meter reads the team's GTNA wireless energy network (GTIA-D-386). Every EU entering it goes
+ * EN: The Kardashev meter reads the team's GTNA wireless energy network (D-386). Every EU entering it goes
  * through these two methods, so counting here needs no scan and no change to GTNA.
- * PT: O medidor Kardashev lê a rede sem fio de energia do GTNA do time (GTIA-D-386). Todo EU que entra passa por
+ * PT: O medidor Kardashev lê a rede sem fio de energia do GTNA do time (D-386). Todo EU que entra passa por
  * estes dois métodos; contar aqui dispensa varredura e mudança no GTNA.
- * ZH: Kardashev 计量器读取队伍的 GTNA 无线能量网络（GTIA-D-386）。所有进入网络的 EU 都经过这两个方法，在此计数
+ * ZH: Kardashev 计量器读取队伍的 GTNA 无线能量网络（D-386）。所有进入网络的 EU 都经过这两个方法，在此计数
  * 无需扫描世界，也无需修改 GTNA。
  */
 @Mixin(value = NexusEnergyNetwork.class, remap = false)

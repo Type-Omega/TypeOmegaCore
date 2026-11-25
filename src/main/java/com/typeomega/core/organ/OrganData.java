@@ -15,7 +15,7 @@ public final class OrganData {
 
     public static final int WING_START = OrganType.TIERED.length;
     public static final int SLOTS = WING_START + OrganType.WING.slots();
-    private static final String KEY = "gtia_organs";
+    private static final String KEY = "typeomega_organs";
 
     private OrganData() {}
 

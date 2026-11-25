@@ -8,11 +8,11 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.data.GTIABeeMachines;
-import com.typeomega.core.data.GTIARecipeTypes;
+import com.typeomega.core.data.TypeOmegaBeeMachines;
+import com.typeomega.core.data.TypeOmegaRecipeTypes;
 import com.typeomega.core.machine.logic.SeedAnalyzerLogic;
 
-/** Industrial Apiary exists from HV to UV and never earlier (GTIA-D-259). */
+/** Industrial Apiary exists from HV to UV and never earlier (D-259). */
 @PrefixGameTestTemplate(false)
 @GameTestHolder("typeomega")
 public final class BeeMachineGameTests {
@@ -21,20 +21,20 @@ public final class BeeMachineGameTests {
 
     @GameTest(template = "qa_empty_5x5", batch = "bees", timeoutTicks = 20)
     public static void apiaryStartsAtHv(GameTestHelper helper) {
-        for (int tier = GTValues.ULV; tier < GTIABeeMachines.FIRST_TIER; tier++)
-            helper.assertTrue(GTIABeeMachines.INDUSTRIAL_APIARY[tier] == null,
+        for (int tier = GTValues.ULV; tier < TypeOmegaBeeMachines.FIRST_TIER; tier++)
+            helper.assertTrue(TypeOmegaBeeMachines.INDUSTRIAL_APIARY[tier] == null,
                     "no Industrial Apiary before HV, found one at " + GTValues.VN[tier]);
         for (int tier = GTValues.HV; tier <= GTValues.UV; tier++) {
-            var machine = GTIABeeMachines.INDUSTRIAL_APIARY[tier];
+            var machine = TypeOmegaBeeMachines.INDUSTRIAL_APIARY[tier];
             helper.assertTrue(machine != null, "missing Industrial Apiary at " + GTValues.VN[tier]);
-            helper.assertTrue(machine.getRecipeTypes()[0] == GTIARecipeTypes.INDUSTRIAL_APIARY,
+            helper.assertTrue(machine.getRecipeTypes()[0] == TypeOmegaRecipeTypes.INDUSTRIAL_APIARY,
                     "apiary must use the industrial_apiary recipe type");
         }
         helper.succeed();
     }
 
     @GameTest(template = "qa_empty_5x5", batch = "bees", timeoutTicks = 20)
-    public static void beesOnlyComeFromTheGtiaLine(GameTestHelper helper) {
+    public static void beesOnlyComeFromTheTypeOmegaLine(GameTestHelper helper) {
         if (!ModList.get().isLoaded("productivebees")) {
             helper.succeed();
             return;
@@ -48,7 +48,7 @@ public final class BeeMachineGameTests {
                     recipes.stream()
                             .anyMatch(r -> "typeomega".equals(r.getId().getNamespace()) &&
                                     r.getId().getPath().endsWith("bees/" + step)),
-                    "missing GTIA bee recipe " + step);
+                    "missing Type Omega bee recipe " + step);
         helper.assertTrue(recipes.stream().noneMatch(r -> r.getId().getPath().endsWith("bees/breed_titanium")),
                 "EV species must not be breedable from a wild bee directly");
         helper.succeed();
@@ -57,8 +57,8 @@ public final class BeeMachineGameTests {
     @GameTest(template = "qa_empty_5x5", batch = "bees", timeoutTicks = 20)
     public static void seedAnalyzerRevealsStats(GameTestHelper helper) {
         for (int tier = GTValues.LV; tier <= GTValues.HV; tier++)
-            helper.assertTrue(GTIABeeMachines.SEED_ANALYZER[tier] != null, "missing Seed Analyzer " + tier);
-        helper.assertTrue(GTIABeeMachines.SEED_ANALYZER[GTValues.ULV] == null, "no Seed Analyzer before LV");
+            helper.assertTrue(TypeOmegaBeeMachines.SEED_ANALYZER[tier] != null, "missing Seed Analyzer " + tier);
+        helper.assertTrue(TypeOmegaBeeMachines.SEED_ANALYZER[GTValues.ULV] == null, "no Seed Analyzer before LV");
         var item = net.minecraftforge.registries.ForgeRegistries.ITEMS.getValue(SeedAnalyzerLogic.SEEDS);
         if (item == null || item == net.minecraft.world.item.Items.AIR) {
             helper.succeed();

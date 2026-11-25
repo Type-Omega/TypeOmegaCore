@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Gerador Universal de MaterialIconSets Animados — GregTech Infinity Ascension
+Gerador Universal de MaterialIconSets Animados — Type Omega
 ============================================================================
 Gera texturas animadas (16x128, 8 frames) + arquivos .png.mcmeta + modelos JSON
 para os 4 MaterialIconSets autorais aprovados:
@@ -249,7 +249,7 @@ def build_strip(l0, l1, l2, shader_fn):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Gerador Universal de MaterialIconSets do GTIA")
+    parser = argparse.ArgumentParser(description="Gerador Universal de MaterialIconSets do Type Omega")
     parser.add_argument("--forms", nargs="+", default=DEFAULT_FORMS, help="Formas a gerar (ex: ingot plate plate_double)")
     parser.add_argument("--list-forms", action="store_true", help="Lista todas as formas disponíveis no GTCEu")
     repo_root = Path(__file__).resolve().parents[1]
@@ -261,7 +261,7 @@ def main():
     parser.add_argument(
         "--core-out", "--addon-out", dest="core_out",
         default=str(repo_root / "src" / "main" / "resources" / "assets" / "gtceu"),
-        help="Pasta assets/gtceu de saída no GTIACore (--addon-out é alias antigo)",
+        help="Pasta assets/gtceu de saída no TypeOmegaCore (--addon-out é alias antigo)",
     )
     parser.add_argument("--overwrite-existing", action="store_true",
                         help="Permite substituir arquivos de arte já existentes; usar somente após revisão do autor")

@@ -5,11 +5,11 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Stellar Engine (GTIA-D-315): forms, the mirror pushes alone, the Caplan engine needs Nexus power, Δv reaches
+ * The Stellar Engine (D-315): forms, the mirror pushes alone, the Caplan engine needs Nexus power, Δv reaches
  * the regions, an over-long jet strains the cage; without the cage it does not form.
  *
  * <p>
@@ -17,7 +17,7 @@ import com.typeomega.core.mega.GTIAMegastructures;
  * Slots 3 and 4: the Matrioshka's tests use 0 to 2.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class StellarEngineGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -25,8 +25,8 @@ public final class StellarEngineGameTests {
     private StellarEngineGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.STELLAR_ENGINE_DEF != null) return false;
-        GTIAMod.LOGGER.warn("Stellar Engine not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.STELLAR_ENGINE_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("Stellar Engine not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

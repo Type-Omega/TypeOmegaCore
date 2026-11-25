@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * HV Tokamak (GTIA-D-379, D-390, D-421): a fusion generator. A cold plasma needs a start-up charge, drawn from its
+ * HV Tokamak (D-379, D-390, D-421): a fusion generator. A cold plasma needs a start-up charge, drawn from its
  * Energy Hatches into the controller; once lit it keeps burning while fuel follows without a pause.
  */
 public class TokamakMachine extends TypeZeroMegaMachine {
@@ -30,11 +30,11 @@ public class TokamakMachine extends TypeZeroMegaMachine {
             TypeZeroMegaMachine.MANAGED_FIELD_HOLDER);
 
     // EN: Start-up charge like the GTCEu fusion reactors, scaled to HV: 2 M EU is about 3 minutes of one HV Energy
-    // Hatch (GTIA-D-421 "energia de partida"). A plasma idle for 5 s cools and needs the charge again.
+    // Hatch (D-421 "energia de partida"). A plasma idle for 5 s cools and needs the charge again.
     // PT: Carga de partida como nos reatores de fusão do GTCEu, na escala do HV: 2 M EU são uns 3 minutos de um
-    // Energy Hatch HV (GTIA-D-421, "energia de partida"). Um plasma parado por 5 s esfria e pede a carga de novo.
+    // Energy Hatch HV (D-421, "energia de partida"). Um plasma parado por 5 s esfria e pede a carga de novo.
     // ZH: 与 GTCEu 聚变反应堆一样需要启动能量，按 HV 缩放：2 M EU 约为一个 HV 能源仓 3 分钟的输入
-    // （GTIA-D-421“启动能量”）。等离子体闲置 5 秒后冷却，需要重新充能。
+    // （D-421“启动能量”）。等离子体闲置 5 秒后冷却，需要重新充能。
     public static final long START_EU = 2_000_000L;
     public static final int COOL_AFTER_TICKS = 100;
 
@@ -141,7 +141,7 @@ public class TokamakMachine extends TypeZeroMegaMachine {
                 .map(r -> r instanceof GTRecipe recipe ? recipe : null).orElse(null);
     }
 
-    /** The Fusion tab: the same illustrated screen as the EMI page (GTIA-D-435, U6). */
+    /** The Fusion tab: the same illustrated screen as the EMI page (D-435, U6). */
     @Override
     public void attachSideTabs(TabsWidget sideTabs) {
         super.attachSideTabs(sideTabs);

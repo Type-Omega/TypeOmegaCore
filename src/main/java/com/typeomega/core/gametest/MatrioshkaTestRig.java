@@ -5,7 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.PsiStore;
 import com.typeomega.core.mega.common.MegaCapture;
 import com.typeomega.core.mega.common.MegaMachine;
@@ -23,7 +23,7 @@ final class MatrioshkaTestRig {
     private MatrioshkaTestRig() {}
 
     private static MatrioshkaBrainMachine build(GameTestHelper helper, int phases, int slot) {
-        return MegaTestRig.build(helper, MatrioshkaBrainMachine.SHAPE, GTIAMegastructures.MATRIOSHKA_BRAIN, phases,
+        return MegaTestRig.build(helper, MatrioshkaBrainMachine.SHAPE, TypeOmegaMegastructures.MATRIOSHKA_BRAIN, phases,
                 slot);
     }
 

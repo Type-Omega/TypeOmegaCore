@@ -7,7 +7,7 @@ import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.typeomega.core.mega.common.MegaDefinition;
 import com.typeomega.core.mega.common.MegaDefinition.Hatch;
 
-/** Registration of the HRAE-MC; loaded only with GTNA (see GTIAMegastructures). */
+/** Registration of the HRAE-MC; loaded only with GTNA (see TypeOmegaMegastructures). */
 public final class HraeDefinition {
 
     private HraeDefinition() {}

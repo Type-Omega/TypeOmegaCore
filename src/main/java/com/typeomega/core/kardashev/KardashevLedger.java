@@ -6,7 +6,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.event.TickEvent;
 
 import com.raishxn.gtna.research.KnowledgeScope;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.util.Map;
 import java.util.UUID;
@@ -38,7 +38,7 @@ public final class KardashevLedger {
         PENDING.computeIfAbsent(owner, ignored -> new DoubleAdder()).add(eu);
     }
 
-    /** Steam the owner produced, in mB; counted at 2 mB = 1 EU (GTIA-D-389). */
+    /** Steam the owner produced, in mB; counted at 2 mB = 1 EU (D-389). */
     public static void recordSteam(UUID owner, double steamMb) {
         recordEu(owner, KardashevScale.steamToEu(steamMb));
     }
@@ -73,7 +73,7 @@ public final class KardashevLedger {
 
     /**
      * Team that owns what {@code owner} produced: the player's effective FTB team (the party, not the personal
-     * team) when FTB Teams is loaded, otherwise the player. Same scope as the GTNA wireless networks (GTIA-D-386).
+     * team) when FTB Teams is loaded, otherwise the player. Same scope as the GTNA wireless networks (D-386).
      */
     public static UUID teamOf(UUID owner) {
         // EN: GTCEu's FTBOwner.getUUID answers with the personal team, so every party member had his own K;
@@ -87,7 +87,7 @@ public final class KardashevLedger {
             UUID team = KnowledgeScope.of(owner);
             return team == null ? owner : team;
         } catch (RuntimeException | LinkageError e) {
-            GTIAMod.LOGGER.debug("Kardashev meter: no team for {}", owner, e);
+            TypeOmegaMod.LOGGER.debug("Kardashev meter: no team for {}", owner, e);
             return owner;
         }
     }

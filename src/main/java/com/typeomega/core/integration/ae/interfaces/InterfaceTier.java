@@ -8,7 +8,7 @@ import net.minecraft.world.item.Item;
 import java.util.Locale;
 
 /**
- * The tiers of the ME Interface above the plain AE2 one (tier 0): II to V (GTIA-D-442). A slot of tier N holds
+ * The tiers of the ME Interface above the plain AE2 one (tier 0): II to V (D-442). A slot of tier N holds
  * {@link #multiplier} times what a plain interface slot holds, and the recipe asks for a circuit of the listed voltage.
  */
 public enum InterfaceTier {

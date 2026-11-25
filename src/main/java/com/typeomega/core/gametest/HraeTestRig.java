@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.hraemc.HraeMachine;
@@ -44,7 +44,7 @@ final class HraeTestRig {
         double mass = star.mass, spin = star.spin;
         try {
             MegaMachine.anyDimensionForTests = true;
-            HraeMachine m = MegaTestRig.build(helper, HraeMachine.SHAPE, GTIAMegastructures.HRAEMC_DEF, 5, 16);
+            HraeMachine m = MegaTestRig.build(helper, HraeMachine.SHAPE, TypeOmegaMegastructures.HRAEMC_DEF, 5, 16);
             var bus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
             helper.assertTrue(m.checkPatternWithLock(), "the whole plant forms: " + MegaTestRig.error(m));
             m.onStructureFormed();
@@ -82,7 +82,7 @@ final class HraeTestRig {
     }
 
     static void noHoopNoPlant(GameTestHelper helper) {
-        HraeMachine m = MegaTestRig.build(helper, HraeMachine.SHAPE, GTIAMegastructures.HRAEMC_DEF, 5, 17);
+        HraeMachine m = MegaTestRig.build(helper, HraeMachine.SHAPE, TypeOmegaMegastructures.HRAEMC_DEF, 5, 17);
         var shape = MegaShape.get(HraeMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "frame", "body"));
         helper.getLevel().setBlock(shape.world(m.getPos(), MegaTestRig.FRONT, c[0], c[1], c[2]),

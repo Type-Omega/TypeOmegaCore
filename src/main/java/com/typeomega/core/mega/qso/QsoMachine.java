@@ -21,7 +21,7 @@ import com.typeomega.core.mega.system.StarSystems;
 import java.util.List;
 
 /**
- * Controller of the Quasi-Stellar Obliterator (GTIA-D-332): charges a capacitor from its system's quasar and the
+ * Controller of the Quasi-Stellar Obliterator (D-332): charges a capacitor from its system's quasar and the
  * Nexus network, fires it, and harvests negentropy from the world's finite stock. With the stock spent, the last
  * shot ends the game.
  */

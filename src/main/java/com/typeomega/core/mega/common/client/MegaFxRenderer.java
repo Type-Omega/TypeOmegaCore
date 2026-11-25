@@ -30,7 +30,7 @@ final class MegaFxRenderer {
         Matrix4f axes();
     }
 
-    /** Dev aid ({@code /gtia_fx_debug <mask>}): bits that hide effect passes, see {@link #hidden}. */
+    /** Dev aid ({@code /typeomega_fx_debug <mask>}): bits that hide effect passes, see {@link #hidden}. */
     static int debugMask;
 
     private MegaFxRenderer() {}

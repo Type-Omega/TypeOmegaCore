@@ -5,16 +5,16 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Interstellar System Creator (GTIA-D-319): the formulas; a red dwarf made from start to end (hydrogen from the
+ * The Interstellar System Creator (D-319): the formulas; a red dwarf made from start to end (hydrogen from the
  * hatches, collapse, ignition, a new system and the Dimensional era); without Ψ it does not start; without a talon
  * it does not form. Needs GTNA and the shape files. Slots 10 and 11.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class SystemCreatorGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -22,8 +22,8 @@ public final class SystemCreatorGameTests {
     private SystemCreatorGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.SYSTEM_CREATOR_DEF != null) return false;
-        GTIAMod.LOGGER.warn("System Creator not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.SYSTEM_CREATOR_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("System Creator not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

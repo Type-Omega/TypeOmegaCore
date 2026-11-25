@@ -10,8 +10,8 @@ import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 
 import net.minecraft.resources.ResourceLocation;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaTooltips;
 
 import java.util.function.Function;
 
@@ -20,7 +20,7 @@ import static com.gregtechceu.gtceu.api.pattern.Predicates.abilities;
 /**
  * Registration of a megastructure controller from its shape: the station block as appearance, the five-phase pattern,
  * the shared renderer and the station's hatch slots. The English name and the tooltip lines
- * ({@code typeomega.machine.<id>.tooltip.<i>}) come from mega_lang, laid out by the lib's builder (GTIA-D-410).
+ * ({@code typeomega.machine.<id>.tooltip.<i>}) come from mega_lang, laid out by the lib's builder (D-410).
  */
 public final class MegaDefinition {
 
@@ -62,7 +62,7 @@ public final class MegaDefinition {
                                                        Function<IMachineBlockEntity, ? extends MegaMachine> factory,
                                                        ResourceLocation casing, GTRecipeType type,
                                                        Hatch... hatches) {
-        return GTIAMod.REGISTRATE
+        return TypeOmegaMod.REGISTRATE
                 .multiblock(id, factory::apply)
                 .langValue(MegaLang.english("block.typeomega." + id))
                 .rotationState(RotationState.NON_Y_AXIS)
@@ -83,7 +83,7 @@ public final class MegaDefinition {
                         casing, GTCEu.id("block/multiblock/fusion_reactor"))
                         .andThen(builder -> builder.addDynamicRenderer(
                                 com.typeomega.core.mega.common.client.MegaRenderer.Render::new)))
-                .tooltipBuilder(GTIATooltips.lazy(id))
+                .tooltipBuilder(TypeOmegaTooltips.lazy(id))
                 .register();
     }
 }

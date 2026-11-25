@@ -15,7 +15,7 @@ public final class TestPlayers {
 
     public static ServerPlayer survival(GameTestHelper helper) {
         UUID id = UUID.randomUUID();
-        ServerPlayer player = FakePlayerFactory.get(helper.getLevel(), new GameProfile(id, "gtia_test_" + id));
+        ServerPlayer player = FakePlayerFactory.get(helper.getLevel(), new GameProfile(id, "typeomega_test_" + id));
         player.setGameMode(net.minecraft.world.level.GameType.SURVIVAL);
         return player;
     }

@@ -4,7 +4,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.DISABLE_DECOMPOSITION;
 
@@ -13,14 +13,14 @@ public final class MegaMaterials {
 
     /**
      * Helium II below the lambda point (2.17 K): a superfluid that carries heat far better than liquid helium. The
-     * Matrioshka Brain's second coolant (GTIA-D-314).
+     * Matrioshka Brain's second coolant (D-314).
      */
     public static Material SUPERFLUID_HELIUM;
 
     private MegaMaterials() {}
 
     public static void register() {
-        SUPERFLUID_HELIUM = new Material.Builder(GTIAMod.id("superfluid_helium"))
+        SUPERFLUID_HELIUM = new Material.Builder(TypeOmegaMod.id("superfluid_helium"))
                 .liquid(new FluidBuilder().temperature(2))
                 .color(0xC8F4FF)
                 .flags(DISABLE_DECOMPOSITION)

@@ -11,7 +11,7 @@ import com.gregtechceu.gtceu.common.machine.multiblock.part.ItemBusPartMachine;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.suprashell.ShellPhysics;
@@ -58,7 +58,7 @@ final class SuprashellTestRig {
             MegaMachine.anyDimensionForTests = true;
             star.kind = Kind.BLACK_HOLE;
             star.mass = 10;
-            SuprashellMachine m = MegaTestRig.build(helper, SuprashellMachine.SHAPE, GTIAMegastructures.SUPRASHELL_DEF,
+            SuprashellMachine m = MegaTestRig.build(helper, SuprashellMachine.SHAPE, TypeOmegaMegastructures.SUPRASHELL_DEF,
                     5, 26);
             var bus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
             var modules = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 1,
@@ -72,7 +72,7 @@ final class SuprashellTestRig {
             m.testSecond(owner);
             helper.assertTrue(m.crafted() == 0 && "modules".equals(m.blocked()), "no module: it waits");
             modules.getInventory().storage.insertItem(0, GCYMMachines.LARGE_ASSEMBLER.asStack(2), false);
-            modules.getInventory().storage.insertItem(1, GTIAMegastructures.SUPRASHELL_DEF.asStack(1), false);
+            modules.getInventory().storage.insertItem(1, TypeOmegaMegastructures.SUPRASHELL_DEF.asStack(1), false);
             var recipe = simpleAssembly(helper);
             for (var stack : RecipeHelper.getInputItems(recipe)) {
                 var big = stack.copyWithCount(64);
@@ -102,7 +102,7 @@ final class SuprashellTestRig {
     }
 
     static void noPlatesNoShell(GameTestHelper helper) {
-        SuprashellMachine m = MegaTestRig.build(helper, SuprashellMachine.SHAPE, GTIAMegastructures.SUPRASHELL_DEF, 5,
+        SuprashellMachine m = MegaTestRig.build(helper, SuprashellMachine.SHAPE, TypeOmegaMegastructures.SUPRASHELL_DEF, 5,
                 27);
         var shape = MegaShape.get(SuprashellMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "plates_1", "body"));

@@ -3,7 +3,7 @@ package com.typeomega.core.gametest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.suppressor.FusionSuppressorMachine;
@@ -38,7 +38,7 @@ final class FusionSuppressorTestRig {
         try {
             MegaMachine.anyDimensionForTests = true;
             FusionSuppressorMachine m = MegaTestRig.build(helper, FusionSuppressorMachine.SHAPE,
-                    GTIAMegastructures.FUSION_SUPPRESSOR_DEF, 5, 12);
+                    TypeOmegaMegastructures.FUSION_SUPPRESSOR_DEF, 5, 12);
             helper.assertTrue(m.checkPatternWithLock(), "the whole Suppressor forms: " + MegaTestRig.error(m));
             m.onStructureFormed();
             UUID owner = UUID.randomUUID();
@@ -84,7 +84,7 @@ final class FusionSuppressorTestRig {
 
     static void noPylonNoSuppressor(GameTestHelper helper) {
         FusionSuppressorMachine m = MegaTestRig.build(helper, FusionSuppressorMachine.SHAPE,
-                GTIAMegastructures.FUSION_SUPPRESSOR_DEF, 5, 13);
+                TypeOmegaMegastructures.FUSION_SUPPRESSOR_DEF, 5, 13);
         var shape = MegaShape.get(FusionSuppressorMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "pylons", "body"));
         helper.getLevel().setBlock(shape.world(m.getPos(), MegaTestRig.FRONT, c[0], c[1], c[2]),

@@ -11,18 +11,18 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.util.function.Supplier;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 
 /**
- * EN: Desh as a GT material with its original name (GTIA-D-393). With Ad Astra loaded, GT's ingot, nugget, block and
+ * EN: Desh as a GT material with its original name (D-393). With Ad Astra loaded, GT's ingot, nugget, block and
  * plate are Ad Astra's own items, so there is one desh in the game.
- * PT: Desh como material GT com o nome original (GTIA-D-393). Com o Ad Astra carregado, o lingote, a pepita, o bloco
+ * PT: Desh como material GT com o nome original (D-393). Com o Ad Astra carregado, o lingote, a pepita, o bloco
  * e a placa do GT são os itens do próprio Ad Astra, então só existe um desh no jogo.
- * ZH: 以原名作为 GT 材料的戴什（GTIA-D-393）。加载 Ad Astra 时，GT 的锭、粒、块和板即为 Ad Astra 自身的物品，
+ * ZH: 以原名作为 GT 材料的戴什（D-393）。加载 Ad Astra 时，GT 的锭、粒、块和板即为 Ad Astra 自身的物品，
  * 游戏中只有一种戴什。
  */
 public final class SpaceMaterials {
@@ -35,7 +35,7 @@ public final class SpaceMaterials {
         // EN: 1700 K stays below GT's hot-ingot threshold (1750 K): desh comes out of an HV EBF ready to press.
         // PT: 1700 K fica abaixo do limite de lingote quente do GT (1750 K): o desh sai do EBF HV pronto para prensar.
         // ZH: 1700 K 低于 GT 热锭阈值（1750 K）：戴什从 HV 电力高炉出炉即可压制。
-        DESH = new Material.Builder(GTIAMod.id("desh"))
+        DESH = new Material.Builder(TypeOmegaMod.id("desh"))
                 .ingot()
                 .color(0xD7843E)
                 .iconSet(MaterialIconSet.METALLIC)

@@ -5,16 +5,16 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Stellar Hoop (GTIA-D-318): the corona model; it runs a real Electric Blast Furnace recipe in parallel from its
+ * The Stellar Hoop (D-318): the corona model; it runs a real Electric Blast Furnace recipe in parallel from its
  * hatches, the hoop is captured, coolant keeps the shields whole and without it they wear; without a clamp it does
  * not form. Needs GTNA and the shape files. Slots 8 and 9.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class StellarHoopGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -22,8 +22,8 @@ public final class StellarHoopGameTests {
     private StellarHoopGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.STELLAR_HOOP_DEF != null) return false;
-        GTIAMod.LOGGER.warn("Stellar Hoop not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.STELLAR_HOOP_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("Stellar Hoop not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

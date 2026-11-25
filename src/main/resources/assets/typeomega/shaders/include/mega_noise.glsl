@@ -1,4 +1,4 @@
-// Noise for the megastructure effects (GTIA-D-316): value noise, fBm, animated Worley cells, 3D simplex noise
+// Noise for the megastructure effects (D-316): value noise, fBm, animated Worley cells, 3D simplex noise
 // (Ashima Arts / Stefan Gustavson, MIT) and a hexagonal tiling. Shared by mega_fx.vsh and mega_fx.fsh.
 
 float hash(vec3 p) {

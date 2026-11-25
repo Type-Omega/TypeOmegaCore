@@ -8,7 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 /**
- * The Moon opens with the Cosmodrome's survey (GTIA-D-420): a player lands on it only while carrying Lunar Survey
+ * The Moon opens with the Cosmodrome's survey (D-420): a player lands on it only while carrying Lunar Survey
  * Data. Read by a mixin on Ad Astra's planet check; creative and spectator players are never stopped.
  */
 public final class LunarAccess {

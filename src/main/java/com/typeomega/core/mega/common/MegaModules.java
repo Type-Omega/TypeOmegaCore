@@ -8,7 +8,7 @@ import com.gregtechceu.gtceu.api.machine.trait.NotifiableItemStackHandler;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -17,7 +17,7 @@ import java.util.Map;
 
 /**
  * Hosted modules (Suprashell, Birch World): GTCEu multiblock controllers put in a megastructure's input buses, whose
- * recipe types it runs. The GTIA megastructures themselves cannot be hosted.
+ * recipe types it runs. The Type Omega megastructures themselves cannot be hosted.
  */
 public final class MegaModules {
 
@@ -34,7 +34,7 @@ public final class MegaModules {
                         var stack = items.storage.getStackInSlot(i);
                         if (!(stack.getItem() instanceof MetaMachineItem item) ||
                                 !(item.getDefinition() instanceof MultiblockMachineDefinition def) ||
-                                GTIAMod.MOD_ID.equals(def.getId().getNamespace()))
+                                TypeOmegaMod.MOD_ID.equals(def.getId().getNamespace()))
                             continue;
                         out.merge(def, stack.getCount(), Integer::sum);
                     }

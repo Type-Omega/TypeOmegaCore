@@ -23,12 +23,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 /**
- * Vein Card (GTIA-D-310): right-click inside a bedrock vein to record it. The card keeps the dimension, the vein
+ * Vein Card (D-310): right-click inside a bedrock vein to record it. The card keeps the dimension, the vein
  * origin, the vein type and its purity; an Entangled Miner with the card mines that vein from wherever it may.
  */
 public class VeinCardItem extends Item {
 
-    public static final String TAG = "gtia_vein";
+    public static final String TAG = "typeomega_vein";
 
     public VeinCardItem(Properties properties) {
         super(properties.stacksTo(16));

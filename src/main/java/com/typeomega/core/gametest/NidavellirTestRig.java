@@ -13,7 +13,7 @@ import com.gregtechceu.gtceu.common.machine.multiblock.part.ItemBusPartMachine;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.nidavellir.NidavellirMachine;
@@ -55,7 +55,7 @@ final class NidavellirTestRig {
         try {
             MegaMachine.anyDimensionForTests = true;
             NidavellirMachine m = MegaTestRig.build(helper, NidavellirMachine.SHAPE,
-                    GTIAMegastructures.NIDAVELLIR_DEF, 5, 18);
+                    TypeOmegaMegastructures.NIDAVELLIR_DEF, 5, 18);
             var bus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
             var dustBus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 1,
                     GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
@@ -97,7 +97,7 @@ final class NidavellirTestRig {
     }
 
     static void noOuterRingNoForge(GameTestHelper helper) {
-        NidavellirMachine m = MegaTestRig.build(helper, NidavellirMachine.SHAPE, GTIAMegastructures.NIDAVELLIR_DEF, 5,
+        NidavellirMachine m = MegaTestRig.build(helper, NidavellirMachine.SHAPE, TypeOmegaMegastructures.NIDAVELLIR_DEF, 5,
                 19);
         var shape = MegaShape.get(NidavellirMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "outer", "body"));

@@ -1,4 +1,4 @@
-# National Dispatch Center, option B of GTIA-D-425: 17 x 18 x 17, 1129 blocks.
+# National Dispatch Center, option B of D-425: 17 x 18 x 17, 1129 blocks.
 # Substation yard (back), cable trench, stepped control building (front) and microwave tower.
 # Aisles back to front (controller last), separated by a blank line; one line per layer from the ground up.
 # C clean stainless casing (hatches, Energy Hatch included), S light concrete, F aluminium frame, T frost-proof

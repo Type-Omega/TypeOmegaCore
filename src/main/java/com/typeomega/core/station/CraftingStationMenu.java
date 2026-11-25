@@ -62,7 +62,7 @@ public class CraftingStationMenu extends AbstractContainerMenu {
 
     /** Server side. */
     public CraftingStationMenu(int id, Inventory inventory, BlockPos pos, List<StationSides.Side> sides) {
-        this(GTIAStation.MENU.get(), id, inventory, pos, sides,
+        this(TypeOmegaStation.MENU.get(), id, inventory, pos, sides,
                 inventory.player.level().getBlockEntity(pos) instanceof CraftingStationBlockEntity be ? be : null);
     }
 
@@ -319,7 +319,7 @@ public class CraftingStationMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(access, player, GTIAStation.BLOCK.get());
+        return stillValid(access, player, TypeOmegaStation.BLOCK.get());
     }
 
     public BlockPos pos() {

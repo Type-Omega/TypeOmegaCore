@@ -5,7 +5,7 @@ import net.minecraft.network.chat.Component;
 import java.util.List;
 
 /**
- * Keeps the blue mod name line of a tooltip once. The multiblock tooltip ends with the mod name (GTIA-D-410) and EMI
+ * Keeps the blue mod name line of a tooltip once. The multiblock tooltip ends with the mod name (D-410) and EMI
  * appends the same name to every item tooltip, so the name showed up twice.
  */
 public final class ModNameLine {

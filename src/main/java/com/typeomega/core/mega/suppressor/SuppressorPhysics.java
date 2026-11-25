@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.suppressor;
 
 /**
- * Physics of the Fusion Suppressor (GTIA-D-320).
+ * Physics of the Fusion Suppressor (D-320).
  *
  * <ul>
  * <li>Suppressing fusion lowers the neutrino flux and the light the core makes; the core loses pressure support and

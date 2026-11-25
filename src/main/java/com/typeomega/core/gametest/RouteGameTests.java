@@ -14,15 +14,15 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIAAlloys;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaAlloys;
 import com.typeomega.core.route.RouteRemovals;
 
 import java.util.List;
 
-/** Block 1 routes (GTIA-D-303 to GTIA-D-308): the replaced recipes are gone and the new ones carry the new numbers. */
+/** Block 1 routes (D-303 to D-308): the replaced recipes are gone and the new ones carry the new numbers. */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class RouteGameTests {
 
     private static final List<String> ADDED = List.of(
@@ -73,7 +73,7 @@ public final class RouteGameTests {
                     "IOP controller at IV");
         var mica = recipe(h, "typeomega:electrolyzer/decomposition_electrolyzing_mica");
         h.assertTrue(mica.getInputEUt().getTotalEU() == 120, "mica at MV");
-        h.assertTrue(gives(mica, GTIAAlloys.ALUMINA) && !gives(mica, GTMaterials.Aluminium), "mica gives alumina");
+        h.assertTrue(gives(mica, TypeOmegaAlloys.ALUMINA) && !gives(mica, GTMaterials.Aluminium), "mica gives alumina");
         var bastnasite = recipe(h, "typeomega:electrolyzer/decomposition_electrolyzing_bastnasite");
         h.assertTrue(gives(bastnasite, GTMaterials.RareEarth) && !gives(bastnasite, GTMaterials.Cerium),
                 "bastnasite gives rare earth");

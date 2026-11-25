@@ -16,11 +16,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.util.function.Consumer;
 
-/** Organ recipes, the GTO 0.6 ones with GTIA materials for the wings (GTIA-D-279). */
+/** Organ recipes, the GTO 0.6 ones with Type Omega materials for the wings (D-279). */
 public final class OrganRecipes {
 
     /** Multiplies every part of an organ recipe (GTO's Normal organ cost). */
@@ -29,27 +29,27 @@ public final class OrganRecipes {
     private OrganRecipes() {}
 
     public static void addRecipes(Consumer<FinishedRecipe> provider) {
-        VanillaRecipeHelper.addShapedRecipe(provider, GTIAMod.id("organ_modifier"), GTIAOrgans.ORGAN_MODIFIER.asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, TypeOmegaMod.id("organ_modifier"), TypeOmegaOrgans.ORGAN_MODIFIER.asStack(),
                 " B ", "CDC", "EFF",
                 'B', GTItems.VOLTAGE_COIL_MV.asStack(), 'C', GTItems.ROBOT_ARM_MV.asStack(),
                 'D', new ItemStack(Items.CRAFTING_TABLE), 'E', new ItemStack(Items.SLIME_BALL),
                 'F', CustomTags.MV_CIRCUITS);
-        // EN: GTO makes the cheap wings from Botania materials; GTIA has no Botania, so they use phantom membranes.
-        // PT: O GTO faz as asas baratas com materiais do Botania; o GTIA não tem Botania, então usa membrana de
+        // EN: GTO makes the cheap wings from Botania materials; Type Omega has no Botania, so they use phantom membranes.
+        // PT: O GTO faz as asas baratas com materiais do Botania; o Type Omega não tem Botania, então usa membrana de
         // phantom.
-        // ZH: GTO 用植物魔法材料制作廉价翅膀；GTIA 没有植物魔法，因此改用幻翼膜。
-        VanillaRecipeHelper.addShapedRecipe(provider, GTIAMod.id("steel_wing"), GTIAOrgans.STEEL_WING.asStack(),
+        // ZH: GTO 用植物魔法材料制作廉价翅膀；Type Omega 没有植物魔法，因此改用幻翼膜。
+        VanillaRecipeHelper.addShapedRecipe(provider, TypeOmegaMod.id("steel_wing"), TypeOmegaOrgans.STEEL_WING.asStack(),
                 "ABA", "CDC", "ABA",
                 'A', new MaterialEntry(TagPrefix.plateDouble, GTMaterials.Steel),
                 'B', new MaterialEntry(TagPrefix.foil, GTMaterials.Aluminium),
                 'C', GTItems.FIELD_GENERATOR_LV.asStack(), 'D', new ItemStack(Items.PHANTOM_MEMBRANE));
-        VanillaRecipeHelper.addShapedRecipe(provider, GTIAMod.id("fairy_wing"), GTIAOrgans.FAIRY_WING.asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, TypeOmegaMod.id("fairy_wing"), TypeOmegaOrgans.FAIRY_WING.asStack(),
                 "ABA", "ACA", "DDD",
                 'A', new MaterialEntry(TagPrefix.foil, GTMaterials.Polyethylene),
                 'B', new MaterialEntry(TagPrefix.plate, GTMaterials.StainlessSteel),
                 'C', GTItems.FIELD_GENERATOR_LV.asStack(), 'D', new ItemStack(Items.PHANTOM_MEMBRANE));
-        VanillaRecipeHelper.addShapedRecipe(provider, GTIAMod.id("mechanical_wing"),
-                GTIAOrgans.MECHANICAL_WING.asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, TypeOmegaMod.id("mechanical_wing"),
+                TypeOmegaOrgans.MECHANICAL_WING.asStack(),
                 "ABA", "CBC", "DED",
                 'A', GTItems.BATTERY_EV_VANADIUM.asStack(),
                 'B', new MaterialEntry(TagPrefix.foil, GTMaterials.Titanium),
@@ -62,9 +62,9 @@ public final class OrganRecipes {
     /** Organ tier 1 to 4 uses MV, EV, LuV and UV parts; field generators are one tier lower (GTO). */
     private static void tier(Consumer<FinishedRecipe> provider, int organTier) {
         int voltage = organTier * 2;
-        // EN: Every part costs twice (GTO's Normal organ cost, GTIA-D-436); tiers 2+ cost twice that.
-        // PT: Cada peça custa o dobro (custo de órgão do Normal do GTO, GTIA-D-436); tier 2+ custa o dobro disso.
-        // ZH: 每个部件成本翻倍（GTO 普通模式的器官成本，GTIA-D-436）；2 级以上再翻倍。
+        // EN: Every part costs twice (GTO's Normal organ cost, D-436); tiers 2+ cost twice that.
+        // PT: Cada peça custa o dobro (custo de órgão do Normal do GTO, D-436); tier 2+ custa o dobro disso.
+        // ZH: 每个部件成本翻倍（GTO 普通模式的器官成本，D-436）；2 级以上再翻倍。
         int scale = ORGAN_COST * (organTier == 1 ? 1 : 2);
         Item motor = pick(voltage, GTItems.ELECTRIC_MOTOR_MV, GTItems.ELECTRIC_MOTOR_EV, GTItems.ELECTRIC_MOTOR_LuV,
                 GTItems.ELECTRIC_MOTOR_UV);
@@ -100,7 +100,7 @@ public final class OrganRecipes {
         for (int i = 0; i < parts.length; i++) {
             OrganType type = (OrganType) parts[i][0];
             var builder = GTRecipeTypes.ASSEMBLER_RECIPES
-                    .recipeBuilder(GTIAMod.id("organ/" + type.key() + "_tier_" + organTier));
+                    .recipeBuilder(TypeOmegaMod.id("organ/" + type.key() + "_tier_" + organTier));
             for (int p = 1; p < parts[i].length; p += 2) {
                 builder.inputItems(new ItemStack((ItemLike) parts[i][p], (int) parts[i][p + 1] * scale));
             }
@@ -109,7 +109,7 @@ public final class OrganRecipes {
             // ZH: 脊椎只需要一个电路而不是四个，与 GTO 相同。
             builder.inputItems(circuit, (type == OrganType.SPINE ? 1 : 4) * scale)
                     .circuitMeta(i + 1)
-                    .outputItems(GTIAOrgans.TIERED.get(type).get(organTier).asStack())
+                    .outputItems(TypeOmegaOrgans.TIERED.get(type).get(organTier).asStack())
                     .EUt(GTValues.VA[voltage]).duration(1200).save(provider);
         }
     }

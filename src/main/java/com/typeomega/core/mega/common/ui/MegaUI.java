@@ -27,7 +27,7 @@ import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
 /**
- * Kit of the megastructure screens from the Star Lifter on (GTIA-D-316): every machine draws its own window (a PNG
+ * Kit of the megastructure screens from the Star Lifter on (D-316): every machine draws its own window (a PNG
  * cut to its silhouette, made by design/estudos/mega_ui_frame.py) and lays out its own controls — levers, rotary
  * switches, ring gauges, tanks, spectra, tickers — instead of sharing one window.
  */

@@ -24,7 +24,7 @@ import com.typeomega.core.mega.system.StarSystems;
 import java.util.List;
 
 /**
- * Controller of the Yggdrasil Orchid (GTIA-D-327): runs Greenhouse recipes in huge batches in gardens floating at
+ * Controller of the Yggdrasil Orchid (D-327): runs Greenhouse recipes in huge batches in gardens floating at
  * the depth the player picks in a gas giant's atmosphere; every harvest also gives biomass.
  */
 public class YggdrasilMachine extends MegaMachine {

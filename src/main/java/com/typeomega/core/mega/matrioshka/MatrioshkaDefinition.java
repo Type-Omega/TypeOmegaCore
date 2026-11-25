@@ -7,14 +7,14 @@ import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.pattern.BlockPattern;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaTooltips;
 import com.typeomega.core.mega.common.MegaPattern;
 import com.typeomega.core.mega.common.MegaShape;
 
 import static com.gregtechceu.gtceu.api.pattern.Predicates.abilities;
 
-/** Registration and pattern of the Matrioshka Brain; loaded only with GTNA (see GTIAMegastructures). */
+/** Registration and pattern of the Matrioshka Brain; loaded only with GTNA (see TypeOmegaMegastructures). */
 public final class MatrioshkaDefinition {
 
     /** Optical Data Transmission Hatches the station takes. */
@@ -23,7 +23,7 @@ public final class MatrioshkaDefinition {
     private MatrioshkaDefinition() {}
 
     public static MultiblockMachineDefinition register() {
-        return GTIAMod.REGISTRATE
+        return TypeOmegaMod.REGISTRATE
                 .multiblock("matrioshka_brain", MatrioshkaBrainMachine::new)
                 .langValue("Matrioshka Brain")
                 .rotationState(RotationState.NON_Y_AXIS)
@@ -41,7 +41,7 @@ public final class MatrioshkaDefinition {
                         GTCEu.id("block/multiblock/hpca"))
                         .andThen(builder -> builder.addDynamicRenderer(
                                 com.typeomega.core.mega.common.client.MegaRenderer.Render::new)))
-                .tooltipBuilder(GTIATooltips.lazy("matrioshka_brain"))
+                .tooltipBuilder(TypeOmegaTooltips.lazy("matrioshka_brain"))
                 .register();
     }
 

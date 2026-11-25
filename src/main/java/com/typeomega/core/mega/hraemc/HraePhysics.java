@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.hraemc;
 
 /**
- * Physics of the HRAE-MC (GTIA-D-322): power from a natural black hole.
+ * Physics of the HRAE-MC (D-322): power from a natural black hole.
  *
  * <ul>
  * <li>Accretion: matter spiralling down to the innermost stable orbit gives off η of its rest energy, η = 1 -

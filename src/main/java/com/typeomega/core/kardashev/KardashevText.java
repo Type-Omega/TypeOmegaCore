@@ -4,7 +4,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public final class KardashevText {
     }
 
     private static void lang(String key, String english) {
-        GTIAMod.REGISTRATE.addRawLang(PREFIX + key, english);
+        TypeOmegaMod.REGISTRATE.addRawLang(PREFIX + key, english);
     }
 
     static MutableComponent tr(String key, Object... args) {
@@ -84,7 +84,7 @@ public final class KardashevText {
                 value(decimal(KardashevScale.capHundredths(1))), value(decimal(KardashevScale.capHundredths(2))))
                 .withStyle(ChatFormatting.GRAY));
         lines.add(tr("tooltip.use").withStyle(ChatFormatting.DARK_GRAY));
-        lines.add(Component.literal(com.typeomega.core.data.GTIATooltips.MOD_NAME).withStyle(ChatFormatting.BLUE,
+        lines.add(Component.literal(com.typeomega.core.data.TypeOmegaTooltips.MOD_NAME).withStyle(ChatFormatting.BLUE,
                 ChatFormatting.ITALIC));
         return lines;
     }

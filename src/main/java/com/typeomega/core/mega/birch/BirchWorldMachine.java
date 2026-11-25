@@ -30,7 +30,7 @@ import com.typeomega.core.mega.system.StarSystems;
 import java.util.List;
 
 /**
- * Controller of the Birch World (GTIA-D-331): hosts multiblock controllers like the Suprashell, runs their recipes
+ * Controller of the Birch World (D-331): hosts multiblock controllers like the Suprashell, runs their recipes
  * 64 times as fast and books their EU as causal debt, paid back at the rate the player sets; a debt past the credit
  * is a paradox.
  */

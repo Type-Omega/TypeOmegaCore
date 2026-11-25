@@ -11,16 +11,16 @@ import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 
 import net.minecraft.world.item.DyeColor;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIARecipeTypes;
-import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaRecipeTypes;
+import com.typeomega.core.data.TypeOmegaTooltips;
 
 import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
 
 /**
- * Mega 1 of Type 0, the National Dispatch Center (GTIA-D-390, D-419, D-425 option B): a 17 x 18 x 17 substation
+ * Mega 1 of Type 0, the National Dispatch Center (D-390, D-419, D-425 option B): a 17 x 18 x 17 substation
  * yard, cable trench, stepped control building and microwave tower. It raises the team's Kardashev cap to 0.89
- * (GTIA-D-389) and programs the Grid Transponders that every wireless energy hatch needs (GTIA-D-401).
+ * (D-389) and programs the Grid Transponders that every wireless energy hatch needs (D-401).
  */
 public final class NationalDispatchCenter {
 
@@ -29,11 +29,11 @@ public final class NationalDispatchCenter {
     /** The layout; legend in {@code data/typeomega/multiblock/typezero/national_dispatch_center.txt}. */
     public static final String[][] AISLES = TypeZeroPattern.read(ID);
 
-    public static final MultiblockMachineDefinition DEFINITION = GTIAMod.REGISTRATE
+    public static final MultiblockMachineDefinition DEFINITION = TypeOmegaMod.REGISTRATE
             .multiblock(ID, holder -> new TypeZeroMegaMachine(holder, ID))
             .langValue("National Dispatch Center")
             .rotationState(RotationState.NON_Y_AXIS)
-            .recipeType(GTIARecipeTypes.GRID_DISPATCH)
+            .recipeType(TypeOmegaRecipeTypes.GRID_DISPATCH)
             .recipeModifiers(GTRecipeModifiers.OC_NON_PERFECT_SUBTICK)
             .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
             .pattern(definition -> {
@@ -65,7 +65,7 @@ public final class NationalDispatchCenter {
             })
             .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
                     GTCEu.id("block/multiblock/power_substation"))
-            .tooltipBuilder(GTIATooltips.lazy(ID))
+            .tooltipBuilder(TypeOmegaTooltips.lazy(ID))
             .register();
 
     private NationalDispatchCenter() {}

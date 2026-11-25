@@ -29,7 +29,7 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * Controller of the Stellar Hoop (GTIA-D-318): a hoop through the star's corona that runs fusion, Electric Blast
+ * Controller of the Stellar Hoop (D-318): a hoop through the star's corona that runs fusion, Electric Blast
  * Furnace and Plasma Forge recipes with the corona's heat, in parallel batches. The dive height trades parallel
  * against shield heat; coolant from the input hatches carries the heat away.
  */
@@ -62,7 +62,7 @@ public class StellarHoopMachine extends MegaMachine {
     @DescSynced
     private double[] view = new double[10];
     private final MegaRecipeEngine.Progress progress = new MegaRecipeEngine.Progress();
-    /** Dev aid ({@code /gtia_dev_click <pos> dev_show}): seconds left showing the forge lit for screenshots. */
+    /** Dev aid ({@code /typeomega_dev_click <pos> dev_show}): seconds left showing the forge lit for screenshots. */
     private int devShow;
 
     public StellarHoopMachine(IMachineBlockEntity holder, Object... args) {

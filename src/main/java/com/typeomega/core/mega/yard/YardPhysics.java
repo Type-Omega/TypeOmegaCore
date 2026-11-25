@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.yard;
 
 /**
- * Physics of the Hyperstructural Assembly Yard (GTIA-D-326): a shipyard ring whose fabrication lasers run on the
+ * Physics of the Hyperstructural Assembly Yard (D-326): a shipyard ring whose fabrication lasers run on the
  * light of its star.
  *
  * <ul>

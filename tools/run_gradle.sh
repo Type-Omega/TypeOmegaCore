@@ -9,11 +9,11 @@ if [[ "$core_dir" != *:* ]]; then
 fi
 
 if ! command -v bwrap >/dev/null 2>&1; then
-    echo "O caminho do GTIACore contém ':'; instale bubblewrap (bwrap) ou mova o projeto para um caminho sem ':'." >&2
+    echo "O caminho do TypeOmegaCore contém ':'; instale bubblewrap (bwrap) ou mova o projeto para um caminho sem ':'." >&2
     exit 1
 fi
 
-mount_dir="$(mktemp -d /tmp/gtiacore-gradle.XXXXXX)"
+mount_dir="$(mktemp -d /tmp/typeomegacore-gradle.XXXXXX)"
 trap 'rmdir "$mount_dir"' EXIT
 
 bwrap --bind / / --dev-bind /dev /dev --proc /proc \

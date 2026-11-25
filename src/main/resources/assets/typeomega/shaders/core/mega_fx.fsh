@@ -1,6 +1,6 @@
 #version 150
 
-// Megastructure effects (GTIA-D-316). Modes:
+// Megastructure effects (D-316). Modes:
 //   0 star photosphere   1 (unused)   2 prominence ribbon   3 jet   4 force field / shell   5 accretion disk
 //   6 event horizon   7 glow billboard (corona, bloom, photon ring)   8 particle   9 beam   10 planet
 //   11 photon sphere   12 lensed halo billboard   13 spaghettification stream   14 neutron star crust

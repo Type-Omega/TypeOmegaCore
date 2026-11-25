@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.yggdrasil;
 
 /**
- * Physics of the Yggdrasil Orchid (GTIA-D-327): gardens floating in a gas giant's atmosphere.
+ * Physics of the Yggdrasil Orchid (D-327): gardens floating in a gas giant's atmosphere.
  *
  * <ul>
  * <li>Light falls off with depth (Beer-Lambert): I = I0 e^-z, z in scale heights, I0 the star's luminosity (L☉);

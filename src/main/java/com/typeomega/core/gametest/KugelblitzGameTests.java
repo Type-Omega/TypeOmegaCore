@@ -5,15 +5,15 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Kugelblitz Containment Silo (GTIA-D-321): Hawking's ratios; lasers make a hole and the petals give EU back; a
+ * The Kugelblitz Containment Silo (D-321): Hawking's ratios; lasers make a hole and the petals give EU back; a
  * hole under the critical mass flashes out; without the chamber it does not form. Slots 14 and 15.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class KugelblitzGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -21,8 +21,8 @@ public final class KugelblitzGameTests {
     private KugelblitzGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.KUGELBLITZ_DEF != null) return false;
-        GTIAMod.LOGGER.warn("Kugelblitz not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.KUGELBLITZ_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("Kugelblitz not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

@@ -24,9 +24,9 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIAAlloys;
-import com.typeomega.core.data.GTIAExtraForms;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaAlloys;
+import com.typeomega.core.data.TypeOmegaExtraForms;
 
 /** Checks the pack's own alloy forms and their Steam-era entry point in a real game world. */
 @PrefixGameTestTemplate(false)
@@ -42,14 +42,14 @@ public final class AlloyGameTests {
     public static void nativeAlloyForms(GameTestHelper helper) {
         helper.assertTrue(!ModList.get().isLoaded("enderio"), "QA must run without EnderIO");
 
-        var pulsating = ChemicalHelper.get(TagPrefix.ingot, GTIAAlloys.PULSATING_ALLOY);
-        var conductive = ChemicalHelper.get(TagPrefix.ingot, GTIAAlloys.CONDUCTIVE_ALLOY);
-        var conductiveWire = ChemicalHelper.get(TagPrefix.wireGtSingle, GTIAAlloys.CONDUCTIVE_ALLOY);
+        var pulsating = ChemicalHelper.get(TagPrefix.ingot, TypeOmegaAlloys.PULSATING_ALLOY);
+        var conductive = ChemicalHelper.get(TagPrefix.ingot, TypeOmegaAlloys.CONDUCTIVE_ALLOY);
+        var conductiveWire = ChemicalHelper.get(TagPrefix.wireGtSingle, TypeOmegaAlloys.CONDUCTIVE_ALLOY);
         assertItemId(helper, pulsating, "pulsating_alloy_ingot");
         assertItemId(helper, conductive, "conductive_alloy_ingot");
         assertItemId(helper, conductiveWire, "conductive_alloy_single_wire");
-        assertAlloyForms(helper, GTIAAlloys.PULSATING_ALLOY, "pulsating_alloy");
-        assertAlloyForms(helper, GTIAAlloys.CONDUCTIVE_ALLOY, "conductive_alloy");
+        assertAlloyForms(helper, TypeOmegaAlloys.PULSATING_ALLOY, "pulsating_alloy");
+        assertAlloyForms(helper, TypeOmegaAlloys.CONDUCTIVE_ALLOY, "conductive_alloy");
 
         helper.succeed();
     }
@@ -68,8 +68,8 @@ public final class AlloyGameTests {
                 machine.importItems.getStackInSlot(1).isEmpty(), "Smelter must consume iron and ender pearl");
         machine.recipeLogic.onRecipeFinish();
         helper.assertTrue(ItemStack.isSameItem(machine.exportItems.getStackInSlot(0),
-                ChemicalHelper.get(TagPrefix.ingot, GTIAAlloys.PULSATING_ALLOY)),
-                "Smelter must output a GTIA Pulsating Alloy ingot");
+                ChemicalHelper.get(TagPrefix.ingot, TypeOmegaAlloys.PULSATING_ALLOY)),
+                "Smelter must output a Type Omega Pulsating Alloy ingot");
         helper.succeed();
     }
 
@@ -77,7 +77,7 @@ public final class AlloyGameTests {
     public static void steamSmelterMakesConductiveAlloy(GameTestHelper helper) {
         var machine = placeSteamAlloySmelter(helper);
         machine.importItems.setStackInSlot(0, ChemicalHelper.get(TagPrefix.ingot, GTMaterials.RedAlloy));
-        machine.importItems.setStackInSlot(1, ChemicalHelper.get(TagPrefix.ingot, GTIAAlloys.PULSATING_ALLOY));
+        machine.importItems.setStackInSlot(1, ChemicalHelper.get(TagPrefix.ingot, TypeOmegaAlloys.PULSATING_ALLOY));
 
         machine.recipeLogic.findAndHandleRecipe();
 
@@ -86,23 +86,23 @@ public final class AlloyGameTests {
         machine.recipeLogic.onRecipeFinish();
         var output = machine.exportItems.getStackInSlot(0);
         helper.assertTrue(
-                ItemStack.isSameItem(output, ChemicalHelper.get(TagPrefix.ingot, GTIAAlloys.CONDUCTIVE_ALLOY)) &&
+                ItemStack.isSameItem(output, ChemicalHelper.get(TagPrefix.ingot, TypeOmegaAlloys.CONDUCTIVE_ALLOY)) &&
                         output.getCount() == 2,
-                "Smelter must output two GTIA Conductive Alloy ingots");
+                "Smelter must output two Type Omega Conductive Alloy ingots");
         helper.succeed();
     }
 
     @GameTest(template = TEMPLATE, batch = "alloy", timeoutTicks = 20)
     public static void compoundAlloyFormsUseOwnIds(GameTestHelper helper) {
-        assertCompoundForms(helper, GTIAAlloys.PULSATING_ALLOY, "pulsating_alloy");
-        assertCompoundForms(helper, GTIAAlloys.CONDUCTIVE_ALLOY, "conductive_alloy");
+        assertCompoundForms(helper, TypeOmegaAlloys.PULSATING_ALLOY, "pulsating_alloy");
+        assertCompoundForms(helper, TypeOmegaAlloys.CONDUCTIVE_ALLOY, "conductive_alloy");
         helper.succeed();
     }
 
     @GameTest(template = TEMPLATE, batch = "alloy", timeoutTicks = 20)
     public static void compoundIngotCraftingUsesOwnForms(GameTestHelper helper) {
         var doubleRecipe = helper.getLevel().getRecipeManager()
-                .byKey(GTIAMod.id("shaped/double_pulsating_alloy_ingot"))
+                .byKey(TypeOmegaMod.id("shaped/double_pulsating_alloy_ingot"))
                 .orElseThrow(() -> new AssertionError("Double ingot crafting recipe is absent"));
         helper.assertTrue(doubleRecipe instanceof CraftingRecipe, "Double ingot must use crafting");
         var crafting = (CraftingRecipe) doubleRecipe;
@@ -118,18 +118,18 @@ public final class AlloyGameTests {
                 return true;
             }
         }, 2, 2);
-        grid.setItem(0, ChemicalHelper.get(TagPrefix.ingot, GTIAAlloys.PULSATING_ALLOY));
-        grid.setItem(2, ChemicalHelper.get(TagPrefix.ingot, GTIAAlloys.PULSATING_ALLOY));
+        grid.setItem(0, ChemicalHelper.get(TagPrefix.ingot, TypeOmegaAlloys.PULSATING_ALLOY));
+        grid.setItem(2, ChemicalHelper.get(TagPrefix.ingot, TypeOmegaAlloys.PULSATING_ALLOY));
         helper.assertTrue(crafting.matches(grid, helper.getLevel()), "Two ingots must craft into a double ingot");
         helper.assertTrue(ItemStack.isSameItem(crafting.assemble(grid, helper.getLevel().registryAccess()),
-                ChemicalHelper.get(GTIAExtraForms.DOUBLE_INGOT, GTIAAlloys.PULSATING_ALLOY)),
-                "Crafting must output a GTIA double ingot");
+                ChemicalHelper.get(TypeOmegaExtraForms.DOUBLE_INGOT, TypeOmegaAlloys.PULSATING_ALLOY)),
+                "Crafting must output a Type Omega double ingot");
         var quintupleRecipe = helper.getLevel().getRecipeManager()
-                .byKey(GTIAMod.id("shapeless/quintuple_pulsating_alloy_ingot"))
+                .byKey(TypeOmegaMod.id("shapeless/quintuple_pulsating_alloy_ingot"))
                 .orElseThrow(() -> new AssertionError("Quintuple ingot crafting recipe is absent"));
         helper.assertTrue(quintupleRecipe instanceof CraftingRecipe &&
                 quintupleRecipe.getIngredients().get(0).test(
-                        ChemicalHelper.get(GTIAExtraForms.QUADRUPLE_INGOT, GTIAAlloys.PULSATING_ALLOY)),
+                        ChemicalHelper.get(TypeOmegaExtraForms.QUADRUPLE_INGOT, TypeOmegaAlloys.PULSATING_ALLOY)),
                 "Quintuple ingot must use a quadruple ingot, not itself");
         helper.succeed();
     }
@@ -153,13 +153,13 @@ public final class AlloyGameTests {
                 return true;
             }
         }, 2, 2);
-        grid.setItem(0, ChemicalHelper.get(TagPrefix.plate, GTIAAlloys.CONDUCTIVE_ALLOY));
+        grid.setItem(0, ChemicalHelper.get(TagPrefix.plate, TypeOmegaAlloys.CONDUCTIVE_ALLOY));
         grid.setItem(1, ToolItemHelper.getToolItem(GTToolType.WIRE_CUTTER));
         helper.assertTrue(crafting.matches(grid, helper.getLevel()),
                 "Conductive Alloy plate and wire cutter must match the generated recipe");
         helper.assertTrue(ItemStack.isSameItem(crafting.assemble(grid, helper.getLevel().registryAccess()),
-                ChemicalHelper.get(TagPrefix.wireGtSingle, GTIAAlloys.CONDUCTIVE_ALLOY)),
-                "Manual crafting must produce a GTIA Conductive Alloy wire");
+                ChemicalHelper.get(TagPrefix.wireGtSingle, TypeOmegaAlloys.CONDUCTIVE_ALLOY)),
+                "Manual crafting must produce a Type Omega Conductive Alloy wire");
         helper.succeed();
     }
 
@@ -167,21 +167,21 @@ public final class AlloyGameTests {
                                             com.gregtechceu.gtceu.api.data.chemical.material.Material material,
                                             String name) {
         assertItemId(helper, ChemicalHelper.get(TagPrefix.plate, material), name + "_plate");
-        assertItemId(helper, ChemicalHelper.get(GTIAExtraForms.DOUBLE_INGOT, material),
+        assertItemId(helper, ChemicalHelper.get(TypeOmegaExtraForms.DOUBLE_INGOT, material),
                 "double_" + name + "_ingot");
-        assertItemId(helper, ChemicalHelper.get(GTIAExtraForms.TRIPLE_INGOT, material),
+        assertItemId(helper, ChemicalHelper.get(TypeOmegaExtraForms.TRIPLE_INGOT, material),
                 "triple_" + name + "_ingot");
-        assertItemId(helper, ChemicalHelper.get(GTIAExtraForms.QUADRUPLE_INGOT, material),
+        assertItemId(helper, ChemicalHelper.get(TypeOmegaExtraForms.QUADRUPLE_INGOT, material),
                 "quadruple_" + name + "_ingot");
-        assertItemId(helper, ChemicalHelper.get(GTIAExtraForms.QUINTUPLE_INGOT, material),
+        assertItemId(helper, ChemicalHelper.get(TypeOmegaExtraForms.QUINTUPLE_INGOT, material),
                 "quintuple_" + name + "_ingot");
-        assertItemId(helper, ChemicalHelper.get(GTIAExtraForms.TRIPLE_PLATE, material),
+        assertItemId(helper, ChemicalHelper.get(TypeOmegaExtraForms.TRIPLE_PLATE, material),
                 "triple_" + name + "_plate");
-        assertItemId(helper, ChemicalHelper.get(GTIAExtraForms.QUADRUPLE_PLATE, material),
+        assertItemId(helper, ChemicalHelper.get(TypeOmegaExtraForms.QUADRUPLE_PLATE, material),
                 "quadruple_" + name + "_plate");
-        assertItemId(helper, ChemicalHelper.get(GTIAExtraForms.QUINTUPLE_PLATE, material),
+        assertItemId(helper, ChemicalHelper.get(TypeOmegaExtraForms.QUINTUPLE_PLATE, material),
                 "quintuple_" + name + "_plate");
-        assertItemId(helper, ChemicalHelper.get(GTIAExtraForms.SUPERDENSE_PLATE, material),
+        assertItemId(helper, ChemicalHelper.get(TypeOmegaExtraForms.SUPERDENSE_PLATE, material),
                 "superdense_" + name + "_plate");
     }
 
@@ -194,8 +194,8 @@ public final class AlloyGameTests {
     }
 
     private static void assertItemId(GameTestHelper helper, ItemStack stack, String path) {
-        helper.assertTrue(!stack.isEmpty(), "Missing GTIA item: " + path);
-        helper.assertTrue(GTIAMod.id(path).equals(BuiltInRegistries.ITEM.getKey(stack.getItem())),
+        helper.assertTrue(!stack.isEmpty(), "Missing Type Omega item: " + path);
+        helper.assertTrue(TypeOmegaMod.id(path).equals(BuiltInRegistries.ITEM.getKey(stack.getItem())),
                 "Unexpected item ID for " + path + ": " + BuiltInRegistries.ITEM.getKey(stack.getItem()));
     }
 

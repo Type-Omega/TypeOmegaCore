@@ -3,7 +3,7 @@ package com.typeomega.core.gametest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.harvester.HarvesterPhysics;
@@ -44,7 +44,7 @@ final class StellarHarvesterTestRig {
             star.mass = 1;
             star.fuel = 1;
             StellarHarvesterMachine m = MegaTestRig.build(helper, StellarHarvesterMachine.SHAPE,
-                    GTIAMegastructures.STELLAR_HARVESTER_DEF, 5, 24);
+                    TypeOmegaMegastructures.STELLAR_HARVESTER_DEF, 5, 24);
             helper.assertTrue(m.checkPatternWithLock(), "the whole harvester forms: " + MegaTestRig.error(m));
             m.onStructureFormed();
             UUID owner = UUID.randomUUID();
@@ -78,7 +78,7 @@ final class StellarHarvesterTestRig {
 
     static void noAnnulusNoHarvester(GameTestHelper helper) {
         StellarHarvesterMachine m = MegaTestRig.build(helper, StellarHarvesterMachine.SHAPE,
-                GTIAMegastructures.STELLAR_HARVESTER_DEF, 5, 25);
+                TypeOmegaMegastructures.STELLAR_HARVESTER_DEF, 5, 25);
         var shape = MegaShape.get(StellarHarvesterMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "annulus", "body"));
         helper.getLevel().setBlock(shape.world(m.getPos(), MegaTestRig.FRONT, c[0], c[1], c[2]),

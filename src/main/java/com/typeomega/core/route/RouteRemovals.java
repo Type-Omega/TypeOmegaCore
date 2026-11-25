@@ -7,18 +7,18 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * EN: GTCEu and GTNA recipes that the Block 1 routes replace (GTIA-D-303 to GTIA-D-308). Each one comes back in
+ * EN: GTCEu and GTNA recipes that the Block 1 routes replace (D-303 to D-308). Each one comes back in
  * {@link RouteRecipes} or {@link ElectrolyzerRebalance} with the new tier or outputs, except the dust-to-fluid
  * extractions of EBF-only materials, which skipped the blast furnace.
- * PT: Receitas do GTCEu e do GTNA trocadas pelas rotas do Bloco 1 (GTIA-D-303 a GTIA-D-308). Cada uma volta em
+ * PT: Receitas do GTCEu e do GTNA trocadas pelas rotas do Bloco 1 (D-303 a D-308). Cada uma volta em
  * {@link RouteRecipes} ou {@link ElectrolyzerRebalance} com o tier ou as saídas novas, menos as extrações pó → fluido
  * dos materiais de EBF, que pulavam o alto-forno.
- * ZH: 第一阶段路线替换的 GTCEu 与 GTNA 配方 (GTIA-D-303 至 GTIA-D-308)。除了跳过电力高炉的粉 → 流体提取,
+ * ZH: 第一阶段路线替换的 GTCEu 与 GTNA 配方 (D-303 至 D-308)。除了跳过电力高炉的粉 → 流体提取,
  * 其余都以新的电压或产物在 RouteRecipes 或 ElectrolyzerRebalance 中重新加入。
  */
 public final class RouteRemovals {
 
-    /** Materials only the EBF makes, whose dust melted straight into fluid (GTIA-D-305). */
+    /** Materials only the EBF makes, whose dust melted straight into fluid (D-305). */
     static final List<String> EBF_ONLY_DUSTS = List.of("advanced_nitinol", "astral_titanium",
             "atomic_separation_catalyst", "celestial_tungsten", "chronomatic_glass", "nickel_zinc_ferrite",
             "polycaprolactam", "quantum", "shijima", "superconductor_uiv_base", "superconductor_umv_base",
@@ -39,7 +39,7 @@ public final class RouteRemovals {
             ids.add("gtceu:extractor/extract_" + m + "_dust");
             ids.add("gtceu:liquefaction_furnace/extract_" + m + "_dust");
         }
-        // Sodium for the LV battery: 60 -> 30 EU/t, back in ChemLineRecipes (GTIA-D-408)
+        // Sodium for the LV battery: 60 -> 30 EU/t, back in ChemLineRecipes (D-408)
         ids.add("gtceu:electrolyzer/sodium_hydroxide_electrolysis");
         // Aluminium dust in the EBF: 120 -> 480 EU/t
         ids.add("gtceu:electric_blast_furnace/blast_aluminium");

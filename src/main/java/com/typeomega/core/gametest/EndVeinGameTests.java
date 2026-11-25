@@ -10,13 +10,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 
 import java.util.List;
 
-/** End veins without ilmenite, platinum and palladium (GTIA-D-391, D-420, D-424). */
+/** End veins without ilmenite, platinum and palladium (D-391, D-420, D-424). */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class EndVeinGameTests {
 
     private EndVeinGameTests() {}

@@ -25,7 +25,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexBuffer;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.serialization.Codec;
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.mega.common.MegaCapture;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
@@ -220,7 +220,7 @@ public final class MegaRenderer {
         mesh.bind();
         mesh.upload(builder.end());
         VertexBuffer.unbind();
-        GTIAMod.LOGGER.info("[GTIA perf] {} {} mesh: {} blocks in {} ms", m.shapeName(), part.track(), positions.length,
+        TypeOmegaMod.LOGGER.info("[Type Omega perf] {} {} mesh: {} blocks in {} ms", m.shapeName(), part.track(), positions.length,
                 (System.nanoTime() - t0) / 1_000_000);
         return mesh;
     }
@@ -231,7 +231,7 @@ public final class MegaRenderer {
 
         public static final Codec<Render> CODEC = Codec.unit(Render::new);
         public static final DynamicRenderType<MegaMachine, Render> TYPE = DynamicRenderManager
-                .register(GTIAMod.id("mega/render"), new DynamicRenderType<>(CODEC));
+                .register(TypeOmegaMod.id("mega/render"), new DynamicRenderType<>(CODEC));
 
         @Override
         public DynamicRenderType<MegaMachine, Render> getType() {

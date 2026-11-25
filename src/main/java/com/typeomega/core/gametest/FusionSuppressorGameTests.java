@@ -5,15 +5,15 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Fusion Suppressor (GTIA-D-320): the formulas; a light star only flares; a heavy one, held suppressed, ends as a
+ * The Fusion Suppressor (D-320): the formulas; a light star only flares; a heavy one, held suppressed, ends as a
  * supernova (neutron star, r-process dust owed) or a black hole; without a pylon it does not form. Slots 12 and 13.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class FusionSuppressorGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -21,8 +21,8 @@ public final class FusionSuppressorGameTests {
     private FusionSuppressorGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.FUSION_SUPPRESSOR_DEF != null) return false;
-        GTIAMod.LOGGER.warn("Fusion Suppressor not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.FUSION_SUPPRESSOR_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("Fusion Suppressor not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

@@ -63,9 +63,9 @@ public final class RecipeAuditCommand {
             }
         }
         List<String> out = new ArrayList<>();
-        // EN: Also counts GTIA's integration recipes, so a missing optional mod shows up as 0 here.
-        // PT: Também conta as receitas de integração do GTIA; um mod opcional faltando aparece como 0 aqui.
-        // ZH: 同时统计 GTIA 的联动配方；缺少可选模组时此处显示为 0。
+        // EN: Also counts Type Omega's integration recipes, so a missing optional mod shows up as 0 here.
+        // PT: Também conta as receitas de integração do Type Omega; um mod opcional faltando aparece como 0 aqui.
+        // ZH: 同时统计 Type Omega 的联动配方；缺少可选模组时此处显示为 0。
         for (String group : new String[] { "agro/", "bees/" }) {
             long n = server.getRecipeManager().getRecipes().stream()
                     .filter(r -> "typeomega".equals(r.getId().getNamespace()) && r.getId().getPath().contains(group))

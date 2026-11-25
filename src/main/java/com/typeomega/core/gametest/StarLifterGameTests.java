@@ -5,16 +5,16 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Star Lifter (GTIA-D-317): the lifting formulas; with the ring current it lifts, the star gets lighter and the
+ * The Star Lifter (D-317): the lifting formulas; with the ring current it lifts, the star gets lighter and the
  * ring is captured; before the spires only plasma comes out; deep stirring makes flares; without the girdle it does
  * not form. Needs GTNA and the shape files (otherwise these pass empty). Slots 5 to 7.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class StarLifterGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -22,8 +22,8 @@ public final class StarLifterGameTests {
     private StarLifterGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.STAR_LIFTER_DEF != null) return false;
-        GTIAMod.LOGGER.warn("Star Lifter not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.STAR_LIFTER_DEF != null) return false;
+        TypeOmegaMod.LOGGER.warn("Star Lifter not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

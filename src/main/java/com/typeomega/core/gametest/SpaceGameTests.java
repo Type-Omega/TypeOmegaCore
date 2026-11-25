@@ -29,7 +29,7 @@ import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import com.typeomega.core.GTIAMod;
+import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.chem.ZipDMaterials;
 import com.typeomega.core.data.rocket.SpaceMaterials;
 
@@ -37,13 +37,13 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * EN: Ad Astra through GT (GTIA-D-420, D-421, D-424): fuel tags, dropped shortcuts, GT recipes for the space gear,
+ * EN: Ad Astra through GT (D-420, D-421, D-424): fuel tags, dropped shortcuts, GT recipes for the space gear,
  * desh as one material, the Zip-D line at HV and the tier 2 rocket. Each test passes trivially without Ad Astra,
  * except the Zip-D line, which is the pack's own.
- * PT: Ad Astra pelo GT (GTIA-D-420, D-421, D-424): tags de combustível, atalhos removidos, receitas GT do equipamento
+ * PT: Ad Astra pelo GT (D-420, D-421, D-424): tags de combustível, atalhos removidos, receitas GT do equipamento
  * espacial, desh como um material só, a linha do Zip-D no HV e o foguete T2. Sem o Ad Astra os testes passam direto,
  * menos a linha do Zip-D, que é do próprio pack.
- * ZH: 通过 GT 使用 Ad Astra（GTIA-D-420、D-421、D-424）：燃料标签、移除的捷径、太空装备的 GT 配方、唯一的戴什材料、
+ * ZH: 通过 GT 使用 Ad Astra（D-420、D-421、D-424）：燃料标签、移除的捷径、太空装备的 GT 配方、唯一的戴什材料、
  * HV 的 Zip-D 生产线以及二级火箭。未加载 Ad Astra 时测试直接通过，Zip-D 生产线除外，它属于整合包自身。
  */
 @PrefixGameTestTemplate(false)
@@ -149,7 +149,7 @@ public final class SpaceGameTests {
         h.succeed();
     }
 
-    /** Zip-D line: every step exists and runs at HV or below; nothing in it is EV (GTIA-D-421). */
+    /** Zip-D line: every step exists and runs at HV or below; nothing in it is EV (D-421). */
     @GameTest(template = TEMPLATE, batch = "space", timeoutTicks = 20)
     public static void zipDLineStaysAtHv(GameTestHelper h) {
         for (String step : ZIP_D_LINE) {
@@ -163,7 +163,7 @@ public final class SpaceGameTests {
         h.succeed();
     }
 
-    /** Desh is a catalyst worn away slowly (GTIA-D-424): ten runs of the HV reactor spend about one dust. */
+    /** Desh is a catalyst worn away slowly (D-424): ten runs of the HV reactor spend about one dust. */
     @GameTest(template = TEMPLATE, batch = "space", timeoutTicks = 20)
     public static void deshCatalystWearsSlowly(GameTestHelper h) {
         var reactor = reactor(h);
@@ -195,7 +195,7 @@ public final class SpaceGameTests {
         h.succeed();
     }
 
-    /** The tier 2 rocket: desh parts and Zip-D at 1920 EU/t, two HV Energy Hatches and not one (GTIA-D-421). */
+    /** The tier 2 rocket: desh parts and Zip-D at 1920 EU/t, two HV Energy Hatches and not one (D-421). */
     @GameTest(template = TEMPLATE, batch = "space", timeoutTicks = 20)
     public static void tier2RocketNeedsDeshZipDAndTwoHvHatches(GameTestHelper h) {
         if (!adAstra(h)) return;
@@ -243,7 +243,7 @@ public final class SpaceGameTests {
     /** A typeomega GT recipe by its builder path; GTCEu puts the recipe type in front (typeomega:mixer/...). */
     private static GTRecipe gtRecipe(GameTestHelper h, String path) {
         var recipe = h.getLevel().getServer().getRecipeManager().getRecipes().stream()
-                .filter(r -> r instanceof GTRecipe && r.getId().getNamespace().equals(GTIAMod.MOD_ID) &&
+                .filter(r -> r instanceof GTRecipe && r.getId().getNamespace().equals(TypeOmegaMod.MOD_ID) &&
                         r.getId().getPath().endsWith("/" + path))
                 .findFirst();
         h.assertTrue(recipe.isPresent(), "missing recipe typeomega:<type>/" + path);

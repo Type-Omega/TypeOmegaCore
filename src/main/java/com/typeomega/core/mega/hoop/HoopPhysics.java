@@ -1,7 +1,7 @@
 package com.typeomega.core.mega.hoop;
 
 /**
- * Physics of the Stellar Hoop (GTIA-D-318): a hoop that turns through the corona and works its plasma.
+ * Physics of the Stellar Hoop (D-318): a hoop that turns through the corona and works its plasma.
  *
  * <ul>
  * <li>The corona is a million-kelvin plasma whose density falls with height h above the photosphere with a scale

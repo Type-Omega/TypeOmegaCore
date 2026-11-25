@@ -10,11 +10,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.processing.GTIAProcessing;
+import com.typeomega.core.processing.TypeOmegaProcessing;
 import com.typeomega.core.processing.TierParallel;
 
 /**
- * F3 machines (GTIA-D-365 to D-369): each forms from its preview and breaks without a key block; GTL's parallels.
+ * F3 machines (D-365 to D-369): each forms from its preview and breaks without a key block; GTL's parallels.
  */
 @PrefixGameTestTemplate(false)
 @GameTestHolder("typeomega")
@@ -36,27 +36,27 @@ public final class ProcessingGameTests {
 
     @GameTest(template = "qa_empty_24", batch = "processing", timeoutTicks = 60)
     public static void largeFurnaceForms(GameTestHelper h) {
-        forms(h, GTIAProcessing.LARGE_FURNACE);
+        forms(h, TypeOmegaProcessing.LARGE_FURNACE);
     }
 
     @GameTest(template = "qa_empty_24", batch = "processing", timeoutTicks = 60)
     public static void largeFurnaceNeedsChimneys(GameTestHelper h) {
-        breaks(h, GTIAProcessing.LARGE_FURNACE, GTBlocks.CASING_COKE_BRICKS.get());
+        breaks(h, TypeOmegaProcessing.LARGE_FURNACE, GTBlocks.CASING_COKE_BRICKS.get());
     }
 
     @GameTest(template = "qa_empty_24", batch = "processing", timeoutTicks = 60)
     public static void orePlantForms(GameTestHelper h) {
-        forms(h, GTIAProcessing.ORE_PROCESSING_PLANT);
+        forms(h, TypeOmegaProcessing.ORE_PROCESSING_PLANT);
     }
 
     @GameTest(template = "qa_empty_24", batch = "processing", timeoutTicks = 60)
     public static void orePlantNeedsItsCrusher(GameTestHelper h) {
-        breaks(h, GTIAProcessing.ORE_PROCESSING_PLANT, GTBlocks.CASING_STEEL_GEARBOX.get());
+        breaks(h, TypeOmegaProcessing.ORE_PROCESSING_PLANT, GTBlocks.CASING_STEEL_GEARBOX.get());
     }
 
     @GameTest(template = "qa_empty_24", batch = "processing", timeoutTicks = 60)
     public static void plusFactoriesForm(GameTestHelper h) {
-        for (var plus : GTIAProcessing.PLUS) {
+        for (var plus : TypeOmegaProcessing.PLUS) {
             var c = FragmentCollectorGameTests.build(h, plus, null);
             h.assertTrue(c != null && c.checkPattern(), plus.getName() + " must form from its preview");
         }
@@ -65,7 +65,7 @@ public final class ProcessingGameTests {
 
     @GameTest(template = "qa_empty_24", batch = "processing", timeoutTicks = 60)
     public static void plusNeedsItsFamilyModule(GameTestHelper h) {
-        breaks(h, GTIAProcessing.PROCESSING_PLUS, GTBlocks.CASING_STEEL_GEARBOX.get());
+        breaks(h, TypeOmegaProcessing.PROCESSING_PLUS, GTBlocks.CASING_STEEL_GEARBOX.get());
     }
 
     @GameTest(template = "qa_empty_5x5", batch = "processing", timeoutTicks = 20)
@@ -77,7 +77,7 @@ public final class ProcessingGameTests {
         h.assertTrue(TierParallel.plus(GTValues.LV) == 16 && TierParallel.plus(GTValues.IV) == 256 &&
                 TierParallel.plus(GTValues.UV) == 256, "plus 16 at LV, 256 from IV");
         var rm = h.getLevel().getRecipeManager();
-        var ids = rm.getAllRecipesFor(com.typeomega.core.data.GTIARecipeTypes.ORE_PROCESSING_PLANT).stream()
+        var ids = rm.getAllRecipesFor(com.typeomega.core.data.TypeOmegaRecipeTypes.ORE_PROCESSING_PLANT).stream()
                 .map(r -> r.getId().getPath()).toList();
         h.assertTrue(ids.size() > 30 && ids.stream().anyMatch(i -> i.endsWith("ore_plant_iron")) &&
                 ids.stream().anyMatch(i -> i.endsWith("ore_plant_chalcopyrite")),

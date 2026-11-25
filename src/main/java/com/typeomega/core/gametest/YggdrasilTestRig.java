@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import com.raishxn.gtna.common.data.GTNARecipeType;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
@@ -49,7 +49,7 @@ final class YggdrasilTestRig {
 
     static void harvestsWithBiomass(GameTestHelper helper) {
         if (someGreenhouse(helper) == null) {
-            com.typeomega.core.GTIAMod.LOGGER
+            com.typeomega.core.TypeOmegaMod.LOGGER
                     .warn("No Greenhouse recipe (run with -PagronomicaDevJar): Yggdrasil harvest " +
                             "test skipped");
             helper.succeed();
@@ -62,7 +62,7 @@ final class YggdrasilTestRig {
             MegaMachine.anyDimensionForTests = true;
             star.kind = Kind.YELLOW_DWARF;
             star.mass = 1;
-            YggdrasilMachine m = MegaTestRig.build(helper, YggdrasilMachine.SHAPE, GTIAMegastructures.YGGDRASIL_DEF,
+            YggdrasilMachine m = MegaTestRig.build(helper, YggdrasilMachine.SHAPE, TypeOmegaMegastructures.YGGDRASIL_DEF,
                     5, 22);
             var bus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
             var water = (FluidHatchPartMachine) MegaTestRig.hatch(helper, m, 1,
@@ -109,7 +109,7 @@ final class YggdrasilTestRig {
     }
 
     static void noShellNoOrchid(GameTestHelper helper) {
-        YggdrasilMachine m = MegaTestRig.build(helper, YggdrasilMachine.SHAPE, GTIAMegastructures.YGGDRASIL_DEF, 5,
+        YggdrasilMachine m = MegaTestRig.build(helper, YggdrasilMachine.SHAPE, TypeOmegaMegastructures.YGGDRASIL_DEF, 5,
                 23);
         var shape = MegaShape.get(YggdrasilMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "shell_1", "body"));

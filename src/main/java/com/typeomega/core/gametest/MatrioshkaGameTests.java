@@ -5,11 +5,11 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.mega.GTIAMegastructures;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Matrioshka Brain (GTIA-D-311): forms with phase 1 and with all five, works only in the Nexus System, sends
+ * The Matrioshka Brain (D-311): forms with phase 1 and with all five, works only in the Nexus System, sends
  * CWU and turns idle CWU into Ψ, takes its rings in while running; a wrong block keeps it from forming.
  *
  * <p>
@@ -17,7 +17,7 @@ import com.typeomega.core.mega.GTIAMegastructures;
  * has its own batch: the structure is 219 x 93 x 220 and two at once would overlap.
  */
 @PrefixGameTestTemplate(false)
-@GameTestHolder(GTIAMod.MOD_ID)
+@GameTestHolder(TypeOmegaMod.MOD_ID)
 public final class MatrioshkaGameTests {
 
     private static final String TEMPLATE = "qa_empty_5x5";
@@ -25,8 +25,8 @@ public final class MatrioshkaGameTests {
     private MatrioshkaGameTests() {}
 
     private static boolean skip(GameTestHelper helper) {
-        if (GTIAMegastructures.MATRIOSHKA_BRAIN != null) return false;
-        GTIAMod.LOGGER.warn("Matrioshka Brain not registered (no GTNA or no shape file): its GameTests are skipped");
+        if (TypeOmegaMegastructures.MATRIOSHKA_BRAIN != null) return false;
+        TypeOmegaMod.LOGGER.warn("Matrioshka Brain not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

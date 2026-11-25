@@ -33,7 +33,7 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * Controller of the Stellar Engine (GTIA-D-315): a Shkadov mirror (phase 2) and a Caplan engine (phases 3 to 5)
+ * Controller of the Stellar Engine (D-315): a Shkadov mirror (phase 2) and a Caplan engine (phases 3 to 5)
  * moving the Nexus System through the galaxy. The Δv gathered goes to the owner's Stellar era; regions reached give
  * bonuses to this and other megastructures. While it runs the collector ring turns and the jets burn.
  */

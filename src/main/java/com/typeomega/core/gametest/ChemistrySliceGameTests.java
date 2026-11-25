@@ -19,13 +19,13 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.GTIAMod;
-import com.typeomega.core.data.GTIAAlloys;
-import com.typeomega.core.data.GTIAItems;
+import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.data.TypeOmegaAlloys;
+import com.typeomega.core.data.TypeOmegaItems;
 
 /**
- * The Steam to HV chemistry lines run in GTCEu machines (GTIA-D-335): each test puts the inputs in a real GTCEu
- * machine and checks that the GTIA recipe, not a GTCEu one with the same inputs, is the one that runs.
+ * The Steam to HV chemistry lines run in GTCEu machines (D-335): each test puts the inputs in a real GTCEu
+ * machine and checks that the Type Omega recipe, not a GTCEu one with the same inputs, is the one that runs.
  */
 @PrefixGameTestTemplate(false)
 @GameTestHolder("typeomega")
@@ -63,12 +63,12 @@ public final class ChemistrySliceGameTests {
     public static void lvElectrolyzerRunsTheChlorAlkaliCell(GameTestHelper h) {
         var cell = place(h, GTMachines.ELECTROLYZER, GTValues.LV, 0);
         cell.importFluids.setFluidInTank(0, GTMaterials.SaltWater.getFluid(4000));
-        cell.importItems.setStackInSlot(0, GTIAItems.ASBESTOS_DIAPHRAGM.asStack());
+        cell.importItems.setStackInSlot(0, TypeOmegaItems.ASBESTOS_DIAPHRAGM.asStack());
         cell.recipeLogic.findAndHandleRecipe();
         h.assertTrue(cell.recipeLogic.getDuration() == 300, "the cell runs 15 s");
         cell.recipeLogic.onRecipeFinish();
         h.assertTrue(outputAmount(cell, GTMaterials.Chlorine) == 2000 &&
-                outputAmount(cell, GTIAAlloys.CELL_LIQUOR) == 4000, "2000 mB of chlorine and 4000 mB of cell liquor");
+                outputAmount(cell, TypeOmegaAlloys.CELL_LIQUOR) == 4000, "2000 mB of chlorine and 4000 mB of cell liquor");
         h.succeed();
     }
 
@@ -81,7 +81,7 @@ public final class ChemistrySliceGameTests {
         reactor.recipeLogic.findAndHandleRecipe();
         reactor.recipeLogic.onRecipeFinish();
         // GTCEu's catalyst-free ammonia burner (2000 mB NH3 -> 2000 mB NO) is removed; ours gives 1000 mB per run.
-        h.assertTrue(outputAmount(reactor, GTMaterials.NitricOxide) == 1000, "the GTIA Ostwald burner runs");
+        h.assertTrue(outputAmount(reactor, GTMaterials.NitricOxide) == 1000, "the Type Omega Ostwald burner runs");
         h.succeed();
     }
 
@@ -105,19 +105,19 @@ public final class ChemistrySliceGameTests {
         h.succeed();
     }
 
-    /** The LV entry to aluminium (GTIA-D-408, D-417): cell liquor, 30 EU/t, half the aluminate of the MV route. */
+    /** The LV entry to aluminium (D-408, D-417): cell liquor, 30 EU/t, half the aluminate of the MV route. */
     @GameTest(template = TEMPLATE, batch = "chemistry", timeoutTicks = 20)
     public static void lvChemicalReactorDigestsBauxite(GameTestHelper h) {
         var reactor = place(h, GTMachines.CHEMICAL_REACTOR, GTValues.LV, 0);
         reactor.importItems.setStackInSlot(0, ChemicalHelper.get(TagPrefix.dust, GTMaterials.Bauxite));
-        reactor.importFluids.setFluidInTank(0, GTIAAlloys.CELL_LIQUOR.getFluid(2000));
+        reactor.importFluids.setFluidInTank(0, TypeOmegaAlloys.CELL_LIQUOR.getFluid(2000));
         reactor.importFluids.setFluidInTank(1, GTMaterials.Steam.getFluid(1000));
         reactor.recipeLogic.findAndHandleRecipe();
         h.assertTrue(reactor.recipeLogic.getLastRecipe() != null &&
-                reactor.recipeLogic.getLastRecipe().id.equals(GTIAMod.id("chemical_reactor/bayer_digestion_lv")),
+                reactor.recipeLogic.getLastRecipe().id.equals(TypeOmegaMod.id("chemical_reactor/bayer_digestion_lv")),
                 "the LV reactor runs the LV Bayer digestion");
         reactor.recipeLogic.onRecipeFinish();
-        h.assertTrue(outputAmount(reactor, GTIAAlloys.SODIUM_ALUMINATE) == 500, "one bauxite gives 500 mB at LV");
+        h.assertTrue(outputAmount(reactor, TypeOmegaAlloys.SODIUM_ALUMINATE) == 500, "one bauxite gives 500 mB at LV");
         h.succeed();
     }
 
@@ -126,14 +126,14 @@ public final class ChemistrySliceGameTests {
         for (String path : new String[] { "chemical_reactor/bayer_digestion_lv",
                 "chemical_reactor/bayer_precipitation_lv", "chemical_reactor/cryolite_lv",
                 "electrolyzer/sodium_hydroxide_electrolysis", "electrolyzer/decomposition_electrolyzing_lepidolite" }) {
-            var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(GTIAMod.id(path)).orElse(null);
+            var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(TypeOmegaMod.id(path)).orElse(null);
             h.assertTrue(recipe != null, "missing recipe typeomega:" + path);
             h.assertTrue(recipe.getInputEUt().getTotalEU() == GTValues.VA[GTValues.LV], path + " runs at 30 EU/t");
         }
-        // The MV routes stay at 120 EU/t (GTIA-D-417).
+        // The MV routes stay at 120 EU/t (D-417).
         for (String path : new String[] { "chemical_reactor/bayer_digestion", "chemical_reactor/bayer_precipitation",
                 "chemical_reactor/cryolite" }) {
-            var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(GTIAMod.id(path)).orElseThrow();
+            var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(TypeOmegaMod.id(path)).orElseThrow();
             h.assertTrue(recipe.getInputEUt().getTotalEU() == GTValues.VA[GTValues.MV], path + " stays at 120 EU/t");
         }
         var manager = h.getLevel().getServer().getRecipeManager();
@@ -144,7 +144,7 @@ public final class ChemistrySliceGameTests {
 
     @GameTest(template = TEMPLATE, batch = "chemistry", timeoutTicks = 20)
     public static void mvAndHvLinesExist(GameTestHelper h) {
-        h.assertTrue(GTIAItems.CARBON_ANODE.isPresent() && GTIAItems.ASBESTOS_DIAPHRAGM.isPresent(),
+        h.assertTrue(TypeOmegaItems.CARBON_ANODE.isPresent() && TypeOmegaItems.ASBESTOS_DIAPHRAGM.isPresent(),
                 "the anode and the diaphragm are registered");
         for (String path : new String[] { "chemical_reactor/bayer_digestion", "chemical_reactor/bayer_precipitation",
                 "chemical_reactor/aluminium_hydroxide_seed", "coke_oven/alumina", "coke_oven/soda_ash",
@@ -163,14 +163,14 @@ public final class ChemistrySliceGameTests {
         }
         // Bauxite to aluminium keeps its atoms: 1 Al2O3 -> 2 Al(OH)3 -> 1 Al2O3 -> 2 Al (4 Al per 2 alumina).
         var hallHeroult = (GTRecipe) h.getLevel().getServer().getRecipeManager()
-                .byKey(GTIAMod.id("electric_blast_furnace/hall_heroult_aluminium")).orElseThrow();
+                .byKey(TypeOmegaMod.id("electric_blast_furnace/hall_heroult_aluminium")).orElseThrow();
         h.assertTrue(hallHeroult.getOutputContents(com.gregtechceu.gtceu.api.capability.recipe.ItemRecipeCapability.CAP)
                 .size() == 1, "Hall-Heroult gives only aluminium (and CO2)");
         h.succeed();
     }
 
     private static int duration(GameTestHelper h, String path) {
-        var recipe = h.getLevel().getServer().getRecipeManager().byKey(GTIAMod.id(path));
+        var recipe = h.getLevel().getServer().getRecipeManager().byKey(TypeOmegaMod.id(path));
         h.assertTrue(recipe.isPresent() && recipe.get() instanceof GTRecipe, "missing recipe typeomega:" + path);
         return ((GTRecipe) recipe.get()).duration;
     }

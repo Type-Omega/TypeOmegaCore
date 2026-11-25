@@ -7,7 +7,7 @@ import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.typeomega.core.mega.common.MegaDefinition;
 import com.typeomega.core.mega.common.MegaDefinition.Hatch;
 
-/** Registration of the Interstellar System Creator; loaded only with GTNA (see GTIAMegastructures). */
+/** Registration of the Interstellar System Creator; loaded only with GTNA (see TypeOmegaMegastructures). */
 public final class SystemCreatorDefinition {
 
     private SystemCreatorDefinition() {}
