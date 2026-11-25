@@ -1,6 +1,5 @@
 package com.typeomega.core.mega.typezero;
 
-import com.gregtechceu.gtceu.api.capability.recipe.EURecipeCapability;
 import com.gregtechceu.gtceu.api.capability.recipe.FluidRecipeCapability;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.capability.recipe.ItemRecipeCapability;
@@ -8,7 +7,6 @@ import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
-import com.gregtechceu.gtceu.api.recipe.ingredient.EnergyStack;
 import com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient;
 
 import com.lowdragmc.lowdraglib.gui.texture.ItemStackTexture;
@@ -86,24 +84,7 @@ public final class TokamakScreen {
     }
 
     public static IllustratedRecipeUI recipeUI(GTRecipeType type) {
-        // EN: The fusion EU is a recipe output, not a per-tick one, which the lib's standard lines do not read; the
-        // Output line takes it from the recipe so the screen keeps the GTNH order Total, Output, Time.
-        // PT: O EU da fusão é saída da receita, não saída por tick, que as linhas padrão da lib não leem; a linha
-        // Output o tira da receita para a tela manter a ordem do GTNH Total, Output, Time.
-        // ZH: 聚变 EU 是配方产出而非每刻产出，库的标准行读取不到；Output 行直接从配方读取，使界面保持 GTNH 的
-        // Total、Output、Time 顺序。
-        var ui = new IllustratedRecipeUI(type, LAYOUT, EXTRA_LINES, TokamakScreen::extraLines) {
-
-            @Override
-            public InfoLines lines(GTRecipe recipe) {
-                var lines = InfoLines.create();
-                long eut = outputEUt(recipe);
-                if (eut > 0) lines.total(eut * recipe.duration).energy(eut, true);
-                lines.time(recipe.duration);
-                extraLines(recipe, lines);
-                return lines;
-            }
-        };
+        var ui = new IllustratedRecipeUI(type, LAYOUT, EXTRA_LINES, TokamakScreen::extraLines);
         ui.setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressTexture.FillDirection.LEFT_TO_RIGHT);
         return ui;
     }
@@ -177,11 +158,7 @@ public final class TokamakScreen {
     /** EU/t a recipe gives, for the GameTests. */
     public static long outputEUt(GTRecipe recipe) {
         var eu = RecipeHelper.getRealEUtWithIO(recipe);
-        if (eu.voltage() > 0 && !eu.isInput()) return eu.voltage() * eu.amperage();
-        long total = 0;
-        for (var content : recipe.getOutputContents(EURecipeCapability.CAP))
-            if (content.content instanceof EnergyStack stack) total += stack.voltage() * stack.amperage();
-        return total;
+        return eu.isInput() ? 0 : eu.voltage() * eu.amperage();
     }
 
     public static void init() {}

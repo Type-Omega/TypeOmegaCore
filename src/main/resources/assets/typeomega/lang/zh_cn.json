@@ -962,7 +962,7 @@
   "typeomega.machine.tokamak_hv.tooltip.coolant": "液氦冷却磁体后以氦气排出",
   "typeomega.machine.tokamak_hv.tooltip.start": "冷态等离子体需要从能源仓获取 %s EU 启动能量",
   "typeomega.machine.tokamak_hv.tooltip.cools": "断料 %s 秒后冷却",
-  "typeomega.machine.tokamak_hv.tooltip.dynamos": "%s 至 %s 个动力仓；仓口安装在中子屏蔽层上",
+  "typeomega.machine.tokamak_hv.tooltip.dynamos": "恰好 %s 个 HV 动力仓，每个 1 A：D-T 每 tick 输出 %s A，D-He3 输出 %s A；仓口安装在中子屏蔽层上",
   "typeomega.machine.tokamak_hv.tooltip.no_overclock": "%s超频：输出固定",
   "typeomega.machine.tokamak_hv.tooltip.no": "不可",
   "typeomega.machine.stellar_engine.tooltip.purpose": "以什卡多夫镜与卡普兰引擎推动整个 Nexus 星系；仅在该处工作",

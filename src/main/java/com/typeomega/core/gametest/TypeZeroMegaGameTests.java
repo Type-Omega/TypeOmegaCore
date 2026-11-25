@@ -38,7 +38,10 @@ import com.typeomega.core.mega.typezero.Tokamak;
 import com.typeomega.core.mega.typezero.TokamakMachine;
 import com.typeomega.core.mega.typezero.TypeZeroBlocks;
 import com.typeomega.core.mega.typezero.TypeZeroItems;
+import com.typeomega.core.mega.typezero.TypeZeroRecipes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -184,6 +187,25 @@ public final class TypeZeroMegaGameTests {
         h.succeed();
     }
 
+    /** One dynamo per amp of D-He3 (GTIA-D-438): with one missing the Tokamak does not form. */
+    @GameTest(template = TEMPLATE, batch = "type_zero_megas", timeoutTicks = 60)
+    public static void tokamakNeedsEveryDynamo(GameTestHelper h) {
+        var placed = TypeZeroTestRig.place(h, Tokamak.DEFINITION, TypeZeroTestRig.slot(h, 9), UUID.randomUUID(),
+                null);
+        h.assertTrue(TypeZeroTestRig.form(placed.controller()), "the preview forms");
+        BlockPos dynamo = null;
+        int count = 0;
+        for (var part : placed.controller().getParts())
+            if (part instanceof EnergyHatchPartMachine hatch && hatch.energyContainer.getInputVoltage() == 0) {
+                dynamo = hatch.self().getPos();
+                count++;
+            }
+        h.assertTrue(count == Tokamak.DYNAMOS, "the preview carries " + Tokamak.DYNAMOS + " dynamos: " + count);
+        h.getLevel().setBlock(dynamo, TypeZeroBlocks.NEUTRON_SHIELD_CASING.get().defaultBlockState(), 2 | 16);
+        h.assertFalse(TypeZeroTestRig.form(placed.controller()), "a Tokamak short of one dynamo must not form");
+        h.succeed();
+    }
+
     @GameTest(template = TEMPLATE, batch = "type_zero_megas", timeoutTicks = 400)
     public static void tokamakLightsAndBurnsDeuteriumTritium(GameTestHelper h) {
         var placed = TypeZeroTestRig.place(h, Tokamak.DEFINITION, TypeZeroTestRig.slot(h, 6), UUID.randomUUID(),
@@ -213,22 +235,31 @@ public final class TypeZeroMegaGameTests {
                 com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper.get(
                         com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust, GTMaterials.Lithium),
                 false);
-        EnergyHatchPartMachine input = null, dynamo = null;
+        EnergyHatchPartMachine input = null;
+        List<EnergyHatchPartMachine> dynamos = new ArrayList<>();
         for (var part : tokamak.getParts()) {
             if (!(part instanceof EnergyHatchPartMachine hatch)) continue;
             if (hatch.energyContainer.getInputVoltage() > 0) input = hatch;
-            else dynamo = hatch;
+            else dynamos.add(hatch);
         }
-        h.assertTrue(input != null && dynamo != null, "the preview has an Energy Hatch and a Dynamo Hatch");
+        h.assertTrue(input != null && dynamos.size() == Tokamak.DYNAMOS,
+                "the preview has an Energy Hatch and " + Tokamak.DYNAMOS + " Dynamo Hatches: " + dynamos.size());
         var feed = input.energyContainer;
-        var out = dynamo.energyContainer;
         h.assertFalse(tokamak.lit(), "a new Tokamak is cold");
         // EN: The hatch feeds the charge for real; the test adds the rest instead of waiting minutes.
         // PT: O hatch alimenta a carga de verdade; o teste completa o resto em vez de esperar minutos.
         // ZH: 能源仓真实地为启动充能；测试直接补足其余部分，免去数分钟等待。
+        // EN: EU every tick (GTIA-D-438): the dynamos fill while the first cycle still runs, before its fluids.
+        // PT: EU a cada tick (GTIA-D-438): os dínamos enchem com o primeiro ciclo ainda rodando, antes dos fluidos.
+        // ZH: 每 tick 产出 EU（GTIA-D-438）：第一个周期仍在运行、流体尚未产出时动力仓就开始充能。
+        var euDuringCycle = new java.util.concurrent.atomic.AtomicBoolean();
         h.onEachTick(() -> {
             feed.changeEnergy(feed.getEnergyCapacity() - feed.getEnergyStored());
             if (tokamak.startCharge() > 0 && !tokamak.lit()) tokamak.addStartChargeForTests(TokamakMachine.START_EU);
+            var logic = tokamak.getRecipeLogic();
+            if (logic.isWorking() && logic.getProgress() < TypeZeroRecipes.FUSION_TICKS - 1 &&
+                    dynamos.stream().mapToLong(d -> d.energyContainer.getEnergyStored()).sum() > 0)
+                euDuringCycle.set(true);
         });
         h.succeedWhen(() -> {
             if (!tokamak.lit()) {
@@ -236,11 +267,12 @@ public final class TypeZeroMegaGameTests {
                         .byKey(GTIAMod.id("tokamak_fusion/deuterium_tritium")).orElse(null);
                 var match = dt == null ? null : RecipeHelper.matchRecipe(tokamak, dt);
                 h.fail("the plasma lights after the start-up charge (" + tokamak.startCharge() + " EU; formed " +
-                        tokamak.isFormed() + ", logic " + tokamak.getRecipeLogic().getStatus() + ", D-T " +
+                        tokamak.isFormed() + ", logic " + tokamak.getRecipeLogic().getStatus() + " " +
+                        tokamak.getRecipeLogic().getWaitingReason() + ", D-T " +
                         (match == null ? "missing" : match.isSuccess() + " " + match.reason()) + ", modifiers " +
                         (dt == null || tokamak.fullModifyRecipe(dt) != null ? "pass" : "refuse") + ")");
             }
-            h.assertTrue(out.getEnergyStored() > 0, "fusion EU reaches the dynamo");
+            h.assertTrue(euDuringCycle.get(), "fusion EU reaches the dynamos during the cycle");
             var helium = ((FluidHatchPartMachine) MetaMachine.getMachine(level, at[4])).tank.getFluidInTank(0);
             var tritium = ((FluidHatchPartMachine) MetaMachine.getMachine(level, at[5])).tank.getFluidInTank(0);
             h.assertTrue(!helium.isEmpty() || !tritium.isEmpty(), "helium and bred tritium leave the chamber");

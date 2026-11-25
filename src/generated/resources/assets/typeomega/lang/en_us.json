@@ -673,7 +673,7 @@
   "typeomega.machine.tokamak_hv.tooltip.cycle": "Each fusion cycle lasts %s s",
   "typeomega.machine.tokamak_hv.tooltip.dhe3": "with lunar Helium-3",
   "typeomega.machine.tokamak_hv.tooltip.dt": "the lithium blanket breeds back %s of the %s mB of tritium",
-  "typeomega.machine.tokamak_hv.tooltip.dynamos": "%s to %s Dynamo Hatches; hatches go on the neutron shield",
+  "typeomega.machine.tokamak_hv.tooltip.dynamos": "Exactly %s HV Dynamo Hatches, 1 A each: D-T puts out %s A every tick, D-He3 %s A; hatches go on the neutron shield",
   "typeomega.machine.tokamak_hv.tooltip.humor": "A star in a doughnut. Type Omega's first step to owning the real thing.",
   "typeomega.machine.tokamak_hv.tooltip.no": "No",
   "typeomega.machine.tokamak_hv.tooltip.no_overclock": "%s overclock: the output is fixed",

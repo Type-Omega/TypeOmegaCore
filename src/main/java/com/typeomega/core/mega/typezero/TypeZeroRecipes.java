@@ -32,6 +32,8 @@ public final class TypeZeroRecipes {
     // 而单座 D-He3 托卡马克即可达到 K 1.00（2048 EU/t，GTIA-D-380）。
     public static final long DT_EUT = 2 * GTValues.V[HV];
     public static final long DHE3_EUT = 4 * GTValues.V[HV];
+    /** Amps of HV each fuel puts on the dynamos every tick. */
+    public static final long DT_AMPS = DT_EUT / GTValues.V[HV], DHE3_AMPS = DHE3_EUT / GTValues.V[HV];
     public static final int FUSION_TICKS = 200;
     /** Tritium burnt and bred back by the lithium blanket per D-T cycle. */
     public static final int TRITIUM_BURNT = 100, TRITIUM_BRED = 90;
@@ -185,7 +187,11 @@ public final class TypeZeroRecipes {
                 .outputFluids(GTMaterials.Helium.getFluid(150))
                 .outputFluids(GTMaterials.Tritium.getFluid(TRITIUM_BRED))
                 .addData(IGNITION_KEY, DT_IGNITION_K)
-                .duration(FUSION_TICKS).outputEU(GTValues.V[HV], DT_EUT / GTValues.V[HV]).save(provider);
+                // EN: Continuous output, like the GTCEu fusion reactors: EU every tick, not once per cycle (GTIA-D-438).
+                // PT: Saída contínua, como os reatores de fusão do GTCEu: EU a cada tick, não uma vez por ciclo
+                // (GTIA-D-438).
+                // ZH: 与 GTCEu 聚变反应堆一样持续输出：每 tick 产出 EU，而非每周期一次（GTIA-D-438）。
+                .duration(FUSION_TICKS).EUt(-GTValues.V[HV], DT_AMPS).save(provider);
         GTIARecipeTypes.TOKAMAK_FUSION.recipeBuilder(GTIAMod.id("deuterium_helium_3"))
                 .inputFluids(GTMaterials.Deuterium.getFluid(100))
                 .inputFluids(GTMaterials.Helium3.getFluid(100))
@@ -193,7 +199,7 @@ public final class TypeZeroRecipes {
                 .outputFluids(GTMaterials.Helium.getFluid(150))
                 .outputFluids(GTMaterials.Hydrogen.getFluid(100))
                 .addData(IGNITION_KEY, DHE3_IGNITION_K)
-                .duration(FUSION_TICKS).outputEU(GTValues.V[HV], DHE3_EUT / GTValues.V[HV]).save(provider);
+                .duration(FUSION_TICKS).EUt(-GTValues.V[HV], DHE3_AMPS).save(provider);
     }
 
     private static void heavyWater(Consumer<FinishedRecipe> provider) {

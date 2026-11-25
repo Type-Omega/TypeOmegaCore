@@ -84,7 +84,7 @@ public final class TypeZeroTooltips {
                 .separator()
                 .line(own(id, "start"), value(Fmt.num(TokamakMachine.START_EU)))
                 .warning(own(id, "cools"), value(TokamakMachine.COOL_AFTER_TICKS / 20))
-                .line(own(id, "dynamos"), value(1), value(Tokamak.MAX_DYNAMOS))
+                .line(own(id, "dynamos"), value(Tokamak.DYNAMOS), value(TypeZeroRecipes.DT_AMPS), value(TypeZeroRecipes.DHE3_AMPS))
                 .warning(own(id, "no_overclock"), emphasis(own(id, "no")));
         return finish(b, id);
     }

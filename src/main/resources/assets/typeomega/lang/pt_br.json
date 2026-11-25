@@ -962,7 +962,7 @@
   "typeomega.machine.tokamak_hv.tooltip.coolant": "O Hélio Líquido resfria os ímãs e sai como gás Hélio",
   "typeomega.machine.tokamak_hv.tooltip.start": "Um plasma frio pede %s EU de carga de partida dos Energy Hatches",
   "typeomega.machine.tokamak_hv.tooltip.cools": "Esfria depois de %s s sem combustível",
-  "typeomega.machine.tokamak_hv.tooltip.dynamos": "De %s a %s Dynamo Hatches; os hatches vão na blindagem de nêutrons",
+  "typeomega.machine.tokamak_hv.tooltip.dynamos": "Exatamente %s Dynamo Hatches HV, 1 A cada: a D-T gera %s A a cada tick, a D-He3 %s A; os hatches vão na blindagem de nêutrons",
   "typeomega.machine.tokamak_hv.tooltip.no_overclock": "%s overclock: a saída é fixa",
   "typeomega.machine.tokamak_hv.tooltip.no": "Sem",
   "typeomega.machine.stellar_engine.tooltip.purpose": "Move o Sistema Nexus inteiro com um espelho de Shkadov e um motor de Caplan em volta da estrela; só funciona lá",

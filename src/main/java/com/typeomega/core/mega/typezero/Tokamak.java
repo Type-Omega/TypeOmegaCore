@@ -1,11 +1,13 @@
 package com.typeomega.core.mega.typezero;
 
+import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
+import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 
 import com.typeomega.core.GTIAMod;
@@ -25,7 +27,10 @@ import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
 public final class Tokamak {
 
     public static final String ID = "tokamak_hv";
-    public static final int MAX_DYNAMOS = 4;
+    // EN: One HV Dynamo Hatch carries 1 A, so the structure needs one per amp of the strongest fuel (D-He3, 4 A).
+    // PT: Um Dynamo Hatch HV leva 1 A, então a estrutura pede um por ampere do combustível mais forte (D-He3, 4 A).
+    // ZH: 一个 HV 动力仓承载 1 A，因此结构按最强燃料（D-He3，4 A）的安培数各需一个。
+    public static final int DYNAMOS = (int) TypeZeroRecipes.DHE3_AMPS;
 
     /** The layout, legend in {@code data/typeomega/multiblock/typezero/tokamak_hv.txt}. */
     public static final String[][] AISLES = TypeZeroPattern.read(ID);
@@ -47,11 +52,15 @@ public final class Tokamak {
                 return builder
                         .where('K', Predicates.controller(blocks(definition.getBlock())))
                         .where('H', blocks(TypeZeroBlocks.NEUTRON_SHIELD_CASING.get()).setMinGlobalLimited(140)
-                                // EN: Up to 4 dynamos: D-He3 gives 4 A of HV. One Energy Hatch charges the start-up.
-                                // PT: Até 4 dínamos: D-He3 dá 4 A de HV. Um Energy Hatch carrega a partida.
-                                // ZH: 最多 4 个动力仓：D-He3 输出 4 A HV。一个能源仓为启动充能。
-                                .or(abilities(PartAbility.OUTPUT_ENERGY).setMinGlobalLimited(1)
-                                        .setMaxGlobalLimited(MAX_DYNAMOS).setPreviewCount(1))
+                                // EN: Exactly DYNAMOS HV dynamos, one per amp of D-He3 (GTIA-D-438): a smaller
+                                // buffer could not take the EU of one tick. One Energy Hatch charges the start-up.
+                                // PT: Exatamente DYNAMOS dínamos HV, um por ampere da D-He3 (GTIA-D-438): um buffer
+                                // menor não comportaria o EU de um tick. Um Energy Hatch carrega a partida.
+                                // ZH: 恰好 DYNAMOS 个 HV 动力仓，D-He3 每安培一个（GTIA-D-438）：更小的缓存装不下
+                                // 一个 tick 的 EU。一个能源仓为启动充能。
+                                .or(blocks(GTMachines.ENERGY_OUTPUT_HATCH[GTValues.HV]
+                                        .getBlock())
+                                        .setExactLimit(DYNAMOS).setPreviewCount(DYNAMOS))
                                 .or(abilities(PartAbility.INPUT_ENERGY).setMinGlobalLimited(1)
                                         .setMaxGlobalLimited(2).setPreviewCount(1))
                                 .or(Predicates.autoAbilities(definition.getRecipeTypes(), false, false, true, false,

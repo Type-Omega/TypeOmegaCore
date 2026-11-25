@@ -310,9 +310,9 @@
   "断料 %s 秒后冷却"
  ],
  "typeomega.machine.tokamak_hv.tooltip.dynamos": [
-  "%s to %s Dynamo Hatches; hatches go on the neutron shield",
-  "De %s a %s Dynamo Hatches; os hatches vão na blindagem de nêutrons",
-  "%s 至 %s 个动力仓；仓口安装在中子屏蔽层上"
+  "Exactly %s HV Dynamo Hatches, 1 A each: D-T puts out %s A every tick, D-He3 %s A; hatches go on the neutron shield",
+  "Exatamente %s Dynamo Hatches HV, 1 A cada: a D-T gera %s A a cada tick, a D-He3 %s A; os hatches vão na blindagem de nêutrons",
+  "恰好 %s 个 HV 动力仓，每个 1 A：D-T 每 tick 输出 %s A，D-He3 输出 %s A；仓口安装在中子屏蔽层上"
  ],
  "typeomega.machine.tokamak_hv.tooltip.no_overclock": [
   "%s overclock: the output is fixed",
