@@ -53,7 +53,16 @@ public final class TokamakScreen {
             .fluid(PanelLayout.Role.OUTPUT, 138, 13)
             .fluid(PanelLayout.Role.OUTPUT, 138, 32)
             .fluid(PanelLayout.Role.OUTPUT, 138, 51)
-            .mark("progress", 118, 70, 20, 10)
+            // EN: The pipes of the art fill like GTNH progress arrows; no separate GTCEu fusion bar.
+            // PT: Os canos da arte enchem como as setas de progresso do GTNH; sem a barra de fusão do GTCEu à parte.
+            // ZH: 插图中的管道像 GTNH 的进度箭头一样填充；不再另加 GTCEu 聚变进度条。
+            .mark("flow_right", 22, 9, 19, 7)
+            .mark("flow_right", 22, 28, 19, 7)
+            .mark("flow_right", 22, 47, 19, 7)
+            .mark("flow_right", 22, 66, 25, 7)
+            .mark("flow_right", 118, 18, 20, 7)
+            .mark("flow_right", 118, 37, 20, 7)
+            .mark("flow_right", 118, 56, 20, 7)
             .mark("charge", 118, 2, 40, 6)
             .build();
 
