@@ -15,7 +15,7 @@ public final class YggdrasilDefinition {
     /** The station takes seeds and water and gives the harvest and the biomass. */
     public static MultiblockMachineDefinition register() {
         return MegaDefinition.register(YggdrasilMachine.SHAPE, YggdrasilMachine::new,
-                GTCEu.id("block/casings/fusion/fusion_casing_mk3"),
+                GTCEu.id("block/casings/fusion/fusion_casing_mk3"), YggdrasilMachine::types,
                 new Hatch(PartAbility.IMPORT_ITEMS, 2), new Hatch(PartAbility.IMPORT_FLUIDS, 2),
                 new Hatch(PartAbility.EXPORT_ITEMS, 2), new Hatch(PartAbility.EXPORT_FLUIDS, 1));
     }

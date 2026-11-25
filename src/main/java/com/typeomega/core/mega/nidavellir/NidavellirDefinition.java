@@ -15,7 +15,7 @@ public final class NidavellirDefinition {
     /** The station takes the alloys' inputs and the neutronium, and gives the alloys. */
     public static MultiblockMachineDefinition register() {
         return MegaDefinition.register(NidavellirMachine.SHAPE, NidavellirMachine::new,
-                GTCEu.id("block/casings/fusion/fusion_casing_mk3"),
+                GTCEu.id("block/casings/fusion/fusion_casing_mk3"), NidavellirMachine::types,
                 new Hatch(PartAbility.IMPORT_ITEMS, 2), new Hatch(PartAbility.IMPORT_FLUIDS, 2),
                 new Hatch(PartAbility.EXPORT_ITEMS, 2), new Hatch(PartAbility.EXPORT_FLUIDS, 2));
     }

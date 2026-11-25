@@ -23,6 +23,16 @@ public class GTIAEmiPlugin implements EmiPlugin {
     public void register(EmiRegistry registry) {
         registry.addWorkstation(VanillaEmiRecipeCategories.CRAFTING, EmiStack.of(GTIAStation.BLOCK.get()));
         registry.addRecipeHandler(GTIAStation.MENU.get(), new StationHandler());
+        for (var entry : com.typeomega.core.mega.common.MegaDefinition.WORKSTATIONS.entrySet()) {
+            var stack = EmiStack.of(entry.getKey().asStack());
+            for (var type : entry.getValue().get()) {
+                for (var category : type.getCategories()) {
+                    registry.addWorkstation(
+                            com.gregtechceu.gtceu.integration.emi.recipe.GTRecipeEMICategory.machineCategory(category),
+                            stack);
+                }
+            }
+        }
     }
 
     /** The station's recipe handler; also used by the client self-test to press "+" the same way EMI does. */
