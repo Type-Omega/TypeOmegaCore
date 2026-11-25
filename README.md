@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo.png" width="160" alt="GregTech Infinity Ascension logo" />
+  <img src="docs/assets/logo.png" width="380" alt="TypeOmega Core logo" />
 </p>
 
 # GTIACore
