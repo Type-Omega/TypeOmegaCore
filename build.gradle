@@ -169,6 +169,18 @@ dependencies {
         modRuntimeOnly("curse.maven:ftb-teams-forge-404468:7499810")
         modRuntimeOnly("curse.maven:architectury-api-419699:5137938")
     }
+    // EN: Playtest-only mods, never in the pack manifest nor in the GameTests: FTB Chunks and AE2 Wireless Terminals
+    // (universal terminal, Quantum Bridge Card). tools/run_client_full.sh sets -PgtiaDevPlaytest=true.
+    // PT: Mods só para teste no cliente, nunca no manifest do pack nem nas GameTests: FTB Chunks e AE2 Wireless
+    // Terminals (terminal universal, Quantum Bridge Card). O tools/run_client_full.sh passa -PgtiaDevPlaytest=true.
+    // ZH: 仅用于客户端试玩的模组，绝不进入整合包清单或 GameTest：FTB Chunks 与 AE2 Wireless Terminals
+    // （通用终端、量子桥卡）。tools/run_client_full.sh 会传入 -PgtiaDevPlaytest=true。
+    if (project.findProperty('gtiaDevPlaytest') == 'true') {
+        modRuntimeOnly("curse.maven:ftb-chunks-forge-314906:8216874")
+        modRuntimeOnly("curse.maven:applied-energistics-2-wireless-terminals-459929:7251206")
+        modRuntimeOnly("curse.maven:curios-309927:6418456")
+        modRuntimeOnly("curse.maven:cloth-config-348521:5729105")
+    }
     modCompileOnly("curse.maven:ftb-library-forge-404465:8226927") { transitive = false }
     modCompileOnly("curse.maven:ftb-teams-forge-404468:7499810") { transitive = false }
     // EN: Without -PgtnaDevJar the dev runtime (and CI) uses the published GTNA, so the GameTests see the same mods.
