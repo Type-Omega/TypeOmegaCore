@@ -132,7 +132,7 @@
  "typeomega.machine.matrioshka_brain.tooltip.void": [
   "Past the interarm void (Stellar Engine) the shells run %s colder",
   "Depois do vazio entre braços (Motor Estelar) as cascas ficam %s mais frias",
-  "越过旋臂间空洞（恒星引擎）后外壳降温 %s"
+  "越过旋臂间空洞（恒星推进巨构）后外壳降温 %s"
  ],
  "typeomega.machine.matrioshka_brain.tooltip.repair_blocks": [
   "the shell's own blocks",
@@ -192,7 +192,7 @@
  "typeomega.machine.star_lifter.tooltip.orion": [
   "Past the Orion arm's edge (Stellar Engine) the star's wind is %s richer",
   "Depois da borda do braço de Órion (Motor Estelar) o vento da estrela é %s mais rico",
-  "越过猎户臂边缘（恒星引擎）后恒星风富集 %s"
+  "越过猎户臂边缘（恒星推进巨构）后恒星风富集 %s"
  ],
  "typeomega.machine.star_lifter.tooltip.instability": [
   "Deep stirring above %s grows instability; at full instability a flare costs the sphere %s",
@@ -537,7 +537,7 @@
  "typeomega.machine.nidavellir.tooltip.pulsar": [
   "From the pulsar vicinity on (Stellar Engine), half the neutronium, at least 1",
   "Da vizinhança do pulsar em diante (Motor Estelar), metade do neutrônio, no mínimo 1",
-  "到达脉冲星附近后（恒星引擎），中子素消耗减半，至少 1"
+  "到达脉冲星附近后（恒星推进巨构），中子素消耗减半，至少 1"
  ],
  "typeomega.machine.nidavellir.tooltip.energy": [
   "EU comes from the Nexus network, as in the base recipe",

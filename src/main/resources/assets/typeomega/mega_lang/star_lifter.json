@@ -2,12 +2,12 @@
  "block.typeomega.star_lifter": [
   "Star Lifter",
   "Elevador Estelar",
-  "恒星抽取器"
+  "恒星汲质穹枢"
  ],
  "typeomega.star_lifter.needs_star": [
   "No star here: the Star Lifter works around the star of a star system.",
   "Sem estrela aqui: o Elevador Estelar funciona em volta da estrela de um sistema estelar.",
-  "此处没有恒星：恒星抽取器只能在恒星系的恒星周围工作。"
+  "此处没有恒星：恒星汲质穹枢只能在恒星系的恒星周围工作。"
  ],
  "typeomega.star_lifter.mdot": [
   "Lift rate: %s kg/s",
@@ -237,7 +237,7 @@
  "typeomega.star_lifter.ui.manual.9": [
   "Beyond the Orion arm's edge (Stellar Engine) the star's wind is 25% richer.",
   "Além da borda do braço de Órion (Motor Estelar), o vento da estrela é 25% mais rico.",
-  "越过猎户臂边缘（恒星引擎）后，恒星风浓度提高 25%。"
+  "越过猎户臂边缘（恒星推进巨构）后，恒星风浓度提高 25%。"
  ],
  "typeomega.star_lifter.ui.manual.10": [
   "#The star changes",
@@ -262,7 +262,7 @@
  "typeomega.star_lifter.ui.manual.14": [
   "A lighter star is dimmer: the Matrioshka Brain gets (L / L☉)^¾ of its computation, the Stellar Engine pushes a lighter star faster. Below 0.5 M☉ the ring cannot hold the outflow.",
   "Uma estrela mais leve brilha menos: o Cérebro Matrioshka calcula (L / L☉)^¾ do que calculava, e o Motor Estelar empurra uma estrela mais leve mais rápido. Abaixo de 0,5 M☉ o anel não segura o jato.",
-  "较轻的恒星更暗：玛特罗什卡嵌套演化算域的算力变为 (L / L☉)^¾，恒星引擎推动较轻的恒星更快。低于 0.5 M☉ 时环无法维持外流。"
+  "较轻的恒星更暗：玛特罗什卡嵌套演化算域的算力变为 (L / L☉)^¾，恒星推进巨构推动较轻的恒星更快。低于 0.5 M☉ 时环无法维持外流。"
  ],
  "typeomega.star_lifter.ui.manual.15": [
   "#Deep stirring",
@@ -322,7 +322,7 @@
  "typeomega.star_lifter.ui.manual_title": [
   "Field manual - Star Lifter",
   "Manual de campo - Elevador Estelar",
-  "现场手册 - 恒星抽取器"
+  "现场手册 - 恒星汲质穹枢"
  ],
  "typeomega.star_lifter.ui.g.mass": [
   "Mass",
