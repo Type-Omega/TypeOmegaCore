@@ -101,6 +101,10 @@ legacyForge {
             sourceSet = sourceSets.main
             programArguments.addAll('--refresh-dependencies')
             systemProperty('forge.enabledGameTestNamespaces', project.mod_id)
+            // EN: -Ptests=a,b runs only the GameTests matching those terms; heavy ones need -Ptests=heavy or all.
+            // PT: -Ptests=a,b roda só as GameTests com esses termos; as pesadas pedem -Ptests=heavy ou all.
+            // ZH: -Ptests=a,b 只运行匹配这些词的 GameTest；重型测试需 -Ptests=heavy 或 all。
+            systemProperty('typeomega.tests', project.findProperty('tests') ?: '')
             // ./gradlew runClient -PquickPlay="New World" opens that save directly (smoke tests).
             if (project.hasProperty('quickPlay')) programArguments.addAll('--quickPlaySingleplayer', project.quickPlay)
         }
