@@ -5,7 +5,7 @@ import com.gregtechceu.gtceu.api.GTValues;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 
-import com.typeomega.core.data.GTIATooltips;
+import com.typeomega.core.data.TypeOmegaTooltips;
 import com.typeomega.core.kardashev.KardashevScale;
 import com.typeomega.core.mega.typezero.CosmodromeMachine;
 import com.typeomega.core.mega.typezero.Tokamak;
@@ -17,10 +17,10 @@ import com.typeomega.lib.tooltip.TooltipRow;
 import java.util.List;
 import java.util.Locale;
 
-import static com.typeomega.core.data.GTIATooltips.finish;
-import static com.typeomega.core.data.GTIATooltips.own;
-import static com.typeomega.core.data.GTIATooltips.shared;
-import static com.typeomega.core.data.GTIATooltips.start;
+import static com.typeomega.core.data.TypeOmegaTooltips.finish;
+import static com.typeomega.core.data.TypeOmegaTooltips.own;
+import static com.typeomega.core.data.TypeOmegaTooltips.shared;
+import static com.typeomega.core.data.TypeOmegaTooltips.start;
 import static com.typeomega.lib.tooltip.TooltipArg.emphasis;
 import static com.typeomega.lib.tooltip.TooltipArg.highlight;
 import static com.typeomega.lib.tooltip.TooltipArg.value;
@@ -31,9 +31,9 @@ public final class TypeZeroTooltips {
     private TypeZeroTooltips() {}
 
     public static void register() {
-        GTIATooltips.register("national_dispatch_center", TypeZeroTooltips::dispatchCenter);
-        GTIATooltips.register("cosmodrome", TypeZeroTooltips::cosmodrome);
-        GTIATooltips.register(Tokamak.ID, TypeZeroTooltips::tokamak);
+        TypeOmegaTooltips.register("national_dispatch_center", TypeZeroTooltips::dispatchCenter);
+        TypeOmegaTooltips.register("cosmodrome", TypeZeroTooltips::cosmodrome);
+        TypeOmegaTooltips.register(Tokamak.ID, TypeZeroTooltips::tokamak);
     }
 
     /** "Megastructure n of Type 0: raises your team's Kardashev cap to 0.nn". */
@@ -84,7 +84,8 @@ public final class TypeZeroTooltips {
                 .separator()
                 .line(own(id, "start"), value(Fmt.num(TokamakMachine.START_EU)))
                 .warning(own(id, "cools"), value(TokamakMachine.COOL_AFTER_TICKS / 20))
-                .line(own(id, "dynamos"), value(Tokamak.DYNAMOS), value(TypeZeroRecipes.DT_AMPS), value(TypeZeroRecipes.DHE3_AMPS))
+                .line(own(id, "dynamos"), value(Tokamak.DYNAMOS), value(TypeZeroRecipes.DT_AMPS),
+                        value(TypeZeroRecipes.DHE3_AMPS))
                 .warning(own(id, "no_overclock"), emphasis(own(id, "no")));
         return finish(b, id);
     }
