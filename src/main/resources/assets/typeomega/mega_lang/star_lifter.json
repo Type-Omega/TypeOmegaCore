@@ -132,7 +132,7 @@
  "typeomega.star_lifter.ui.s.brain": [
   "Matrioshka factor",
   "Fator do Matrioshka",
-  "套娃脑系数"
+  "玛特罗什卡嵌套演化算域系数"
  ],
  "typeomega.star_lifter.ui.years": [
   "years",
@@ -262,7 +262,7 @@
  "typeomega.star_lifter.ui.manual.14": [
   "A lighter star is dimmer: the Matrioshka Brain gets (L / L☉)^¾ of its computation, the Stellar Engine pushes a lighter star faster. Below 0.5 M☉ the ring cannot hold the outflow.",
   "Uma estrela mais leve brilha menos: o Cérebro Matrioshka calcula (L / L☉)^¾ do que calculava, e o Motor Estelar empurra uma estrela mais leve mais rápido. Abaixo de 0,5 M☉ o anel não segura o jato.",
-  "较轻的恒星更暗：套娃脑的算力变为 (L / L☉)^¾，恒星引擎推动较轻的恒星更快。低于 0.5 M☉ 时环无法维持外流。"
+  "较轻的恒星更暗：玛特罗什卡嵌套演化算域的算力变为 (L / L☉)^¾，恒星引擎推动较轻的恒星更快。低于 0.5 M☉ 时环无法维持外流。"
  ],
  "typeomega.star_lifter.ui.manual.15": [
   "#Deep stirring",

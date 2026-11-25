@@ -47,7 +47,7 @@
  "typeomega.machine.stellar_engine.tooltip.bonuses": [
   "Orion edge: +%s lifted matter · interarm void: Matrioshka shells %s colder · emission nebula: %s hydrogen plasma · pulsar vicinity: fresh neutronium",
   "Borda de Órion: +%s de matéria sugada · vazio entre braços: cascas da Matrioshka %s mais frias · nebulosa de emissão: %s de plasma de hidrogênio · vizinhança do pulsar: neutrônio fresco",
-  "猎户臂边缘：抽取物质 +%s · 旋臂间空洞：套娃脑外壳降温 %s · 发射星云：氢等离子体 %s · 脉冲星附近：新鲜中子素"
+  "猎户臂边缘：抽取物质 +%s · 旋臂间空洞：玛特罗什卡嵌套演化算域外壳降温 %s · 发射星云：氢等离子体 %s · 脉冲星附近：新鲜中子素"
  ],
  "typeomega.machine.stellar_engine.tooltip.era": [
   "Every region reached raises the Stellar era, up to %s at the galactic core",
