@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "typeomega:block/me_wireless_connector"
+    }
+  }
+}
