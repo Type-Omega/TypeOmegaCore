@@ -8,6 +8,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import com.typeomega.core.kardashev.KardashevLedger;
+import com.typeomega.core.kardashev.KardashevSource;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -29,7 +30,7 @@ public abstract class SteamBoilerMachineMixin {
     private int typeomega$countSteam(NotifiableFluidTank tank, FluidStack steam, IFluidHandler.FluidAction action) {
         int filled = tank.fillInternal(steam, action);
         if (filled > 0 && action.execute()) {
-            KardashevLedger.recordSteam(((MetaMachine) (Object) this).getOwnerUUID(), filled);
+            KardashevLedger.recordSteam(((MetaMachine) (Object) this).getOwnerUUID(), filled, KardashevSource.BOILER);
         }
         return filled;
     }

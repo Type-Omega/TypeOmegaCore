@@ -17,13 +17,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 
+import com.typeomega.core.kardashev.ui.KardashevUIFactory;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 /**
- * Kardashev Meter: a plain block (D-406) that shows the K of the team of whoever uses it. It has no block
- * entity and does no work while nobody looks at it; every reading comes from {@link KardashevData}.
+ * Kardashev Meter: a plain block (D-406) that opens a screen with the K of the team of whoever uses it, its history
+ * and its sources, and a button for the HUD (D-443). It has no block entity and does no work while nobody looks at
+ * it; every reading comes from {@link KardashevData}.
  */
 public class KardashevMeterBlock extends HorizontalDirectionalBlock {
 
@@ -47,13 +49,7 @@ public class KardashevMeterBlock extends HorizontalDirectionalBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand,
                                  BlockHitResult hit) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
-        if (player instanceof ServerPlayer serverPlayer) {
-            var server = serverPlayer.getServer();
-            if (server == null) return InteractionResult.PASS;
-            var reading = KardashevData.get(server).read(KardashevLedger.teamOf(player.getUUID()),
-                    server.overworld().getGameTime());
-            for (Component line : KardashevText.reading(reading)) serverPlayer.sendSystemMessage(line);
-        }
+        if (player instanceof ServerPlayer serverPlayer) KardashevUIFactory.INSTANCE.open(serverPlayer, pos);
         return InteractionResult.CONSUME;
     }
 

@@ -4,9 +4,13 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStoppedEvent;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.typeomega.core.TypeOmegaMod;
+import com.typeomega.core.kardashev.client.KardashevHudClient;
+import com.typeomega.core.kardashev.hud.KardashevHudNet;
+import com.typeomega.core.kardashev.ui.KardashevUIFactory;
 
 /** Registration of the Kardashev Meter (D-372, D-380, D-389, D-406) and of the team K bookkeeping. */
 public final class KardashevMeter {
@@ -29,7 +33,15 @@ public final class KardashevMeter {
 
     public static void init() {
         KardashevText.registerLang();
+        KardashevUIFactory.init();
+        KardashevHudNet.register();
         MinecraftForge.EVENT_BUS.addListener(KardashevLedger::onServerTick);
-        MinecraftForge.EVENT_BUS.addListener((ServerStoppedEvent e) -> KardashevLedger.clear());
+        MinecraftForge.EVENT_BUS.addListener(KardashevHudNet::onServerTick);
+        MinecraftForge.EVENT_BUS.addListener(KardashevHudNet::onLoggedOut);
+        MinecraftForge.EVENT_BUS.addListener((ServerStoppedEvent e) -> {
+            KardashevLedger.clear();
+            KardashevHudNet.clear();
+        });
+        if (FMLEnvironment.dist.isClient()) KardashevHudClient.init();
     }
 }

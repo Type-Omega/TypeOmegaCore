@@ -91,6 +91,39 @@ public final class KardashevScale {
         return (int) Math.min(Integer.MAX_VALUE, Math.floor(rawK(euPerTick) * 100 + 1e-9));
     }
 
+    // EN: D-443: the proposal's equivalence, 1 EU/t = 1 TW, only to show watts and Sagan's K next to the official K.
+    // PT: D-443: a equivalência da proposta, 1 EU/t = 1 TW, só para mostrar watts e o K de Sagan ao lado do K oficial.
+    // ZH: D-443：提案中的等价关系 1 EU/t = 1 TW，仅用于在正式 K 旁显示瓦特和萨根 K。
+    public static final double WATTS_PER_EU_TICK = 1e12;
+
+    /** Power in watts under the 1 EU/t = 1 TW equivalence. */
+    public static double watts(double euPerTick) {
+        return Math.max(0, euPerTick) * WATTS_PER_EU_TICK;
+    }
+
+    /** Sagan's K, (log10(W) - 6) / 10, floored at 0; informative only, the official K is {@link #rawK}. */
+    public static double saganK(double euPerTick) {
+        double watts = watts(euPerTick);
+        return watts <= 1e6 ? 0 : (Math.log10(watts) - 6) / 10;
+    }
+
+    /** EU/t at which {@link #rawK} reaches {@code k}: the inverse of the tier table, extended past OpV. */
+    public static double euPerTickForK(double k) {
+        if (!(k > 0)) return 8;
+        int last = TIER_POINTS.length - 1;
+        double[] low = TIER_POINTS[last - 1];
+        double[] high = TIER_POINTS[last];
+        for (int i = 1; i < TIER_POINTS.length; i++) {
+            if (k <= TIER_POINTS[i][1]) {
+                low = TIER_POINTS[i - 1];
+                high = TIER_POINTS[i];
+                break;
+            }
+        }
+        double x = low[0] + (k - low[1]) * (high[0] - low[0]) / (high[1] - low[1]);
+        return 8 * Math.exp(x * LOG4);
+    }
+
     /** EU/t equivalent of a steam flow in mB/t. */
     public static double steamToEu(double steamMb) {
         return steamMb / STEAM_MB_PER_EU;

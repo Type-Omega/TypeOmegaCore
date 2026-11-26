@@ -11,7 +11,7 @@ import com.typeomega.core.kardashev.KardashevData;
 import com.typeomega.core.kardashev.KardashevLedger;
 import com.typeomega.core.kardashev.KardashevMeter;
 import com.typeomega.core.kardashev.KardashevScale;
-import com.typeomega.core.kardashev.KardashevText;
+import com.typeomega.core.kardashev.KardashevUiText;
 
 import java.util.UUID;
 
@@ -88,12 +88,14 @@ public final class KardashevGameTests {
         expect(h, ONE_AMP_EV, data.recentEuPerTick(team, now), "last 20 s at 1 A EV");
         var capped = data.read(team, now);
         h.assertTrue(capped.kHundredths() == 79 && capped.capped(), "no megas: K 0.79, capped");
-        h.assertTrue(KardashevText.reading(capped).size() == 6, "capped reading adds the cap hint");
+        h.assertTrue(!KardashevUiText.summary(data.view(team, now)).get(1).getString().isEmpty(),
+                "a capped summary adds the cap hint");
 
         for (String id : new String[] { "a", "b", "c" }) data.markBuilt(team, id, now);
         var open = data.read(team, now);
         h.assertTrue(open.kHundredths() == 100 && open.reachedType() == 1, "third mega: K 1.00, Type I reached");
-        h.assertTrue(KardashevText.reading(open).size() == 5, "uncapped reading has five lines");
+        h.assertTrue(KardashevUiText.summary(data.view(team, now)).get(1).getString().isEmpty(),
+                "an uncapped summary has no cap hint");
 
         long later = now + KardashevData.WINDOW_TICKS + bucket;
         expect(h, 0, data.averageEuPerTick(team, later), "the window forgets old power");

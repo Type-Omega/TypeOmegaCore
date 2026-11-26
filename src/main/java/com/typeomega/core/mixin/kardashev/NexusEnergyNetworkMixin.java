@@ -4,6 +4,7 @@ import net.minecraft.server.level.ServerLevel;
 
 import com.raishxn.gtna.common.data.NexusEnergyNetwork;
 import com.typeomega.core.kardashev.KardashevLedger;
+import com.typeomega.core.kardashev.KardashevSource;
 import com.typeomega.lib.data.Int128;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -37,5 +38,17 @@ public abstract class NexusEnergyNetworkMixin {
     @Inject(method = "recordLegacySourceLoss", at = @At("HEAD"))
     private void typeomega$countLegacyLoss(UUID owner, Int128 lost, ServerLevel level, CallbackInfo ci) {
         if (lost != null && lost.isPositive()) KardashevLedger.recordEu(owner, lost.doubleValue());
+    }
+
+    // EN: D-443: consumeDirectEnergy goes through consumeEnergy, so this one method sees every EU the network hands
+    // out.
+    // PT: D-443: consumeDirectEnergy passa por consumeEnergy, então este método vê todo EU que a rede entrega.
+    // ZH: D-443：consumeDirectEnergy 也会调用 consumeEnergy，因此该方法能看到网络发放的全部 EU。
+    @Inject(method = "consumeEnergy", at = @At("RETURN"))
+    private void typeomega$countSpentEnergy(UUID owner, Int128 amount, ServerLevel level,
+                                            CallbackInfoReturnable<Boolean> cir) {
+        if (cir.getReturnValueZ() && amount != null && amount.isPositive()) {
+            KardashevLedger.record(owner, KardashevSource.SPENT_ENERGY, amount.doubleValue());
+        }
     }
 }

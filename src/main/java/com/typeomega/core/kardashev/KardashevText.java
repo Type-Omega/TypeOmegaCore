@@ -20,20 +20,19 @@ public final class KardashevText {
     private KardashevText() {}
 
     public static void registerLang() {
+        KardashevUiText.registerLang();
         lang("decimal", "%s.%s");
-        lang("title", "Kardashev Meter · your team");
         lang("k", "K %s · Type %s");
         lang("average", "Average power (10 min): %s EU/t");
-        lang("recent", "Last 20 s: %s EU/t");
         lang("cap", "Cap: K %s · megastructures of Type %s: %s/3");
         lang("capped", "Your power is above the cap: the next megastructure raises it.");
         lang("tooltip.reads", "Shows the K of your team: the average power of the last %s.");
-        lang("tooltip.sources", "Counts the %s, the %s and the steam boilers.");
+        lang("tooltip.sources", "Counts the %s, the %s, the steam boilers and the local generators.");
         lang("tooltip.wireless_energy", "wireless energy network");
         lang("tooltip.wireless_steam", "wireless steam network");
         lang("tooltip.steam", "Steam counts at %s.");
         lang("tooltip.cap", "Each type caps K at %s, %s and %s with 0, 1 and 2 megastructures.");
-        lang("tooltip.use", "Right-click to read.");
+        lang("tooltip.use", "Right-click to open the screen: summary, history and sources, with an optional HUD.");
     }
 
     private static void lang(String key, String english) {
@@ -56,21 +55,6 @@ public final class KardashevText {
     static String eu(double euPerTick) {
         if (euPerTick < 1e15) return NumberFormat.getIntegerInstance(Locale.ROOT).format(Math.round(euPerTick));
         return String.format(Locale.ROOT, "%.3e", euPerTick);
-    }
-
-    public static List<Component> reading(KardashevData.Reading reading) {
-        List<Component> lines = new ArrayList<>();
-        lines.add(tr("title").withStyle(ChatFormatting.GOLD));
-        lines.add(tr("k", decimal(reading.kHundredths()).withStyle(ChatFormatting.YELLOW, ChatFormatting.BOLD),
-                type(reading.kHundredths() / 100)).withStyle(ChatFormatting.GRAY));
-        lines.add(tr("average", value(eu(reading.averageEuPerTick()))).withStyle(ChatFormatting.GRAY));
-        lines.add(tr("recent", value(eu(reading.recentEuPerTick()))).withStyle(ChatFormatting.GRAY));
-        int capType = KardashevScale.capType(reading.megastructures());
-        int megasInType = reading.megastructures() - capType * KardashevScale.MEGAS_PER_TYPE;
-        lines.add(tr("cap", value(decimal(reading.capHundredths())), type(capType), megasInType)
-                .withStyle(ChatFormatting.GRAY));
-        if (reading.capped()) lines.add(tr("capped").withStyle(ChatFormatting.YELLOW));
-        return lines;
     }
 
     public static List<Component> tooltip() {

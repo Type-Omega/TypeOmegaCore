@@ -16,8 +16,9 @@ import java.util.concurrent.atomic.DoubleAdder;
 /**
  * Collects what the sources report and moves it into {@link KardashevData} once a second.
  * <p>
- * Sources report themselves (mixins on the GTNA wireless energy and steam networks and on the GTCEu boilers), so
- * the meter never scans the world: the hot path is one map lookup and one add per report.
+ * Sources report themselves (mixins on the GTNA wireless energy and steam networks, on the GTCEu boilers and on the
+ * energy container that takes a generator's output), so the meter never scans the world: the hot path is one map
+ * lookup and one add per report.
  */
 public final class KardashevLedger {
 
@@ -28,25 +29,53 @@ public final class KardashevLedger {
     // ZH: 每秒汇总一次：所有者到队伍的查询和存档数据的访问次数比来源上报少 20 倍，每个 20 秒的桶仍有 20 次汇总。
     static final int FLUSH_TICKS = 20;
 
-    private static final Map<UUID, DoubleAdder> PENDING = new ConcurrentHashMap<>();
+    private static final Map<UUID, DoubleAdder[]> PENDING = new ConcurrentHashMap<>();
 
     private KardashevLedger() {}
 
+    /** Adds {@code amount} EU (steam already converted) the {@code source} reported for {@code owner}. */
+    public static void record(UUID owner, KardashevSource source, double amount) {
+        if (owner == null || !(amount > 0)) return;
+        DoubleAdder[] adders = PENDING.get(owner);
+        if (adders == null) adders = PENDING.computeIfAbsent(owner, ignored -> newAdders());
+        adders[source.ordinal()].add(amount);
+    }
+
+    private static DoubleAdder[] newAdders() {
+        DoubleAdder[] adders = new DoubleAdder[KardashevSource.COUNT];
+        for (int i = 0; i < adders.length; i++) adders[i] = new DoubleAdder();
+        return adders;
+    }
+
     /** EU that entered the owner's grid (the GTNA wireless network counts the gross amount, before losses). */
     public static void recordEu(UUID owner, double eu) {
-        if (owner == null || !(eu > 0)) return;
-        PENDING.computeIfAbsent(owner, ignored -> new DoubleAdder()).add(eu);
+        record(owner, KardashevSource.WIRELESS_ENERGY, eu);
     }
 
-    /** Steam the owner produced, in mB; counted at 2 mB = 1 EU (D-389). */
-    public static void recordSteam(UUID owner, double steamMb) {
-        recordEu(owner, KardashevScale.steamToEu(steamMb));
+    /** Steam in mB, counted at 2 mB = 1 EU (D-389), from a boiler or the wireless steam network. */
+    public static void recordSteam(UUID owner, double steamMb, KardashevSource source) {
+        record(owner, source, KardashevScale.steamToEu(steamMb));
     }
 
-    /** What {@code owner} reported since the last flush; for the GameTests. */
+    /** Steam in mB the owner's wireless steam network handed out. */
+    public static void recordSteamSpent(UUID owner, double steamMb) {
+        record(owner, KardashevSource.SPENT_STEAM, KardashevScale.steamToEu(steamMb));
+    }
+
+    /** What {@code owner} generated since the last flush; for the GameTests. */
     public static double pending(UUID owner) {
-        DoubleAdder adder = PENDING.get(owner);
-        return adder == null ? 0 : adder.sum();
+        return pending(owner, true);
+    }
+
+    /** What {@code owner} reported since the last flush, generated or spent; for the GameTests. */
+    public static double pending(UUID owner, boolean generated) {
+        DoubleAdder[] adders = PENDING.get(owner);
+        if (adders == null) return 0;
+        double sum = 0;
+        for (KardashevSource source : KardashevSource.values()) {
+            if (source.generated() == generated) sum += adders[source.ordinal()].sum();
+        }
+        return sum;
     }
 
     /** Drops what {@code owner} reported since the last flush; for the GameTests. */
@@ -66,8 +95,13 @@ public final class KardashevLedger {
         if (gameTime % FLUSH_TICKS != 0) return;
         KardashevData data = KardashevData.get(server);
         for (var entry : PENDING.entrySet()) {
-            double eu = entry.getValue().sumThenReset();
-            if (eu > 0) data.add(teamOf(entry.getKey()), eu, gameTime);
+            double[] perSource = new double[KardashevSource.COUNT];
+            boolean any = false;
+            for (int i = 0; i < perSource.length; i++) {
+                perSource[i] = entry.getValue()[i].sumThenReset();
+                any |= perSource[i] > 0;
+            }
+            if (any) data.record(teamOf(entry.getKey()), perSource, gameTime);
         }
     }
 

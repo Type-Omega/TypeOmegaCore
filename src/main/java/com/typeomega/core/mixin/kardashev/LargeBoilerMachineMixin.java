@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.common.machine.multiblock.steam.LargeBoilerMachine;
 
 import com.typeomega.core.kardashev.KardashevLedger;
+import com.typeomega.core.kardashev.KardashevSource;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -33,7 +34,8 @@ public abstract class LargeBoilerMachineMixin {
                      shift = At.Shift.AFTER))
     private void typeomega$countSteam(CallbackInfo ci) {
         if (steamGenerated > 0) {
-            KardashevLedger.recordSteam(((MetaMachine) (Object) this).getOwnerUUID(), steamGenerated);
+            KardashevLedger.recordSteam(((MetaMachine) (Object) this).getOwnerUUID(), steamGenerated,
+                    KardashevSource.BOILER);
         }
     }
 }
