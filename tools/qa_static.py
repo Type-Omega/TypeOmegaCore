@@ -46,6 +46,46 @@ def check_overlays() -> None:
             raise ValueError(f"Expected 16x16 RGBA overlay: {path}")
 
 
+def check_giga_blocks() -> None:
+    """Every Giga block (D-445) has its 16x16 texture, its 32x32 connected sheet when the .mcmeta names one, and its
+    bloom overlay when the model is a two-layer cube."""
+    casings = ASSETS / "textures/block/casings"
+    for lang_file in sorted((ASSETS / "mega_lang").glob("giga_*.json")):
+        for key in json.loads(lang_file.read_text(encoding="utf-8")):
+            block = key.removeprefix("block.typeomega.")
+            names = [f"{block}.png"]
+            meta = casings / f"{block}.png.mcmeta"
+            if meta.exists():
+                connection = json.loads(meta.read_text(encoding="utf-8")).get("ldlib", {}).get("connection")
+                if connection:
+                    names.append(connection.rsplit("/", 1)[1] + ".png")
+            model = ROOT / f"src/generated/resources/assets/typeomega/models/block/{block}.json"
+            if model.exists() and "cube_2_layer" in model.read_text(encoding="utf-8"):
+                names.append(f"{block}_bloom.png")
+            for name in names:
+                path = casings / name
+                if not path.exists():
+                    raise ValueError(f"Missing texture {name} of {block}")
+                width, height = struct.unpack(">II", path.read_bytes()[16:24])
+                want = 32 if name.endswith("_ctm.png") else 16
+                if (width, height) != (want, want):
+                    raise ValueError(f"Expected {want}x{want} texture: {path} is {width}x{height}")
+
+
+def check_mega_mounts() -> None:
+    """The controller mount of each megastructure that has one is on a static piece, clear of every moving piece."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    try:
+        import mega_sweep
+    except ImportError:
+        print("numpy is missing: the mount sweep was not checked")
+        return
+    for name in mega_sweep.mounted():
+        problems, _ = mega_sweep.check(name)
+        if problems:
+            raise ValueError(f"{name}: " + "; ".join(problems))
+
+
 def check_built_jar() -> None:
     jars = sorted((ROOT / "build/libs").glob("typeomega-*.jar"))
     if not jars:
@@ -82,11 +122,13 @@ def main() -> int:
     try:
         check_languages()
         check_overlays()
+        check_giga_blocks()
+        check_mega_mounts()
         check_built_jar()
     except (OSError, ValueError, KeyError, json.JSONDecodeError) as exc:
         print(f"QA failed: {exc}", file=sys.stderr)
         return 1
-    print("QA static passed: translations, machine overlays, phase assets, and built jar")
+    print("QA static passed: translations, machine overlays, Giga blocks, mega mounts, phase assets, and built jar")
     return 0
 
 

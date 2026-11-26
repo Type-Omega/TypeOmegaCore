@@ -43,6 +43,7 @@ public final class TypeOmegaMod {
         com.typeomega.core.kardashev.KardashevMeter.init();
         com.typeomega.core.decor.TypeOmegaPlushies.init();
         com.typeomega.core.data.rocket.TypeOmegaRocketBlocks.init();
+        com.typeomega.core.mega.blocks.GigaBlocks.init();
         com.typeomega.core.mega.typezero.TypeZeroMegas.init();
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         com.typeomega.core.miner.TypeOmegaMiners.registerSerializers(modBus);

@@ -1,0 +1,7 @@
+{
+  "parent": "gtceu:block/cube_2_layer/all",
+  "textures": {
+    "bot_all": "typeomega:block/casings/giga_lamp",
+    "top_all": "typeomega:block/casings/giga_lamp_bloom"
+  }
+}

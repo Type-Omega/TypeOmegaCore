@@ -12,7 +12,7 @@ public final class NidavellirDefinition {
 
     private NidavellirDefinition() {}
 
-    /** The station takes the alloys' inputs and the neutronium, and gives the alloys. */
+    /** The controller's hatches take the alloys' inputs and the neutronium, and gives the alloys. */
     public static MultiblockMachineDefinition register() {
         return MegaDefinition.register(NidavellirMachine.SHAPE, NidavellirMachine::new,
                 GTCEu.id("block/casings/fusion/fusion_casing_mk3"), NidavellirMachine::types,

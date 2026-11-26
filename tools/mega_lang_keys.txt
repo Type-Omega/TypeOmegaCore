@@ -3,6 +3,9 @@ block.typeomega.assembly_yard
 block.typeomega.birch_world
 block.typeomega.disintegrator
 block.typeomega.fusion_suppressor
+block.typeomega.giga_lamp
+block.typeomega.giga_service_deck
+block.typeomega.giga_truss
 block.typeomega.hraemc
 block.typeomega.kugelblitz
 block.typeomega.nidavellir

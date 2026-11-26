@@ -28,10 +28,21 @@ public final class MegaShape {
      * One letter of the pattern: which piece it belongs to, the phase, the block and, for moving pieces, the track
      * that moves it. A piece has several letters (body, rims, ribs, lights) with different blocks. Phase 1 holds the
      * controller; {@link #STATION} is its station and {@link #HATCH} the casings that accept hatches.
+     *
+     * <p>
+     * D-445: a megastructure with a controller mount has no station letter. The mount is pieces whose ring name starts
+     * with {@link #MOUNT} (wall, deck, rail, lamps, all phase 1 and static), and the {@link #HATCH} letter is the 3x3
+     * of casings around the controller, on the wall.
      */
     public record Part(char letter, String ring, int phase, String block, @Nullable String track, String kind) {
 
         public static final char STATION = 'S', HATCH = 'K';
+        /** Ring-name prefix of the pieces of the controller mount (D-445). */
+        public static final String MOUNT = "mount";
+
+        public boolean mount() {
+            return ring.startsWith(MOUNT);
+        }
 
         public boolean moving() {
             return track != null;
@@ -107,6 +118,17 @@ public final class MegaShape {
 
     public static boolean present(String name) {
         return get(name) != null;
+    }
+
+    /** True when the controller sits on a mount fixed to the structure (D-445) rather than on a separate station. */
+    public boolean hasMount() {
+        for (var part : parts.values()) if (part.mount()) return true;
+        return false;
+    }
+
+    /** The block of the casings around the controller: the controller's appearance. */
+    public String controllerBlock() {
+        return parts.get(Part.HATCH).block();
     }
 
     /** The part of a letter, or null for air, the controller and unknown letters. */

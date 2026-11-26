@@ -1,6 +1,9 @@
 {
   "values": [
     "typeomega:rocket_assembly_casing",
+    "typeomega:giga_service_deck",
+    "typeomega:giga_truss",
+    "typeomega:giga_lamp",
     "typeomega:mission_control_casing",
     "typeomega:tokamak_magnet_coil",
     "typeomega:neutron_shield_casing",

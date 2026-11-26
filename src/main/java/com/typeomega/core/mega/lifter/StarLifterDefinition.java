@@ -12,7 +12,7 @@ public final class StarLifterDefinition {
 
     private StarLifterDefinition() {}
 
-    /** The station takes repair blocks and gives plasma, gases and dusts. */
+    /** The controller's hatches take repair blocks and gives plasma, gases and dusts. */
     public static MultiblockMachineDefinition register() {
         return MegaDefinition.register(StarLifterMachine.SHAPE, StarLifterMachine::new,
                 GTCEu.id("block/casings/fusion/fusion_casing_mk3"),

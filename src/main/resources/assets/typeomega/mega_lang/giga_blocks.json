@@ -1,0 +1,17 @@
+{
+ "block.typeomega.giga_service_deck": [
+  "Giga Service Deck",
+  "Deck de Serviço Giga",
+  "巨构服务甲板"
+ ],
+ "block.typeomega.giga_truss": [
+  "Giga Truss",
+  "Treliça Giga",
+  "巨构桁架"
+ ],
+ "block.typeomega.giga_lamp": [
+  "Giga Lamp",
+  "Lâmpada Giga",
+  "巨构灯"
+ ]
+}

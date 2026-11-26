@@ -18,13 +18,14 @@ import java.util.function.Function;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.abilities;
 
 /**
- * Registration of a megastructure controller from its shape: the station block as appearance, the five-phase pattern,
- * the shared renderer and the station's hatch slots. The English name and the tooltip lines
+ * Registration of a megastructure controller from its shape: the casing around the controller as appearance, the
+ * five-phase pattern, the shared renderer and the hatch slots of the controller's 3x3. The English name and the tooltip
+ * lines
  * ({@code typeomega.machine.<id>.tooltip.<i>}) come from mega_lang, laid out by the lib's builder (D-410).
  */
 public final class MegaDefinition {
 
-    /** Hatches the station takes: what, how many at most. */
+    /** Hatches the controller's 3x3 takes: what, how many at most. */
     public record Hatch(PartAbility ability, int max) {}
 
     /** Megastructures that run the recipes of other types through their own engine, with those types. */
@@ -70,7 +71,7 @@ public final class MegaDefinition {
                 .allowExtendedFacing(false)
                 .allowFlip(false)
                 .recipeType(type)
-                .appearanceBlock(() -> MegaPattern.block(MegaShape.get(id).part(MegaShape.Part.STATION).block()))
+                .appearanceBlock(() -> MegaPattern.block(MegaShape.get(id).controllerBlock()))
                 .pattern(definition -> MegaPattern.build(id, definition, casing0 -> {
                     var p = casing0;
                     for (var h : hatches) p = p.or(abilities(h.ability()).setMaxGlobalLimited(h.max())

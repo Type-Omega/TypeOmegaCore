@@ -12,7 +12,7 @@ public final class YggdrasilDefinition {
 
     private YggdrasilDefinition() {}
 
-    /** The station takes seeds and water and gives the harvest and the biomass. */
+    /** The controller's hatches take seeds and water and gives the harvest and the biomass. */
     public static MultiblockMachineDefinition register() {
         return MegaDefinition.register(YggdrasilMachine.SHAPE, YggdrasilMachine::new,
                 GTCEu.id("block/casings/fusion/fusion_casing_mk3"), YggdrasilMachine::types,

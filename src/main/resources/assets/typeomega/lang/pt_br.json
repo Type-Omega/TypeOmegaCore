@@ -1268,5 +1268,8 @@
   "block.typeomega.me_requestable_input_hatch": "Escotilha de Entrada ME Requisitável",
   "typeomega.machine.me_requestable_input_bus.tooltip": "Puxa os itens configurados da rede ME e pede à rede que fabrique o que falta",
   "typeomega.machine.me_requestable_input_hatch.tooltip": "Puxa os fluidos configurados da rede ME e pede à rede que fabrique o que falta",
-  "typeomega.machine.me_requestable.craft": "O que tem padrão é fabricado na quantidade que falta, um trabalho por slot; os itens fabricados chegam direto"
+  "typeomega.machine.me_requestable.craft": "O que tem padrão é fabricado na quantidade que falta, um trabalho por slot; os itens fabricados chegam direto",
+  "block.typeomega.giga_service_deck": "Deck de Serviço Giga",
+  "block.typeomega.giga_truss": "Treliça Giga",
+  "block.typeomega.giga_lamp": "Lâmpada Giga"
 }
