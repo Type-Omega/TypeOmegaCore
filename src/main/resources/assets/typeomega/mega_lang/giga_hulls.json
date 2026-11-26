@@ -1,0 +1,37 @@
+{
+ "block.typeomega.orchid_cell_frame": [
+  "Orchid Cell Frame",
+  "Moldura de Célula Orquídea",
+  "兰花晶胞框架"
+ ],
+ "block.typeomega.orchid_cell_glass": [
+  "Orchid Cell Glass",
+  "Vidro de Célula Orquídea",
+  "兰花晶胞玻璃"
+ ],
+ "block.typeomega.orchid_window_rim": [
+  "Orchid Window Rim",
+  "Aro de Janela Orquídea",
+  "兰花窗缘"
+ ],
+ "block.typeomega.forge_cobalt_plate": [
+  "Forge Cobalt Plate",
+  "Placa de Cobalto da Forja",
+  "锻炉钴板"
+ ],
+ "block.typeomega.terrace_rim_light": [
+  "Terrace Rim Light",
+  "Luz de Borda de Degrau",
+  "阶台缘灯"
+ ],
+ "block.typeomega.lifter_girdle_hull": [
+  "Lifter Girdle Hull",
+  "Casco da Cinta do Lifter",
+  "提升器腰带外壳"
+ ],
+ "block.typeomega.heated_hex_plate": [
+  "Heated Hex Plate",
+  "Placa Hexagonal Aquecida",
+  "加热六角板"
+ ]
+}

@@ -1271,5 +1271,12 @@
   "typeomega.machine.me_requestable.craft": "O que tem padrão é fabricado na quantidade que falta, um trabalho por slot; os itens fabricados chegam direto",
   "block.typeomega.giga_service_deck": "Deck de Serviço Giga",
   "block.typeomega.giga_truss": "Treliça Giga",
-  "block.typeomega.giga_lamp": "Lâmpada Giga"
+  "block.typeomega.giga_lamp": "Lâmpada Giga",
+  "block.typeomega.orchid_cell_frame": "Moldura de Célula Orquídea",
+  "block.typeomega.orchid_cell_glass": "Vidro de Célula Orquídea",
+  "block.typeomega.orchid_window_rim": "Aro de Janela Orquídea",
+  "block.typeomega.forge_cobalt_plate": "Placa de Cobalto da Forja",
+  "block.typeomega.terrace_rim_light": "Luz de Borda de Degrau",
+  "block.typeomega.lifter_girdle_hull": "Casco da Cinta do Lifter",
+  "block.typeomega.heated_hex_plate": "Placa Hexagonal Aquecida"
 }

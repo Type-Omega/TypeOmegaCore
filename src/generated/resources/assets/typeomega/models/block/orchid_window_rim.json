@@ -1,0 +1,7 @@
+{
+  "parent": "gtceu:block/cube_2_layer/all",
+  "textures": {
+    "bot_all": "typeomega:block/casings/orchid_window_rim",
+    "top_all": "typeomega:block/casings/orchid_window_rim_bloom"
+  }
+}

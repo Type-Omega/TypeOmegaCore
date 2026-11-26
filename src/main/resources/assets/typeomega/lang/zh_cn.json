@@ -1271,5 +1271,12 @@
   "typeomega.machine.me_requestable.craft": "有样板的物品会按缺少的数量合成，每个槽位一个任务；合成的物品直接送达",
   "block.typeomega.giga_service_deck": "巨构服务甲板",
   "block.typeomega.giga_truss": "巨构桁架",
-  "block.typeomega.giga_lamp": "巨构灯"
+  "block.typeomega.giga_lamp": "巨构灯",
+  "block.typeomega.orchid_cell_frame": "兰花晶胞框架",
+  "block.typeomega.orchid_cell_glass": "兰花晶胞玻璃",
+  "block.typeomega.orchid_window_rim": "兰花窗缘",
+  "block.typeomega.forge_cobalt_plate": "锻炉钴板",
+  "block.typeomega.terrace_rim_light": "阶台缘灯",
+  "block.typeomega.lifter_girdle_hull": "提升器腰带外壳",
+  "block.typeomega.heated_hex_plate": "加热六角板"
 }

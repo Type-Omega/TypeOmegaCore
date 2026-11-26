@@ -23,6 +23,32 @@ final class MegaMountShapeRig {
 
     private MegaMountShapeRig() {}
 
+    /** The casings each pilot shape must use (D-445 M2); the first of each list is the controller's casing. */
+    static final java.util.Map<String, String[]> CASINGS = java.util.Map.of(
+            TypeOmegaMegastructures.YGGDRASIL, new String[] { "orchid_window_rim", "orchid_cell_frame",
+                    "orchid_cell_glass", "giga_service_deck", "giga_truss", "giga_lamp" },
+            TypeOmegaMegastructures.NIDAVELLIR, new String[] { "forge_cobalt_plate", "terrace_rim_light",
+                    "giga_service_deck", "giga_truss", "giga_lamp" },
+            TypeOmegaMegastructures.STAR_LIFTER, new String[] { "lifter_girdle_hull", "heated_hex_plate",
+                    "giga_service_deck", "giga_truss", "giga_lamp" });
+
+    /** The shape uses its own casings, every one of them is a registered block, and the controller wears the first. */
+    static void usesItsOwnCasings(GameTestHelper helper, String name) {
+        var shape = shape(helper, name);
+        var used = new java.util.HashSet<String>();
+        for (var part : shape.parts.values()) used.add(part.block());
+        var casings = CASINGS.get(name);
+        for (String id : casings) {
+            var block = net.minecraftforge.registries.ForgeRegistries.BLOCKS
+                    .getValue(new net.minecraft.resources.ResourceLocation("typeomega", id));
+            helper.assertTrue(block != null && block != net.minecraft.world.level.block.Blocks.AIR,
+                    id + " is a registered block");
+            helper.assertTrue(used.contains("typeomega:" + id), name + " uses " + id);
+        }
+        helper.assertTrue(shape.controllerBlock().equals("typeomega:" + casings[0]),
+                name + ": the controller's casing is " + casings[0] + ", not " + shape.controllerBlock());
+    }
+
     static MegaShape shape(GameTestHelper helper, String name) {
         var shape = MegaShape.get(name);
         helper.assertTrue(shape != null, name + " has its shape files");

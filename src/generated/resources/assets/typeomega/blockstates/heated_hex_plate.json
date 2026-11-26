@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "typeomega:block/heated_hex_plate"
+    }
+  }
+}

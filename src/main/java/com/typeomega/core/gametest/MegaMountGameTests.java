@@ -37,6 +37,13 @@ public final class MegaMountGameTests {
         helper.succeed();
     }
 
+    /** Each pilot shape is built of its own casings, registered, with the controller in the first of them. */
+    @GameTest(template = TEMPLATE, batch = "mega_mount_shape", timeoutTicks = 100)
+    public static void pilotShapesUseTheirOwnCasings(GameTestHelper helper) {
+        for (String name : MegaMountShapeRig.PILOT) MegaMountShapeRig.usesItsOwnCasings(helper, name);
+        helper.succeed();
+    }
+
     /** No moving piece comes within the margin of the mount while its track turns. */
     @GameTest(template = TEMPLATE, batch = "mega_mount_shape", timeoutTicks = 200)
     public static void noMovingPieceReachesTheMount(GameTestHelper helper) {
