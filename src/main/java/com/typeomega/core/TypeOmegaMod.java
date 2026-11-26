@@ -41,6 +41,7 @@ public final class TypeOmegaMod {
         MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.mega.system.SystemWipe::onServerAboutToStart);
         com.typeomega.core.station.TypeOmegaStation.init();
         com.typeomega.core.kardashev.KardashevMeter.init();
+        com.typeomega.core.decor.TypeOmegaPlushies.init();
         com.typeomega.core.data.rocket.TypeOmegaRocketBlocks.init();
         com.typeomega.core.mega.typezero.TypeZeroMegas.init();
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();

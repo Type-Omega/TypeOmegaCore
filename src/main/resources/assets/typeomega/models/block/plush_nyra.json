@@ -1,0 +1,1034 @@
+{
+  "credit": "Adapted from ExtendedAE fishbig proportions (LGPL-3.0) for TypeOmega",
+  "parent": "block/block",
+  "render_type": "cutout",
+  "textures": {
+    "head": "typeomega:block/plush_nyra/head",
+    "hat": "typeomega:block/plush_nyra/hat",
+    "body": "typeomega:block/plush_nyra/body",
+    "right_arm": "typeomega:block/plush_nyra/right_arm",
+    "left_arm": "typeomega:block/plush_nyra/left_arm",
+    "right_leg": "typeomega:block/plush_nyra/right_leg",
+    "left_leg": "typeomega:block/plush_nyra/left_leg",
+    "jacket": "typeomega:block/plush_nyra/jacket",
+    "right_sleeve": "typeomega:block/plush_nyra/right_sleeve",
+    "left_sleeve": "typeomega:block/plush_nyra/left_sleeve",
+    "right_pants": "typeomega:block/plush_nyra/right_pants",
+    "left_pants": "typeomega:block/plush_nyra/left_pants",
+    "particle": "typeomega:block/plush_nyra/body"
+  },
+  "elements": [
+    {
+      "name": "body",
+      "from": [
+        4.0,
+        0.0,
+        7.0
+      ],
+      "to": [
+        12.0,
+        8.5,
+        11.0
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2.0,
+            4.0,
+            6.0,
+            16.0
+          ],
+          "texture": "#body"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            4.0,
+            2.0,
+            16.0
+          ],
+          "texture": "#body"
+        },
+        "south": {
+          "uv": [
+            8.0,
+            4.0,
+            12.0,
+            16.0
+          ],
+          "texture": "#body"
+        },
+        "west": {
+          "uv": [
+            6.0,
+            4.0,
+            8.0,
+            16.0
+          ],
+          "texture": "#body"
+        },
+        "up": {
+          "uv": [
+            6.0,
+            4.0,
+            2.0,
+            0.0
+          ],
+          "texture": "#body"
+        },
+        "down": {
+          "uv": [
+            10.0,
+            0.0,
+            6.0,
+            4.0
+          ],
+          "texture": "#body"
+        }
+      }
+    },
+    {
+      "name": "head",
+      "from": [
+        3.0,
+        8.5,
+        4.0
+      ],
+      "to": [
+        13.0,
+        18.5,
+        14.0
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4.0,
+            8.0,
+            8.0,
+            16.0
+          ],
+          "texture": "#head"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            8.0,
+            4.0,
+            16.0
+          ],
+          "texture": "#head"
+        },
+        "south": {
+          "uv": [
+            12.0,
+            8.0,
+            16.0,
+            16.0
+          ],
+          "texture": "#head"
+        },
+        "west": {
+          "uv": [
+            8.0,
+            8.0,
+            12.0,
+            16.0
+          ],
+          "texture": "#head"
+        },
+        "up": {
+          "uv": [
+            8.0,
+            8.0,
+            4.0,
+            0.0
+          ],
+          "texture": "#head"
+        },
+        "down": {
+          "uv": [
+            12.0,
+            0.0,
+            8.0,
+            8.0
+          ],
+          "texture": "#head"
+        }
+      }
+    },
+    {
+      "name": "hat",
+      "from": [
+        2.5,
+        8.0,
+        3.5
+      ],
+      "to": [
+        13.5,
+        19.0,
+        14.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4.0,
+            8.0,
+            8.0,
+            16.0
+          ],
+          "texture": "#hat"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            8.0,
+            4.0,
+            16.0
+          ],
+          "texture": "#hat"
+        },
+        "south": {
+          "uv": [
+            12.0,
+            8.0,
+            16.0,
+            16.0
+          ],
+          "texture": "#hat"
+        },
+        "west": {
+          "uv": [
+            8.0,
+            8.0,
+            12.0,
+            16.0
+          ],
+          "texture": "#hat"
+        },
+        "up": {
+          "uv": [
+            8.0,
+            8.0,
+            4.0,
+            0.0
+          ],
+          "texture": "#hat"
+        },
+        "down": {
+          "uv": [
+            12.0,
+            0.0,
+            8.0,
+            8.0
+          ],
+          "texture": "#hat"
+        }
+      }
+    },
+    {
+      "name": "right_arm",
+      "from": [
+        12.0,
+        2.0,
+        7.4
+      ],
+      "to": [
+        14.4,
+        8.2,
+        10.6
+      ],
+      "rotation": {
+        "angle": 22.5,
+        "axis": "z",
+        "origin": [
+          12.0,
+          8.0,
+          9.0
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            4.0,
+            4.0,
+            7.0,
+            16.0
+          ],
+          "texture": "#right_arm"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            4.0,
+            4.0,
+            16.0
+          ],
+          "texture": "#right_arm"
+        },
+        "south": {
+          "uv": [
+            11.0,
+            4.0,
+            14.0,
+            16.0
+          ],
+          "texture": "#right_arm"
+        },
+        "west": {
+          "uv": [
+            7.0,
+            4.0,
+            11.0,
+            16.0
+          ],
+          "texture": "#right_arm"
+        },
+        "up": {
+          "uv": [
+            7.0,
+            4.0,
+            4.0,
+            0.0
+          ],
+          "texture": "#right_arm"
+        },
+        "down": {
+          "uv": [
+            10.0,
+            0.0,
+            7.0,
+            4.0
+          ],
+          "texture": "#right_arm"
+        }
+      }
+    },
+    {
+      "name": "left_arm",
+      "from": [
+        1.6,
+        2.0,
+        7.4
+      ],
+      "to": [
+        4.0,
+        8.2,
+        10.6
+      ],
+      "rotation": {
+        "angle": -22.5,
+        "axis": "z",
+        "origin": [
+          4.0,
+          8.0,
+          9.0
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            4.0,
+            4.0,
+            7.0,
+            16.0
+          ],
+          "texture": "#left_arm"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            4.0,
+            4.0,
+            16.0
+          ],
+          "texture": "#left_arm"
+        },
+        "south": {
+          "uv": [
+            11.0,
+            4.0,
+            14.0,
+            16.0
+          ],
+          "texture": "#left_arm"
+        },
+        "west": {
+          "uv": [
+            7.0,
+            4.0,
+            11.0,
+            16.0
+          ],
+          "texture": "#left_arm"
+        },
+        "up": {
+          "uv": [
+            7.0,
+            4.0,
+            4.0,
+            0.0
+          ],
+          "texture": "#left_arm"
+        },
+        "down": {
+          "uv": [
+            10.0,
+            0.0,
+            7.0,
+            4.0
+          ],
+          "texture": "#left_arm"
+        }
+      }
+    },
+    {
+      "name": "right_leg",
+      "from": [
+        8.4,
+        0.01,
+        1.0
+      ],
+      "to": [
+        11.6,
+        3.21,
+        7.5
+      ],
+      "rotation": {
+        "angle": -22.5,
+        "axis": "y",
+        "origin": [
+          10.0,
+          1.6,
+          7.5
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            4,
+            12,
+            0
+          ],
+          "texture": "#right_leg"
+        },
+        "south": {
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ],
+          "texture": "#right_leg"
+        },
+        "up": {
+          "uv": [
+            8,
+            16,
+            4,
+            4
+          ],
+          "texture": "#right_leg"
+        },
+        "down": {
+          "uv": [
+            12,
+            4,
+            16,
+            16
+          ],
+          "texture": "#right_leg"
+        },
+        "east": {
+          "uv": [
+            0,
+            4,
+            4,
+            16
+          ],
+          "rotation": 270,
+          "texture": "#right_leg"
+        },
+        "west": {
+          "uv": [
+            8,
+            4,
+            12,
+            16
+          ],
+          "rotation": 90,
+          "texture": "#right_leg"
+        }
+      }
+    },
+    {
+      "name": "left_leg",
+      "from": [
+        4.4,
+        0.01,
+        1.0
+      ],
+      "to": [
+        7.6,
+        3.21,
+        7.5
+      ],
+      "rotation": {
+        "angle": 22.5,
+        "axis": "y",
+        "origin": [
+          6.0,
+          1.6,
+          7.5
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            4,
+            12,
+            0
+          ],
+          "texture": "#left_leg"
+        },
+        "south": {
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ],
+          "texture": "#left_leg"
+        },
+        "up": {
+          "uv": [
+            8,
+            16,
+            4,
+            4
+          ],
+          "texture": "#left_leg"
+        },
+        "down": {
+          "uv": [
+            12,
+            4,
+            16,
+            16
+          ],
+          "texture": "#left_leg"
+        },
+        "east": {
+          "uv": [
+            0,
+            4,
+            4,
+            16
+          ],
+          "rotation": 270,
+          "texture": "#left_leg"
+        },
+        "west": {
+          "uv": [
+            8,
+            4,
+            12,
+            16
+          ],
+          "rotation": 90,
+          "texture": "#left_leg"
+        }
+      }
+    },
+    {
+      "name": "jacket",
+      "from": [
+        3.75,
+        0.02,
+        6.75
+      ],
+      "to": [
+        12.25,
+        8.75,
+        11.25
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2.0,
+            4.0,
+            6.0,
+            16.0
+          ],
+          "texture": "#jacket"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            4.0,
+            2.0,
+            16.0
+          ],
+          "texture": "#jacket"
+        },
+        "south": {
+          "uv": [
+            8.0,
+            4.0,
+            12.0,
+            16.0
+          ],
+          "texture": "#jacket"
+        },
+        "west": {
+          "uv": [
+            6.0,
+            4.0,
+            8.0,
+            16.0
+          ],
+          "texture": "#jacket"
+        },
+        "up": {
+          "uv": [
+            6.0,
+            4.0,
+            2.0,
+            0.0
+          ],
+          "texture": "#jacket"
+        },
+        "down": {
+          "uv": [
+            10.0,
+            0.0,
+            6.0,
+            4.0
+          ],
+          "texture": "#jacket"
+        }
+      }
+    },
+    {
+      "name": "right_sleeve",
+      "from": [
+        11.8,
+        1.8,
+        7.2
+      ],
+      "to": [
+        14.6,
+        8.4,
+        10.8
+      ],
+      "rotation": {
+        "angle": 22.5,
+        "axis": "z",
+        "origin": [
+          12.0,
+          8.0,
+          9.0
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            4.0,
+            4.0,
+            7.0,
+            16.0
+          ],
+          "texture": "#right_sleeve"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            4.0,
+            4.0,
+            16.0
+          ],
+          "texture": "#right_sleeve"
+        },
+        "south": {
+          "uv": [
+            11.0,
+            4.0,
+            14.0,
+            16.0
+          ],
+          "texture": "#right_sleeve"
+        },
+        "west": {
+          "uv": [
+            7.0,
+            4.0,
+            11.0,
+            16.0
+          ],
+          "texture": "#right_sleeve"
+        },
+        "up": {
+          "uv": [
+            7.0,
+            4.0,
+            4.0,
+            0.0
+          ],
+          "texture": "#right_sleeve"
+        },
+        "down": {
+          "uv": [
+            10.0,
+            0.0,
+            7.0,
+            4.0
+          ],
+          "texture": "#right_sleeve"
+        }
+      }
+    },
+    {
+      "name": "left_sleeve",
+      "from": [
+        1.4,
+        1.8,
+        7.2
+      ],
+      "to": [
+        4.2,
+        8.4,
+        10.8
+      ],
+      "rotation": {
+        "angle": -22.5,
+        "axis": "z",
+        "origin": [
+          4.0,
+          8.0,
+          9.0
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            4.0,
+            4.0,
+            7.0,
+            16.0
+          ],
+          "texture": "#left_sleeve"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            4.0,
+            4.0,
+            16.0
+          ],
+          "texture": "#left_sleeve"
+        },
+        "south": {
+          "uv": [
+            11.0,
+            4.0,
+            14.0,
+            16.0
+          ],
+          "texture": "#left_sleeve"
+        },
+        "west": {
+          "uv": [
+            7.0,
+            4.0,
+            11.0,
+            16.0
+          ],
+          "texture": "#left_sleeve"
+        },
+        "up": {
+          "uv": [
+            7.0,
+            4.0,
+            4.0,
+            0.0
+          ],
+          "texture": "#left_sleeve"
+        },
+        "down": {
+          "uv": [
+            10.0,
+            0.0,
+            7.0,
+            4.0
+          ],
+          "texture": "#left_sleeve"
+        }
+      }
+    },
+    {
+      "name": "right_pants",
+      "from": [
+        8.2,
+        0.02,
+        0.8
+      ],
+      "to": [
+        11.8,
+        3.41,
+        7.7
+      ],
+      "rotation": {
+        "angle": -22.5,
+        "axis": "y",
+        "origin": [
+          10.0,
+          1.6,
+          7.5
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            4,
+            12,
+            0
+          ],
+          "texture": "#right_pants"
+        },
+        "south": {
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ],
+          "texture": "#right_pants"
+        },
+        "up": {
+          "uv": [
+            8,
+            16,
+            4,
+            4
+          ],
+          "texture": "#right_pants"
+        },
+        "down": {
+          "uv": [
+            12,
+            4,
+            16,
+            16
+          ],
+          "texture": "#right_pants"
+        },
+        "east": {
+          "uv": [
+            0,
+            4,
+            4,
+            16
+          ],
+          "rotation": 270,
+          "texture": "#right_pants"
+        },
+        "west": {
+          "uv": [
+            8,
+            4,
+            12,
+            16
+          ],
+          "rotation": 90,
+          "texture": "#right_pants"
+        }
+      }
+    },
+    {
+      "name": "left_pants",
+      "from": [
+        4.2,
+        0.02,
+        0.8
+      ],
+      "to": [
+        7.8,
+        3.41,
+        7.7
+      ],
+      "rotation": {
+        "angle": 22.5,
+        "axis": "y",
+        "origin": [
+          6.0,
+          1.6,
+          7.5
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            4,
+            12,
+            0
+          ],
+          "texture": "#left_pants"
+        },
+        "south": {
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ],
+          "texture": "#left_pants"
+        },
+        "up": {
+          "uv": [
+            8,
+            16,
+            4,
+            4
+          ],
+          "texture": "#left_pants"
+        },
+        "down": {
+          "uv": [
+            12,
+            4,
+            16,
+            16
+          ],
+          "texture": "#left_pants"
+        },
+        "east": {
+          "uv": [
+            0,
+            4,
+            4,
+            16
+          ],
+          "rotation": 270,
+          "texture": "#left_pants"
+        },
+        "west": {
+          "uv": [
+            8,
+            4,
+            12,
+            16
+          ],
+          "rotation": 90,
+          "texture": "#left_pants"
+        }
+      }
+    }
+  ],
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "scale": [
+        0.58,
+        0.58,
+        0.58
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        3,
+        0
+      ],
+      "scale": [
+        0.35,
+        0.35,
+        0.35
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "scale": [
+        0.6,
+        0.6,
+        0.6
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        65,
+        180,
+        0
+      ],
+      "translation": [
+        0,
+        2.5,
+        1.5
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        150,
+        0
+      ],
+      "translation": [
+        0,
+        2.5,
+        0
+      ],
+      "scale": [
+        0.45,
+        0.45,
+        0.45
+      ]
+    },
+    "head": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        0,
+        13.5,
+        0
+      ],
+      "scale": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    }
+  }
+}

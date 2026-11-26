@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "typeomega:block/plush_nyra"
+    },
+    "facing=east": {
+      "model": "typeomega:block/plush_nyra",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "typeomega:block/plush_nyra",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "typeomega:block/plush_nyra",
+      "y": 270
+    }
+  }
+}

@@ -51,6 +51,8 @@
   "typeomega.machine.mutation_chamber.tooltip": "两只笼中亲本蜜蜂（不消耗）将一只笼中野生蜜蜂转变为新物种。无随机。",
   "block.typeomega.rocket_assembler": "火箭装配机",
   "block.typeomega.rocket_assembly_casing": "火箭装配外壳",
+  "block.typeomega.plush_raishxn": "Raishxn 玩偶",
+  "block.typeomega.plush_nyra": "Nyra 玩偶",
   "typeomega.rocket_assembly": "火箭装配",
   "typeomega.organ_type.wing": "翅膀",
   "typeomega.organ_type.eye": "眼睛",

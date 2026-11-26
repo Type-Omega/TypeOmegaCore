@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["WWW", "WDW", "WWW"],
+  "key": {
+    "W": { "item": "minecraft:gray_wool" },
+    "D": { "item": "minecraft:cyan_dye" }
+  },
+  "result": { "item": "typeomega:plush_raishxn" }
+}
