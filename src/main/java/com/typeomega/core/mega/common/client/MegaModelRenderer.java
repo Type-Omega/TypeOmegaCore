@@ -46,14 +46,19 @@ public final class MegaModelRenderer {
 
     private record Material(ResourceLocation base, @Nullable ResourceLocation bloom) {}
 
-    private static final Map<String, Material> MATERIALS = Map.of(
-            "orchid_cell_frame", casing("orchid_cell_frame", false),
-            "orchid_cell_glass", casing("orchid_cell_glass", false),
-            "orchid_window_rim", casing("orchid_window_rim", true),
-            "terrace_rim_light", casing("terrace_rim_light", true),
-            "giga_lamp", casing("giga_lamp", true),
-            "giga_truss", casing("giga_truss", false),
-            "giga_service_deck", casing("giga_service_deck", false));
+    private static final Map<String, Material> MATERIALS = Map.ofEntries(
+            Map.entry("orchid_cell_frame", casing("orchid_cell_frame", false)),
+            Map.entry("orchid_cell_glass", casing("orchid_cell_glass", false)),
+            Map.entry("orchid_window_rim", casing("orchid_window_rim", true)),
+            Map.entry("terrace_rim_light", casing("terrace_rim_light", true)),
+            Map.entry("giga_lamp", casing("giga_lamp", true)),
+            Map.entry("giga_truss", casing("giga_truss", false)),
+            Map.entry("giga_service_deck", casing("giga_service_deck", false)),
+            Map.entry("lifter_girdle_hull", casing("lifter_girdle_hull", false)),
+            Map.entry("forge_cobalt_plate", casing("forge_cobalt_plate", false)),
+            Map.entry("heated_hex_plate", casing("heated_hex_plate", true)),
+            Map.entry("tokamak_magnet_coil", casing("tokamak_magnet_coil", false)),
+            Map.entry("neutron_shield_casing", casing("neutron_shield_casing", false)));
     private static final Material DEFAULT_MATERIAL = casing("orchid_cell_frame", false);
 
     private static final Map<String, GpuModel> MODELS = new HashMap<>();

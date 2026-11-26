@@ -164,4 +164,21 @@ class MegaModelDataTest {
         assertTrue(ygg.parts.stream().anyMatch(MegaModelData.Part::isEmissive));
         assertTrue(ygg.parts.stream().anyMatch(MegaModelData.Part::isTranslucent));
     }
+
+    @Test
+    void loadsLocalStellarHoopModelWhenPresent() {
+        // EN: typeomega_mega/ is local-only (.gitignore); skip cleanly in public CI when absent.
+        // PT: typeomega_mega/ é só local (.gitignore); pula limpo no CI público quando ausente.
+        // ZH: typeomega_mega/ 仅限本地（.gitignore）；在公共 CI 中缺失时安全跳过。
+        MegaModelData hoop = MegaModelData.get("stellar_hoop");
+        if (hoop == null) return;
+        assertEquals(6, hoop.parts.size());
+        assertEquals(41_072, hoop.totalVertices());
+        assertEquals(32_088, hoop.totalLod0Triangles());
+        assertEquals(3_608, hoop.totalLod1Triangles());
+        assertTrue(hoop.parts.stream().allMatch(MegaModelData.Part::isMoving));
+        assertTrue(hoop.parts.stream().anyMatch(p -> "hoop_spin".equals(p.track())));
+        assertTrue(hoop.parts.stream().anyMatch(p -> "elevators_spin".equals(p.track())));
+        assertTrue(hoop.parts.stream().anyMatch(MegaModelData.Part::isEmissive));
+    }
 }
