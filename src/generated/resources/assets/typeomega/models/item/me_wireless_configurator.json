@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "typeomega:item/me_wireless_configurator"
-  }
-}
