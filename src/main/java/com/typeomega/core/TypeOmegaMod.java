@@ -57,6 +57,7 @@ public final class TypeOmegaMod {
             modBus.addListener(com.typeomega.core.mega.common.client.MegaFxShaders::register);
         com.typeomega.core.integration.ae.TypeOmegaAe.init();
         com.typeomega.core.integration.ae.AeLang.init();
+        com.typeomega.core.integration.ae.upload.PatternUpload.init();
         REGISTRATE.registerRegistrate();
         MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.data.RecipeAuditCommand::register);
         if (net.minecraftforge.fml.ModList.get().isLoaded("productivebees")) {

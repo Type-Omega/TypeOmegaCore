@@ -1211,5 +1211,11 @@
   "typeomega.speed_card.desc": "Cada cartão vale %s Cartões de Aceleração",
   "typeomega.speed_card.limit": "Divide o limite de Cartões de Aceleração da máquina com os outros tiers; os tiers mais altos contam primeiro",
   "typeomega.speed_card.scope": "Acelera as buses de importação/exportação e as IO Ports do AE2 e do ExtendedAE",
-  "typeomega.speed_card.replace": "Clique direito agachado numa máquina no limite de cartões para trocar o cartão de menor tier"
+  "typeomega.speed_card.replace": "Clique direito agachado numa máquina no limite de cartões para trocar o cartão de menor tier",
+  "typeomega.pattern_upload.done": "Padrão enviado para %s",
+  "typeomega.pattern_upload.duplicate": "%s já tem este padrão; ele fica no terminal",
+  "typeomega.pattern_upload.ambiguous": "Vários providers servem a \"%s\" (%s); o padrão fica no terminal. Dê nomes diferentes a eles para enviar",
+  "typeomega.pattern_upload.full": "Todos os providers de \"%s\" estão cheios; o padrão fica no terminal",
+  "extendedae_plus.screen.upload.auto_upload_success": "Padrão enviado para %s",
+  "extendedae_plus.screen.upload.auto_upload_failed": "Não foi possível enviar o padrão para %s; ele fica no terminal"
 }

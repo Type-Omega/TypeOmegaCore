@@ -120,6 +120,10 @@ legacyForge {
             // The megastructure GameTests build structures of up to ~90k blocks each.
             jvmArguments.addAll('-Xmx12G')
             systemProperty('forge.enabledGameTestNamespaces', project.mod_id)
+            // EN: The same -Ptests filter as the client run; empty keeps the default (everything but the heavy tests).
+            // PT: O mesmo filtro -Ptests do cliente; vazio mantém o padrão (tudo menos as pesadas).
+            // ZH: 与客户端运行相同的 -Ptests 过滤；为空则保持默认（除重型测试外全部运行）。
+            systemProperty('typeomega.tests', project.findProperty('tests') ?: '')
             if (project.hasProperty('typeomega.shapeDump')) systemProperty('typeomega.shapeDump', project.property('typeomega.shapeDump'))
         }
         data {
@@ -181,9 +185,22 @@ dependencies {
     // （通用终端、量子桥卡）。tools/run_client_full.sh 会传入 -PtypeOmegaDevPlaytest=true。
     if (project.findProperty('typeOmegaDevPlaytest') == 'true') {
         modRuntimeOnly("curse.maven:ftb-chunks-forge-314906:8216874")
+    }
+    // EN: AE2 Wireless Terminals and the AE2 Wireless Comprehensive Work Terminal (both in the pack, with Curios and
+    // EN: Cloth Config): the automatic pattern upload hooks into the latter (D-442), and the GameTests that check the
+    // EN: hook run only with it loaded. The core never compiles against either, its mixins name them as strings.
+    // PT: AE2 Wireless Terminals e AE2 Wireless Comprehensive Work Terminal (ambos no pack, com Curios e Cloth Config):
+    // PT: o upload automático de padrões se acopla ao segundo (D-442), e as GameTests do gancho só rodam com ele
+    // PT: carregado. O core nunca compila contra nenhum dos dois; os mixins os citam por nome.
+    // ZH: AE2 Wireless Terminals 与 AE2 Wireless Comprehensive Work Terminal（均在整合包中，另需 Curios 与 Cloth
+    // ZH: Config）：样板自动上传挂接在后者上（D-442），检查该挂钩的 GameTest 仅在其加载时运行。核心从不针对二者编译，
+    // ZH: mixin 以字符串引用它们。
+    if (project.findProperty('typeOmegaDevPlaytest') == 'true' || project.findProperty('typeOmegaDevOptionalDependencies') == 'true') {
+        modRuntimeOnly("curse.maven:ae2-wcwt-1546802:9036216")
         modRuntimeOnly("curse.maven:applied-energistics-2-wireless-terminals-459929:7251206")
         modRuntimeOnly("curse.maven:curios-309927:6418456")
         modRuntimeOnly("curse.maven:cloth-config-348521:5729105")
+        modRuntimeOnly("curse.maven:architectury-api-419699:5137938")
     }
     modCompileOnly("curse.maven:ftb-library-forge-404465:8226927") { transitive = false }
     modCompileOnly("curse.maven:ftb-teams-forge-404468:7499810") { transitive = false }

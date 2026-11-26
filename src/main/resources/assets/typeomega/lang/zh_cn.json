@@ -1211,5 +1211,11 @@
   "typeomega.speed_card.desc": "每张相当于 %s 张加速卡",
   "typeomega.speed_card.limit": "与其他等级的加速卡共用机器的加速卡上限，高等级优先计入",
   "typeomega.speed_card.scope": "加速 AE2 与 ExtendedAE 的输入/输出总线和 IO 端口",
-  "typeomega.speed_card.replace": "潜行右键已达加速卡上限的机器，可替换其中最低等级的加速卡"
+  "typeomega.speed_card.replace": "潜行右键已达加速卡上限的机器，可替换其中最低等级的加速卡",
+  "typeomega.pattern_upload.done": "样板已发送到 %s",
+  "typeomega.pattern_upload.duplicate": "%s 已有此样板；样板保留在终端中",
+  "typeomega.pattern_upload.ambiguous": "多个供应器符合“%s”（%s）；样板保留在终端中。请给它们起不同的名字后再发送",
+  "typeomega.pattern_upload.full": "“%s”的所有供应器都已装满；样板保留在终端中",
+  "extendedae_plus.screen.upload.auto_upload_success": "样板已发送到 %s",
+  "extendedae_plus.screen.upload.auto_upload_failed": "无法把样板发送到 %s；样板保留在终端中"
 }

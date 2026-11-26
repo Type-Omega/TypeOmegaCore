@@ -11,6 +11,8 @@
     "ae.ExtendedIOPortMixin",
     "ae.IOBusPartMixin",
     "ae.IOPortBlockEntityMixin",
+    "ae.PatternEncodingTermMenuMixin",
+    "ae.WcwtRecipeSearchKeyMixin",
     "kardashev.LargeBoilerMachineMixin",
     "kardashev.NexusEnergyNetworkMixin",
     "kardashev.SteamBoilerMachineMixin",
@@ -20,6 +22,9 @@
     "defaultRequire": 1
   },
   "client": [
+    "ae.EmiEncodePatternHandlerMixin",
+    "ae.GtPatternTerminalHandlerMixin",
+    "ae.WcwtScreenSearchKeyMixin",
     "client.ItemStackModNameMixin",
     "client.WindowAccessor"
   ]
