@@ -211,6 +211,8 @@ public final class MegaRecipes {
                 .outputFluids(MegaMaterials.SUPERFLUID_HELIUM.getFluid(1000))
                 .EUt(GTValues.VA[GTValues.UHV]).duration(200)
                 .save(provider);
+        // D-445: the casings of the pilot megastructures (GTNA's blocks are among their ingredients).
+        if (TypeOmegaMegastructures.gtna()) MegaCasingRecipes.add(provider);
         if (TypeOmegaMegastructures.STAR_LIFTER_DEF != null) starLifter(provider);
         if (TypeOmegaMegastructures.STELLAR_HOOP_DEF != null) stellarHoop(provider);
         if (TypeOmegaMegastructures.SYSTEM_CREATOR_DEF != null) systemCreator(provider);
