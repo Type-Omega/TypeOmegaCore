@@ -93,5 +93,15 @@
   "Star System 6",
   "Sistema Estelar 6",
   "恒星系 6"
+ ],
+ "typeomega.config.mega_model_overlay": [
+  "Megastructure 3D Model Overlay",
+  "Sobreposição de Modelo 3D das Megaestruturas",
+  "巨构 3D 模型叠加渲染"
+ ],
+ "typeomega.config.mega_model_overlay.tooltip": [
+  "Draw the 3D model over formed megastructures (pilot: Yggdrasil Orchid). Disable to fall back to the block renderer.",
+  "Desenha o modelo 3D por cima das megaestruturas formadas (piloto: Orquídea Yggdrasil). Desligue para voltar ao render de blocos.",
+  "在已成型的巨构上方绘制 3D 模型（试点：世界树兰花）。关闭则回退到方块渲染器。"
  ]
 }

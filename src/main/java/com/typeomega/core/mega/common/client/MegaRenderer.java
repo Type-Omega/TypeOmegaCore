@@ -100,10 +100,19 @@ public final class MegaRenderer {
                     baked = bake(shape, placement);
                     BAKED.put(placement, baked);
                 }
-                drawRings(m, baked, motion, event.getPoseStack(), cam, projection, seconds);
                 var fx = MegaFx.get(m.shapeName());
-                if (fx != null) MegaFxRenderer.draw(m, fx, placement(shape, baked, motion, event.getPoseStack(), cam,
-                        seconds), projection, seconds);
+                var b = baked;
+                Runnable drawFx = fx == null ? () -> {} : () -> MegaFxRenderer.draw(m, fx,
+                        placement(shape, b, motion, event.getPoseStack(), cam, seconds), projection, seconds);
+                // EN: Draw the 3D overlay model when enabled and present; otherwise fall back to block rings.
+                // PT: Desenha o modelo 3D por cima quando ligado e presente; senão cai no render de blocos.
+                // ZH: 启用且存在模型时绘制 3D 叠加模型；否则回退到方块环渲染。
+                if (!MegaRenderConfig.modelOverlayEnabled() ||
+                        !MegaModelRenderer.draw(m, baked.pivot, baked.axes, motion, event.getPoseStack(), cam,
+                                projection, event.getFrustum(), seconds, drawFx)) {
+                    drawRings(m, baked, motion, event.getPoseStack(), cam, projection, seconds);
+                    drawFx.run();
+                }
             }
         } finally {
             QUEUE.clear();

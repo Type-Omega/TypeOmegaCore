@@ -1278,5 +1278,7 @@
   "block.typeomega.forge_cobalt_plate": "锻炉钴板",
   "block.typeomega.terrace_rim_light": "阶台缘灯",
   "block.typeomega.lifter_girdle_hull": "提升器腰带外壳",
-  "block.typeomega.heated_hex_plate": "加热六角板"
+  "block.typeomega.heated_hex_plate": "加热六角板",
+  "typeomega.config.mega_model_overlay": "巨构 3D 模型叠加渲染",
+  "typeomega.config.mega_model_overlay.tooltip": "在已成型的巨构上方绘制 3D 模型（试点：世界树兰花）。关闭则回退到方块渲染器。"
 }

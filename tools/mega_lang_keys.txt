@@ -121,6 +121,8 @@ typeomega.birch_world.ui.paradoxes
 typeomega.birch_world.ui.per_second
 typeomega.birch_world.ui.repay
 typeomega.birch_world.ui.repay.tip
+typeomega.config.mega_model_overlay
+typeomega.config.mega_model_overlay.tooltip
 typeomega.disintegrator.state
 typeomega.disintegrator.ui.erased
 typeomega.disintegrator.ui.erases

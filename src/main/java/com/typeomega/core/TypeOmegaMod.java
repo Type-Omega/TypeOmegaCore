@@ -80,6 +80,9 @@ public final class TypeOmegaMod {
         com.typeomega.core.mega.system.SkyStarNetwork.register();
         MinecraftForge.EVENT_BUS.addListener(com.typeomega.core.mega.system.SkyStarNetwork::onServerTick);
         if (net.minecraftforge.fml.loading.FMLEnvironment.dist.isClient()) {
+            net.minecraftforge.fml.ModLoadingContext.get().registerConfig(
+                    net.minecraftforge.fml.config.ModConfig.Type.CLIENT,
+                    com.typeomega.core.mega.common.client.MegaRenderConfig.SPEC, "typeomega-mega-client.toml");
             if (com.typeomega.core.mega.TypeOmegaMegastructures.available()) {
                 // The dynamic render type has to exist before the machine models load.
                 var ignored = com.typeomega.core.mega.common.client.MegaRenderer.Render.TYPE;

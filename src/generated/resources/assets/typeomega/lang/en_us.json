@@ -314,6 +314,8 @@
   "typeomega.birch_world.ui.per_second": "%s EU/s",
   "typeomega.birch_world.ui.repay": "Repay",
   "typeomega.birch_world.ui.repay.tip": "Repayment: left click +2^40 EU/s, right click -2^40 EU/s.",
+  "typeomega.config.mega_model_overlay": "Megastructure 3D Model Overlay",
+  "typeomega.config.mega_model_overlay.tooltip": "Draw the 3D model over formed megastructures (pilot: Yggdrasil Orchid). Disable to fall back to the block renderer.",
   "typeomega.crafting_station.dump": "Move the crafting grid into the containers",
   "typeomega.crafting_station.empty": "Place chests or other containers against any side of the station, above and below too, to craft from them.",
   "typeomega.crafting_station.side.down": "below",

@@ -1278,5 +1278,7 @@
   "block.typeomega.forge_cobalt_plate": "Placa de Cobalto da Forja",
   "block.typeomega.terrace_rim_light": "Luz de Borda de Degrau",
   "block.typeomega.lifter_girdle_hull": "Casco da Cinta do Lifter",
-  "block.typeomega.heated_hex_plate": "Placa Hexagonal Aquecida"
+  "block.typeomega.heated_hex_plate": "Placa Hexagonal Aquecida",
+  "typeomega.config.mega_model_overlay": "Sobreposição de Modelo 3D das Megaestruturas",
+  "typeomega.config.mega_model_overlay.tooltip": "Desenha o modelo 3D por cima das megaestruturas formadas (piloto: Orquídea Yggdrasil). Desligue para voltar ao render de blocos."
 }
