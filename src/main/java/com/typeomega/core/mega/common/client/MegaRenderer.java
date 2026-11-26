@@ -7,6 +7,7 @@ import com.gregtechceu.gtceu.client.renderer.machine.DynamicRenderType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlas;
@@ -193,6 +194,15 @@ public final class MegaRenderer {
         var state = MegaCapture.block(part).defaultBlockState();
         var level = m.getLevel();
         var dispatcher = Minecraft.getInstance().getBlockRenderer();
+        // EN: Rings of Type Omega light-giving blocks (lamps, rim lights) keep glowing as they turn: the baked
+        // EN: light is the world's at capture time, so those quads take full brightness.
+        // PT: Anéis de blocos Type Omega que dão luz (lâmpadas, luzes de borda) seguem acesos girando: a luz
+        // PT: gravada é a do mundo na captura, então esses quads usam brilho total.
+        // ZH: 由 Type Omega 发光方块（灯、边缘灯）组成的环旋转时仍保持发光：烘焙光照是捕获时的世界光照，
+        // ZH: 因此这些面片改用全亮度。
+        boolean glows = state.getLightEmission() > 0 &&
+                TypeOmegaMod.MOD_ID.equals(net.minecraftforge.registries.ForgeRegistries.BLOCKS
+                        .getKey(state.getBlock()).getNamespace());
         var blockModel = dispatcher.getBlockModel(state);
         var random = RandomSource.create(42);
         var builder = new BufferBuilder(Math.min(positions.length * 4 * 4, 1 << 18) *
@@ -209,7 +219,7 @@ public final class MegaRenderer {
                 if (occupied.contains(BlockPos.offset(packed, side))) continue;
                 random.setSeed(42);
                 float shade = shades[side.ordinal()];
-                int light = LevelRenderer.getLightColor(level, pos.relative(side));
+                int light = glows ? LightTexture.FULL_BRIGHT : LevelRenderer.getLightColor(level, pos.relative(side));
                 for (var quad : blockModel.getQuads(state, side, random, ModelData.EMPTY, null))
                     builder.putBulkData(ps.last(), quad, quad.isShade() ? shade : 1f, quad.isShade() ? shade : 1f,
                             quad.isShade() ? shade : 1f, light, OverlayTexture.NO_OVERLAY);
