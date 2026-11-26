@@ -1263,5 +1263,10 @@
   "typeomega.pattern_upload.ambiguous": "多个供应器符合“%s”（%s）；样板保留在终端中。请给它们起不同的名字后再发送",
   "typeomega.pattern_upload.full": "“%s”的所有供应器都已装满；样板保留在终端中",
   "extendedae_plus.screen.upload.auto_upload_success": "样板已发送到 %s",
-  "extendedae_plus.screen.upload.auto_upload_failed": "无法把样板发送到 %s；样板保留在终端中"
+  "extendedae_plus.screen.upload.auto_upload_failed": "无法把样板发送到 %s；样板保留在终端中",
+  "block.typeomega.me_requestable_input_bus": "ME可请求输入总线",
+  "block.typeomega.me_requestable_input_hatch": "ME可请求输入仓",
+  "typeomega.machine.me_requestable_input_bus.tooltip": "从ME网络拉取已配置的物品，并请求网络合成缺少的部分",
+  "typeomega.machine.me_requestable_input_hatch.tooltip": "从ME网络拉取已配置的流体，并请求网络合成缺少的部分",
+  "typeomega.machine.me_requestable.craft": "有样板的物品会按缺少的数量合成，每个槽位一个任务；合成的物品直接送达"
 }

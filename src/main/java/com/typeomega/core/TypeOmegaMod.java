@@ -134,6 +134,7 @@ public final class TypeOmegaMod {
         com.typeomega.core.data.rocket.TypeOmegaRocketAssembler.init();
         com.typeomega.core.mega.typezero.TypeZeroMegas.registerMachines();
         com.typeomega.core.mega.TypeOmegaMegastructures.init();
+        com.typeomega.core.integration.ae.TypeOmegaAe.registerMachines();
     }
 
     public static ResourceLocation id(String path) {

@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "typeomega:block/machine/me_requestable_input_bus",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "typeomega:block/machine/me_requestable_input_bus",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "typeomega:block/machine/me_requestable_input_bus"
+    },
+    "facing=south": {
+      "model": "typeomega:block/machine/me_requestable_input_bus",
+      "y": 180
+    },
+    "facing=up": {
+      "gtceu:z": 180,
+      "model": "typeomega:block/machine/me_requestable_input_bus",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "typeomega:block/machine/me_requestable_input_bus",
+      "y": 270
+    }
+  }
+}

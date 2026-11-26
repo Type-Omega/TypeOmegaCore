@@ -1263,5 +1263,10 @@
   "typeomega.pattern_upload.ambiguous": "Vários providers servem a \"%s\" (%s); o padrão fica no terminal. Dê nomes diferentes a eles para enviar",
   "typeomega.pattern_upload.full": "Todos os providers de \"%s\" estão cheios; o padrão fica no terminal",
   "extendedae_plus.screen.upload.auto_upload_success": "Padrão enviado para %s",
-  "extendedae_plus.screen.upload.auto_upload_failed": "Não foi possível enviar o padrão para %s; ele fica no terminal"
+  "extendedae_plus.screen.upload.auto_upload_failed": "Não foi possível enviar o padrão para %s; ele fica no terminal",
+  "block.typeomega.me_requestable_input_bus": "Barramento de Entrada ME Requisitável",
+  "block.typeomega.me_requestable_input_hatch": "Escotilha de Entrada ME Requisitável",
+  "typeomega.machine.me_requestable_input_bus.tooltip": "Puxa os itens configurados da rede ME e pede à rede que fabrique o que falta",
+  "typeomega.machine.me_requestable_input_hatch.tooltip": "Puxa os fluidos configurados da rede ME e pede à rede que fabrique o que falta",
+  "typeomega.machine.me_requestable.craft": "O que tem padrão é fabricado na quantidade que falta, um trabalho por slot; os itens fabricados chegam direto"
 }

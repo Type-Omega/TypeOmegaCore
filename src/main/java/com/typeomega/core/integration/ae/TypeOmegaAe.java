@@ -8,12 +8,14 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 import com.typeomega.core.integration.ae.cards.AccelerationCards;
 import com.typeomega.core.integration.ae.interfaces.InterfaceRecipes;
 import com.typeomega.core.integration.ae.interfaces.InterfaceTiers;
+import com.typeomega.core.integration.ae.requestable.RequestableParts;
 
 import java.util.function.Consumer;
 
 /**
  * Entry point of the AE2 pieces written for the pack (D-442): ME Interface (II) to (V) and Acceleration Card
- * (II) to (V). They need AE2 and ExtendedAE, so nothing here loads without both.
+ * (II) to (V), and the ME Requestable Input Bus and Hatch. They need AE2 and ExtendedAE, so nothing here loads without
+ * both.
  */
 public final class TypeOmegaAe {
 
@@ -28,12 +30,20 @@ public final class TypeOmegaAe {
         if (!available()) return;
         InterfaceTiers.init();
         AccelerationCards.init();
+        RequestableParts.initLang();
         if (FMLEnvironment.dist.isClient()) AeClient.init(FMLJavaModLoadingContext.get().getModEventBus());
+    }
+
+    /** From the GTCEu machine registration event, once AE2's own parts exist. */
+    public static void registerMachines() {
+        if (!available()) return;
+        RequestableParts.init();
     }
 
     public static void addRecipes(Consumer<FinishedRecipe> provider) {
         if (!available()) return;
         InterfaceRecipes.addRecipes(provider);
         AccelerationCards.addRecipes(provider);
+        RequestableParts.addRecipes(provider);
     }
 }
