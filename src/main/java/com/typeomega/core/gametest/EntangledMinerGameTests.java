@@ -19,8 +19,8 @@ import com.typeomega.core.data.TypeOmegaItems;
 import com.typeomega.core.miner.BedrockVeins;
 import com.typeomega.core.miner.EntangledMinerLogic;
 import com.typeomega.core.miner.EntangledMinerMachine;
-import com.typeomega.core.miner.TypeOmegaMiners;
 import com.typeomega.core.miner.MinerClaims;
+import com.typeomega.core.miner.TypeOmegaMiners;
 import com.typeomega.core.miner.VeinCardItem;
 import com.typeomega.core.miner.VeinPurity;
 

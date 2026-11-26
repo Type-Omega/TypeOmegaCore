@@ -62,7 +62,8 @@ final class YggdrasilTestRig {
             MegaMachine.anyDimensionForTests = true;
             star.kind = Kind.YELLOW_DWARF;
             star.mass = 1;
-            YggdrasilMachine m = MegaTestRig.build(helper, YggdrasilMachine.SHAPE, TypeOmegaMegastructures.YGGDRASIL_DEF,
+            YggdrasilMachine m = MegaTestRig.build(helper, YggdrasilMachine.SHAPE,
+                    TypeOmegaMegastructures.YGGDRASIL_DEF,
                     5, 22);
             var bus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
             var water = (FluidHatchPartMachine) MegaTestRig.hatch(helper, m, 1,

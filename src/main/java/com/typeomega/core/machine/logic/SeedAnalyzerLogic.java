@@ -52,7 +52,8 @@ public enum SeedAnalyzerLogic implements GTRecipeType.ICustomRecipeLogic {
         // EN: 5 s at 16 EU/t: cheap on purpose, the cost of breeding is in the crops, not the reading.
         // PT: 5 s a 16 EU/t: barato de propósito; o custo do melhoramento está nas plantas, não na leitura.
         // ZH: 5 秒、16 EU/t：故意便宜，育种成本在作物本身而不在分析。
-        return TypeOmegaRecipeTypes.SEED_ANALYZER.recipeBuilder("analyze_" + Integer.toHexString(seed.getTag().hashCode()))
+        return TypeOmegaRecipeTypes.SEED_ANALYZER
+                .recipeBuilder("analyze_" + Integer.toHexString(seed.getTag().hashCode()))
                 .inputItems(seed.copyWithCount(1)).outputItems(analyzed(seed))
                 .duration(100).EUt(16).buildRawRecipe();
     }

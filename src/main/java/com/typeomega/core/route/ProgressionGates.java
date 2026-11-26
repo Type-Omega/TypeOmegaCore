@@ -56,7 +56,8 @@ public final class ProgressionGates {
         // EN: Red alloy needs the alloy smelter, so the Terminal of the first chapter takes plain redstone (D-409).
         // PT: Liga vermelha pede o alloy smelter, então o Terminal do primeiro capítulo usa redstone puro (D-409).
         // ZH: 红色合金需要合金炉，因此第一章的终端改用普通红石（D-409）。
-        VanillaRecipeHelper.addShapedRecipe(provider, true, TypeOmegaMod.id("basic_terminal"), GTItems.TERMINAL.asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, true, TypeOmegaMod.id("basic_terminal"),
+                GTItems.TERMINAL.asStack(),
                 "SGS", "PBP", "PWP", 'S', new MaterialEntry(TagPrefix.screw, GTMaterials.WroughtIron),
                 'G', Tags.Items.GLASS_PANES, 'B', new ItemStack(Items.BOOK),
                 'P', new MaterialEntry(TagPrefix.plate, GTMaterials.WroughtIron), 'W', new ItemStack(Items.REDSTONE));

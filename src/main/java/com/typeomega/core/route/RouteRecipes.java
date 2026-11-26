@@ -74,7 +74,8 @@ public final class RouteRecipes {
                     .outputItems(TagPrefix.ingot, RouteMaterials.PIG_IRON, 2)
                     .outputItems(TagPrefix.dust, RouteMaterials.SLAG)
                     .duration(1000).save(provider);
-            GTRecipeTypes.PRIMITIVE_BLAST_FURNACE_RECIPES.recipeBuilder(TypeOmegaMod.id("pig_iron_" + name + "_charcoal"))
+            GTRecipeTypes.PRIMITIVE_BLAST_FURNACE_RECIPES
+                    .recipeBuilder(TypeOmegaMod.id("pig_iron_" + name + "_charcoal"))
                     .inputItems(TagPrefix.dust, ore, 2)
                     .inputItems(TagPrefix.gem, GTMaterials.Charcoal, 2)
                     .inputItems(TagPrefix.dust, GTMaterials.Calcite)

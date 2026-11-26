@@ -170,6 +170,7 @@ public final class OrganEffects {
         AttributeModifier current = instance.getModifier(id);
         if (current != null && current.getAmount() == amount) return;
         if (current != null) instance.removeModifier(id);
-        if (amount != 0) instance.addTransientModifier(new AttributeModifier(id, "typeomega_organs", amount, operation));
+        if (amount != 0)
+            instance.addTransientModifier(new AttributeModifier(id, "typeomega_organs", amount, operation));
     }
 }

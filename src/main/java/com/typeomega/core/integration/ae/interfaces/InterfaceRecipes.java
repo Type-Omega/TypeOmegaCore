@@ -34,7 +34,8 @@ public final class InterfaceRecipes {
                     " A ", "ACA", " A ",
                     'A', below(tier), 'C', tier.circuit);
             VanillaRecipeHelper.addShapelessRecipe(provider, TypeOmegaMod.id(tier.partId()), part, block);
-            VanillaRecipeHelper.addShapelessRecipe(provider, TypeOmegaMod.id(tier.blockId() + "_from_part"), block, part);
+            VanillaRecipeHelper.addShapelessRecipe(provider, TypeOmegaMod.id(tier.blockId() + "_from_part"), block,
+                    part);
         }
     }
 }

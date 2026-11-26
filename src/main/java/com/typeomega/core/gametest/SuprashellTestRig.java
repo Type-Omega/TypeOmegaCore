@@ -58,7 +58,8 @@ final class SuprashellTestRig {
             MegaMachine.anyDimensionForTests = true;
             star.kind = Kind.BLACK_HOLE;
             star.mass = 10;
-            SuprashellMachine m = MegaTestRig.build(helper, SuprashellMachine.SHAPE, TypeOmegaMegastructures.SUPRASHELL_DEF,
+            SuprashellMachine m = MegaTestRig.build(helper, SuprashellMachine.SHAPE,
+                    TypeOmegaMegastructures.SUPRASHELL_DEF,
                     5, 26);
             var bus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
             var modules = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 1,
@@ -102,7 +103,8 @@ final class SuprashellTestRig {
     }
 
     static void noPlatesNoShell(GameTestHelper helper) {
-        SuprashellMachine m = MegaTestRig.build(helper, SuprashellMachine.SHAPE, TypeOmegaMegastructures.SUPRASHELL_DEF, 5,
+        SuprashellMachine m = MegaTestRig.build(helper, SuprashellMachine.SHAPE, TypeOmegaMegastructures.SUPRASHELL_DEF,
+                5,
                 27);
         var shape = MegaShape.get(SuprashellMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "plates_1", "body"));

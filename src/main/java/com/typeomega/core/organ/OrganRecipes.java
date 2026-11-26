@@ -29,21 +29,25 @@ public final class OrganRecipes {
     private OrganRecipes() {}
 
     public static void addRecipes(Consumer<FinishedRecipe> provider) {
-        VanillaRecipeHelper.addShapedRecipe(provider, TypeOmegaMod.id("organ_modifier"), TypeOmegaOrgans.ORGAN_MODIFIER.asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, TypeOmegaMod.id("organ_modifier"),
+                TypeOmegaOrgans.ORGAN_MODIFIER.asStack(),
                 " B ", "CDC", "EFF",
                 'B', GTItems.VOLTAGE_COIL_MV.asStack(), 'C', GTItems.ROBOT_ARM_MV.asStack(),
                 'D', new ItemStack(Items.CRAFTING_TABLE), 'E', new ItemStack(Items.SLIME_BALL),
                 'F', CustomTags.MV_CIRCUITS);
-        // EN: GTO makes the cheap wings from Botania materials; Type Omega has no Botania, so they use phantom membranes.
+        // EN: GTO makes the cheap wings from Botania materials; Type Omega has no Botania, so they use phantom
+        // membranes.
         // PT: O GTO faz as asas baratas com materiais do Botania; o Type Omega não tem Botania, então usa membrana de
         // phantom.
         // ZH: GTO 用植物魔法材料制作廉价翅膀；Type Omega 没有植物魔法，因此改用幻翼膜。
-        VanillaRecipeHelper.addShapedRecipe(provider, TypeOmegaMod.id("steel_wing"), TypeOmegaOrgans.STEEL_WING.asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, TypeOmegaMod.id("steel_wing"),
+                TypeOmegaOrgans.STEEL_WING.asStack(),
                 "ABA", "CDC", "ABA",
                 'A', new MaterialEntry(TagPrefix.plateDouble, GTMaterials.Steel),
                 'B', new MaterialEntry(TagPrefix.foil, GTMaterials.Aluminium),
                 'C', GTItems.FIELD_GENERATOR_LV.asStack(), 'D', new ItemStack(Items.PHANTOM_MEMBRANE));
-        VanillaRecipeHelper.addShapedRecipe(provider, TypeOmegaMod.id("fairy_wing"), TypeOmegaOrgans.FAIRY_WING.asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, TypeOmegaMod.id("fairy_wing"),
+                TypeOmegaOrgans.FAIRY_WING.asStack(),
                 "ABA", "ACA", "DDD",
                 'A', new MaterialEntry(TagPrefix.foil, GTMaterials.Polyethylene),
                 'B', new MaterialEntry(TagPrefix.plate, GTMaterials.StainlessSteel),

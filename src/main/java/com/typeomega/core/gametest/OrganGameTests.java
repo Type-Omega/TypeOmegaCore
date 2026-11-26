@@ -10,10 +10,10 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 import net.minecraftforge.items.ItemStackHandler;
 
 import com.typeomega.core.TypeOmegaMod;
-import com.typeomega.core.organ.TypeOmegaOrgans;
 import com.typeomega.core.organ.OrganData;
 import com.typeomega.core.organ.OrganEffects;
 import com.typeomega.core.organ.OrganType;
+import com.typeomega.core.organ.TypeOmegaOrgans;
 
 /** Organ system (D-279): storage, set tier, effects and the planet requirement. */
 @GameTestHolder(TypeOmegaMod.MOD_ID)
@@ -41,11 +41,13 @@ public final class OrganGameTests {
         ItemStackHandler loaded = OrganData.load(player);
         helper.assertTrue(OrganData.setTier(loaded) == 1, "set tier is the lowest organ");
         helper.assertTrue(OrganData.tier(loaded, OrganType.HEART) == 2, "heart tier 2 kept");
-        helper.assertTrue(loaded.getStackInSlot(OrganData.WING_START).is(TypeOmegaOrgans.FAIRY_WING.get()), "wing kept");
+        helper.assertTrue(loaded.getStackInSlot(OrganData.WING_START).is(TypeOmegaOrgans.FAIRY_WING.get()),
+                "wing kept");
         helper.assertTrue(OrganData.setTier(new ItemStackHandler(OrganData.SLOTS)) == 0, "no organs: set tier 0");
         helper.assertFalse(OrganData.fits(0, TypeOmegaOrgans.TIERED.get(OrganType.HEART).get(1).asStack()),
                 "a heart does not fit the eye slot");
-        helper.assertFalse(OrganData.fits(0, TypeOmegaOrgans.FAIRY_WING.asStack()), "a wing does not fit an organ slot");
+        helper.assertFalse(OrganData.fits(0, TypeOmegaOrgans.FAIRY_WING.asStack()),
+                "a wing does not fit an organ slot");
         helper.assertTrue(OrganData.fits(OrganData.WING_START + 3, TypeOmegaOrgans.STEEL_WING.asStack()), "wing slot");
         helper.succeed();
     }

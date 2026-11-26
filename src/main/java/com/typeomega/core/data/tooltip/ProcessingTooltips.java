@@ -95,8 +95,10 @@ public final class ProcessingTooltips {
         var b = start("rocket_assembler")
                 .line(own(id, "purpose"))
                 .separator()
-                .table(rocket(own(id, "tier_1"), TypeOmegaRocketRecipes.TIER_1_EUT, TypeOmegaRocketRecipes.TIER_1_TICKS),
-                        rocket(own(id, "tier_2"), TypeOmegaRocketRecipes.TIER_2_EUT, TypeOmegaRocketRecipes.TIER_2_TICKS))
+                .table(rocket(own(id, "tier_1"), TypeOmegaRocketRecipes.TIER_1_EUT,
+                        TypeOmegaRocketRecipes.TIER_1_TICKS),
+                        rocket(own(id, "tier_2"), TypeOmegaRocketRecipes.TIER_2_EUT,
+                                TypeOmegaRocketRecipes.TIER_2_TICKS))
                 .separator()
                 .line(own(id, "pad"), highlight("3 x 3"))
                 .line(shared("overclock"))

@@ -13,8 +13,8 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
-import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.PsiStore;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.creator.CreatorPhysics;

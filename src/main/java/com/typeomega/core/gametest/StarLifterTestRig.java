@@ -22,7 +22,8 @@ final class StarLifterTestRig {
     private StarLifterTestRig() {}
 
     private static StarLifterMachine build(GameTestHelper helper, int phases, int slot) {
-        return MegaTestRig.build(helper, StarLifterMachine.SHAPE, TypeOmegaMegastructures.STAR_LIFTER_DEF, phases, slot);
+        return MegaTestRig.build(helper, StarLifterMachine.SHAPE, TypeOmegaMegastructures.STAR_LIFTER_DEF, phases,
+                slot);
     }
 
     static void liftingMath(GameTestHelper helper) {

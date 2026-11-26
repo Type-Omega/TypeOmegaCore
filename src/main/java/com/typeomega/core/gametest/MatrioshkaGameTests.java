@@ -26,7 +26,8 @@ public final class MatrioshkaGameTests {
 
     private static boolean skip(GameTestHelper helper) {
         if (TypeOmegaMegastructures.MATRIOSHKA_BRAIN != null) return false;
-        TypeOmegaMod.LOGGER.warn("Matrioshka Brain not registered (no GTNA or no shape file): its GameTests are skipped");
+        TypeOmegaMod.LOGGER
+                .warn("Matrioshka Brain not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

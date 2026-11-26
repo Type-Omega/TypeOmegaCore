@@ -42,7 +42,8 @@ public final class CreativeTabGameTests {
         }
         List<String> missing = new ArrayList<>();
         for (var entry : ForgeRegistries.ITEMS.getEntries()) {
-            if (TypeOmegaMod.MOD_ID.equals(entry.getKey().location().getNamespace()) && !shown.contains(entry.getValue())) {
+            if (TypeOmegaMod.MOD_ID.equals(entry.getKey().location().getNamespace()) &&
+                    !shown.contains(entry.getValue())) {
                 missing.add(entry.getKey().location().getPath());
             }
         }

@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-import com.typeomega.core.processing.TypeOmegaProcessing;
 import com.typeomega.core.processing.TierParallel;
+import com.typeomega.core.processing.TypeOmegaProcessing;
 
 /**
  * F3 machines (D-365 to D-369): each forms from its preview and breaks without a key block; GTL's parallels.

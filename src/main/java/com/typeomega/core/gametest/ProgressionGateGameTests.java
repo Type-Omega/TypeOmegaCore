@@ -154,7 +154,8 @@ public final class ProgressionGateGameTests {
     /** The eye comes from the HV Assembler with no Nether input (D-419). */
     @GameTest(template = "qa_empty_5x5", batch = "gates", timeoutTicks = 20)
     public static void enderEyeNeedsNoNether(GameTestHelper h) {
-        var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(TypeOmegaMod.id("assembler/ender_eye"))
+        var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager()
+                .byKey(TypeOmegaMod.id("assembler/ender_eye"))
                 .orElse(null);
         h.assertTrue(recipe != null, "the Eye of Ender recipe is missing");
         h.assertTrue(recipe.getInputEUt().getTotalEU() == GTValues.VA[GTValues.HV], "the eye is an HV craft");

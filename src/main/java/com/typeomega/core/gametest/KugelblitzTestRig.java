@@ -34,7 +34,8 @@ final class KugelblitzTestRig {
     static void lightIntoAHole(GameTestHelper helper) {
         try {
             MegaMachine.anyDimensionForTests = true;
-            KugelblitzMachine m = MegaTestRig.build(helper, KugelblitzMachine.SHAPE, TypeOmegaMegastructures.KUGELBLITZ_DEF,
+            KugelblitzMachine m = MegaTestRig.build(helper, KugelblitzMachine.SHAPE,
+                    TypeOmegaMegastructures.KUGELBLITZ_DEF,
                     5, 14);
             helper.assertTrue(m.checkPatternWithLock(), "the whole silo forms: " + MegaTestRig.error(m));
             m.onStructureFormed();
@@ -70,7 +71,8 @@ final class KugelblitzTestRig {
     }
 
     static void noChamberNoSilo(GameTestHelper helper) {
-        KugelblitzMachine m = MegaTestRig.build(helper, KugelblitzMachine.SHAPE, TypeOmegaMegastructures.KUGELBLITZ_DEF, 5,
+        KugelblitzMachine m = MegaTestRig.build(helper, KugelblitzMachine.SHAPE, TypeOmegaMegastructures.KUGELBLITZ_DEF,
+                5,
                 15);
         var shape = MegaShape.get(KugelblitzMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "chamber", "body"));

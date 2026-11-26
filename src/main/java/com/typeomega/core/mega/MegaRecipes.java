@@ -26,7 +26,8 @@ public final class MegaRecipes {
                 .inputItems(GTItems.GRAVI_STAR.asStack(64))
                 .inputItems(CustomTags.UIV_CIRCUITS, 64)
                 .inputFluids(GTMaterials.Neutronium.getFluid(294912));
-        if (TypeOmegaMegastructures.BIRCH_WORLD_DEF != null) b.inputItems(TypeOmegaMegastructures.BIRCH_WORLD_DEF.asStack(1));
+        if (TypeOmegaMegastructures.BIRCH_WORLD_DEF != null)
+            b.inputItems(TypeOmegaMegastructures.BIRCH_WORLD_DEF.asStack(1));
         b.outputItems(TypeOmegaMegastructures.QSO_DEF.asStack()).EUt(GTValues.VA[GTValues.UIV]).duration(48000)
                 .save(provider);
     }

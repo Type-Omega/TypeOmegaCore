@@ -103,7 +103,8 @@ public final class MechanicTooltipGameTests {
     }
 
     private static void expect(GameTestHelper h, String id, String text) {
-        String tooltip = TypeOmegaTooltips.build(id).stream().map(Component::getString).collect(Collectors.joining("\n"));
+        String tooltip = TypeOmegaTooltips.build(id).stream().map(Component::getString)
+                .collect(Collectors.joining("\n"));
         h.assertTrue(tooltip.contains(text), id + " tooltip does not show " + text + ":\n" + tooltip);
     }
 }

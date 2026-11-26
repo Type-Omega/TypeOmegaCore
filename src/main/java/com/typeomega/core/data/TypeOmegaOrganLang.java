@@ -23,7 +23,8 @@ public final class TypeOmegaOrganLang {
         TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ.tooltip.fly_speed", "Flight speed: %s");
         TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ.tooltip.durability", "Flight left: %s/%s s");
         TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ.tooltip.level", "Level: %s");
-        TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ.tooltip.speed", "Both legs at this tier: +%s%% movement speed");
+        TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ.tooltip.speed",
+                "Both legs at this tier: +%s%% movement speed");
         TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ.tooltip.reach", "+%s block reach");
         TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ.tooltip.liver", "Cures poison and wither");
         TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ.tooltip.lung", "Breathe under water");
@@ -36,7 +37,8 @@ public final class TypeOmegaOrganLang {
                 "This planet tears at your body: it needs an organ set of tier %s");
         TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ.screen.set_tier", "Organ set tier: %s");
         TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ_modifier.tooltip.1", "Lets you change your organs");
-        TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ_modifier.tooltip.2", "Each organ set gives different effects");
+        TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ_modifier.tooltip.2",
+                "Each organ set gives different effects");
         TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ_modifier.tooltip.3", "Right click to open");
         TypeOmegaMod.REGISTRATE.addRawLang("typeomega.organ_modifier.tooltip.4",
                 "Planets need an organ set of a certain tier");

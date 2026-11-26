@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Fails when a Type Omega recipe has an item input that resolves to nothing (missing item or empty tag, which Forge shows
+ * Fails when a Type Omega recipe has an item input that resolves to nothing (missing item or empty tag, which Forge
+ * shows
  * as a barrier): EMI shows an empty slot and the recipe can never run.
  */
 @PrefixGameTestTemplate(false)

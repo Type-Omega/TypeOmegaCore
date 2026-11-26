@@ -63,7 +63,9 @@ public final class ChemRecipes {
         // EN: The HV route: the classic platinum gauze, after the Moon's platinum. Faster, and more heat recovered.
         // PT: A rota HV: a tela de platina clássica, depois da platina da Lua. Mais rápida e recupera mais calor.
         // ZH: HV 路线：经典铂网，需月球铂。更快，回收更多热量。
-        catalyst(GTRecipeTypes.LARGE_CHEMICAL_RECIPES.recipeBuilder(TypeOmegaMod.id("ostwald_ammonia_oxidation_platinum")),
+        catalyst(
+                GTRecipeTypes.LARGE_CHEMICAL_RECIPES
+                        .recipeBuilder(TypeOmegaMod.id("ostwald_ammonia_oxidation_platinum")),
                 TagPrefix.wireFine, GTMaterials.Platinum)
                 .circuitMeta(4)
                 .inputFluids(GTMaterials.Ammonia.getFluid(1000), GTMaterials.Oxygen.getFluid(1250))

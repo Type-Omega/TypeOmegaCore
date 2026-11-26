@@ -38,7 +38,8 @@ public final class ShapeDumpGameTests {
     public static void dumpMultiblockShapes(GameTestHelper h) throws Exception {
         JsonObject out = new JsonObject();
         // EN: -Ptypeomega.shapeDump=a:b,c:d adds machines to study (e.g. GTNA references) without editing the list.
-        // PT: -Ptypeomega.shapeDump=a:b,c:d acrescenta máquinas para estudo (ex.: referências do GTNA) sem editar a lista.
+        // PT: -Ptypeomega.shapeDump=a:b,c:d acrescenta máquinas para estudo (ex.: referências do GTNA) sem editar a
+        // lista.
         // ZH: -Ptypeomega.shapeDump=a:b,c:d 可追加要研究的机器（如 GTNA 参考），无需修改列表。
         var ids = new java.util.LinkedHashSet<>(MACHINES);
         for (String extra : System.getProperty("typeomega.shapeDump", "").split(","))

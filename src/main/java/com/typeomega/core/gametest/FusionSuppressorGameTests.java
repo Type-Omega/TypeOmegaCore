@@ -22,7 +22,8 @@ public final class FusionSuppressorGameTests {
 
     private static boolean skip(GameTestHelper helper) {
         if (TypeOmegaMegastructures.FUSION_SUPPRESSOR_DEF != null) return false;
-        TypeOmegaMod.LOGGER.warn("Fusion Suppressor not registered (no GTNA or no shape file): its GameTests are skipped");
+        TypeOmegaMod.LOGGER
+                .warn("Fusion Suppressor not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

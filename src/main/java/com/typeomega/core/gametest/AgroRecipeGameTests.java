@@ -23,7 +23,8 @@ public final class AgroRecipeGameTests {
     @GameTest(template = "qa_empty_5x5", batch = "agro_recipes", timeoutTicks = 20)
     public static void lvFermenterMakesLessBiomassThanTheBrewery(GameTestHelper h) {
         if (!ModList.get().isLoaded("agronomica")) {
-            TypeOmegaMod.LOGGER.warn("Agronomica not loaded (run with -PagronomicaDevJar): fermenter biomass test skipped");
+            TypeOmegaMod.LOGGER
+                    .warn("Agronomica not loaded (run with -PagronomicaDevJar): fermenter biomass test skipped");
             h.succeed();
             return;
         }

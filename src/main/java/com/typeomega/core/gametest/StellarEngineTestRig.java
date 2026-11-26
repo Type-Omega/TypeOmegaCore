@@ -6,8 +6,8 @@ import net.minecraft.world.level.block.Blocks;
 
 import com.raishxn.gtna.api.capability.WirelessEnergyManager;
 import com.raishxn.gtna.common.data.NexusEnergyNetwork;
-import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.StellarEraStore;
+import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaCapture;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;

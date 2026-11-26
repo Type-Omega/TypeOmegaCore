@@ -15,8 +15,8 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.typeomega.core.TypeOmegaMod;
-import com.typeomega.core.data.TypeOmegaTooltips;
 import com.typeomega.core.data.ModNameLine;
+import com.typeomega.core.data.TypeOmegaTooltips;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -80,7 +80,8 @@ public final class BrandingGameTests {
             // EN: What EMI's ItemStackMixin appends at the end of every item tooltip.
             // PT: O que o ItemStackMixin do EMI acrescenta no fim de toda tooltip de item.
             // ZH: EMI 的 ItemStackMixin 在每个物品提示末尾添加的内容。
-            lines.add(Component.literal(TypeOmegaTooltips.MOD_NAME).withStyle(ChatFormatting.BLUE, ChatFormatting.ITALIC));
+            lines.add(Component.literal(TypeOmegaTooltips.MOD_NAME).withStyle(ChatFormatting.BLUE,
+                    ChatFormatting.ITALIC));
             ModNameLine.keepOnce(lines, TypeOmegaTooltips.MOD_NAME);
             long names = lines.stream().filter(l -> TypeOmegaTooltips.MOD_NAME.equals(l.getString())).count();
             h.assertTrue(names == 1, definition.getId() + " names the mod " + names + " times");

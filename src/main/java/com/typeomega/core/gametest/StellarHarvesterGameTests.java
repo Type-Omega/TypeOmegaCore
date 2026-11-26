@@ -22,7 +22,8 @@ public final class StellarHarvesterGameTests {
 
     private static boolean skip(GameTestHelper helper) {
         if (TypeOmegaMegastructures.STELLAR_HARVESTER_DEF != null) return false;
-        TypeOmegaMod.LOGGER.warn("Stellar Harvester not registered (no GTNA or no shape file): its GameTests are skipped");
+        TypeOmegaMod.LOGGER
+                .warn("Stellar Harvester not registered (no GTNA or no shape file): its GameTests are skipped");
         helper.succeed();
         return true;
     }

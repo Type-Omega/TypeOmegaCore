@@ -97,7 +97,8 @@ final class NidavellirTestRig {
     }
 
     static void noOuterRingNoForge(GameTestHelper helper) {
-        NidavellirMachine m = MegaTestRig.build(helper, NidavellirMachine.SHAPE, TypeOmegaMegastructures.NIDAVELLIR_DEF, 5,
+        NidavellirMachine m = MegaTestRig.build(helper, NidavellirMachine.SHAPE, TypeOmegaMegastructures.NIDAVELLIR_DEF,
+                5,
                 19);
         var shape = MegaShape.get(NidavellirMachine.SHAPE);
         int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "outer", "body"));

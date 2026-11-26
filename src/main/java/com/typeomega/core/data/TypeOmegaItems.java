@@ -11,7 +11,8 @@ public final class TypeOmegaItems {
      * Wears out slowly in the chlor-alkali Electrolyzer recipe (a chanced input). Placeholder texture until the author
      * draws one.
      */
-    public static final ItemEntry<Item> ASBESTOS_DIAPHRAGM = TypeOmegaMod.REGISTRATE.item("asbestos_diaphragm", Item::new)
+    public static final ItemEntry<Item> ASBESTOS_DIAPHRAGM = TypeOmegaMod.REGISTRATE
+            .item("asbestos_diaphragm", Item::new)
             .lang("Asbestos Diaphragm")
             .model((context, provider) -> provider.generated(context,
                     TypeOmegaMod.id("item/asbestos_diaphragm")))

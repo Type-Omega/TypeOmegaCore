@@ -43,7 +43,8 @@ public final class TypeOmegaBeeMachines {
                     .workableTieredHullModel(GTCEu.id("block/machines/chemical_bath"))
                     .tooltips(Component.translatable("typeomega.machine.mutation_chamber.tooltip"))
                     .tooltips(GTMachineUtils.workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64L,
-                            TypeOmegaRecipeTypes.MUTATION_CHAMBER, GTMachineUtils.defaultTankSizeFunction.applyAsInt(tier),
+                            TypeOmegaRecipeTypes.MUTATION_CHAMBER,
+                            GTMachineUtils.defaultTankSizeFunction.applyAsInt(tier),
                             true))
                     .register();
         }
@@ -51,7 +52,8 @@ public final class TypeOmegaBeeMachines {
     }
 
     private static MachineDefinition[] registerSeedAnalyzers() {
-        TypeOmegaRecipeTypes.SEED_ANALYZER.addCustomRecipeLogic(com.typeomega.core.machine.logic.SeedAnalyzerLogic.INSTANCE);
+        TypeOmegaRecipeTypes.SEED_ANALYZER
+                .addCustomRecipeLogic(com.typeomega.core.machine.logic.SeedAnalyzerLogic.INSTANCE);
         MachineDefinition[] machines = new MachineDefinition[GTValues.TIER_COUNT];
         for (int tier : GTValues.tiersBetween(GTValues.LV, GTValues.HV)) {
             String id = GTValues.VN[tier].toLowerCase(Locale.ROOT) + "_seed_analyzer";
@@ -94,7 +96,8 @@ public final class TypeOmegaBeeMachines {
                     .tooltips(Component.translatable("typeomega.machine.industrial_apiary.tooltip.purpose"),
                             Component.translatable("typeomega.machine.industrial_apiary.tooltip.bees"))
                     .tooltips(GTMachineUtils.workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64L,
-                            TypeOmegaRecipeTypes.INDUSTRIAL_APIARY, GTMachineUtils.defaultTankSizeFunction.applyAsInt(tier),
+                            TypeOmegaRecipeTypes.INDUSTRIAL_APIARY,
+                            GTMachineUtils.defaultTankSizeFunction.applyAsInt(tier),
                             true))
                     .register();
         }

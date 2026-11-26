@@ -68,7 +68,8 @@ public final class ChemistrySliceGameTests {
         h.assertTrue(cell.recipeLogic.getDuration() == 300, "the cell runs 15 s");
         cell.recipeLogic.onRecipeFinish();
         h.assertTrue(outputAmount(cell, GTMaterials.Chlorine) == 2000 &&
-                outputAmount(cell, TypeOmegaAlloys.CELL_LIQUOR) == 4000, "2000 mB of chlorine and 4000 mB of cell liquor");
+                outputAmount(cell, TypeOmegaAlloys.CELL_LIQUOR) == 4000,
+                "2000 mB of chlorine and 4000 mB of cell liquor");
         h.succeed();
     }
 
@@ -126,14 +127,16 @@ public final class ChemistrySliceGameTests {
         for (String path : new String[] { "chemical_reactor/bayer_digestion_lv",
                 "chemical_reactor/bayer_precipitation_lv", "chemical_reactor/cryolite_lv",
                 "electrolyzer/sodium_hydroxide_electrolysis", "electrolyzer/decomposition_electrolyzing_lepidolite" }) {
-            var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(TypeOmegaMod.id(path)).orElse(null);
+            var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(TypeOmegaMod.id(path))
+                    .orElse(null);
             h.assertTrue(recipe != null, "missing recipe typeomega:" + path);
             h.assertTrue(recipe.getInputEUt().getTotalEU() == GTValues.VA[GTValues.LV], path + " runs at 30 EU/t");
         }
         // The MV routes stay at 120 EU/t (D-417).
         for (String path : new String[] { "chemical_reactor/bayer_digestion", "chemical_reactor/bayer_precipitation",
                 "chemical_reactor/cryolite" }) {
-            var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(TypeOmegaMod.id(path)).orElseThrow();
+            var recipe = (GTRecipe) h.getLevel().getServer().getRecipeManager().byKey(TypeOmegaMod.id(path))
+                    .orElseThrow();
             h.assertTrue(recipe.getInputEUt().getTotalEU() == GTValues.VA[GTValues.MV], path + " stays at 120 EU/t");
         }
         var manager = h.getLevel().getServer().getRecipeManager();

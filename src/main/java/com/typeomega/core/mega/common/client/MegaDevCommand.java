@@ -9,7 +9,8 @@ import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 
 /**
- * Development aid for screenshots of a headless client: {@code /typeomega_dev_open <pos>} opens the screen of the machine
+ * Development aid for screenshots of a headless client: {@code /typeomega_dev_open <pos>} opens the screen of the
+ * machine
  * at {@code pos} in the player's dimension, as a right click would; {@code /typeomega_dev_power <pos>} makes the player
  * the owner of the megastructure there and fills the player's Nexus network. Only outside production.
  */
@@ -112,7 +113,8 @@ public final class MegaDevCommand {
                                                     long left = m.fillInputForTests(
                                                             new net.minecraftforge.fluids.FluidStack(fluid, mb));
                                                     com.typeomega.core.TypeOmegaMod.LOGGER.info(
-                                                            "typeomega_dev_fill {} {} mB, {} did not fit", id, mb, left);
+                                                            "typeomega_dev_fill {} {} mB, {} did not fit", id, mb,
+                                                            left);
                                                 }
                                             });
                                             return 1;

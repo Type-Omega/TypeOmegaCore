@@ -220,7 +220,8 @@ public final class MegaRenderer {
         mesh.bind();
         mesh.upload(builder.end());
         VertexBuffer.unbind();
-        TypeOmegaMod.LOGGER.info("[Type Omega perf] {} {} mesh: {} blocks in {} ms", m.shapeName(), part.track(), positions.length,
+        TypeOmegaMod.LOGGER.info("[Type Omega perf] {} {} mesh: {} blocks in {} ms", m.shapeName(), part.track(),
+                positions.length,
                 (System.nanoTime() - t0) / 1_000_000);
         return mesh;
     }

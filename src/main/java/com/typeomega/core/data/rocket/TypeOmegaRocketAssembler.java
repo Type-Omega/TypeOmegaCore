@@ -129,9 +129,11 @@ public final class TypeOmegaRocketAssembler {
             .register();
 
     /**
-     * EN: The Ad Astra launch pad; TypeOmegaCore does not depend on Ad Astra, so without it (the dev and GameTest runtime)
+     * EN: The Ad Astra launch pad; TypeOmegaCore does not depend on Ad Astra, so without it (the dev and GameTest
+     * runtime)
      * the pad slot takes solid steel casing instead.
-     * PT: A plataforma de lançamento do Ad Astra; o TypeOmegaCore não depende do Ad Astra, então sem ele (runtime de dev e
+     * PT: A plataforma de lançamento do Ad Astra; o TypeOmegaCore não depende do Ad Astra, então sem ele (runtime de
+     * dev e
      * de
      * GameTest) o lugar da plataforma aceita casing de aço sólido.
      * ZH: Ad Astra 的发射台；TypeOmegaCore 不依赖 Ad Astra，因此在没有它时（开发和 GameTest 环境）该位置改用坚固钢外壳。

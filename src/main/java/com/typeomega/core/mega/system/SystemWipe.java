@@ -15,7 +15,8 @@ import java.util.TreeSet;
 
 /**
  * Erasing a disintegrated star system's terrain (D-330). Region files cannot be deleted while the server runs,
- * so the slot is written to {@code typeomega_wipe.txt} in the world folder and its dimension folder is removed at the next
+ * so the slot is written to {@code typeomega_wipe.txt} in the world folder and its dimension folder is removed at the
+ * next
  * start, before any level loads. Making a new star in the slot first cancels the wipe.
  */
 public final class SystemWipe {

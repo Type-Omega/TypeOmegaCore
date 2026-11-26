@@ -77,7 +77,8 @@ public final class TypeOmegaMiners {
         // EN: The card is LV electronics: a circuit, a sensor-like crystal and paper, cheap enough to make dozens.
         // PT: O cartão é eletrônica LV: circuito, cristal e papel, barato o bastante para fazer dezenas.
         // ZH: 卡片为 LV 电子元件：电路、晶体与纸，足够便宜可批量制作。
-        VanillaRecipeHelper.addShapedRecipe(provider, true, TypeOmegaMod.id("vein_card"), TypeOmegaItems.VEIN_CARD.asStack(2),
+        VanillaRecipeHelper.addShapedRecipe(provider, true, TypeOmegaMod.id("vein_card"),
+                TypeOmegaItems.VEIN_CARD.asStack(2),
                 "PCP", "PQP", "PPP",
                 'P', Items.PAPER,
                 'C', CustomTags.LV_CIRCUITS,

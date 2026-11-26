@@ -19,8 +19,8 @@ import net.minecraftforge.items.IItemHandler;
 
 import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.station.CraftingStationMenu;
-import com.typeomega.core.station.TypeOmegaStation;
 import com.typeomega.core.station.StationSides;
+import com.typeomega.core.station.TypeOmegaStation;
 
 /**
  * The Crafting Station behaves like the Tinkers' Construct station of GTNH: it finds the containers on its six sides,
