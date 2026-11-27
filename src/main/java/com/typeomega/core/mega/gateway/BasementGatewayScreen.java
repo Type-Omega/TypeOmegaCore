@@ -59,7 +59,7 @@ public final class BasementGatewayScreen {
             return MegaScreen.tr(P, "running", String.format("%.0f", v(m, 4)), String.format("%.0f", v(m, 5)),
                     sci(v(m, 3)));
         }
-        return MegaScreen.tr(P, "idle." + (m.blocked().isEmpty() ? "no_neutron_star" : m.blocked()));
+        return MegaScreen.tr(P, "idle." + (m.blocked().isEmpty() ? "no_disintegrator" : m.blocked()));
     }
 
     @OnlyIn(Dist.CLIENT)

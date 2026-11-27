@@ -98,7 +98,8 @@ typeomega.basement_gateway.state
 typeomega.basement_gateway.ui.aperture
 typeomega.basement_gateway.ui.aperture_tip
 typeomega.basement_gateway.ui.idle.disabled
-typeomega.basement_gateway.ui.idle.no_neutron_star
+typeomega.basement_gateway.ui.idle.no_disintegrator
+typeomega.basement_gateway.ui.idle.no_star
 typeomega.basement_gateway.ui.idle.power
 typeomega.basement_gateway.ui.manual
 typeomega.basement_gateway.ui.manual.0

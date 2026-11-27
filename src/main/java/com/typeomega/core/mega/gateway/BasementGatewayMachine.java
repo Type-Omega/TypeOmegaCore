@@ -18,6 +18,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 
 import com.typeomega.core.mega.common.MegaMachine;
+import com.typeomega.core.mega.disintegrator.DisintegratorMachine;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 import com.typeomega.core.mega.system.StarSystems;
 
@@ -26,9 +27,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Controller of the Basement Gateway (D-446 A6): built around a neutron star, pulsar or magnetar, sustains a
- * basement-universe wormhole as a companion to the Solar System Disintegrator and condenses primordial hydrogen,
- * helium and r-process dusts.
+ * Controller of the Basement Gateway (D-446 A6): built in any star system as the companion destination of a
+ * Solar System Disintegrator, sustaining a basement-universe wormhole to receive dismantled matter and return
+ * primordial hydrogen, helium and r-process dusts.
  */
 public class BasementGatewayMachine extends MegaMachine {
 
@@ -37,9 +38,9 @@ public class BasementGatewayMachine extends MegaMachine {
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(
             BasementGatewayMachine.class, MegaMachine.MANAGED_FIELD_HOLDER);
 
-    private record ActiveState(long gameTime, int aperturePct) {}
+    private record ControllerKey(ResourceLocation dim, long pos) {}
 
-    private static final Map<ResourceLocation, ActiveState> ACTIVE_BY_DIM = new ConcurrentHashMap<>();
+    private static final Map<ControllerKey, Long> ACTIVE = new ConcurrentHashMap<>();
 
     @Persisted
     @DescSynced
@@ -73,16 +74,16 @@ public class BasementGatewayMachine extends MegaMachine {
         return SHAPE;
     }
 
-    // EN: Basement Gateway requires a neutron star, pulsar or magnetar (Sparble's 00_f_basement_gateway + D-446 A2).
-    // PT: O Basement Gateway exige estrela de nêutrons, pulsar ou magnetar (Sparble's + D-446 A2).
-    // ZH: 地下传送门要求系统中心为中子星、脉冲星或磁星（Sparble's + D-446 A2）。
+    // EN: Basement Gateway works in any star system, paired with an active Disintegrator (D-446).
+    // PT: O Basement Gateway funciona em qualquer sistema estelar, pareado a um Disintegrator ativo (D-446).
+    // ZH: 地下传送门可在任意恒星系中运行，与正在工作的拆解器配对（D-446）。
     @Override
     public boolean inPlace() {
         if (getLevel() == null) return false;
         if (!anyDimensionForTests && !StarSystems.isSystem(getLevel().dimension())) return false;
         if (getLevel().isClientSide) return view[0] > 0;
         var star = star();
-        return star != null && star.kind == Kind.NEUTRON_STAR;
+        return star != null && star.kind != Kind.NONE;
     }
 
     public int aperturePct() {
@@ -111,14 +112,25 @@ public class BasementGatewayMachine extends MegaMachine {
 
     /** Returns true if an active Basement Gateway is open in this system's dimension. */
     public static boolean hasActiveGateway(ServerLevel level) {
-        ActiveState state = ACTIVE_BY_DIM.get(dimKey(level));
-        if (state == null) return false;
-        return level.getGameTime() - state.gameTime() <= 40;
+        ResourceLocation dim = dimKey(level);
+        long now = level.getGameTime();
+        var it = ACTIVE.entrySet().iterator();
+        while (it.hasNext()) {
+            var e = it.next();
+            if (!e.getKey().dim().equals(dim)) continue;
+            if (now - e.getValue() <= 40) return true;
+            it.remove();
+        }
+        return false;
     }
 
     private static ResourceLocation dimKey(ServerLevel level) {
         var dim = level.dimension().location();
         return anyDimensionForTests && !StarSystems.isSystem(level.dimension()) ? StarSystems.NEXUS.location() : dim;
+    }
+
+    private ControllerKey key(ServerLevel level) {
+        return new ControllerKey(dimKey(level), getPos().asLong());
     }
 
     @Override
@@ -133,22 +145,28 @@ public class BasementGatewayMachine extends MegaMachine {
     @Override
     protected boolean megaSecond(ServerLevel level) {
         var star = star();
-        if (star == null || star.kind != Kind.NEUTRON_STAR) {
-            blocked = "no_neutron_star";
-            ACTIVE_BY_DIM.remove(dimKey(level));
+        if (star == null || star.kind == Kind.NONE) {
+            blocked = "no_star";
+            ACTIVE.remove(key(level));
             view = new double[7];
             return false;
         }
         if (!isWorkingEnabled()) {
             blocked = "disabled";
-            ACTIVE_BY_DIM.remove(dimKey(level));
+            ACTIVE.remove(key(level));
+            view = new double[] { 1, phases, aperturePct, 0, 0, 0, 0 };
+            return false;
+        }
+        if (!DisintegratorMachine.hasActiveInSystem(level)) {
+            blocked = "no_disintegrator";
+            ACTIVE.remove(key(level));
             view = new double[] { 1, phases, aperturePct, 0, 0, 0, 0 };
             return false;
         }
         double eut = BasementGatewayPhysics.eut(phases, aperturePct);
         if (!pay(level, eut * 20.0)) {
             blocked = "power";
-            ACTIVE_BY_DIM.remove(dimKey(level));
+            ACTIVE.remove(key(level));
             view = new double[] { 1, phases, aperturePct, eut, 0, 0, 0 };
             return false;
         }
@@ -170,14 +188,14 @@ public class BasementGatewayMachine extends MegaMachine {
         totalDust += dustTotal;
         totalGasMb += hMb + heMb;
         blocked = "";
-        ACTIVE_BY_DIM.put(dimKey(level), new ActiveState(level.getGameTime(), aperturePct));
+        ACTIVE.put(key(level), level.getGameTime());
         view = new double[] { 1, phases, aperturePct, eut, dustTotal, hMb + heMb, 1 };
         return true;
     }
 
     @Override
     protected void stopped() {
-        if (getLevel() instanceof ServerLevel sl) ACTIVE_BY_DIM.remove(dimKey(sl));
+        if (getLevel() instanceof ServerLevel sl) ACTIVE.remove(key(sl));
         view = new double[] { view[0], phases, aperturePct, 0, 0, 0, 0 };
     }
 

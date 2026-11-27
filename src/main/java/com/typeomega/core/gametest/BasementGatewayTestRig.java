@@ -13,6 +13,7 @@ import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaModelData;
 import com.typeomega.core.mega.common.MegaShape;
+import com.typeomega.core.mega.disintegrator.DisintegratorMachine;
 import com.typeomega.core.mega.gateway.BasementGatewayMachine;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 import com.typeomega.core.mega.system.StarSystems;
@@ -24,15 +25,35 @@ final class BasementGatewayTestRig {
 
     private BasementGatewayTestRig() {}
 
-    static void formsAndCondensesOnNeutronStar(GameTestHelper helper) {
+    static void formsAndCondensesWithActiveDisintegrator(GameTestHelper helper) {
         var model = MegaModelData.get(BasementGatewayMachine.SHAPE);
         helper.assertTrue(model != null && model.parts.size() == 5,
                 "Basement Gateway 3D overlay model loads (D-448)");
 
-        var star = StarSystems.get(helper.getLevel().getServer()).star(StarSystems.NEXUS);
+        var systems = StarSystems.get(helper.getLevel().getServer());
+        var star = systems.star(StarSystems.NEXUS);
         var kind = star.kind;
+        int targetSlot = -1;
         try {
             MegaMachine.anyDimensionForTests = true;
+            star.kind = Kind.YELLOW_DWARF;
+            UUID owner = UUID.randomUUID();
+            StellarEngineTestRig.power(helper, owner);
+
+            targetSlot = systems.freeSlot();
+            helper.assertTrue(targetSlot >= 0, "a free slot to dismantle");
+            systems.create(targetSlot, Kind.YELLOW_DWARF, owner, 42);
+
+            DisintegratorMachine dis = MegaTestRig.build(helper, DisintegratorMachine.SHAPE,
+                    TypeOmegaMegastructures.DISINTEGRATOR_DEF, 5, 49);
+            helper.assertTrue(dis.checkPatternWithLock(), "Disintegrator forms: " + MegaTestRig.error(dis));
+            dis.onStructureFormed();
+            dis.pick(helper.getLevel(), targetSlot);
+            dis.setStopAt(3);
+            dis.testSecond(owner);
+            helper.assertTrue(DisintegratorMachine.hasActiveInSystem(helper.getLevel()),
+                    "Disintegrator registers active dismantling in system");
+
             BasementGatewayMachine m = MegaTestRig.build(helper, BasementGatewayMachine.SHAPE,
                     TypeOmegaMegastructures.BASEMENT_GATEWAY_DEF, 5, 46);
             var outBus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0,
@@ -41,11 +62,7 @@ final class BasementGatewayTestRig {
                     GTMachines.FLUID_EXPORT_HATCH[GTValues.LuV]);
             helper.assertTrue(m.checkPatternWithLock(), "Basement Gateway forms: " + MegaTestRig.error(m));
             m.onStructureFormed();
-
-            UUID owner = UUID.randomUUID();
-            StellarEngineTestRig.power(helper, owner);
-            star.kind = Kind.NEUTRON_STAR;
-            helper.assertTrue(m.inPlace(), "Basement Gateway accepts neutron star");
+            helper.assertTrue(m.inPlace(), "Basement Gateway accepts common star");
 
             m.setAperturePct(100);
             m.testSecond(owner);
@@ -71,10 +88,11 @@ final class BasementGatewayTestRig {
         } finally {
             MegaMachine.anyDimensionForTests = false;
             star.kind = kind;
+            if (targetSlot >= 0) systems.clear(targetSlot);
         }
     }
 
-    static void rejectsCommonStar(GameTestHelper helper) {
+    static void noActiveDisintegratorNoProduce(GameTestHelper helper) {
         var star = StarSystems.get(helper.getLevel().getServer()).star(StarSystems.NEXUS);
         var kind = star.kind;
         try {
@@ -89,10 +107,11 @@ final class BasementGatewayTestRig {
             UUID owner = UUID.randomUUID();
             StellarEngineTestRig.power(helper, owner);
             star.kind = Kind.YELLOW_DWARF;
-            helper.assertTrue(!m.inPlace(), "Basement Gateway rejects common star in inPlace()");
+            helper.assertTrue(m.inPlace(), "Basement Gateway accepts common star in inPlace()");
             m.testSecond(owner);
-            helper.assertTrue(m.totalDust() == 0 && !m.isRunning(),
-                    "Basement Gateway does not run on common star");
+            helper.assertTrue(m.totalDust() == 0 && m.totalGasMb() == 0 && !m.isRunning() &&
+                    "no_disintegrator".equals(m.blocked()),
+                    "Basement Gateway does not produce without an active Disintegrator");
             helper.succeed();
         } finally {
             MegaMachine.anyDimensionForTests = false;

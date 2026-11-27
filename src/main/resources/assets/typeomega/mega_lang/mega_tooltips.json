@@ -1015,9 +1015,9 @@
   "稳定通往地下宇宙的虫洞，凝聚原始气体与快中子俘获重元素粉"
  ],
  "typeomega.machine.basement_gateway.tooltip.where": [
-  "Requires a system with a neutron star, pulsar or magnetar",
-  "Exige um sistema com estrela de nêutrons, pulsar ou magnetar",
-  "需要中心为中子星、脉冲星或磁星的恒星系"
+  "Requires any star system",
+  "Exige qualquer sistema estelar",
+  "需要任意恒星系"
  ],
  "typeomega.machine.basement_gateway.tooltip.phases": [
   "Five phases: frame -> coils -> shield shell -> polar gamma lens -> quantum entangler",
@@ -1025,9 +1025,9 @@
   "五阶段：框架 -> 线圈 -> 屏蔽外壳 -> 极向伽马透镜 -> 量子纠缠器"
  ],
  "typeomega.machine.basement_gateway.tooltip.companion": [
-  "Companion megastructure to the Solar System Disintegrator",
-  "Megaestrutura companheira do Desintegrador de Sistemas Solares",
-  "太阳系拆解器的配套巨构"
+  "Destination of the Solar System Disintegrator in the same system; only runs while one is dismantling",
+  "Destino do Desintegrador de Sistemas Solares no mesmo sistema; só produz enquanto um estiver desmontando",
+  "同星系太阳系拆解器的接收端；仅在有拆解器正在拆解时运行"
  ],
  "typeomega.machine.basement_gateway.tooltip.aperture": [
   "Adjustable wormhole aperture from %s to %s in %s steps",

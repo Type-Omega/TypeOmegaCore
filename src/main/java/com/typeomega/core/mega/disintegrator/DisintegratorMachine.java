@@ -14,6 +14,7 @@ import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 
@@ -24,6 +25,8 @@ import com.typeomega.core.mega.system.StarSystems;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Controller of the Solar System Disintegrator (D-330): takes a made system of the same owner apart layer by
@@ -44,6 +47,10 @@ public class DisintegratorMachine extends MegaMachine {
 
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(DisintegratorMachine.class,
             MegaMachine.MANAGED_FIELD_HOLDER);
+
+    private record ControllerKey(ResourceLocation dim, long pos) {}
+
+    private static final Map<ControllerKey, Long> ACTIVE = new ConcurrentHashMap<>();
 
     @Persisted
     @DescSynced
@@ -123,6 +130,31 @@ public class DisintegratorMachine extends MegaMachine {
         return owedHydrogen + owedHelium;
     }
 
+    // EN: True if at least one formed Disintegrator in this system's dimension is actively dismantling (D-446).
+    // PT: Verdadeiro se ao menos um Disintegrator formado nesta dimensão de sistema estiver desmontando (D-446).
+    // ZH: 若该星系维度中至少有一台已成型的拆解器正在工作则返回 true（D-446）。
+    public static boolean hasActiveInSystem(ServerLevel level) {
+        ResourceLocation dim = dimKey(level);
+        long now = level.getGameTime();
+        var it = ACTIVE.entrySet().iterator();
+        while (it.hasNext()) {
+            var e = it.next();
+            if (!e.getKey().dim().equals(dim)) continue;
+            if (now - e.getValue() <= 40) return true;
+            it.remove();
+        }
+        return false;
+    }
+
+    private static ResourceLocation dimKey(ServerLevel level) {
+        var dim = level.dimension().location();
+        return anyDimensionForTests && !StarSystems.isSystem(level.dimension()) ? StarSystems.NEXUS.location() : dim;
+    }
+
+    private ControllerKey key(ServerLevel level) {
+        return new ControllerKey(dimKey(level), getPos().asLong());
+    }
+
     /** Made systems of this machine's owner, other than the one it stands in. */
     List<Integer> targets(ServerLevel level) {
         var systems = StarSystems.get(level.getServer());
@@ -188,10 +220,19 @@ public class DisintegratorMachine extends MegaMachine {
             working = true;
             spent = Math.max(spent, DisintegratorPhysics.throughput(phases));
         }
+        if (working) ACTIVE.put(key(level), level.getGameTime());
+        else ACTIVE.remove(key(level));
         view = new double[] { target, taken, DisintegratorPhysics.layer(taken), star == null ? 0 : star.mass,
                 star == null ? 0 : star.metallicity, spent, stopAt, working ? 1 : 0, owedDust(),
                 star == null ? 0 : star.kind.ordinal(), owedGas() };
         return working || isWorkingEnabled();
+    }
+
+    @Override
+    protected void stopped() {
+        if (getLevel() instanceof ServerLevel sl) ACTIVE.remove(key(sl));
+        view = new double[] { target, taken, DisintegratorPhysics.layer(taken), view[3], view[4], 0, stopAt, 0,
+                owedDust(), view[9], owedGas() };
     }
 
     /** Adds what the layers between shares {@code from} and {@code to} give. */

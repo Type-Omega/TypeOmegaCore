@@ -5,9 +5,9 @@
   "地下宇宙传送门"
  ],
  "typeomega.basement_gateway.needs_star": [
-  "Needs a neutron star, pulsar or magnetar",
-  "Exige estrela de nêutrons, pulsar ou magnetar",
-  "需要中子星、脉冲星或磁星"
+  "Needs a star system",
+  "Exige um sistema estelar",
+  "需要恒星系"
  ],
  "typeomega.basement_gateway.state": [
   "Aperture %s%% - %s dust/s - %s mB/s",
@@ -30,14 +30,14 @@
   "虫洞孔径 (%)"
  ],
  "typeomega.basement_gateway.ui.star_ok": [
-  "Neutron star locked",
-  "Estrela de nêutrons travada",
-  "中子星已锁定"
+  "Star locked",
+  "Estrela travada",
+  "恒星已锁定"
  ],
  "typeomega.basement_gateway.ui.no_star": [
-  "No neutron star",
-  "Sem estrela de nêutrons",
-  "无中子星"
+  "No star",
+  "Sem estrela",
+  "无恒星"
  ],
  "typeomega.basement_gateway.ui.running": [
   "%s dust/s  %s mB/s  (%s EU/t)",
@@ -59,10 +59,15 @@
   "Fases %s/%s",
   "阶段 %s/%s"
  ],
- "typeomega.basement_gateway.ui.idle.no_neutron_star": [
-  "Waiting: requires a neutron star, pulsar or magnetar",
-  "Esperando: exige estrela de nêutrons, pulsar ou magnetar",
-  "等待中：需要中子星、脉冲星或磁星"
+ "typeomega.basement_gateway.ui.idle.no_star": [
+  "Waiting: requires a star system",
+  "Esperando: exige um sistema estelar",
+  "等待中：需要恒星系"
+ ],
+ "typeomega.basement_gateway.ui.idle.no_disintegrator": [
+  "Waiting: requires an active Disintegrator in this system",
+  "Esperando: exige um Desintegrador ativo neste sistema",
+  "等待中：需要本星系中有正在工作的拆解器"
  ],
  "typeomega.basement_gateway.ui.idle.disabled": [
   "Paused by controller",
@@ -85,9 +90,9 @@
   "#地下宇宙虫洞"
  ],
  "typeomega.basement_gateway.ui.manual.1": [
-  "Companion to the Solar System Disintegrator around a neutron star, pulsar or magnetar.",
-  "Companheira do Desintegrador de Sistemas em volta de estrela de nêutrons, pulsar ou magnetar.",
-  "与太阳系拆解器配套的巨构，建于中子星、脉冲星或磁星周围。"
+  "Destination of the Solar System Disintegrator in any star system: receives dismantled matter.",
+  "Destino do Desintegrador de Sistemas em qualquer sistema estelar: recebe a matéria desmontada.",
+  "在任意恒星系中作为太阳系拆解器的接收端，接收其拆解的物质。"
  ],
  "typeomega.basement_gateway.ui.manual.2": [
   "=Phases: 1 frame -> 2 coils -> 3 shell -> 4 gamma lens -> 5 quantum entangler",
@@ -100,9 +105,9 @@
   "#凝聚与孔径"
  ],
  "typeomega.basement_gateway.ui.manual.4": [
-  "Draws EU from the Nexus network to condense primordial Hydrogen, Helium and r-process dusts.",
-  "Consome EU da rede Nexus para condensar Hidrogênio, Hélio e pós do processo r.",
-  "消耗 Nexus 网络 EU，从地下宇宙虫洞凝聚原始氢、氦与快中子俘获重元素粉。"
+  "Runs only while a Disintegrator in the same system is active, returning Hydrogen, Helium and r-process dusts.",
+  "Só produz com um Desintegrador ativo no mesmo sistema, devolvendo Hidrogênio, Hélio e pós do processo r.",
+  "仅在同星系拆解器工作时运行，返还氢、氦与快中子俘获重元素粉。"
  ],
  "typeomega.basement_gateway.ui.manual.5": [
   "=Adjust the aperture lever (10% to 100%) to scale throughput and EU draw.",

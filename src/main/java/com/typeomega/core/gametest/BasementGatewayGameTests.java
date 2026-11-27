@@ -9,9 +9,9 @@ import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Basement Gateway (D-446 A6): forms on its D-445 mount, loads its 3D overlay model (D-448), condenses
- * primordial gases and r-process dusts around a neutron star, rejects common stars, and fails to form when its
- * frame is broken. Slots 46 to 48.
+ * The Basement Gateway (D-446 A6): forms on its D-445 mount, loads its 3D overlay model (D-448), runs in any
+ * star system while a Solar System Disintegrator is active in the same system, does not produce without an active
+ * Disintegrator, and fails to form when its frame is broken. Slots 46 to 49.
  */
 @PrefixGameTestTemplate(false)
 @GameTestHolder(TypeOmegaMod.MOD_ID)
@@ -29,13 +29,13 @@ public final class BasementGatewayGameTests {
     }
 
     @GameTest(template = TEMPLATE, batch = "gateway_runs", timeoutTicks = 2400)
-    public static void formsAndCondensesOnNeutronStar(GameTestHelper helper) {
-        if (!skip(helper)) BasementGatewayTestRig.formsAndCondensesOnNeutronStar(helper);
+    public static void formsAndCondensesWithActiveDisintegrator(GameTestHelper helper) {
+        if (!skip(helper)) BasementGatewayTestRig.formsAndCondensesWithActiveDisintegrator(helper);
     }
 
     @GameTest(template = TEMPLATE, batch = "gateway_wrong", timeoutTicks = 2400)
-    public static void rejectsCommonStar(GameTestHelper helper) {
-        if (!skip(helper)) BasementGatewayTestRig.rejectsCommonStar(helper);
+    public static void noActiveDisintegratorNoProduce(GameTestHelper helper) {
+        if (!skip(helper)) BasementGatewayTestRig.noActiveDisintegratorNoProduce(helper);
     }
 
     @GameTest(template = TEMPLATE, batch = "gateway_wrong", timeoutTicks = 2400)

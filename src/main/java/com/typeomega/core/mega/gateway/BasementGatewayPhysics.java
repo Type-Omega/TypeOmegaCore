@@ -4,9 +4,9 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 
 /**
- * Physics of the Basement Gateway (D-446 A6): companion megastructure to the Solar System Disintegrator,
- * channeling a neutron star's polar gamma bursts to sustain a micro-wormhole into a basement universe and
- * condense primordial gases and heavy r-process dusts.
+ * Physics of the Basement Gateway (D-446 A6): companion megastructure to the Solar System Disintegrator in
+ * any star system, sustaining a micro-wormhole into a basement universe to receive dismantled matter and return
+ * primordial gases and heavy r-process dusts.
  */
 public final class BasementGatewayPhysics {
 
