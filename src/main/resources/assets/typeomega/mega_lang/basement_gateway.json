@@ -1,0 +1,112 @@
+{
+ "block.typeomega.basement_gateway": [
+  "Basement Gateway",
+  "Portal do Universo-Porão",
+  "地下宇宙传送门"
+ ],
+ "typeomega.basement_gateway.needs_star": [
+  "Needs a neutron star, pulsar or magnetar",
+  "Exige estrela de nêutrons, pulsar ou magnetar",
+  "需要中子星、脉冲星或磁星"
+ ],
+ "typeomega.basement_gateway.state": [
+  "Aperture %s%% - %s dust/s - %s mB/s",
+  "Abertura %s%% - %s pó/s - %s mB/s",
+  "孔径 %s%% - %s 粉/秒 - %s mB/秒"
+ ],
+ "typeomega.basement_gateway.ui.manual": [
+  "Manual",
+  "Manual",
+  "手册"
+ ],
+ "typeomega.basement_gateway.ui.manual.tip": [
+  "Field manual",
+  "Manual de campo",
+  "外勤手册"
+ ],
+ "typeomega.basement_gateway.ui.aperture_tip": [
+  "Wormhole aperture (%)",
+  "Abertura do buraco de minhoca (%)",
+  "虫洞孔径 (%)"
+ ],
+ "typeomega.basement_gateway.ui.star_ok": [
+  "Neutron star locked",
+  "Estrela de nêutrons travada",
+  "中子星已锁定"
+ ],
+ "typeomega.basement_gateway.ui.no_star": [
+  "No neutron star",
+  "Sem estrela de nêutrons",
+  "无中子星"
+ ],
+ "typeomega.basement_gateway.ui.running": [
+  "%s dust/s  %s mB/s  (%s EU/t)",
+  "%s pó/s  %s mB/s  (%s EU/t)",
+  "%s 粉/秒  %s mB/秒  (%s EU/t)"
+ ],
+ "typeomega.basement_gateway.ui.aperture": [
+  "Aperture: %s%%",
+  "Abertura: %s%%",
+  "孔径: %s%%"
+ ],
+ "typeomega.basement_gateway.ui.totals": [
+  "Total: %s dust  %s mB",
+  "Total: %s pó  %s mB",
+  "总计: %s 粉  %s mB"
+ ],
+ "typeomega.basement_gateway.ui.phases": [
+  "Phases %s/%s",
+  "Fases %s/%s",
+  "阶段 %s/%s"
+ ],
+ "typeomega.basement_gateway.ui.idle.no_neutron_star": [
+  "Waiting: requires a neutron star, pulsar or magnetar",
+  "Esperando: exige estrela de nêutrons, pulsar ou magnetar",
+  "等待中：需要中子星、脉冲星或磁星"
+ ],
+ "typeomega.basement_gateway.ui.idle.disabled": [
+  "Paused by controller",
+  "Pausada pelo controlador",
+  "已由控制器暂停"
+ ],
+ "typeomega.basement_gateway.ui.idle.power": [
+  "Waiting: insufficient EU in the Nexus network",
+  "Esperando: EU insuficiente na rede Nexus",
+  "等待中：Nexus 网络 EU 不足"
+ ],
+ "typeomega.basement_gateway.ui.manual_title": [
+  "Field manual - Basement Gateway",
+  "Manual de campo - Portal do Universo-Porão",
+  "外勤手册 - 地下宇宙传送门"
+ ],
+ "typeomega.basement_gateway.ui.manual.0": [
+  "#Basement-universe wormhole",
+  "#Buraco de minhoca do universo-porão",
+  "#地下宇宙虫洞"
+ ],
+ "typeomega.basement_gateway.ui.manual.1": [
+  "Companion to the Solar System Disintegrator around a neutron star, pulsar or magnetar.",
+  "Companheira do Desintegrador de Sistemas em volta de estrela de nêutrons, pulsar ou magnetar.",
+  "与太阳系拆解器配套的巨构，建于中子星、脉冲星或磁星周围。"
+ ],
+ "typeomega.basement_gateway.ui.manual.2": [
+  "=Phases: 1 frame -> 2 coils -> 3 shell -> 4 gamma lens -> 5 quantum entangler",
+  "=Fases: 1 armação -> 2 bobinas -> 3 casca -> 4 lente gama -> 5 entrelaçador quântico",
+  "=阶段：1 框架 -> 2 线圈 -> 3 外壳 -> 4 伽马透镜 -> 5 量子纠缠器"
+ ],
+ "typeomega.basement_gateway.ui.manual.3": [
+  "#Condensation & aperture",
+  "#Condensação e abertura",
+  "#凝聚与孔径"
+ ],
+ "typeomega.basement_gateway.ui.manual.4": [
+  "Draws EU from the Nexus network to condense primordial Hydrogen, Helium and r-process dusts.",
+  "Consome EU da rede Nexus para condensar Hidrogênio, Hélio e pós do processo r.",
+  "消耗 Nexus 网络 EU，从地下宇宙虫洞凝聚原始氢、氦与快中子俘获重元素粉。"
+ ],
+ "typeomega.basement_gateway.ui.manual.5": [
+  "=Adjust the aperture lever (10% to 100%) to scale throughput and EU draw.",
+  "=Ajuste a alavanca de abertura (10% a 100%) para escalar vazão e consumo.",
+  "=调节孔径拉杆（10% 至 100%）可按比例缩放产量与耗电。"
+ ]
+}

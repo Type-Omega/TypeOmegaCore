@@ -45,6 +45,19 @@ public final class MegaRecipes {
                 .save(provider);
     }
 
+    /** Provisional (D-446 A6): basement-universe wormhole companion to the Disintegrator. */
+    private static void basementGateway(Consumer<FinishedRecipe> provider) {
+        GTRecipeTypes.ASSEMBLY_LINE_RECIPES.recipeBuilder(TypeOmegaMod.id("basement_gateway"))
+                .inputItems(GTItems.FIELD_GENERATOR_UV.asStack(48))
+                .inputItems(GTItems.EMITTER_UV.asStack(48))
+                .inputItems(GTItems.GRAVI_STAR.asStack(32))
+                .inputItems(CustomTags.UIV_CIRCUITS, 24)
+                .inputFluids(GTMaterials.Neutronium.getFluid(36864))
+                .outputItems(TypeOmegaMegastructures.BASEMENT_GATEWAY_DEF.asStack())
+                .EUt(GTValues.VA[GTValues.UIV]).duration(12000)
+                .save(provider);
+    }
+
     /** Provisional (D-330): field generators to switch the binding off, a Suprashell's worth of gravity stars. */
     private static void disintegrator(Consumer<FinishedRecipe> provider) {
         GTRecipeTypes.ASSEMBLY_LINE_RECIPES.recipeBuilder(TypeOmegaMod.id("disintegrator"))
@@ -253,6 +266,7 @@ public final class MegaRecipes {
         if (TypeOmegaMegastructures.STELLAR_HARVESTER_DEF != null) stellarHarvester(provider);
         if (TypeOmegaMegastructures.SUPRASHELL_DEF != null) suprashell(provider);
         if (TypeOmegaMegastructures.DISINTEGRATOR_DEF != null) disintegrator(provider);
+        if (TypeOmegaMegastructures.BASEMENT_GATEWAY_DEF != null) basementGateway(provider);
         if (TypeOmegaMegastructures.BIRCH_WORLD_DEF != null) birchWorld(provider);
         if (TypeOmegaMegastructures.QSO_DEF != null) qso(provider);
         if (TypeOmegaMegastructures.MATRIOSHKA_BRAIN == null) return;

@@ -894,6 +894,61 @@
   "Serviço de desativação do sistema solar inteiro. Retire seus pertences pessoais antes.",
   "整个太阳系的退役服务。请先带走个人物品。"
  ],
+ "typeomega.machine.basement_gateway.tooltip.purpose": [
+  "Stabilizes a basement-universe wormhole to condense primordial gases and r-process dusts",
+  "Estabiliza um buraco de minhoca do universo-porão para condensar gases primordiais e pós do processo r",
+  "稳定通往地下宇宙的虫洞，凝聚原始气体与快中子俘获重元素粉"
+ ],
+ "typeomega.machine.basement_gateway.tooltip.where": [
+  "Requires a system with a neutron star, pulsar or magnetar",
+  "Exige um sistema com estrela de nêutrons, pulsar ou magnetar",
+  "需要中心为中子星、脉冲星或磁星的恒星系"
+ ],
+ "typeomega.machine.basement_gateway.tooltip.phases": [
+  "Five phases: frame -> coils -> shield shell -> polar gamma lens -> quantum entangler",
+  "Cinco fases: armação -> bobinas -> casca blindada -> lente gama polar -> entrelaçador quântico",
+  "五阶段：框架 -> 线圈 -> 屏蔽外壳 -> 极向伽马透镜 -> 量子纠缠器"
+ ],
+ "typeomega.machine.basement_gateway.tooltip.companion": [
+  "Companion megastructure to the Solar System Disintegrator",
+  "Megaestrutura companheira do Desintegrador de Sistemas Solares",
+  "太阳系拆解器的配套巨构"
+ ],
+ "typeomega.machine.basement_gateway.tooltip.aperture": [
+  "Adjustable wormhole aperture from %s to %s in %s steps",
+  "Abertura do buraco de minhoca ajustável de %s a %s em passos de %s",
+  "虫洞孔径可在 %s 至 %s 间按 %s 步长调节"
+ ],
+ "typeomega.machine.basement_gateway.tooltip.fluids": [
+  "Condenses %s mB/s Hydrogen and %s mB/s Helium per phase at 100% aperture",
+  "Condensa %s mB/s de Hidrogênio e %s mB/s de Hélio por fase a 100% de abertura",
+  "100% 孔径下每阶段每秒凝聚 %s mB 氢与 %s mB 氦"
+ ],
+ "typeomega.machine.basement_gateway.tooltip.dusts": [
+  "Extracts %s r-process dusts/s (Platinum, Osmium, Iridium) per phase at 100% aperture",
+  "Extrai %s pós do processo r/s (Platina, Ósmio, Irídio) por fase a 100% de abertura",
+  "100% 孔径下每阶段每秒提取 %s 份快中子俘获粉（铂、锇、铱）"
+ ],
+ "typeomega.machine.basement_gateway.tooltip.power": [
+  "Consumes %s EU/t per phase at 100% aperture",
+  "Consome %s EU/t por fase a 100% de abertura",
+  "100% 孔径下每阶段消耗 %s EU/t"
+ ],
+ "typeomega.machine.basement_gateway.tooltip.nexus": [
+  "Draws EU directly from the Nexus network; requires item and fluid export hatches",
+  "Consome EU direto da rede Nexus; exige hatches de saída de itens e fluidos",
+  "直接从 Nexus 网络取电；需要物品与流体输出仓"
+ ],
+ "typeomega.machine.basement_gateway.tooltip.mount": [
+  "Controller sits on an equatorial 7x5 service deck attached to the phase-1 frame",
+  "O controlador fica num deck de serviço 7x5 equatorial preso à armação da fase 1",
+  "控制器位于附着于第 1 阶段框架赤道上的 7x5 检修平台"
+ ],
+ "typeomega.machine.basement_gateway.tooltip.humor": [
+  "Storing an entire spare universe under the floorboards: void-compliant.",
+  "Guardar um universo reserva inteiro debaixo do assoalho: dentro das normas do vazio.",
+  "把一整座备用宇宙塞在地板下面：完全符合虚空规范。"
+ ],
  "typeomega.machine.birch_world.tooltip.purpose": [
   "Concentric habitat shells round a black hole, housing inhabitants and district modules on causal credit: the Causal era",
   "Cascas concêntricas de habitat em volta de um buraco negro, abrigando habitantes e módulos de distrito em crédito causal: a era Causal",

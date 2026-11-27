@@ -9,6 +9,7 @@ import net.minecraft.network.chat.MutableComponent;
 import com.typeomega.core.data.TypeOmegaTooltips;
 import com.typeomega.core.mega.birch.BirchPhysics;
 import com.typeomega.core.mega.disintegrator.DisintegratorPhysics;
+import com.typeomega.core.mega.gateway.BasementGatewayPhysics;
 import com.typeomega.core.mega.hraemc.HraePhysics;
 import com.typeomega.core.mega.kugelblitz.KugelblitzPhysics;
 import com.typeomega.core.mega.gigaforge.GigaforgePhysics;
@@ -50,6 +51,7 @@ public final class MegaTooltips {
         TypeOmegaTooltips.register("penrose_sphere", MegaTooltips::penroseSphere);
         TypeOmegaTooltips.register("suprashell", MegaTooltips::suprashell);
         TypeOmegaTooltips.register("disintegrator", MegaTooltips::disintegrator);
+        TypeOmegaTooltips.register("basement_gateway", MegaTooltips::basementGateway);
         TypeOmegaTooltips.register("birch_world", MegaTooltips::birch);
         TypeOmegaTooltips.register("qso", MegaTooltips::qso);
     }
@@ -200,6 +202,24 @@ public final class MegaTooltips {
                         value(num(DisintegratorPhysics.GAS_PER_PERCENT)))
                 .line(own(id, "stop"))
                 .warning(own(id, "wipe"));
+        return finish(b, id);
+    }
+
+    private static List<Component> basementGateway() {
+        String id = "basement_gateway";
+        var b = begin(id, "wormhole_gateway", "megastructure")
+                .line(own(id, "where"))
+                .line(own(id, "phases"))
+                .line(own(id, "companion"))
+                .line(own(id, "aperture"), value(BasementGatewayPhysics.APERTURE_MIN + "%"),
+                        value(BasementGatewayPhysics.APERTURE_MAX + "%"),
+                        value(BasementGatewayPhysics.APERTURE_STEP + "%"))
+                .line(own(id, "fluids"), value(num(BasementGatewayPhysics.HYDROGEN_MB_PER_PHASE)),
+                        value(num(BasementGatewayPhysics.HELIUM_MB_PER_PHASE)))
+                .line(own(id, "dusts"), value(BasementGatewayPhysics.DUST_PER_PHASE))
+                .line(own(id, "power"), value(pow2(34)))
+                .line(own(id, "nexus"))
+                .line(own(id, "mount"));
         return finish(b, id);
     }
 

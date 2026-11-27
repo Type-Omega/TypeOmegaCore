@@ -19,21 +19,22 @@ public final class TypeOmegaMegastructures {
             NIDAVELLIR = "nidavellir", NEUTRONIUM_GIGAFORGE = "neutronium_gigaforge",
             ASSEMBLY_YARD = "assembly_yard",
             YGGDRASIL = "yggdrasil", STELLAR_HARVESTER = "stellar_harvester",
-            SUPRASHELL = "suprashell", DISINTEGRATOR = "disintegrator", BIRCH_WORLD = "birch_world",
+            SUPRASHELL = "suprashell", DISINTEGRATOR = "disintegrator", BASEMENT_GATEWAY = "basement_gateway",
+            BIRCH_WORLD = "birch_world",
             QSO = "qso";
 
     /** Every megastructure, for the client renderer check. */
     public static final String[] ALL = { MATRIOSHKA, STELLAR_ENGINE, STAR_LIFTER, STELLAR_HOOP, SYSTEM_CREATOR,
             FUSION_SUPPRESSOR, KUGELBLITZ, HRAEMC, PENROSE_SPHERE,
             NIDAVELLIR, NEUTRONIUM_GIGAFORGE, ASSEMBLY_YARD, YGGDRASIL, STELLAR_HARVESTER,
-            SUPRASHELL, DISINTEGRATOR, BIRCH_WORLD, QSO };
+            SUPRASHELL, DISINTEGRATOR, BASEMENT_GATEWAY, BIRCH_WORLD, QSO };
 
     @Nullable
     public static MultiblockMachineDefinition MATRIOSHKA_BRAIN, STELLAR_ENGINE_DEF, STAR_LIFTER_DEF,
             STELLAR_HOOP_DEF, SYSTEM_CREATOR_DEF, FUSION_SUPPRESSOR_DEF,
             KUGELBLITZ_DEF, HRAEMC_DEF, PENROSE_SPHERE_DEF, NIDAVELLIR_DEF, NEUTRONIUM_GIGAFORGE_DEF,
             ASSEMBLY_YARD_DEF, YGGDRASIL_DEF, STELLAR_HARVESTER_DEF, SUPRASHELL_DEF,
-            DISINTEGRATOR_DEF, BIRCH_WORLD_DEF, QSO_DEF;
+            DISINTEGRATOR_DEF, BASEMENT_GATEWAY_DEF, BIRCH_WORLD_DEF, QSO_DEF;
 
     private TypeOmegaMegastructures() {}
 
@@ -79,6 +80,8 @@ public final class TypeOmegaMegastructures {
         if (available(SUPRASHELL)) SUPRASHELL_DEF = com.typeomega.core.mega.suprashell.SuprashellDefinition.register();
         if (available(DISINTEGRATOR))
             DISINTEGRATOR_DEF = com.typeomega.core.mega.disintegrator.DisintegratorDefinition.register();
+        if (available(BASEMENT_GATEWAY))
+            BASEMENT_GATEWAY_DEF = com.typeomega.core.mega.gateway.BasementGatewayDefinition.register();
         if (available(BIRCH_WORLD)) BIRCH_WORLD_DEF = com.typeomega.core.mega.birch.BirchWorldDefinition.register();
         if (available(QSO)) QSO_DEF = com.typeomega.core.mega.qso.QsoDefinition.register();
     }
