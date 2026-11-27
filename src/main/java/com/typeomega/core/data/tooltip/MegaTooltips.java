@@ -13,6 +13,7 @@ import com.typeomega.core.mega.hraemc.HraePhysics;
 import com.typeomega.core.mega.kugelblitz.KugelblitzPhysics;
 import com.typeomega.core.mega.gigaforge.GigaforgePhysics;
 import com.typeomega.core.mega.nidavellir.NidavellirPhysics;
+import com.typeomega.core.mega.penrose.PenrosePhysics;
 import com.typeomega.core.mega.qso.QsoPhysics;
 import com.typeomega.core.mega.suprashell.ShellPhysics;
 import com.typeomega.core.mega.yard.YardPhysics;
@@ -46,6 +47,7 @@ public final class MegaTooltips {
         TypeOmegaTooltips.register("yggdrasil", MegaTooltips::yggdrasil);
         TypeOmegaTooltips.register("kugelblitz", MegaTooltips::kugelblitz);
         TypeOmegaTooltips.register("hraemc", MegaTooltips::hraemc);
+        TypeOmegaTooltips.register("penrose_sphere", MegaTooltips::penroseSphere);
         TypeOmegaTooltips.register("suprashell", MegaTooltips::suprashell);
         TypeOmegaTooltips.register("disintegrator", MegaTooltips::disintegrator);
         TypeOmegaTooltips.register("birch_world", MegaTooltips::birch);
@@ -148,6 +150,20 @@ public final class MegaTooltips {
                 .line(own(id, "jets"))
                 .line(own(id, "research"))
                 .line(own(id, "mass"));
+        return finish(b, id);
+    }
+
+    private static List<Component> penroseSphere() {
+        String id = "penrose_sphere";
+        var b = begin(id, "generator", "megastructure")
+                .warning(own(id, "where"))
+                .line(own(id, "phases"))
+                .line(own(id, "extract"), value(pow2(PenrosePhysics.PENROSE_EUT) + " EU/t"))
+                .line(own(id, "spin"), value(PenrosePhysics.SHARE_STEP + "%"),
+                        value(pct(PenrosePhysics.rotationalShare(PenrosePhysics.MAX_SPIN))))
+                .line(own(id, "drain"))
+                .line(own(id, "companion"))
+                .line(own(id, "nexus"));
         return finish(b, id);
     }
 

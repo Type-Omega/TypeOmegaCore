@@ -1,0 +1,107 @@
+{
+ "block.typeomega.penrose_sphere": [
+  "Penrose Sphere",
+  "Esfera de Penrose",
+  "彭罗斯球"
+ ],
+ "typeomega.penrose_sphere.needs_hole": [
+  "No black hole here: the Penrose Sphere needs a system whose centre is one.",
+  "Sem buraco negro aqui: a Esfera de Penrose precisa de um sistema com um no centro.",
+  "此处没有黑洞：彭罗斯球需要中心为黑洞的恒星系。"
+ ],
+ "typeomega.penrose_sphere.state": [
+  "Spin a = %s  ·  Penrose %s EU/t",
+  "Spin a = %s  ·  Penrose %s EU/t",
+  "自旋 a = %s  ·  彭罗斯 %s EU/t"
+ ],
+ "typeomega.penrose_sphere.ui.manual": [
+  "Manual",
+  "Manual",
+  "手册"
+ ],
+ "typeomega.penrose_sphere.ui.manual.tip": [
+  "How the mirror sphere extracts superradiant spin energy.",
+  "Como a esfera de espelhos extrai energia de spin por superradiância.",
+  "镜面球如何通过超辐射提取自旋能量。"
+ ],
+ "typeomega.penrose_sphere.ui.spin": [
+  "Spin",
+  "Spin",
+  "自旋"
+ ],
+ "typeomega.penrose_sphere.ui.draw_tip": [
+  "Share of the Penrose rings' draw: left click +10%, right click -10%. Consumes black hole spin.",
+  "Fatia de extração dos anéis de Penrose: clique esquerdo +10%, direito -10%. Consome o spin do buraco negro.",
+  "彭罗斯环提取比例：左键 +10%，右键 -10%。消耗黑洞自旋。"
+ ],
+ "typeomega.penrose_sphere.ui.no_hole": [
+  "No black hole",
+  "Sem buraco negro",
+  "没有黑洞"
+ ],
+ "typeomega.penrose_sphere.ui.output": [
+  "%s EU/t",
+  "%s EU/t",
+  "%s EU/t"
+ ],
+ "typeomega.penrose_sphere.ui.draw": [
+  "Draw: %s%%",
+  "Fatia: %s%%",
+  "提取：%s%%"
+ ],
+ "typeomega.penrose_sphere.ui.phases": [
+  "Phases %s/%s",
+  "Fases %s/%s",
+  "阶段 %s/%s"
+ ],
+ "typeomega.penrose_sphere.ui.idle.no_hole": [
+  "Waiting: requires a black hole",
+  "Esperando: exige um buraco negro",
+  "等待中：需要黑洞"
+ ],
+ "typeomega.penrose_sphere.ui.idle.disabled": [
+  "Paused by controller",
+  "Pausada pelo controlador",
+  "控制器已暂停"
+ ],
+ "typeomega.penrose_sphere.ui.idle.rings_incomplete": [
+  "Waiting: build phase 3 Penrose rings",
+  "Esperando: construa os anéis de Penrose (fase 3)",
+  "等待中：需要建造第 3 阶段彭罗斯环"
+ ],
+ "typeomega.penrose_sphere.ui.manual_title": [
+  "Field manual - Penrose Sphere",
+  "Manual de campo - Esfera de Penrose",
+  "现场手册 - 彭罗斯球"
+ ],
+ "typeomega.penrose_sphere.ui.manual.0": [
+  "#Superradiant scattering",
+  "#Espalhamento superradiante",
+  "#超辐射散射"
+ ],
+ "typeomega.penrose_sphere.ui.manual.1": [
+  "A faceted geodesic mirror sphere surrounding the HRAE-MC around the same black hole, without colliding with it.",
+  "Esfera geodésica de espelhos que envolve o HRAE-MC em torno do mesmo buraco negro, sem colidir com ele.",
+  "包围同一黑洞周围 HRAE-MC 的多面测地镜面球体，互不碰撞。"
+ ],
+ "typeomega.penrose_sphere.ui.manual.2": [
+  "=Phases: 1 geodesic frame -> 2 mirror panels -> 3 twin inclined Penrose rings",
+  "=Fases: 1 armação geodésica -> 2 painéis espelhados -> 3 anéis inclinados de Penrose",
+  "=阶段：1 测地框架 -> 2 镜面面板 -> 3 双倾斜彭罗斯环"
+ ],
+ "typeomega.penrose_sphere.ui.manual.3": [
+  "#Companion to HRAE-MC",
+  "#Par do HRAE-MC",
+  "#HRAE-MC 伴生巨构"
+ ],
+ "typeomega.penrose_sphere.ui.manual.4": [
+  "Extracts rotational energy (2^38 EU/t × M/M☉ × share × a) and supplies the Penrose slice to the HRAE-MC.",
+  "Extrai energia rotacional (2^38 EU/t × M/M☉ × fatia × a) e fornece a fatia de Penrose ao HRAE-MC.",
+  "提取旋转能量（2^38 EU/t × M/M☉ × 比例 × a），并为 HRAE-MC 提供彭罗斯份额。"
+ ],
+ "typeomega.penrose_sphere.ui.manual.5": [
+  "=Spinning down the hole lowers efficiency; feed matter into the HRAE-MC to spin it back up.",
+  "=Desacelerar o buraco reduz a eficiência; alimente matéria no HRAE-MC para acelerar o giro.",
+  "=降低黑洞自旋会降低效率；向 HRAE-MC 输送物质可重新加速自旋。"
+ ]
+}

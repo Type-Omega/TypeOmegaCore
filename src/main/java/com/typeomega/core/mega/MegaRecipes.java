@@ -97,6 +97,19 @@ public final class MegaRecipes {
                 .save(provider);
     }
 
+    /** Provisional (D-446 A3): superradiant mirror sphere sharing the black hole with HRAE-MC. */
+    private static void penroseSphere(Consumer<FinishedRecipe> provider) {
+        GTRecipeTypes.ASSEMBLY_LINE_RECIPES.recipeBuilder(TypeOmegaMod.id("penrose_sphere"))
+                .inputItems(com.gregtechceu.gtceu.common.data.GTBlocks.SUPERCONDUCTING_COIL.asStack(64))
+                .inputItems(GTItems.FIELD_GENERATOR_UV.asStack(32))
+                .inputItems(GTItems.GRAVI_STAR.asStack(64))
+                .inputItems(CustomTags.UIV_CIRCUITS, 12)
+                .inputFluids(GTMaterials.Neutronium.getFluid(18432))
+                .outputItems(TypeOmegaMegastructures.PENROSE_SPHERE_DEF.asStack())
+                .EUt(GTValues.VA[GTValues.UIV]).duration(10000)
+                .save(provider);
+    }
+
     /** Provisional (D-326): the yard is assembled from assembly lines and the robot arms that run them. */
     private static void assemblyYard(Consumer<FinishedRecipe> provider) {
         GTRecipeTypes.ASSEMBLY_LINE_RECIPES.recipeBuilder(TypeOmegaMod.id("assembly_yard"))
@@ -232,6 +245,7 @@ public final class MegaRecipes {
         if (TypeOmegaMegastructures.FUSION_SUPPRESSOR_DEF != null) fusionSuppressor(provider);
         if (TypeOmegaMegastructures.KUGELBLITZ_DEF != null) kugelblitz(provider);
         if (TypeOmegaMegastructures.HRAEMC_DEF != null) hraemc(provider);
+        if (TypeOmegaMegastructures.PENROSE_SPHERE_DEF != null) penroseSphere(provider);
         if (TypeOmegaMegastructures.NIDAVELLIR_DEF != null) nidavellir(provider);
         if (TypeOmegaMegastructures.NEUTRONIUM_GIGAFORGE_DEF != null) neutroniumGigaforge(provider);
         if (TypeOmegaMegastructures.ASSEMBLY_YARD_DEF != null) assemblyYard(provider);

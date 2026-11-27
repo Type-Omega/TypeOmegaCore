@@ -85,6 +85,8 @@ final class NidavellirTestRig {
                     m.blocked() + ")");
             helper.assertTrue(m.neutroniumUsed() > 0 && m.view()[1] == NidavellirPhysics.SPEED_NEUTRON_STAR,
                     "each batch takes neutronium and runs at neutron-star speed");
+            if (m.shape().parts.values().stream().anyMatch(p -> p.moving() && p.phase() <= m.phases()))
+                MegaTestRig.capturesAndReleases(helper, m);
             helper.succeed();
         } finally {
             MegaMachine.anyDimensionForTests = false;

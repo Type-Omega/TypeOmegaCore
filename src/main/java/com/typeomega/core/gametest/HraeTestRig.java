@@ -14,6 +14,7 @@ import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.hraemc.HraeMachine;
 import com.typeomega.core.mega.hraemc.HraePhysics;
+import com.typeomega.core.mega.penrose.PenroseMachine;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 import com.typeomega.core.mega.system.StarSystems;
 
@@ -65,11 +66,23 @@ final class HraeTestRig {
             m.testSecond(owner);
             helper.assertTrue(m.view()[4] > 0 && m.view()[6] > 0 && star.spin > 0.5,
                     "fed: accretion and jets, and the hole spins up: " + star.spin);
-            MegaTestRig.lit(helper, m, "ergo", "bz_jet_n", "bz_jet_s");
-            m.setPenrose(100);
-            double before = star.spin;
-            m.testSecond(owner);
-            helper.assertTrue(m.view()[5] > 0 && star.spin < before, "Penrose takes power and spin");
+            helper.assertTrue(m.view()[5] == 0, "no Penrose Sphere formed yet -> Penrose slice is 0");
+            MegaTestRig.lit(helper, m, "bz_jet_n", "bz_jet_s");
+
+            // With Penrose Sphere formed on the same black hole, HRAE-MC receives the Penrose slice.
+            if (TypeOmegaMegastructures.PENROSE_SPHERE_DEF != null) {
+                PenroseMachine sphere = MegaTestRig.build(helper, PenroseMachine.SHAPE,
+                        TypeOmegaMegastructures.PENROSE_SPHERE_DEF, 3, 20);
+                helper.assertTrue(sphere.checkPatternWithLock(),
+                        "Penrose Sphere forms: " + MegaTestRig.error(sphere));
+                sphere.onStructureFormed();
+                sphere.setPenrose(100);
+                double before = star.spin;
+                sphere.testSecond(owner);
+                m.testSecond(owner);
+                helper.assertTrue(m.view()[5] > 0 && star.spin < before, "Penrose Sphere takes power and spin");
+                MegaTestRig.lit(helper, m, "ergo");
+            }
             helper.assertTrue(m.research() > 0, "the antennas give research");
             MegaTestRig.capturesAndReleases(helper, m);
             helper.succeed();

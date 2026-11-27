@@ -15,6 +15,7 @@ import net.minecraft.world.entity.player.Player;
 
 import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.mega.common.MegaMachine;
+import com.typeomega.core.mega.penrose.PenroseMachine;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 import com.typeomega.core.mega.system.StarSystems;
 
@@ -122,15 +123,18 @@ public class HraeMachine extends MegaMachine {
             units += 2000;
         }
         double accretion = HraePhysics.accretionEut(units, a, mass);
-        double penrose = phases >= 3 && isWorkingEnabled() ? HraePhysics.penroseEut(penrosePct, a, mass) : 0;
+        // EN: Penrose extraction belongs to Penrose Sphere on the same black hole (D-446 A3); HRAE-MC reads its slice.
+        // PT: A extração de Penrose pertence à Penrose Sphere no mesmo buraco negro (D-446 A3); o HRAE-MC lê a fatia.
+        // ZH: 彭罗斯能量提取归属同一黑洞的彭罗斯球（D-446 A3）；HRAE-MC 仅读取其份额。
+        double penrose = isWorkingEnabled() ? PenroseMachine.activePenroseEut(level) : 0;
         double jets = phases >= 4 ? HraePhysics.jetEut(accretion, a) : 0;
-        double total = accretion + penrose + jets;
-        if (total > 0) payOut(level, total * 20);
-        star.spin = Math.max(0, Math.min(HraePhysics.MAX_SPIN, a + HraePhysics.spinChange(units, penrose, a, mass)));
+        double ownTotal = accretion + jets;
+        if (ownTotal > 0) payOut(level, ownTotal * 20);
+        star.spin = Math.max(0, Math.min(HraePhysics.MAX_SPIN, a + HraePhysics.spinChange(units, 0, a, mass)));
         // Matter swallowed adds to the hole (rest mass, M☉ per unit is negligible but kept exact).
         star.mass += units * HraePhysics.EU_PER_UNIT / HraePhysics.EU_PER_SOLAR_MASS;
         StarSystems.get(level.getServer()).changed();
-        long points = phases >= 5 ? HraePhysics.research(total) : 0;
+        long points = phases >= 5 ? HraePhysics.research(ownTotal + penrose) : 0;
         if (points > 0 && networkOwner != null) {
             research += points;
             try {

@@ -749,6 +749,51 @@
   "Descarte de resíduos que ainda paga você. O horizonte de eventos tem política rígida de não devolução.",
   "会倒贴钱的垃圾处理。事件视界一律不予退款。"
  ],
+ "typeomega.machine.penrose_sphere.tooltip.purpose": [
+  "Geodesic mirror sphere and twin inclined Penrose rings extracting superradiant spin energy from a black hole",
+  "Esfera geodésica de espelhos e anéis inclinados de Penrose que extraem energia de spin por superradiância de um buraco negro",
+  "测地镜面球与双倾斜彭罗斯环，从黑洞中通过超辐射提取自旋能量"
+ ],
+ "typeomega.machine.penrose_sphere.tooltip.where": [
+  "Requires a system whose centre is a natural black hole",
+  "Exige um sistema com um buraco negro natural no centro",
+  "需要中心为天然黑洞的恒星系"
+ ],
+ "typeomega.machine.penrose_sphere.tooltip.phases": [
+  "Three phases: geodesic frame -> mirror panels -> twin inclined Penrose rings",
+  "Três fases: armação geodésica -> painéis espelhados -> anéis inclinados de Penrose",
+  "三个阶段：测地框架 -> 镜面面板 -> 双倾斜彭罗斯环"
+ ],
+ "typeomega.machine.penrose_sphere.tooltip.extract": [
+  "Draws up to %s × M/M☉ × a EU/t from the black hole's spin in phase 3",
+  "Extrai até %s × M/M☉ × a EU/t do spin do buraco negro na fase 3",
+  "第 3 阶段可从黑洞自旋中提取最高 %s × M/M☉ × a EU/t"
+ ],
+ "typeomega.machine.penrose_sphere.tooltip.spin": [
+  "Adjustable in %s steps; up to %s of total mass is rotational energy (feed HRAE-MC to spin up)",
+  "Ajustável em passos de %s; até %s da massa total é energia rotacional (alimente o HRAE-MC para acelerar)",
+  "以 %s 步长调节；总质量中最高 %s 为旋转能量（向 HRAE-MC 供料可加速）"
+ ],
+ "typeomega.machine.penrose_sphere.tooltip.companion": [
+  "Surrounds the HRAE-MC around the same black hole and supplies its Penrose slice",
+  "Envolve o HRAE-MC no mesmo buraco negro e fornece a sua fatia de Penrose",
+  "环绕同一黑洞周围的 HRAE-MC 并为其提供彭罗斯份额"
+ ],
+ "typeomega.machine.penrose_sphere.tooltip.drain": [
+  "Extracting spin slows the black hole; output stops if spin reaches zero",
+  "Extrair spin freia o buraco negro; a produção para se o spin zerar",
+  "提取自旋会使黑洞减速；自旋归零时停止输出"
+ ],
+ "typeomega.machine.penrose_sphere.tooltip.nexus": [
+  "Generated EU goes directly into the Nexus network",
+  "O EU gerado vai direto para a rede Nexus",
+  "产生的 EU 直接送入 Nexus 网络"
+ ],
+ "typeomega.machine.penrose_sphere.tooltip.humor": [
+  "Stealing angular momentum from a black hole: technically a cosmic traffic ticket.",
+  "Roubando momento angular de um buraco negro: tecnicamente uma multa cósmica.",
+  "窃取黑洞的角动量：严格来说算是一张宇宙超速罚单。"
+ ],
  "typeomega.machine.suprashell.tooltip.purpose": [
   "A shell world held static round the black hole of its system",
   "Um mundo-casca parado em volta do buraco negro do sistema",
