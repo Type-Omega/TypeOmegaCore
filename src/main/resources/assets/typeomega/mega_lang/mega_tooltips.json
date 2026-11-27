@@ -464,6 +464,61 @@
   "Sistemas estelares novos, sob encomenda. A Type Omega não aceita devolução depois da ignição.",
   "新星系，按需定制。点火后 Type Omega 概不退换。"
  ],
+ "typeomega.machine.equatorial_shipyard.tooltip.purpose": [
+  "A compact twin-ring shipyard around the star: inner ring harvests, outer ring assembles",
+  "Um estaleiro compacto de anéis gêmeos em volta da estrela: anel interno colhe, externo monta",
+  "环绕恒星的紧凑双环船坞：内环采集星光，外环负责装配"
+ ],
+ "typeomega.machine.equatorial_shipyard.tooltip.recipes": [
+  "Runs Assembly Line and Assembler recipes",
+  "Faz receitas de Assembly Line e de Montadora",
+  "运行装配线与组装机配方"
+ ],
+ "typeomega.machine.equatorial_shipyard.tooltip.inner": [
+  "Phase 2 inner harvesting ring opens %s slipways and cuts EU cost to %s",
+  "O anel interno da fase 2 abre %s carreiras e reduz o custo de EU para %s",
+  "第 2 阶段内采集环开放 %s 条船台，并将 EU 消耗降至 %s"
+ ],
+ "typeomega.machine.equatorial_shipyard.tooltip.outer": [
+  "Phase 3 outer ring and 6 gantries open %s slipways, %s parallels each",
+  "O anel externo da fase 3 e 6 pórticos abrem %s carreiras, %s paralelos cada",
+  "第 3 阶段外环与 6 座龙门架开放 %s 条船台，每条 %s 并行"
+ ],
+ "typeomega.machine.equatorial_shipyard.tooltip.max_parallel": [
+  "Up to %s parallel assemblies at full build",
+  "Até %s montagens em paralelo na estrutura completa",
+  "完全建成后最高可达 %s 并行装配"
+ ],
+ "typeomega.machine.equatorial_shipyard.tooltip.closed": [
+  "Closed slipways cost nothing",
+  "Carreiras fechadas não custam nada",
+  "关闭的船台不消耗任何资源"
+ ],
+ "typeomega.machine.equatorial_shipyard.tooltip.light": [
+  "Build rate = 1 + 0.5*log10(L/L☉), from %s to %s by starlight",
+  "Ritmo = 1 + 0,5*log10(L/L☉), de %s a %s pela luz estelar",
+  "建造速率 = 1 + 0.5*log10(L/L☉)，随星光在 %s 至 %s 间缩放"
+ ],
+ "typeomega.machine.equatorial_shipyard.tooltip.rush": [
+  "Rush shifts: rate %s, EU %s",
+  "Turnos de pressa: ritmo %s, EU %s",
+  "赶工班次：速率 %s，EU %s"
+ ],
+ "typeomega.machine.equatorial_shipyard.tooltip.controllers": [
+  "Megastructure controller recipes cost %s of the EU here",
+  "Receitas de controlador de megaestrutura custam %s do EU aqui",
+  "巨构控制器配方在此仅需 %s 的 EU"
+ ],
+ "typeomega.machine.equatorial_shipyard.tooltip.energy": [
+  "EU comes from the Nexus network, as in the base recipe",
+  "O EU vem da rede Nexus, como na receita base",
+  "EU 来自 Nexus 网络，与基础配方相同"
+ ],
+ "typeomega.machine.equatorial_shipyard.tooltip.humor": [
+  "The training-wheels shipyard before you build the ninety-slipway monster.",
+  "O estaleiro de rodinhas antes de você construir o monstro de noventa carreiras.",
+  "在建造九十船台巨无霸之前，先用这个双环船坞练练手吧。"
+ ],
  "typeomega.machine.assembly_yard.tooltip.purpose": [
   "A shipyard ring round the star of its system, with lasers fed by starlight",
   "Um anel-estaleiro em volta da estrela do sistema, com lasers alimentados pela luz estelar",
@@ -949,6 +1004,11 @@
   "Serviço de desativação do sistema solar inteiro. Retire seus pertences pessoais antes.",
   "整个太阳系的退役服务。请先带走个人物品。"
  ],
+ "typeomega.tooltip.type.wormhole_gateway": [
+  "Wormhole Gateway",
+  "Portal de Buraco de Minhoca",
+  "虫洞网关"
+ ],
  "typeomega.machine.basement_gateway.tooltip.purpose": [
   "Stabilizes a basement-universe wormhole to condense primordial gases and r-process dusts",
   "Estabiliza um buraco de minhoca do universo-porão para condensar gases primordiais e pós do processo r",
@@ -975,19 +1035,19 @@
   "虫洞孔径可在 %s 至 %s 间按 %s 步长调节"
  ],
  "typeomega.machine.basement_gateway.tooltip.fluids": [
-  "Condenses %s mB/s Hydrogen and %s mB/s Helium per phase at 100% aperture",
-  "Condensa %s mB/s de Hidrogênio e %s mB/s de Hélio por fase a 100% de abertura",
-  "100% 孔径下每阶段每秒凝聚 %s mB 氢与 %s mB 氦"
+  "Condenses %s mB/s Hydrogen and %s mB/s Helium per phase at full aperture",
+  "Condensa %s mB/s de Hidrogênio e %s mB/s de Hélio por fase em abertura total",
+  "全孔径下每阶段每秒凝聚 %s mB 氢与 %s mB 氦"
  ],
  "typeomega.machine.basement_gateway.tooltip.dusts": [
-  "Extracts %s r-process dusts/s (Platinum, Osmium, Iridium) per phase at 100% aperture",
-  "Extrai %s pós do processo r/s (Platina, Ósmio, Irídio) por fase a 100% de abertura",
-  "100% 孔径下每阶段每秒提取 %s 份快中子俘获粉（铂、锇、铱）"
+  "Extracts %s r-process dusts/s (Platinum, Osmium, Iridium) per phase at full aperture",
+  "Extrai %s pós do processo r/s (Platina, Ósmio, Irídio) por fase em abertura total",
+  "全孔径下每阶段每秒提取 %s 份快中子俘获粉（铂、锇、铱）"
  ],
  "typeomega.machine.basement_gateway.tooltip.power": [
-  "Consumes %s EU/t per phase at 100% aperture",
-  "Consome %s EU/t por fase a 100% de abertura",
-  "100% 孔径下每阶段消耗 %s EU/t"
+  "Consumes %s EU/t per phase at full aperture",
+  "Consome %s EU/t por fase em abertura total",
+  "全孔径下每阶段消耗 %s EU/t"
  ],
  "typeomega.machine.basement_gateway.tooltip.nexus": [
   "Draws EU directly from the Nexus network; requires item and fluid export hatches",

@@ -17,6 +17,7 @@ public final class TypeOmegaMegastructures {
             SYSTEM_CREATOR = "system_creator", FUSION_SUPPRESSOR = "fusion_suppressor",
             KUGELBLITZ = "kugelblitz", HRAEMC = "hraemc", PENROSE_SPHERE = "penrose_sphere",
             NIDAVELLIR = "nidavellir", NEUTRONIUM_GIGAFORGE = "neutronium_gigaforge",
+            EQUATORIAL_SHIPYARD = "equatorial_shipyard",
             ASSEMBLY_YARD = "assembly_yard", PLANETARY_SEEDER_NEXUS = "planetary_seeder_nexus",
             YGGDRASIL = "yggdrasil", STELLAR_HARVESTER = "stellar_harvester",
             SUPRASHELL = "suprashell", DISINTEGRATOR = "disintegrator", BASEMENT_GATEWAY = "basement_gateway",
@@ -26,14 +27,14 @@ public final class TypeOmegaMegastructures {
     /** Every megastructure, for the client renderer check. */
     public static final String[] ALL = { MATRIOSHKA, STELLAR_ENGINE, STAR_LIFTER, STELLAR_HOOP, SYSTEM_CREATOR,
             FUSION_SUPPRESSOR, KUGELBLITZ, HRAEMC, PENROSE_SPHERE,
-            NIDAVELLIR, NEUTRONIUM_GIGAFORGE, ASSEMBLY_YARD, PLANETARY_SEEDER_NEXUS, YGGDRASIL, STELLAR_HARVESTER,
+            NIDAVELLIR, NEUTRONIUM_GIGAFORGE, EQUATORIAL_SHIPYARD, ASSEMBLY_YARD, PLANETARY_SEEDER_NEXUS, YGGDRASIL, STELLAR_HARVESTER,
             SUPRASHELL, DISINTEGRATOR, BASEMENT_GATEWAY, BIRCH_WORLD, QSO };
 
     @Nullable
     public static MultiblockMachineDefinition MATRIOSHKA_BRAIN, STELLAR_ENGINE_DEF, STAR_LIFTER_DEF,
             STELLAR_HOOP_DEF, SYSTEM_CREATOR_DEF, FUSION_SUPPRESSOR_DEF,
             KUGELBLITZ_DEF, HRAEMC_DEF, PENROSE_SPHERE_DEF, NIDAVELLIR_DEF, NEUTRONIUM_GIGAFORGE_DEF,
-            ASSEMBLY_YARD_DEF, PLANETARY_SEEDER_NEXUS_DEF, YGGDRASIL_DEF, STELLAR_HARVESTER_DEF, SUPRASHELL_DEF,
+            EQUATORIAL_SHIPYARD_DEF, ASSEMBLY_YARD_DEF, PLANETARY_SEEDER_NEXUS_DEF, YGGDRASIL_DEF, STELLAR_HARVESTER_DEF, SUPRASHELL_DEF,
             DISINTEGRATOR_DEF, BASEMENT_GATEWAY_DEF, BIRCH_WORLD_DEF, QSO_DEF;
 
     private TypeOmegaMegastructures() {}
@@ -72,6 +73,8 @@ public final class TypeOmegaMegastructures {
             NIDAVELLIR_DEF = com.typeomega.core.mega.nidavellir.NidavellirDefinition.register();
         if (available(NEUTRONIUM_GIGAFORGE))
             NEUTRONIUM_GIGAFORGE_DEF = com.typeomega.core.mega.gigaforge.GigaforgeDefinition.register();
+        if (available(EQUATORIAL_SHIPYARD))
+            EQUATORIAL_SHIPYARD_DEF = com.typeomega.core.mega.shipyard.EquatorialShipyardDefinition.register();
         if (available(ASSEMBLY_YARD))
             ASSEMBLY_YARD_DEF = com.typeomega.core.mega.yard.AssemblyYardDefinition.register();
         if (available(PLANETARY_SEEDER_NEXUS))

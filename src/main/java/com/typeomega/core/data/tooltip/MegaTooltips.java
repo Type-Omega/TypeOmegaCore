@@ -17,6 +17,7 @@ import com.typeomega.core.mega.nidavellir.NidavellirPhysics;
 import com.typeomega.core.mega.penrose.PenrosePhysics;
 import com.typeomega.core.mega.qso.QsoPhysics;
 import com.typeomega.core.mega.seeder.SeederPhysics;
+import com.typeomega.core.mega.shipyard.EquatorialShipyardPhysics;
 import com.typeomega.core.mega.suprashell.ShellPhysics;
 import com.typeomega.core.mega.yard.YardPhysics;
 import com.typeomega.core.mega.yggdrasil.YggdrasilPhysics;
@@ -44,6 +45,7 @@ public final class MegaTooltips {
 
     public static void register() {
         TypeOmegaTooltips.register("assembly_yard", MegaTooltips::yard);
+        TypeOmegaTooltips.register("equatorial_shipyard", MegaTooltips::equatorialShipyard);
         TypeOmegaTooltips.register("nidavellir", MegaTooltips::nidavellir);
         TypeOmegaTooltips.register("neutronium_gigaforge", MegaTooltips::neutroniumGigaforge);
         TypeOmegaTooltips.register("planetary_seeder_nexus", MegaTooltips::planetarySeederNexus);
@@ -56,6 +58,26 @@ public final class MegaTooltips {
         TypeOmegaTooltips.register("basement_gateway", MegaTooltips::basementGateway);
         TypeOmegaTooltips.register("birch_world", MegaTooltips::birch);
         TypeOmegaTooltips.register("qso", MegaTooltips::qso);
+    }
+
+    private static List<Component> equatorialShipyard() {
+        String id = "equatorial_shipyard";
+        var b = begin(id, "shipyard", "megastructure")
+                .line(own(id, "recipes"))
+                .line(own(id, "inner"), value(EquatorialShipyardPhysics.SLIPWAYS_PHASE_2),
+                        value(pct(EquatorialShipyardPhysics.HARVEST_EU_FACTOR)))
+                .line(own(id, "outer"), value(EquatorialShipyardPhysics.SLIPWAYS_PHASE_3),
+                        value(EquatorialShipyardPhysics.PARALLEL_PER_SLIPWAY))
+                .line(own(id, "max_parallel"),
+                        value(EquatorialShipyardPhysics.parallel(EquatorialShipyardPhysics.SLIPWAYS_PHASE_3)))
+                .line(own(id, "closed"))
+                .line(own(id, "light"), value(times(EquatorialShipyardPhysics.SPEED_MIN)),
+                        value(times(EquatorialShipyardPhysics.SPEED_MAX)))
+                .line(own(id, "rush"), value(times(EquatorialShipyardPhysics.RUSH_SPEED)),
+                        value(times(EquatorialShipyardPhysics.RUSH_EU)))
+                .line(own(id, "controllers"), value(pct(EquatorialShipyardPhysics.MEGA_DISCOUNT)))
+                .line(own(id, "energy"));
+        return finish(b, id);
     }
 
     private static List<Component> yard() {

@@ -1,0 +1,142 @@
+{
+ "block.typeomega.equatorial_shipyard": [
+  "Equatorial Shipyard",
+  "Estaleiro Equatorial",
+  "赤道船坞"
+ ],
+ "typeomega.equatorial_shipyard.state": [
+  "Slipways %s/%s, speed x%s",
+  "Rampas %s/%s, velocidade x%s",
+  "船台 %s/%s，速度 x%s"
+ ],
+ "typeomega.equatorial_shipyard.ui.manual": [
+  "Manual",
+  "Manual",
+  "手册"
+ ],
+ "typeomega.equatorial_shipyard.ui.manual.tip": [
+  "How the twin-ring shipyard harvests starlight and assembles hulls.",
+  "Como o estaleiro de anéis gêmeos colhe luz estelar e monta cascos.",
+  "双环船坞如何采集星光并装配船体。"
+ ],
+ "typeomega.equatorial_shipyard.ui.lever.tip": [
+  "Open or close slipways (2 per step).",
+  "Abrir ou fechar rampas (2 por passo).",
+  "开启或关闭船台（每次 2 条）。"
+ ],
+ "typeomega.equatorial_shipyard.ui.rush": [
+  "Rush shift",
+  "Turno acelerado",
+  "赶工班次"
+ ],
+ "typeomega.equatorial_shipyard.ui.slipways": [
+  "Slipways %s / %s",
+  "Rampas %s / %s",
+  "船台 %s / %s"
+ ],
+ "typeomega.equatorial_shipyard.ui.parallel": [
+  "Parallel",
+  "Paralelo",
+  "并行"
+ ],
+ "typeomega.equatorial_shipyard.ui.speed": [
+  "Build rate x%s",
+  "Velocidade x%s",
+  "建造速度 x%s"
+ ],
+ "typeomega.equatorial_shipyard.ui.crafted": [
+  "Assembled: %s",
+  "Montado: %s",
+  "已装配：%s"
+ ],
+ "typeomega.equatorial_shipyard.ui.starlight": [
+  "Starlight",
+  "Luz da estrela",
+  "星光"
+ ],
+ "typeomega.equatorial_shipyard.ui.luminosity": [
+  "L = %s L☉",
+  "L = %s L☉",
+  "L = %s L☉"
+ ],
+ "typeomega.equatorial_shipyard.ui.temperature": [
+  "T = %s K",
+  "T = %s K",
+  "T = %s K"
+ ],
+ "typeomega.equatorial_shipyard.ui.rush_on": [
+  "Rush shift on",
+  "Turno acelerado ligado",
+  "赶工班次开启"
+ ],
+ "typeomega.equatorial_shipyard.ui.rush_off": [
+  "Normal shifts",
+  "Turnos normais",
+  "正常班次"
+ ],
+ "typeomega.equatorial_shipyard.ui.crafts": [
+  "%s assembled, %s EU this second",
+  "%s montados, %s EU neste segundo",
+  "本秒装配 %s 件，%s EU"
+ ],
+ "typeomega.equatorial_shipyard.ui.idle.inner_ring": [
+  "Waiting: build phase 2 inner harvesting ring",
+  "Esperando: construa o anel interno de coleta (fase 2)",
+  "等待中：需要建造第 2 阶段内采集环"
+ ],
+ "typeomega.equatorial_shipyard.ui.idle.no_recipe": [
+  "Waiting: no assembly recipe matches the buses",
+  "Esperando: nenhuma receita de montagem bate com os barramentos",
+  "等待中：输入总线无匹配的装配配方"
+ ],
+ "typeomega.equatorial_shipyard.ui.idle.inputs": [
+  "Waiting: inputs ran short",
+  "Esperando: faltaram insumos",
+  "等待中：原料不足"
+ ],
+ "typeomega.equatorial_shipyard.ui.idle.power": [
+  "Waiting: not enough EU in the Nexus network",
+  "Esperando: falta EU na rede Nexus",
+  "等待中：Nexus 网络 EU 不足"
+ ],
+ "typeomega.equatorial_shipyard.ui.idle.slipways": [
+  "Waiting: no slipway open",
+  "Esperando: nenhuma rampa aberta",
+  "等待中：没有开放的船台"
+ ],
+ "typeomega.equatorial_shipyard.ui.manual_title": [
+  "Field manual - Equatorial Shipyard",
+  "Manual de campo - Estaleiro Equatorial",
+  "现场手册 - 赤道船坞"
+ ],
+ "typeomega.equatorial_shipyard.ui.manual.0": [
+  "#Twin-ring layout",
+  "#Anéis gêmeos",
+  "#双环布局"
+ ],
+ "typeomega.equatorial_shipyard.ui.manual.1": [
+  "A compact twin-ring sibling of the Assembly Yard: phase 2's inner ring harvests starlight and opens 6 slipways; phase 3's outer ring and 6 gantries open 24 slipways.",
+  "Irmão compacto de anéis gêmeos do Estaleiro: o anel interno da fase 2 colhe luz estelar e abre 6 rampas; o anel externo da fase 3 e 6 pórticos abrem 24 rampas.",
+  "装配船坞的紧凑双环姊妹巨构：第 2 阶段内环采集星光并开放 6 条船台；第 3 阶段外环与 6 座龙门架开放 24 条船台。"
+ ],
+ "typeomega.equatorial_shipyard.ui.manual.2": [
+  "=parallel = 8 x open slipways (max 192);  inner ring EU x0.8",
+  "=paralelo = 8 x rampas abertas (máx 192);  anel interno EU x0,8",
+  "=并行 = 8 x 开放船台（最高 192）；内环耗能 x0.8"
+ ],
+ "typeomega.equatorial_shipyard.ui.manual.3": [
+  "#Starlight & discounts",
+  "#Luz estelar e descontos",
+  "#星光与折扣"
+ ],
+ "typeomega.equatorial_shipyard.ui.manual.4": [
+  "Runs Assembler and Assembly Line recipes. Starlight scales speed (1 + 0.5*log10(L/L☉), x0.5 to x2.5). Rush shift runs x1.5 faster at x2.0 EU.",
+  "Roda receitas de Assembler e Assembly Line. A luz escala a velocidade (1 + 0,5*log10(L/L☉), x0,5 a x2,5). Turno acelerado roda x1,5 com EU x2,0.",
+  "运行组装机和装配线配方。星光按对数缩放速度（1 + 0.5*log10(L/L☉)，x0.5 至 x2.5）。赶工班次速度 x1.5，耗能 x2.0。"
+ ],
+ "typeomega.equatorial_shipyard.ui.manual.5": [
+  "=Megastructure controllers cost half EU here, making it the natural stepping stone before the full Assembly Yard.",
+  "=Controladores de megaestruturas custam metade do EU aqui, sendo o degrau natural antes do Assembly Yard.",
+  "=巨构控制器配方在此仅需一半 EU，是建造完整装配船坞前的理想过渡。"
+ ]
+}

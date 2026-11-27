@@ -123,6 +123,19 @@ public final class MegaRecipes {
                 .save(provider);
     }
 
+    /** Provisional (D-446 A6): smaller twin-ring shipyard preceding the Assembly Yard. */
+    private static void equatorialShipyard(Consumer<FinishedRecipe> provider) {
+        GTRecipeTypes.ASSEMBLY_LINE_RECIPES.recipeBuilder(TypeOmegaMod.id("equatorial_shipyard"))
+                .inputItems(com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.ASSEMBLY_LINE.asStack(8))
+                .inputItems(GTItems.ROBOT_ARM_UV.asStack(32))
+                .inputItems(GTItems.FIELD_GENERATOR_UV.asStack(8))
+                .inputItems(CustomTags.UV_CIRCUITS, 16)
+                .inputFluids(GTMaterials.Tritanium.getFluid(9216))
+                .outputItems(TypeOmegaMegastructures.EQUATORIAL_SHIPYARD_DEF.asStack())
+                .EUt(GTValues.VA[GTValues.UV]).duration(8000)
+                .save(provider);
+    }
+
     /** Provisional (D-446 A3): superradiant mirror sphere sharing the black hole with HRAE-MC. */
     private static void penroseSphere(Consumer<FinishedRecipe> provider) {
         GTRecipeTypes.ASSEMBLY_LINE_RECIPES.recipeBuilder(TypeOmegaMod.id("penrose_sphere"))
@@ -274,6 +287,7 @@ public final class MegaRecipes {
         if (TypeOmegaMegastructures.PENROSE_SPHERE_DEF != null) penroseSphere(provider);
         if (TypeOmegaMegastructures.NIDAVELLIR_DEF != null) nidavellir(provider);
         if (TypeOmegaMegastructures.NEUTRONIUM_GIGAFORGE_DEF != null) neutroniumGigaforge(provider);
+        if (TypeOmegaMegastructures.EQUATORIAL_SHIPYARD_DEF != null) equatorialShipyard(provider);
         if (TypeOmegaMegastructures.ASSEMBLY_YARD_DEF != null) assemblyYard(provider);
         if (TypeOmegaMegastructures.PLANETARY_SEEDER_NEXUS_DEF != null) planetarySeederNexus(provider);
         if (TypeOmegaMegastructures.YGGDRASIL_DEF != null) yggdrasil(provider);

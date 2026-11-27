@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "typeomega:block/machine/planetary_seeder_nexus",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "typeomega:block/machine/planetary_seeder_nexus"
+    },
+    "facing=south": {
+      "model": "typeomega:block/machine/planetary_seeder_nexus",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "typeomega:block/machine/planetary_seeder_nexus",
+      "y": 270
+    }
+  }
+}
