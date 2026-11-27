@@ -200,6 +200,8 @@ public final class MegaTooltips {
         String id = "birch_world";
         int[] era = BirchPhysics.ERA_EXPONENTS;
         var b = begin(id, "module_host", "megastructure")
+                .line(own(id, "habitat"), value(Fmt.sci(BirchPhysics.POPULATION_PER_LAYER)),
+                        value(BirchPhysics.LAYERS_PER_PHASE))
                 .line(own(id, "modules"))
                 .line(own(id, "speed"), value(times(BirchPhysics.SPEED)))
                 .line(own(id, "room"), value(BirchPhysics.PARALLEL_PER_MODULE), value(BirchPhysics.MODULES_PER_LAYER),

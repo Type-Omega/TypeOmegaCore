@@ -850,14 +850,19 @@
   "整个太阳系的退役服务。请先带走个人物品。"
  ],
  "typeomega.machine.birch_world.tooltip.purpose": [
-  "Shells round a black hole whose rotating interior allows closed timelike curves: the Causal era",
-  "Cascas em volta de um buraco negro cujo interior em rotação permite curvas temporais fechadas: a era Causal",
-  "环绕黑洞的壳层，其旋转内部允许闭合类时曲线：因果时代"
+  "Concentric habitat shells round a black hole, housing inhabitants and district modules on causal credit: the Causal era",
+  "Cascas concêntricas de habitat em volta de um buraco negro, abrigando habitantes e módulos de distrito em crédito causal: a era Causal",
+  "环绕黑洞的同心栖息地壳层，以因果信用容纳居民与分区模块：因果时代"
+ ],
+ "typeomega.machine.birch_world.tooltip.habitat": [
+  "%s inhabitants per layer (%s layers per phase)",
+  "%s habitantes por camada (%s camadas por fase)",
+  "每层 %s 居民（每阶段 %s 层）"
  ],
  "typeomega.machine.birch_world.tooltip.modules": [
-  "Multiblock controllers in its input buses are modules, as in the Suprashell",
-  "Controladores de multibloco nos input buses são módulos, como na Suprashell",
-  "输入总线中的多方块控制器即为模块，与超壳相同"
+  "Concentric layers serve as district space for multiblock controllers placed in its input buses",
+  "As camadas concêntricas servem de espaço de distrito para controladores de multibloco nos input buses",
+  "同心壳层作为分区空间，容纳放入输入总线的多方块控制器"
  ],
  "typeomega.machine.birch_world.tooltip.speed": [
   "Recipes run %s as fast; their EU is not drawn but owed as causal debt",

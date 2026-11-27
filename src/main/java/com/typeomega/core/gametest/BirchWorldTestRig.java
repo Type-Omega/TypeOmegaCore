@@ -30,6 +30,9 @@ final class BirchWorldTestRig {
     static void causalMath(GameTestHelper helper) {
         helper.assertTrue(BirchPhysics.layers(5) == 200 && BirchPhysics.capacity(5) == 400,
                 "40 layers a phase, 2 " + "modules a layer");
+        helper.assertTrue(BirchPhysics.population(1) == 40 * BirchPhysics.POPULATION_PER_LAYER &&
+                BirchPhysics.population(5) == 200 * BirchPhysics.POPULATION_PER_LAYER,
+                "habitat population scales with layers");
         helper.assertTrue(BirchPhysics.credit(5, 10) == 10 * BirchPhysics.credit(5, 1) &&
                 BirchPhysics.credit(2, 1) * 2.5 == BirchPhysics.credit(5, 1), "credit ~ layers x mass");
         helper.assertTrue(Math.abs(BirchPhysics.grow(1000) - 1000.5) < 1e-9, "0.05 % a second");
@@ -59,11 +62,14 @@ final class BirchWorldTestRig {
         double mass = star.mass;
         try {
             MegaMachine.anyDimensionForTests = true;
-            star.kind = Kind.BLACK_HOLE;
-            star.mass = 10;
             BirchWorldMachine m = MegaTestRig.build(helper, BirchWorldMachine.SHAPE,
                     TypeOmegaMegastructures.BIRCH_WORLD_DEF,
                     5, 30);
+            star.kind = Kind.YELLOW_DWARF;
+            helper.assertTrue(!m.inPlace(), "a yellow dwarf star cannot hold a Birch World");
+            star.kind = Kind.BLACK_HOLE;
+            star.mass = 10;
+            helper.assertTrue(m.inPlace(), "a black hole holds a Birch World");
             var bus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
             var modules = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 1,
                     GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
@@ -83,6 +89,8 @@ final class BirchWorldTestRig {
             for (int i = 0; i < 4 && m.crafted() == 0; i++) m.testSecond(owner);
             helper.assertTrue(m.crafted() > 1 && m.debt() > 0, "hosted work is done and owed: " + m.crafted() + ", " +
                     m.debt());
+            helper.assertTrue(m.view()[11] == BirchPhysics.layers(5) && m.view()[12] == BirchPhysics.population(5),
+                    "habitat view reports layers and population");
             double before = m.debt();
             m.setRepay(BirchPhysics.REPAY_MAX);
             m.testSecond(owner);

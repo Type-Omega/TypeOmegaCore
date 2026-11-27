@@ -9,8 +9,9 @@ import com.typeomega.core.TypeOmegaMod;
 import com.typeomega.core.mega.TypeOmegaMegastructures;
 
 /**
- * The Birch World (D-331): layers, credit, interest and era levels; hosted work booked as causal debt, paid back,
- * and a paradox past the credit; without the inner layer it does not form. Slots 30, 31.
+ * The Birch World (D-331, D-446 A5): concentric habitat layers, population, district module capacity, credit, interest
+ * and era levels; black-hole host check, hosted work booked as causal debt, paid back, and a paradox past the credit;
+ * without the inner layer it does not form. Slots 30, 31.
  */
 @PrefixGameTestTemplate(false)
 @GameTestHolder(TypeOmegaMod.MOD_ID)

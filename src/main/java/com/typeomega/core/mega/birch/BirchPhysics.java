@@ -1,10 +1,13 @@
 package com.typeomega.core.mega.birch;
 
 /**
- * Physics of the Birch World (D-331), the Causal era (D-312): shells round a black hole whose rotating
- * interior allows closed timelike curves.
+ * Physics of the Birch World (D-331, D-446 A5), the Causal era (D-312): a concentric shell habitat round a black hole
+ * whose layers house inhabitants and district slots for modules, while the hole's rotating interior allows closed
+ * timelike curves.
  *
  * <ul>
+ * <li>Each shell layer holds {@link #POPULATION_PER_LAYER} inhabitants and {@link #MODULES_PER_LAYER} district
+ * module slots (distinct from the Suprashell's time dilation).</li>
  * <li>Work sent round a time loop is done before it is paid for: recipes finish 64 times as fast and their EU becomes
  * causal debt instead of being drawn.</li>
  * <li>The debt grows by 0.05 % a second (the loop's tension) until it is paid back from the Nexus network.</li>
@@ -16,6 +19,10 @@ public final class BirchPhysics {
 
     public static final int LAYERS_PER_PHASE = 40, MODULES_PER_LAYER = 2, PARALLEL_PER_MODULE = 256, REPAY_MAX = 16,
             PARADOX_SECONDS = 60;
+    // EN: Each concentric habitat layer houses 1 trillion inhabitants alongside its industrial district slots.
+    // PT: Cada camada concêntrica do habitat abriga 1 trilhão de habitantes junto aos seus espaços de distrito.
+    // ZH: 每个同心栖息地壳层容纳 1 万亿居民及其工业分区模块槽位。
+    public static final double POPULATION_PER_LAYER = 1e12;
     public static final double SPEED = 64, INTEREST = 0.0005, CREDIT_PER_LAYER_MASS = Math.pow(2, 44),
             REPAY_STEP = Math.pow(2, 40);
 
@@ -30,6 +37,11 @@ public final class BirchPhysics {
 
     public static int capacity(int phases) {
         return MODULES_PER_LAYER * layers(phases);
+    }
+
+    /** Total habitat population housed across the concentric shell layers. */
+    public static double population(int phases) {
+        return POPULATION_PER_LAYER * layers(phases);
     }
 
     public static int parallel(int modules) {

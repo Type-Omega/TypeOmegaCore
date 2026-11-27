@@ -89,6 +89,7 @@ typeomega.assembly_yard.ui.slipways
 typeomega.assembly_yard.ui.speed
 typeomega.assembly_yard.ui.starlight
 typeomega.assembly_yard.ui.temperature
+typeomega.birch_world.habitat
 typeomega.birch_world.state
 typeomega.birch_world.ui.crafts
 typeomega.birch_world.ui.credit
@@ -103,6 +104,7 @@ typeomega.birch_world.ui.idle.inputs
 typeomega.birch_world.ui.idle.modules
 typeomega.birch_world.ui.idle.no_recipe
 typeomega.birch_world.ui.idle.paradox
+typeomega.birch_world.ui.layers
 typeomega.birch_world.ui.manual
 typeomega.birch_world.ui.manual.0
 typeomega.birch_world.ui.manual.1
@@ -120,6 +122,7 @@ typeomega.birch_world.ui.manual.tip
 typeomega.birch_world.ui.manual_title
 typeomega.birch_world.ui.paradoxes
 typeomega.birch_world.ui.per_second
+typeomega.birch_world.ui.population
 typeomega.birch_world.ui.repay
 typeomega.birch_world.ui.repay.tip
 typeomega.config.mega_model_overlay
@@ -263,6 +266,7 @@ typeomega.machine.assembly_yard.tooltip.rush
 typeomega.machine.assembly_yard.tooltip.slipways
 typeomega.machine.birch_world.tooltip.credit
 typeomega.machine.birch_world.tooltip.era
+typeomega.machine.birch_world.tooltip.habitat
 typeomega.machine.birch_world.tooltip.humor
 typeomega.machine.birch_world.tooltip.interest
 typeomega.machine.birch_world.tooltip.modules

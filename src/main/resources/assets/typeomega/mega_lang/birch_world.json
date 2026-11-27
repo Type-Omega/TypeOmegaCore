@@ -4,6 +4,11 @@
   "Mundo Birch",
   "伯奇世界"
  ],
+ "typeomega.birch_world.habitat": [
+  "Habitat: %s layers, %s inhabitants (%s / %s district modules)",
+  "Habitat: %s camadas, %s habitantes (%s / %s módulos de distrito)",
+  "栖息地：%s 层，%s 居民（%s / %s 分区模块）"
+ ],
  "typeomega.birch_world.state": [
   "Causal debt %s / %s, paradoxes %s",
   "Dívida causal %s / %s, paradoxos %s",
@@ -15,9 +20,9 @@
   "手册"
  ],
  "typeomega.birch_world.ui.manual.tip": [
-  "How the time loops work, with the formulas.",
-  "Como os laços temporais funcionam, com as fórmulas.",
-  "时间回路的原理和公式。"
+  "How the habitat layers and time loops work, with the formulas.",
+  "Como as camadas do habitat e os laços temporais funcionam, com as fórmulas.",
+  "栖息地壳层与时间回路的原理和公式。"
  ],
  "typeomega.birch_world.ui.repay.tip": [
   "Repayment: left click +2^40 EU/s, right click -2^40 EU/s.",
@@ -69,10 +74,20 @@
   "%s EU/s",
   "%s EU/s"
  ],
+ "typeomega.birch_world.ui.layers": [
+  "%s layers",
+  "%s camadas",
+  "%s 层"
+ ],
+ "typeomega.birch_world.ui.population": [
+  "Pop. %s",
+  "Pop. %s",
+  "人口 %s"
+ ],
  "typeomega.birch_world.ui.hosted": [
-  "%s / %s modules",
-  "%s / %s módulos",
-  "%s / %s 模块"
+  "%s / %s districts",
+  "%s / %s distritos",
+  "%s / %s 分区"
  ],
  "typeomega.birch_world.ui.frozen": [
   "Paradox: the loops reopen in %s s",
@@ -110,24 +125,24 @@
   "现场手册 - 伯奇世界"
  ],
  "typeomega.birch_world.ui.manual.0": [
-  "#Time loops",
-  "#Laços temporais",
-  "#时间回路"
+  "#Habitat & Time loops",
+  "#Habitat & Laços temporais",
+  "#栖息地与时间回路"
  ],
  "typeomega.birch_world.ui.manual.1": [
-  "A spinning black hole's interior allows closed timelike curves: work sent round one is done before it is paid for.",
-  "O interior de um buraco negro girando permite curvas temporais fechadas: o trabalho mandado por uma é feito antes de ser pago.",
-  "旋转黑洞内部允许闭合类时曲线：沿其送出的工作在付款之前就已完成。"
+  "Concentric shell layers round a spinning black hole house inhabitants and district slots for industrial modules.",
+  "Camadas concêntricas em volta de um buraco negro girando abrigam habitantes e espaços de distrito para módulos.",
+  "环绕旋转黑洞的同心壳层容纳居民，并为工业模块提供分区空间。"
  ],
  "typeomega.birch_world.ui.manual.2": [
-  "=speed = x64;  parallel = 256 x modules;  room = 80 modules x phases",
-  "=velocidade = x64;  paralelo = 256 x módulos;  espaço = 80 módulos x fases",
-  "=速度 = x64；并行 = 256 x 模块数；容量 = 80 模块 x 阶段数"
+  "=layers = 40 x phases;  districts = 2 x layers;  pop = 1T x layers",
+  "=camadas = 40 x fases;  distritos = 2 x camadas;  pop = 1T x camadas",
+  "=壳层 = 40 x 阶段数；分区 = 2 x 壳层；人口 = 1T x 壳层"
  ],
  "typeomega.birch_world.ui.manual.3": [
-  "Modules are multiblock controllers in the input buses, as in the Suprashell. Their EU is not drawn: it is owed.",
-  "Os módulos são controladores de multibloco nos barramentos, como na Supracasca. O EU deles não é tirado: fica devido.",
-  "模块是输入总线中的多方块控制器，与超壳相同。其 EU 不会被扣除，而是记为欠款。"
+  "=speed = x64;  parallel = 256 x modules;  EU is owed as causal debt",
+  "=velocidade = x64;  paralelo = 256 x módulos;  EU vira dívida causal",
+  "=速度 = x64；并行 = 256 x 模块数；EU 记为因果债务"
  ],
  "typeomega.birch_world.ui.manual.4": [
   "#Causal debt",

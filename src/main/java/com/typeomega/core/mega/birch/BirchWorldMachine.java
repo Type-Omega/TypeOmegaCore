@@ -20,6 +20,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
+import com.typeomega.core.data.tooltip.Fmt;
 import com.typeomega.core.mega.EraStore;
 import com.typeomega.core.mega.common.MegaMachine;
 import com.typeomega.core.mega.common.MegaModules;
@@ -30,9 +31,9 @@ import com.typeomega.core.mega.system.StarSystems;
 import java.util.List;
 
 /**
- * Controller of the Birch World (D-331): hosts multiblock controllers like the Suprashell, runs their recipes
- * 64 times as fast and books their EU as causal debt, paid back at the rate the player sets; a debt past the credit
- * is a paradox.
+ * Controller of the Birch World (D-331, D-446 A5): a concentric shell habitat round a black hole whose layers provide
+ * living space and district slots for hosted multiblock controllers, running their recipes 64 times as fast and booking
+ * their EU as causal debt, paid back at the rate the player sets; a debt past the credit is a paradox.
  */
 public class BirchWorldMachine extends MegaMachine {
 
@@ -68,10 +69,11 @@ public class BirchWorldMachine extends MegaMachine {
     private String modules = "";
     /**
      * What the screen shows: [0] modules, [1] capacity, [2] parallel, [3] debt, [4] credit, [5] repaid this second,
-     * [6] crafts this second, [7] borrowed this second, [8] working (1/0), [9] seconds frozen, [10] era level.
+     * [6] crafts this second, [7] borrowed this second, [8] working (1/0), [9] seconds frozen, [10] era level,
+     * [11] habitat layers, [12] habitat population.
      */
     @DescSynced
-    private double[] view = new double[11];
+    private double[] view = new double[13];
     /** True while repaying: then pay() draws real EU. */
     private boolean repaying;
     private double borrowed;
@@ -210,8 +212,12 @@ public class BirchWorldMachine extends MegaMachine {
             borrowed = credit * 0.01;
         }
         modules = MegaModules.lines(hosted);
+        // EN: Expose habitat layer count and population alongside causal debt metrics for the screen and display.
+        // PT: Expõe a contagem de camadas do habitat e a população junto às métricas de dívida causal na tela.
+        // ZH: 将栖息地壳层数和人口与因果债务指标一并同步至界面和信息面板。
         view = new double[] { count, BirchPhysics.capacity(phases), BirchPhysics.parallel(used), debt, credit, repaid,
-                result.crafts(), borrowed, working ? 1 : 0, frozen, BirchPhysics.eraLevel(paid) };
+                result.crafts(), borrowed, working ? 1 : 0, frozen, BirchPhysics.eraLevel(paid),
+                BirchPhysics.layers(phases), BirchPhysics.population(phases) };
         return working || isWorkingEnabled();
     }
 
@@ -264,6 +270,8 @@ public class BirchWorldMachine extends MegaMachine {
     public void addDisplayText(List<Component> text) {
         super.addDisplayText(text);
         if (!isFormed()) return;
+        text.add(Component.translatable("typeomega.birch_world.habitat", (int) view[11], Fmt.sci(view[12]),
+                (int) view[0], (int) view[1]).withStyle(ChatFormatting.AQUA));
         text.add(Component.translatable("typeomega.birch_world.state", String.format("%.3g", view[3]),
                 String.format("%.3g", view[4]), paradoxes).withStyle(ChatFormatting.BLUE));
     }

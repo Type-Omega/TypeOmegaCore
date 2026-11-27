@@ -16,8 +16,9 @@ import com.typeomega.core.mega.common.ui.MegaUI.Look;
 import static com.raishxn.gtna.common.machine.multiblock.originals.ui.OriginalScreen.*;
 
 /**
- * Birch World screen, a lemniscate: on the left the causal debt against the credit the shells hold; on the right the
- * time loop's clock running backwards round the repayment dial; the hosted work and the paradoxes below.
+ * Birch World screen, a lemniscate and habitat layers: on the left the causal debt against the credit the shells hold;
+ * on the right the time loop's clock running backwards round the repayment dial; below, the concentric habitat layers,
+ * population, district modules and hosted work.
  */
 public final class BirchWorldScreen {
 
@@ -30,22 +31,23 @@ public final class BirchWorldScreen {
 
     public static ModularUI create(BirchWorldMachine m, Player player) {
         Nav nav = new Nav();
-        var root = MegaUI.window(L, m, 320, 188, 122, 17);
-        root.addWidget(MegaUI.paint(42, 40, 96, 96, (g, x, y) -> debtGauge(g, m, x + 48, y + 48)));
-        root.addWidget(MegaUI.paint(182, 40, 96, 96, (g, x, y) -> loopClock(g, m, x + 48, y + 48)));
-        root.addWidget(MegaUI.knob(L, 230, 88, 13, m::repay, BirchPhysics.REPAY_MAX + 1,
+        var root = MegaUI.window(L, m, 320, 202, 122, 17);
+        root.addWidget(MegaUI.paint(42, 38, 96, 96, (g, x, y) -> debtGauge(g, m, x + 48, y + 48)));
+        root.addWidget(MegaUI.paint(182, 38, 96, 96, (g, x, y) -> loopClock(g, m, x + 48, y + 48)));
+        root.addWidget(MegaUI.knob(L, 230, 86, 13, m::repay, BirchPhysics.REPAY_MAX + 1,
                 () -> new String[] { "0", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "16" },
                 c -> MegaScreen.act(m, c.button == 1 ? "less" : "more", c), P + ".ui.repay.tip"));
-        root.addWidget(MegaUI.paint(40, 148, 100, 12, (g, x, y) -> MegaUI.ticker(g, L, x + 3, y + 2, 94, ticker(m),
+        root.addWidget(MegaUI.paint(40, 138, 240, 12, (g, x, y) -> habitatBar(g, m, x, y)));
+        root.addWidget(MegaUI.paint(40, 154, 100, 12, (g, x, y) -> MegaUI.ticker(g, L, x + 3, y + 2, 94, ticker(m),
                 0xFFD0DCFF)));
-        root.addWidget(MegaUI.paint(180, 148, 100, 12, (g, x, y) -> centre(g, MegaScreen.tr(P, "hosted",
+        root.addWidget(MegaUI.paint(180, 154, 100, 12, (g, x, y) -> centre(g, MegaScreen.tr(P, "hosted",
                 (int) v(m, 0), (int) v(m, 1)), x + 50, y + 2, L.dim())));
-        root.addWidget(MegaUI.button(L, 64, 166, 52, 12, P + ".ui.manual", () -> "manual".equals(nav.open),
+        root.addWidget(MegaUI.button(L, 64, 174, 52, 12, P + ".ui.manual", () -> "manual".equals(nav.open),
                 c -> nav.toggle("manual")));
-        root.addWidget(MegaUI.button(L, 204, 166, 52, 12, "gtna.ui.o.power", m::isWorkingEnabled, c -> {
+        root.addWidget(MegaUI.button(L, 204, 174, 52, 12, "gtna.ui.o.power", m::isWorkingEnabled, c -> {
             if (!c.isRemote) m.setWorkingEnabled(!m.isWorkingEnabled());
         }));
-        root.addWidget(MegaUI.manual(L, 40, 32, 240, 128, P, MANUAL_LINES, PAGE_LINES, nav));
+        root.addWidget(MegaUI.manual(L, 40, 32, 240, 136, P, MANUAL_LINES, PAGE_LINES, nav));
         return MegaUI.ui(root, m, player);
     }
 
@@ -97,5 +99,19 @@ public final class BirchWorldScreen {
         glow(g, hx, hy, 4, L.accent(), 0.7);
         centre(g, MegaScreen.tr(P, "repay"), cx, cy - 30, L.dim());
         centre(g, MegaScreen.tr(P, "per_second", sci(BirchPhysics.repayment(m.repay()))), cx, cy + 20, L.glow());
+    }
+
+    /** Concentric habitat shell layers and total population housed across them. */
+    @OnlyIn(Dist.CLIENT)
+    private static void habitatBar(GuiGraphics g, BirchWorldMachine m, int x, int y) {
+        int layers = (int) v(m, 11);
+        int builtPhases = Math.max(0, Math.min(5, layers / BirchPhysics.LAYERS_PER_PHASE));
+        text(g, MegaScreen.tr(P, "layers", layers), x + 3, y + 2, L.accent(), false);
+        int barX = x + 76, barW = 88;
+        for (int p = 0; p < 5; p++) {
+            int sx = barX + p * 18;
+            g.fill(sx, y + 4, sx + 15, y + 8, p < builtPhases ? L.accent() : 0xFF1A2236);
+        }
+        right(g, MegaScreen.tr(P, "population", sci(v(m, 12))), x + 237, y + 2, L.glow());
     }
 }
