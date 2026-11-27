@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.Blocks;
 
 import com.typeomega.core.mega.TypeOmegaMegastructures;
 import com.typeomega.core.mega.common.MegaMachine;
+import com.typeomega.core.mega.common.MegaModelData;
 import com.typeomega.core.mega.common.MegaShape;
 import com.typeomega.core.mega.system.StarPhysics.Kind;
 import com.typeomega.core.mega.system.StarSystems;
@@ -83,6 +84,15 @@ final class AssemblyYardTestRig {
                 weld = Math.max(weld, m.fxLevel("weld_0"));
             }
             helper.assertTrue(weld > 0, "the welding lasers burn while the assembly is under way");
+            helper.assertTrue(m.fxLevel("pump_0") > 0 && m.fxLevel("pump_5") > 0,
+                    "the 6 plasma pumps harvest from the star");
+            var shape = MegaShape.get(AssemblyYardMachine.SHAPE);
+            helper.assertTrue(MegaTestRig.part(shape, "pumps", "body") != null &&
+                    MegaTestRig.part(shape, "cradle_5", "body") != null &&
+                    shape.parts.values().stream().noneMatch(p -> "cradle_6".equals(p.ring())),
+                    "6-fold symmetry: pumps and 6 cradles (0..5)");
+            var model = MegaModelData.get(AssemblyYardMachine.SHAPE);
+            helper.assertTrue(model != null && !model.parts.isEmpty(), "D-448 3D model overlay loads");
             helper.assertTrue(m.crafted() > 1, "the yard runs " + recipe.id + " in parallel: " + m.crafted() + " (" +
                     m.blocked() + ")");
             boolean any = false;

@@ -118,6 +118,10 @@ public class AssemblyYardMachine extends MegaMachine {
     public float fxLevel(String effect) {
         boolean on = view[8] > 0;
         if (effect.startsWith("weld") || effect.startsWith("spark")) return on ? (rush ? 1.4f : 1) : 0;
+        // EN: The 6 plasma pumps continuously harvest stellar plasma once phase 2 is built, surging during assembly.
+        // PT: As 6 bombas de plasma colhem plasma estelar continuamente após a fase 2, intensificando na montagem.
+        // ZH: 第2阶段建成后，6台等离子泵持续采集恒星等离子体，装配时增强。
+        if (effect.startsWith("pump")) return phases >= 2 ? (on ? (rush ? 1.4f : 1.0f) : 0.45f) : 0;
         if (effect.equals("traffic")) return on ? 1 : 0.3f;
         return 1;
     }

@@ -62,7 +62,7 @@ public final class AssemblyYardScreen {
                 MegaScreen.tr(P, "crafts", String.format("%.0f", v(m, 4)), sci(v(m, 5)));
     }
 
-    /** The ring from above: the star, the hub, twelve spokes, and the ninety slipways round the rim. */
+    /** The ring from above: the star, 6 plasma pumps, the hub, twelve spokes, and the ninety slipways round the rim. */
     @OnlyIn(Dist.CLIENT)
     private static void radar(GuiGraphics g, AssemblyYardMachine m, int cx, int cy) {
         double t = MegaArt.time();
@@ -70,9 +70,16 @@ public final class AssemblyYardScreen {
         ellipse(g, cx, cy, 52, 52, 0xFF2E4A66, 0);
         ellipse(g, cx, cy, 16, 16, 0xFF5A7A9A, 1);
         for (int k = 0; k < 12; k++) {
-            double a = 2 * Math.PI * k / 12;
+            double a = 2 * Math.PI * (k + 0.5) / 12;
             line(g, cx + (int) Math.round(Math.cos(a) * 17), cy + (int) Math.round(Math.sin(a) * 17),
                     cx + (int) Math.round(Math.cos(a) * 51), cy + (int) Math.round(Math.sin(a) * 51), 0xFF24384E);
+        }
+        // 6 plasma pumps linking the star photosphere to the inner hub ring (D-446 A4).
+        int pumpColour = on ? 0xFF7FE0FF : 0xFF4A8FB0;
+        for (int k = 0; k < 6; k++) {
+            double a = 2 * Math.PI * k / 6;
+            line(g, cx + (int) Math.round(Math.cos(a) * 8), cy + (int) Math.round(Math.sin(a) * 8),
+                    cx + (int) Math.round(Math.cos(a) * 15), cy + (int) Math.round(Math.sin(a) * 15), pumpColour);
         }
         int open = (int) v(m, 2), built = (int) v(m, 3), total = YardPhysics.slipways(5);
         // A sweep runs round the open slipways while hulls are being finished.
