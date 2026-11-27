@@ -42,4 +42,9 @@ public final class NidavellirGameTests {
     public static void noOuterRingNoForge(GameTestHelper helper) {
         if (!skip(helper)) NidavellirTestRig.noOuterRingNoForge(helper);
     }
+
+    @GameTest(template = TEMPLATE, batch = "nidavellir_wrong", timeoutTicks = 2400)
+    public static void rejectsCommonStar(GameTestHelper helper) {
+        if (!skip(helper)) NidavellirTestRig.rejectsCommonStar(helper);
+    }
 }

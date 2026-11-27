@@ -59,6 +59,11 @@
   "Esperando: pó de neutrônio insuficiente para um lote",
   "等待中：中子素粉不足一批"
  ],
+ "typeomega.nidavellir.ui.idle.no_neutron_star": [
+  "Waiting: requires a neutron star, pulsar or magnetar",
+  "Esperando: exige estrela de nêutrons, pulsar ou magnetar",
+  "等待中：需要中子星、脉冲星或磁星"
+ ],
  "typeomega.nidavellir.ui.parallel": [
   "Parallel",
   "Paralelo",

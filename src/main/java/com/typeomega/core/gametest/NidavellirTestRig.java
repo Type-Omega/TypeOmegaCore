@@ -71,7 +71,7 @@ final class NidavellirTestRig {
                 for (int s = 0; s < bus.getInventory().getSlots() && !big.isEmpty(); s++)
                     big = bus.getInventory().storage.insertItem(s, big, false);
             }
-            star.kind = Kind.YELLOW_DWARF;
+            star.kind = Kind.NEUTRON_STAR;
             m.setCompression(0);
 
             // No neutronium: the forge waits.
@@ -83,12 +83,44 @@ final class NidavellirTestRig {
             for (int i = 0; i < Math.max(2, recipe.duration / 20 + 2) && m.crafted() == 0; i++) m.testSecond(owner);
             helper.assertTrue(m.crafted() > 1, "the forge runs " + recipe.id + " in parallel: " + m.crafted() + " (" +
                     m.blocked() + ")");
-            helper.assertTrue(m.neutroniumUsed() > 0 && m.view()[1] == 1, "each batch takes neutronium, speed ×1");
+            helper.assertTrue(m.neutroniumUsed() > 0 && m.view()[1] == NidavellirPhysics.SPEED_NEUTRON_STAR,
+                    "each batch takes neutronium and runs at neutron-star speed");
+            helper.succeed();
+        } finally {
+            MegaMachine.anyDimensionForTests = false;
+            star.kind = kind;
+        }
+    }
 
-            star.kind = Kind.NEUTRON_STAR;
+    static void rejectsCommonStar(GameTestHelper helper) {
+        var star = StarSystems.get(helper.getLevel().getServer()).star(StarSystems.NEXUS);
+        var kind = star.kind;
+        try {
+            MegaMachine.anyDimensionForTests = true;
+            NidavellirMachine m = MegaTestRig.build(helper, NidavellirMachine.SHAPE,
+                    TypeOmegaMegastructures.NIDAVELLIR_DEF, 5, 43);
+            var bus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 0, GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
+            var dustBus = (ItemBusPartMachine) MegaTestRig.hatch(helper, m, 1,
+                    GTMachines.ITEM_IMPORT_BUS[GTValues.LuV]);
+            MegaTestRig.hatch(helper, m, 2, GTMachines.ITEM_EXPORT_BUS[GTValues.LuV]);
+            MegaTestRig.hatch(helper, m, 3, GTMachines.FLUID_EXPORT_HATCH[GTValues.LuV]);
+            helper.assertTrue(m.checkPatternWithLock(), "the whole forge forms: " + MegaTestRig.error(m));
+            m.onStructureFormed();
+            UUID owner = UUID.randomUUID();
+            StellarEngineTestRig.power(helper, owner);
+            var recipe = simpleAlloy(helper);
+            for (var stack : RecipeHelper.getInputItems(recipe)) {
+                var big = stack.copyWithCount(64);
+                for (int s = 0; s < bus.getInventory().getSlots() && !big.isEmpty(); s++)
+                    big = bus.getInventory().storage.insertItem(s, big, false);
+            }
+            dustBus.getInventory().storage.insertItem(0, ChemicalHelper.get(TagPrefix.dust, GTMaterials.Neutronium,
+                    64), false);
+            star.kind = Kind.YELLOW_DWARF;
+            m.setCompression(0);
+            helper.assertTrue(!m.inPlace(), "common star is rejected by inPlace()");
             m.testSecond(owner);
-            helper.assertTrue(m.view()[1] == NidavellirPhysics.SPEED_NEUTRON_STAR, "a neutron star presses ×4");
-            MegaTestRig.capturesAndReleases(helper, m);
+            helper.assertTrue(m.crafted() == 0 && !m.isRunning(), "common star does not run Nidavellir");
             helper.succeed();
         } finally {
             MegaMachine.anyDimensionForTests = false;
@@ -101,10 +133,10 @@ final class NidavellirTestRig {
                 5,
                 19);
         var shape = MegaShape.get(NidavellirMachine.SHAPE);
-        int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "outer", "body"));
+        int[] c = MegaTestRig.firstCell(shape, MegaTestRig.part(shape, "ring_1_panel", "body"));
         helper.getLevel().setBlock(shape.world(m.getPos(), MegaTestRig.FRONT, c[0], c[1], c[2]),
                 Blocks.AIR.defaultBlockState(), 2 | 16);
-        helper.assertTrue(!m.checkPatternWithLock(), "a missing outer-ring block keeps the forge from forming");
+        helper.assertTrue(!m.checkPatternWithLock(), "a missing phase-1 ring block keeps the forge from forming");
         helper.succeed();
     }
 }

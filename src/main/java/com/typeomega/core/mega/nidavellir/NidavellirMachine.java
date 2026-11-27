@@ -80,9 +80,16 @@ public class NidavellirMachine extends MegaMachine {
         return SHAPE;
     }
 
+    // EN: Nidavellir requires a neutron star, pulsar or magnetar (D-446 A2).
+    // PT: A Nidavellir exige estrela de nêutrons, pulsar ou magnetar (D-446 A2).
+    // ZH: 尼达维勒要求系统恒星为中子星、脉冲星或磁星（D-446 A2）。
     @Override
     public boolean inPlace() {
-        return anyDimensionForTests || getLevel() != null && StarSystems.isSystem(getLevel().dimension());
+        if (getLevel() == null) return false;
+        if (!anyDimensionForTests && !StarSystems.isSystem(getLevel().dimension())) return false;
+        if (getLevel().isClientSide) return view[6] > 0;
+        var star = star();
+        return star != null && star.kind == Kind.NEUTRON_STAR;
     }
 
     public int compression() {
@@ -122,10 +129,8 @@ public class NidavellirMachine extends MegaMachine {
     @Override
     public float fxLevel(String effect) {
         boolean on = view[8] > 0;
-        if (effect.startsWith("strike")) return on ? 0.6f + compression * 0.2f : 0;
-        if (effect.equals("press_feed")) return on ? 1 : 0;
-        if (effect.startsWith("pulsar") || effect.equals("neutron_star") || effect.equals("magnetosphere"))
-            return view[6] > 0 ? 1 : 0.35f;
+        if (effect.equals("lens_beam") || effect.equals("lens4_glow")) return on ? 0.6f + compression * 0.15f : 0;
+        if (effect.equals("neutron_star")) return view[6] > 0 ? 1 : 0.35f;
         return 1;
     }
 
@@ -135,13 +140,19 @@ public class NidavellirMachine extends MegaMachine {
     protected boolean megaSecond(ServerLevel level) {
         var star = star();
         boolean magnetar = star != null && star.kind == Kind.NEUTRON_STAR;
+        if (!magnetar) {
+            recipe = "";
+            blocked = "no_neutron_star";
+            view = new double[9];
+            return false;
+        }
         boolean wind = Region.PULSAR_VICINITY.reached(StellarEraStore.farthest(level.getServer(), networkOwner));
         int c = Math.min(compression, NidavellirPhysics.maxCompression(phases));
         int perBatch = NidavellirPhysics.neutronium(c, wind);
         var dust = neutroniumDust();
         long have = count(s -> s.is(dust.getItem()));
         int parallel = NidavellirPhysics.parallel(c);
-        double speed = magnetar ? NidavellirPhysics.SPEED_NEUTRON_STAR : NidavellirPhysics.SPEED;
+        double speed = NidavellirPhysics.SPEED_NEUTRON_STAR;
         MegaRecipeEngine.Result result = new MegaRecipeEngine.Result(0, 0, "", "neutronium");
         if (isWorkingEnabled() && have >= perBatch) {
             progress.ticks = progressTicks;

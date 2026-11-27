@@ -510,9 +510,9 @@
   "九十条船台，零个停车位。Type Omega 造的是巨构，不是借口。"
  ],
  "typeomega.machine.nidavellir.tooltip.purpose": [
-  "A disc of five concentric rings round the star of its system that presses alloys under degenerate matter",
-  "Um disco de cinco anéis concêntricos em volta da estrela do sistema que prensa ligas sob matéria degenerada",
-  "环绕所在星系恒星的五环圆盘，以简并物质压制合金"
+  "A disc of four concentric rings round a neutron star, pulsar or magnetar that presses alloys under neutronium",
+  "Um disco de quatro anéis concêntricos em volta de uma estrela de nêutrons, pulsar ou magnetar que prensa ligas com neutrônio",
+  "环绕中子星、脉冲星或磁星的四环圆盘，用中子素压制合金"
  ],
  "typeomega.machine.nidavellir.tooltip.recipes": [
   "Runs Alloy Blast Smelter and Ultimate Material Forge recipes in huge batches",
@@ -553,6 +553,51 @@
   "Our press brake is a neutron star. Health and safety signed off from a different galaxy.",
   "Nossa prensa é uma estrela de nêutrons. A segurança do trabalho assinou de outra galáxia.",
   "我们的压力机是一颗中子星。安全部门在另一个星系签的字。"
+ ],
+ "typeomega.machine.neutronium_gigaforge.tooltip.purpose": [
+  "An extraction station above a neutron star, pulsar or magnetar that harvests neutronium dust for Nidavellir",
+  "Uma estação extratora sobre uma estrela de nêutrons, pulsar ou magnetar que colhe pó de neutrônio para a Nidavellir",
+  "建在中子星、脉冲星或磁星上方的提取站，为尼达维勒采集中子素粉"
+ ],
+ "typeomega.machine.neutronium_gigaforge.tooltip.star": [
+  "Requires a neutron star, pulsar or magnetar (from Fusion Suppressor or System Creator phase 5)",
+  "Exige estrela de nêutrons, pulsar ou magnetar (do Fusion Suppressor ou System Creator fase 5)",
+  "需要中子星、脉冲星或磁星（来自聚变抑制器或星系创造器第 5 阶段）"
+ ],
+ "typeomega.machine.neutronium_gigaforge.tooltip.extract": [
+  "Extracts %s to %s neutronium dust per second across three phases (hub, processing rings, drill)",
+  "Extrai de %s a %s de pó de neutrônio por segundo em três fases (núcleo, anéis de processamento, broca)",
+  "分三阶段（核心、处理环、钻头）每秒提取 %s 至 %s 中子素粉"
+ ],
+ "typeomega.machine.neutronium_gigaforge.tooltip.phases": [
+  "Phase 2 processing rings raise extraction to %s/s; phase 3 drill reaches %s/s",
+  "Os anéis de processamento da fase 2 sobem a extração para %s/s; a broca da fase 3 chega a %s/s",
+  "第 2 阶段处理环将提取提升至 %s/s；第 3 阶段钻头可达 %s/s"
+ ],
+ "typeomega.machine.neutronium_gigaforge.tooltip.rate": [
+  "Extraction rate adjustable from %s to %s on the controller screen",
+  "Taxa de extração ajustável de %s a %s na tela do controlador",
+  "控制器界面可在 %s 至 %s 之间调节提取速率"
+ ],
+ "typeomega.machine.neutronium_gigaforge.tooltip.pair": [
+  "Built above the same neutron star as the Nidavellir Hyperforge without colliding with its rings or beam",
+  "Construída acima da mesma estrela de nêutrons da Nidavellir sem colidir com seus anéis nem com o feixe",
+  "建在尼达维勒超级熔炉同一颗中子星上方，不与其环或光束碰撞"
+ ],
+ "typeomega.machine.neutronium_gigaforge.tooltip.output": [
+  "Outputs neutronium dust to item export buses for Nidavellir alloy pressing",
+  "Entrega pó de neutrônio nos barramentos de saída para a prensagem de ligas da Nidavellir",
+  "向物品输出总线输出中子素粉供尼达维勒压制合金"
+ ],
+ "typeomega.machine.neutronium_gigaforge.tooltip.energy": [
+  "Draws %s per neutronium dust extracted from the Nexus network",
+  "Consome %s da rede Nexus por pó de neutrônio extraído",
+  "每提取一份中子素粉从 Nexus 网络消耗 %s"
+ ],
+ "typeomega.machine.neutronium_gigaforge.tooltip.humor": [
+  "Drilling a neutron star from thirty blocks away. What could possibly go wrong?",
+  "Perfurar uma estrela de nêutrons a trinta blocos de distância. O que poderia dar errado?",
+  "在三十格开外钻探中子星。能出什么岔子呢？"
  ],
  "typeomega.machine.yggdrasil.tooltip.purpose": [
   "A gas giant seeded with floating gardens inside a shell of hexagonal glass",

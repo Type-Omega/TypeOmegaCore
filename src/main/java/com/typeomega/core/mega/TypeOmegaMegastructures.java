@@ -16,7 +16,8 @@ public final class TypeOmegaMegastructures {
             STAR_LIFTER = "star_lifter", STELLAR_HOOP = "stellar_hoop",
             SYSTEM_CREATOR = "system_creator", FUSION_SUPPRESSOR = "fusion_suppressor",
             KUGELBLITZ = "kugelblitz", HRAEMC = "hraemc",
-            NIDAVELLIR = "nidavellir", ASSEMBLY_YARD = "assembly_yard",
+            NIDAVELLIR = "nidavellir", NEUTRONIUM_GIGAFORGE = "neutronium_gigaforge",
+            ASSEMBLY_YARD = "assembly_yard",
             YGGDRASIL = "yggdrasil", STELLAR_HARVESTER = "stellar_harvester",
             SUPRASHELL = "suprashell", DISINTEGRATOR = "disintegrator", BIRCH_WORLD = "birch_world",
             QSO = "qso";
@@ -24,13 +25,13 @@ public final class TypeOmegaMegastructures {
     /** Every megastructure, for the client renderer check. */
     public static final String[] ALL = { MATRIOSHKA, STELLAR_ENGINE, STAR_LIFTER, STELLAR_HOOP, SYSTEM_CREATOR,
             FUSION_SUPPRESSOR, KUGELBLITZ, HRAEMC,
-            NIDAVELLIR, ASSEMBLY_YARD, YGGDRASIL, STELLAR_HARVESTER,
+            NIDAVELLIR, NEUTRONIUM_GIGAFORGE, ASSEMBLY_YARD, YGGDRASIL, STELLAR_HARVESTER,
             SUPRASHELL, DISINTEGRATOR, BIRCH_WORLD, QSO };
 
     @Nullable
     public static MultiblockMachineDefinition MATRIOSHKA_BRAIN, STELLAR_ENGINE_DEF, STAR_LIFTER_DEF,
             STELLAR_HOOP_DEF, SYSTEM_CREATOR_DEF, FUSION_SUPPRESSOR_DEF,
-            KUGELBLITZ_DEF, HRAEMC_DEF, NIDAVELLIR_DEF,
+            KUGELBLITZ_DEF, HRAEMC_DEF, NIDAVELLIR_DEF, NEUTRONIUM_GIGAFORGE_DEF,
             ASSEMBLY_YARD_DEF, YGGDRASIL_DEF, STELLAR_HARVESTER_DEF, SUPRASHELL_DEF,
             DISINTEGRATOR_DEF, BIRCH_WORLD_DEF, QSO_DEF;
 
@@ -66,6 +67,8 @@ public final class TypeOmegaMegastructures {
         if (available(HRAEMC)) HRAEMC_DEF = com.typeomega.core.mega.hraemc.HraeDefinition.register();
         if (available(NIDAVELLIR))
             NIDAVELLIR_DEF = com.typeomega.core.mega.nidavellir.NidavellirDefinition.register();
+        if (available(NEUTRONIUM_GIGAFORGE))
+            NEUTRONIUM_GIGAFORGE_DEF = com.typeomega.core.mega.gigaforge.GigaforgeDefinition.register();
         if (available(ASSEMBLY_YARD))
             ASSEMBLY_YARD_DEF = com.typeomega.core.mega.yard.AssemblyYardDefinition.register();
         if (available(YGGDRASIL)) YGGDRASIL_DEF = com.typeomega.core.mega.yggdrasil.YggdrasilDefinition.register();

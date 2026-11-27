@@ -123,6 +123,19 @@ public final class MegaRecipes {
                 .save(provider);
     }
 
+    /** Provisional (D-446): companion extractor above the neutron star. */
+    private static void neutroniumGigaforge(Consumer<FinishedRecipe> provider) {
+        GTRecipeTypes.ASSEMBLY_LINE_RECIPES.recipeBuilder(TypeOmegaMod.id("neutronium_gigaforge"))
+                .inputItems(GTItems.ELECTRIC_PISTON_UV.asStack(32))
+                .inputItems(GTItems.FIELD_GENERATOR_UV.asStack(16))
+                .inputItems(GTItems.GRAVI_STAR.asStack(32))
+                .inputItems(CustomTags.UIV_CIRCUITS, 8)
+                .inputFluids(GTMaterials.Neutronium.getFluid(18432))
+                .outputItems(TypeOmegaMegastructures.NEUTRONIUM_GIGAFORGE_DEF.asStack())
+                .EUt(GTValues.VA[GTValues.UIV]).duration(8000)
+                .save(provider);
+    }
+
     /** Provisional (D-322): superconducting coils for the Penrose ring, sensors for the antennas. */
     private static void hraemc(Consumer<FinishedRecipe> provider) {
         GTRecipeTypes.ASSEMBLY_LINE_RECIPES.recipeBuilder(TypeOmegaMod.id("hraemc"))
@@ -220,6 +233,7 @@ public final class MegaRecipes {
         if (TypeOmegaMegastructures.KUGELBLITZ_DEF != null) kugelblitz(provider);
         if (TypeOmegaMegastructures.HRAEMC_DEF != null) hraemc(provider);
         if (TypeOmegaMegastructures.NIDAVELLIR_DEF != null) nidavellir(provider);
+        if (TypeOmegaMegastructures.NEUTRONIUM_GIGAFORGE_DEF != null) neutroniumGigaforge(provider);
         if (TypeOmegaMegastructures.ASSEMBLY_YARD_DEF != null) assemblyYard(provider);
         if (TypeOmegaMegastructures.YGGDRASIL_DEF != null) yggdrasil(provider);
         if (TypeOmegaMegastructures.STELLAR_HARVESTER_DEF != null) stellarHarvester(provider);

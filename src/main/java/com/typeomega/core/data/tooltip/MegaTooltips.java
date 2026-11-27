@@ -11,6 +11,7 @@ import com.typeomega.core.mega.birch.BirchPhysics;
 import com.typeomega.core.mega.disintegrator.DisintegratorPhysics;
 import com.typeomega.core.mega.hraemc.HraePhysics;
 import com.typeomega.core.mega.kugelblitz.KugelblitzPhysics;
+import com.typeomega.core.mega.gigaforge.GigaforgePhysics;
 import com.typeomega.core.mega.nidavellir.NidavellirPhysics;
 import com.typeomega.core.mega.qso.QsoPhysics;
 import com.typeomega.core.mega.suprashell.ShellPhysics;
@@ -41,6 +42,7 @@ public final class MegaTooltips {
     public static void register() {
         TypeOmegaTooltips.register("assembly_yard", MegaTooltips::yard);
         TypeOmegaTooltips.register("nidavellir", MegaTooltips::nidavellir);
+        TypeOmegaTooltips.register("neutronium_gigaforge", MegaTooltips::neutroniumGigaforge);
         TypeOmegaTooltips.register("yggdrasil", MegaTooltips::yggdrasil);
         TypeOmegaTooltips.register("kugelblitz", MegaTooltips::kugelblitz);
         TypeOmegaTooltips.register("hraemc", MegaTooltips::hraemc);
@@ -76,6 +78,22 @@ public final class MegaTooltips {
                 .line(own(id, "pulsar"))
                 .line(own(id, "energy"))
                 .warning(own(id, "waits"));
+        return finish(b, id);
+    }
+
+    private static List<Component> neutroniumGigaforge() {
+        String id = "neutronium_gigaforge";
+        var b = begin(id, "star_lifting", "megastructure")
+                .line(own(id, "star"))
+                .line(own(id, "extract"), value(GigaforgePhysics.maxDustPerSecond(1)),
+                        value(GigaforgePhysics.maxDustPerSecond(GigaforgePhysics.PHASES)))
+                .line(own(id, "phases"), value(GigaforgePhysics.maxDustPerSecond(2)),
+                        value(GigaforgePhysics.maxDustPerSecond(3)))
+                .line(own(id, "rate"), value(GigaforgePhysics.RATE_MIN + "%"),
+                        value(GigaforgePhysics.RATE_MAX + "%"))
+                .line(own(id, "pair"))
+                .line(own(id, "output"))
+                .line(own(id, "energy"), value(sci(GigaforgePhysics.EU_PER_DUST) + " EU"));
         return finish(b, id);
     }
 

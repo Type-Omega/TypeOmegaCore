@@ -1,0 +1,107 @@
+{
+ "block.typeomega.neutronium_gigaforge": [
+  "Neutronium Gigaforge",
+  "Gigaforja de Neutrônio",
+  "中子素巨型熔炉"
+ ],
+ "typeomega.neutronium_gigaforge.state": [
+  "Extracting %s dust/s, total %s",
+  "Extraindo %s pós/s, total %s",
+  "正在提取 %s 粉/秒，总计 %s"
+ ],
+ "typeomega.neutronium_gigaforge.ui.manual": [
+  "Manual",
+  "Manual",
+  "手册"
+ ],
+ "typeomega.neutronium_gigaforge.ui.manual.tip": [
+  "How the extractor works around a neutron star.",
+  "Como o extrator funciona em volta de uma estrela de nêutrons.",
+  "中子星提取器的工作原理。"
+ ],
+ "typeomega.neutronium_gigaforge.ui.rate_tip": [
+  "Extraction rate",
+  "Taxa de extração",
+  "提取速率"
+ ],
+ "typeomega.neutronium_gigaforge.ui.star_ok": [
+  "Neutron star locked",
+  "Estrela de nêutrons travada",
+  "已锁定中子星"
+ ],
+ "typeomega.neutronium_gigaforge.ui.no_star": [
+  "Requires a neutron star, pulsar or magnetar",
+  "Exige estrela de nêutrons, pulsar ou magnetar",
+  "需要中子星、脉冲星或磁星"
+ ],
+ "typeomega.neutronium_gigaforge.ui.extracting": [
+  "%s neutronium dust/s  ·  %s EU/t",
+  "%s pó de neutrônio/s  ·  %s EU/t",
+  "%s 中子素粉/秒  ·  %s EU/t"
+ ],
+ "typeomega.neutronium_gigaforge.ui.idle.no_neutron_star": [
+  "Waiting: requires a neutron star, pulsar or magnetar",
+  "Esperando: exige estrela de nêutrons, pulsar ou magnetar",
+  "等待中：需要中子星、脉冲星或磁星"
+ ],
+ "typeomega.neutronium_gigaforge.ui.idle.power": [
+  "Waiting: not enough EU in the Nexus network",
+  "Esperando: falta EU na rede Nexus",
+  "等待中：Nexus 网络 EU 不足"
+ ],
+ "typeomega.neutronium_gigaforge.ui.idle.disabled": [
+  "Paused by controller",
+  "Pausada pelo controlador",
+  "控制器已暂停"
+ ],
+ "typeomega.neutronium_gigaforge.ui.rate": [
+  "Rate: %s%%",
+  "Taxa: %s%%",
+  "速率：%s%%"
+ ],
+ "typeomega.neutronium_gigaforge.ui.extracted": [
+  "Extracted: %s",
+  "Extraído: %s",
+  "已提取：%s"
+ ],
+ "typeomega.neutronium_gigaforge.ui.phases": [
+  "Phases %s/%s",
+  "Fases %s/%s",
+  "阶段 %s/%s"
+ ],
+ "typeomega.neutronium_gigaforge.ui.manual_title": [
+  "Field manual - Neutronium Gigaforge",
+  "Manual de campo - Gigaforja de Neutrônio",
+  "现场手册 - 中子素巨型熔炉"
+ ],
+ "typeomega.neutronium_gigaforge.ui.manual.0": [
+  "#Crust extraction",
+  "#Extração da crosta",
+  "#壳层提取"
+ ],
+ "typeomega.neutronium_gigaforge.ui.manual.1": [
+  "Built directly above the neutron star inside the inner bore of the Nidavellir Hyperforge, without colliding with its rings or lens beam.",
+  "Construída acima da estrela de nêutrons dentro do furo interno da Nidavellir, sem colidir com os anéis nem com o feixe da lente.",
+  "建在尼达维勒超级熔炉内孔上方的中子星正上方，不会与环或透镜光束碰撞。"
+ ],
+ "typeomega.neutronium_gigaforge.ui.manual.2": [
+  "=Phases: 1 hub (4/s) -> 2 processing rings (16/s) -> 3 extractor drill (64/s)",
+  "=Fases: 1 núcleo (4/s) -> 2 anéis de processamento (16/s) -> 3 broca extratora (64/s)",
+  "=阶段：1 核心 (4/s) -> 2 处理环 (16/s) -> 3 提取钻头 (64/s)"
+ ],
+ "typeomega.neutronium_gigaforge.ui.manual.3": [
+  "#Companion pair",
+  "#Par companheiro",
+  "#伴生巨构"
+ ],
+ "typeomega.neutronium_gigaforge.ui.manual.4": [
+  "Both structures share the same neutron star, pulsar or magnetar (from the Fusion Suppressor or System Creator phase 5).",
+  "As duas estruturas dividem a mesma estrela de nêutrons, pulsar ou magnetar (do Fusion Suppressor ou System Creator fase 5).",
+  "两座巨构共享同一颗中子星、脉冲星或磁星（来自聚变抑制器或星系创造器第 5 阶段）。"
+ ],
+ "typeomega.neutronium_gigaforge.ui.manual.5": [
+  "Feed the extracted neutronium dust into the Nidavellir Hyperforge to press alloy batches.",
+  "Envie o pó de neutrônio extraído para a Hiperforja Nidavellir prensar lotes de ligas.",
+  "将提取的中子素粉送入尼达维勒超级熔炉以压制合金批次。"
+ ]
+}
