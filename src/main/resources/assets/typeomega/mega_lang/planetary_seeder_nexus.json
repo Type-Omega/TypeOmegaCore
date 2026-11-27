@@ -1,0 +1,112 @@
+{
+ "block.typeomega.planetary_seeder_nexus": [
+  "Planetary Seeder Nexus",
+  "Nexo Semeador Planetário",
+  "行星播种枢纽"
+ ],
+ "typeomega.planetary_seeder_nexus.needs_system": [
+  "Must be built inside a Star System dimension.",
+  "Precisa ser construído dentro de uma dimensão de Sistema Estelar.",
+  "必须在恒星系维度内建造。"
+ ],
+ "typeomega.planetary_seeder_nexus.state": [
+  "Seeding flux %s%%  ·  Speed %sx",
+  "Fluxo de semeadura %s%%  ·  Velocidade %sx",
+  "播种通量 %s%%  ·  速度 %sx"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.manual": [
+  "Manual",
+  "Manual",
+  "手册"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.manual.tip": [
+  "How the orbital bio-seeder runs Greenhouse batches and feeds Biomass.",
+  "Como o semeador orbital roda lotes de Estufa e gera Biomassa.",
+  "轨道生物播种机如何运行温室批次并产出生物质。"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.speed": [
+  "Speed",
+  "Veloc.",
+  "速度"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.flux_tip": [
+  "Seeding flux: left click +10%, right click -10%. Higher flux speeds up Greenhouse seeding.",
+  "Fluxo de semeadura: clique esquerdo +10%, direito -10%. Fluxo maior acelera a Estufa.",
+  "播种通量：左键 +10%，右键 -10%。通量越高，温室播种越快。"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.no_system": [
+  "Outside Star System",
+  "Fora de Sistema Estelar",
+  "位于恒星系外"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.crafted": [
+  "%s crafts/s (%sx)",
+  "%s lotes/s (%sx)",
+  "%s 次/秒 (%sx)"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.idle.ready": [
+  "Waiting for Greenhouse inputs",
+  "Esperando insumos da Estufa",
+  "等待温室输入"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.idle.no_recipe": [
+  "No matching Greenhouse recipe",
+  "Nenhuma receita de Estufa encontrada",
+  "未找到匹配的温室配方"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.idle.no_power": [
+  "Insufficient EU/t",
+  "EU/t insuficiente",
+  "EU/t 不足"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.idle.output_full": [
+  "Output hatches full",
+  "Hatches de saída cheios",
+  "输出仓已满"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.flux": [
+  "Flux: %s%%",
+  "Fluxo: %s%%",
+  "通量：%s%%"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.phases": [
+  "Phases %s/%s",
+  "Fases %s/%s",
+  "阶段 %s/%s"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.manual_title": [
+  "Field manual - Planetary Seeder Nexus",
+  "Manual de campo - Nexo Semeador Planetário",
+  "现场手册 - 行星播种枢纽"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.manual.0": [
+  "#Orbital bio-seeder kilostructure",
+  "#Kiloestrutura semeadora orbital",
+  "#轨道生物播种千吨级巨构"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.manual.1": [
+  "An earlier-tier companion to the Yggdrasil Orchid that disperses bio-spores and runs Greenhouse recipes in orbit.",
+  "Companheira de tier anterior da Orquídea Yggdrasil que dispersa bioesporos e roda receitas de Estufa em órbita.",
+  "世界树兰花的前置伴生巨构，在轨道散播生物孢子并批量运行温室配方。"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.manual.2": [
+  "=Phases: 1 core -> 2 lower ring -> 3 bio-spire -> 4 canopy -> 5 seeder petals",
+  "=Fases: 1 núcleo -> 2 anel inferior -> 3 torre bio -> 4 dossel -> 5 pétalas semeadoras",
+  "=阶段：1 核心 -> 2 下环 -> 3 生物尖塔 -> 4 冠层 -> 5 播种花瓣"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.manual.3": [
+  "#Greenhouse batches & Biomass",
+  "#Lotes de Estufa e Biomassa",
+  "#温室批次与生物质"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.manual.4": [
+  "Runs 64 parallel Greenhouse recipes per phase (up to 320x) and exports 50 mB of Biomass per craft.",
+  "Roda 64 receitas paralelas de Estufa por fase (até 320x) e exporta 50 mB de Biomassa por lote.",
+  "每阶段并行运行 64 个温室配方（最高 320x），每次合成额外产出 50 mB 生物质。"
+ ],
+ "typeomega.planetary_seeder_nexus.ui.manual.5": [
+  "=Seeding flux (10%–100%) and stellar luminosity scale the Greenhouse speed from 0.5x up to 3.0x.",
+  "=Fluxo de semeadura (10%–100%) e luminosidade estelar escalam a velocidade da Estufa de 0,5x até 3,0x.",
+  "=播种通量（10%–100%）与恒星光度共同将温室速度提升至 0.5x 到 3.0x。"
+ ]
+}

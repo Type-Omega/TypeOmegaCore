@@ -599,6 +599,61 @@
   "Perfurar uma estrela de nêutrons a trinta blocos de distância. O que poderia dar errado?",
   "在三十格开外钻探中子星。能出什么岔子呢？"
  ],
+ "typeomega.machine.planetary_seeder_nexus.tooltip.purpose": [
+  "An orbital bio-seeder kilostructure that disperses spores and runs Greenhouse batches in star systems",
+  "Uma kiloestrutura semeadora orbital que dispersa esporos e roda lotes de Estufa em sistemas estelares",
+  "在恒星系中播撒孢子并批量运行温室配方的轨道生物播种千吨级巨构"
+ ],
+ "typeomega.machine.planetary_seeder_nexus.tooltip.where": [
+  "Must be built inside any Star System dimension",
+  "Precisa ser construído dentro de qualquer dimensão de Sistema Estelar",
+  "必须建造在任意恒星系维度内"
+ ],
+ "typeomega.machine.planetary_seeder_nexus.tooltip.recipes": [
+  "Runs Greenhouse recipes using seeds and water from the input hatches",
+  "Roda receitas de Greenhouse usando sementes e água dos hatches de entrada",
+  "使用输入仓中的种子和水运行温室配方"
+ ],
+ "typeomega.machine.planetary_seeder_nexus.tooltip.parallel": [
+  "%s parallels per built phase, up to %s parallels at phase 5",
+  "%s paralelos por fase construída, até %s paralelos na fase 5",
+  "每建造一个阶段提供 %s 并行，第 5 阶段最高 %s 并行"
+ ],
+ "typeomega.machine.planetary_seeder_nexus.tooltip.biomass": [
+  "Every harvest exports %s mB of Biomass to the fluid output hatch",
+  "Cada colheita exporta %s mB de Biomassa para o hatch de saída de fluido",
+  "每次收获向流体输出仓导出 %s mB 生物质"
+ ],
+ "typeomega.machine.planetary_seeder_nexus.tooltip.flux": [
+  "Seeding flux ranges from %s to %s in steps of %s",
+  "O fluxo de semeadura varia de %s a %s em passos de %s",
+  "播种通量可在 %s 至 %s 之间调节，步长 %s"
+ ],
+ "typeomega.machine.planetary_seeder_nexus.tooltip.speed": [
+  "Seeding speed scales from %s to %s with flux, stellar luminosity, and phases",
+  "A velocidade de semeadura escala de %s a %s com o fluxo, luminosidade estelar e fases",
+  "播种速度随通量、恒星光度和阶段数在 %s 至 %s 之间缩放"
+ ],
+ "typeomega.machine.planetary_seeder_nexus.tooltip.phases": [
+  "Phases: 1 core -> 2 lower ring -> 3 bio-spire -> 4 canopy -> 5 seeder petals",
+  "Fases: 1 núcleo -> 2 anel inferior -> 3 torre bio -> 4 dossel -> 5 pétalas semeadoras",
+  "阶段：1 核心 -> 2 下环 -> 3 生物尖塔 -> 4 冠层 -> 5 播种花瓣"
+ ],
+ "typeomega.machine.planetary_seeder_nexus.tooltip.companion": [
+  "Earlier-tier orbital companion to the Yggdrasil Orchid in the same star system",
+  "Companheira orbital de tier anterior à Orquídea Yggdrasil no mesmo sistema estelar",
+  "同一恒星系中世界树兰花的前置轨道伴生巨构"
+ ],
+ "typeomega.machine.planetary_seeder_nexus.tooltip.energy": [
+  "EU comes from the Nexus network, as in the base Greenhouse recipe",
+  "O EU vem da rede Nexus, como na receita base de Estufa",
+  "EU 来自 Nexus 网络，与基础温室配方相同"
+ ],
+ "typeomega.machine.planetary_seeder_nexus.tooltip.humor": [
+  "Eight giant petals just to grow wheat slightly faster. Totally proportional.",
+  "Oito pétalas gigantes só para crescer trigo um pouco mais rápido. Totalmente proporcional.",
+  "八片巨大花瓣只为让小麦长得快一点。非常合理。"
+ ],
  "typeomega.machine.yggdrasil.tooltip.purpose": [
   "A gas giant seeded with floating gardens inside a shell of hexagonal glass",
   "Um gigante gasoso semeado com jardins flutuantes dentro de uma casca de vidro hexagonal",

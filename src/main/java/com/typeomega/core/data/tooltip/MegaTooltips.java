@@ -16,6 +16,7 @@ import com.typeomega.core.mega.gigaforge.GigaforgePhysics;
 import com.typeomega.core.mega.nidavellir.NidavellirPhysics;
 import com.typeomega.core.mega.penrose.PenrosePhysics;
 import com.typeomega.core.mega.qso.QsoPhysics;
+import com.typeomega.core.mega.seeder.SeederPhysics;
 import com.typeomega.core.mega.suprashell.ShellPhysics;
 import com.typeomega.core.mega.yard.YardPhysics;
 import com.typeomega.core.mega.yggdrasil.YggdrasilPhysics;
@@ -45,6 +46,7 @@ public final class MegaTooltips {
         TypeOmegaTooltips.register("assembly_yard", MegaTooltips::yard);
         TypeOmegaTooltips.register("nidavellir", MegaTooltips::nidavellir);
         TypeOmegaTooltips.register("neutronium_gigaforge", MegaTooltips::neutroniumGigaforge);
+        TypeOmegaTooltips.register("planetary_seeder_nexus", MegaTooltips::planetarySeederNexus);
         TypeOmegaTooltips.register("yggdrasil", MegaTooltips::yggdrasil);
         TypeOmegaTooltips.register("kugelblitz", MegaTooltips::kugelblitz);
         TypeOmegaTooltips.register("hraemc", MegaTooltips::hraemc);
@@ -98,6 +100,24 @@ public final class MegaTooltips {
                 .line(own(id, "pair"))
                 .line(own(id, "output"))
                 .line(own(id, "energy"), value(sci(GigaforgePhysics.EU_PER_DUST) + " EU"));
+        return finish(b, id);
+    }
+
+    private static List<Component> planetarySeederNexus() {
+        String id = "planetary_seeder_nexus";
+        var b = begin(id, "greenhouse", "megastructure")
+                .warning(own(id, "where"))
+                .line(own(id, "recipes"))
+                .line(own(id, "parallel"), value(SeederPhysics.PARALLEL_PER_PHASE),
+                        value(SeederPhysics.PARALLEL_PER_PHASE * SeederPhysics.PHASES))
+                .line(own(id, "biomass"), value(SeederPhysics.BIOMASS_PER_CRAFT))
+                .line(own(id, "flux"), value(SeederPhysics.FLUX_MIN + "%"), value(SeederPhysics.FLUX_MAX + "%"),
+                        value(SeederPhysics.FLUX_STEP + "%"))
+                .line(own(id, "speed"), value(num(SeederPhysics.SPEED_MIN) + "x"),
+                        value(num(SeederPhysics.SPEED_MAX) + "x"))
+                .line(own(id, "phases"))
+                .line(own(id, "companion"))
+                .line(own(id, "energy"));
         return finish(b, id);
     }
 

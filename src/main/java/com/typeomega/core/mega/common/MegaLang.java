@@ -18,7 +18,8 @@ public final class MegaLang {
 
     /** Files under mega_lang, without the extension. */
     public static final String[] FILES = { "common", "star_lifter", "stellar_hoop", "system_creator",
-            "fusion_suppressor", "kugelblitz", "hraemc", "penrose_sphere", "nidavellir", "neutronium_gigaforge", "assembly_yard",
+            "fusion_suppressor", "kugelblitz", "hraemc", "penrose_sphere", "nidavellir", "neutronium_gigaforge",
+            "assembly_yard", "planetary_seeder_nexus",
             "yggdrasil",
             "stellar_harvester", "suprashell", "disintegrator", "basement_gateway", "birch_world", "qso",
             "multiblock_tooltips",

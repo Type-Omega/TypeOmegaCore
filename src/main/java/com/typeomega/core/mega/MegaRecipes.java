@@ -97,6 +97,19 @@ public final class MegaRecipes {
                 .save(provider);
     }
 
+    /** Provisional (D-446 A6): earlier-tier orbital bio-seeder companion to Yggdrasil Orchid. */
+    private static void planetarySeederNexus(Consumer<FinishedRecipe> provider) {
+        GTRecipeTypes.ASSEMBLY_LINE_RECIPES.recipeBuilder(TypeOmegaMod.id("planetary_seeder_nexus"))
+                .inputItems(com.raishxn.gtna.common.data.GTNAMachines3.LARGE_GREENHOUSE.asStack(16))
+                .inputItems(GTItems.FIELD_GENERATOR_UV.asStack(16))
+                .inputItems(GTItems.EMITTER_UV.asStack(16))
+                .inputItems(CustomTags.UIV_CIRCUITS, 8)
+                .inputFluids(GTMaterials.Neutronium.getFluid(4608))
+                .outputItems(TypeOmegaMegastructures.PLANETARY_SEEDER_NEXUS_DEF.asStack())
+                .EUt(GTValues.VA[GTValues.UIV]).duration(8000)
+                .save(provider);
+    }
+
     /** Provisional (D-327): greenhouses by the dozen and the field generators that hold the gardens aloft. */
     private static void yggdrasil(Consumer<FinishedRecipe> provider) {
         GTRecipeTypes.ASSEMBLY_LINE_RECIPES.recipeBuilder(TypeOmegaMod.id("yggdrasil"))
@@ -262,6 +275,7 @@ public final class MegaRecipes {
         if (TypeOmegaMegastructures.NIDAVELLIR_DEF != null) nidavellir(provider);
         if (TypeOmegaMegastructures.NEUTRONIUM_GIGAFORGE_DEF != null) neutroniumGigaforge(provider);
         if (TypeOmegaMegastructures.ASSEMBLY_YARD_DEF != null) assemblyYard(provider);
+        if (TypeOmegaMegastructures.PLANETARY_SEEDER_NEXUS_DEF != null) planetarySeederNexus(provider);
         if (TypeOmegaMegastructures.YGGDRASIL_DEF != null) yggdrasil(provider);
         if (TypeOmegaMegastructures.STELLAR_HARVESTER_DEF != null) stellarHarvester(provider);
         if (TypeOmegaMegastructures.SUPRASHELL_DEF != null) suprashell(provider);
